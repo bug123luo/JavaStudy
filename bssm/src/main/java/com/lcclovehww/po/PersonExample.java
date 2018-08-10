@@ -234,63 +234,63 @@ public class PersonExample {
             return (Criteria) this;
         }
 
-        public Criteria andAgeIsNull() {
-            addCriterion("age is null");
+        public Criteria andPageIsNull() {
+            addCriterion("page is null");
             return (Criteria) this;
         }
 
-        public Criteria andAgeIsNotNull() {
-            addCriterion("age is not null");
+        public Criteria andPageIsNotNull() {
+            addCriterion("page is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAgeEqualTo(Integer value) {
-            addCriterion("age =", value, "age");
+        public Criteria andPageEqualTo(Integer value) {
+            addCriterion("page =", value, "page");
             return (Criteria) this;
         }
 
-        public Criteria andAgeNotEqualTo(Integer value) {
-            addCriterion("age <>", value, "age");
+        public Criteria andPageNotEqualTo(Integer value) {
+            addCriterion("page <>", value, "page");
             return (Criteria) this;
         }
 
-        public Criteria andAgeGreaterThan(Integer value) {
-            addCriterion("age >", value, "age");
+        public Criteria andPageGreaterThan(Integer value) {
+            addCriterion("page >", value, "page");
             return (Criteria) this;
         }
 
-        public Criteria andAgeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("age >=", value, "age");
+        public Criteria andPageGreaterThanOrEqualTo(Integer value) {
+            addCriterion("page >=", value, "page");
             return (Criteria) this;
         }
 
-        public Criteria andAgeLessThan(Integer value) {
-            addCriterion("age <", value, "age");
+        public Criteria andPageLessThan(Integer value) {
+            addCriterion("page <", value, "page");
             return (Criteria) this;
         }
 
-        public Criteria andAgeLessThanOrEqualTo(Integer value) {
-            addCriterion("age <=", value, "age");
+        public Criteria andPageLessThanOrEqualTo(Integer value) {
+            addCriterion("page <=", value, "page");
             return (Criteria) this;
         }
 
-        public Criteria andAgeIn(List<Integer> values) {
-            addCriterion("age in", values, "age");
+        public Criteria andPageIn(List<Integer> values) {
+            addCriterion("page in", values, "page");
             return (Criteria) this;
         }
 
-        public Criteria andAgeNotIn(List<Integer> values) {
-            addCriterion("age not in", values, "age");
+        public Criteria andPageNotIn(List<Integer> values) {
+            addCriterion("page not in", values, "page");
             return (Criteria) this;
         }
 
-        public Criteria andAgeBetween(Integer value1, Integer value2) {
-            addCriterion("age between", value1, value2, "age");
+        public Criteria andPageBetween(Integer value1, Integer value2) {
+            addCriterion("page between", value1, value2, "page");
             return (Criteria) this;
         }
 
-        public Criteria andAgeNotBetween(Integer value1, Integer value2) {
-            addCriterion("age not between", value1, value2, "age");
+        public Criteria andPageNotBetween(Integer value1, Integer value2) {
+            addCriterion("page not between", value1, value2, "page");
             return (Criteria) this;
         }
     }

@@ -41,7 +41,6 @@ import com.lcclovehww.service.PersonService;
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
 @Controller
-@RequestMapping(value="Person")
 public class PersonController {
 
     @Autowired
@@ -58,14 +57,12 @@ public class PersonController {
 
     @RequestMapping("getsecondall")
     public void getsecondall(HttpServletResponse resp, HttpServletRequest request) throws IOException {
-
-
         //得到客户端传递的页码和每页记录数，并转换成int类型
         int pageSize = Integer.parseInt(request.getParameter("pageSize"));
         int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
         //查询参数
         String pname = request.getParameter("pname");
-        String age=request.getParameter("page");
+        String page=request.getParameter("page");
 
         int offset=(pageNumber-1)*pageSize;  //当前起始页
         //定义map集合：
@@ -74,8 +71,8 @@ public class PersonController {
         mp.put("offset",offset);
         mp.put("pageSize",pageSize);
 
-        if(age.length()>0){
-             int page=Integer.parseInt(age);
+        if(page.length()>0){
+             int page1=Integer.parseInt(page);
             mp.put("page",page);
         }
         if(pname.length()>0){

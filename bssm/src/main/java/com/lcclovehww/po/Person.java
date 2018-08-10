@@ -5,7 +5,7 @@ public class Person {
 
     private String pname;
 
-    private Integer age;
+    private Integer page;
 
     public Integer getPid() {
         return pid;
@@ -23,11 +23,11 @@ public class Person {
         this.pname = pname == null ? null : pname.trim();
     }
 
-    public Integer getAge() {
-        return age;
+    public Integer getPage() {
+        return page;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setPage(Integer page) {
+        this.page = page;
     }
 }

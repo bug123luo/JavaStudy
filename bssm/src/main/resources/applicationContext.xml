@@ -2,10 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                          http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://www.springframework.org/schema/context  
+                          http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:component-scan base-package="com.tct.service,com.tct.controller"></context:component-scan>
+	<context:component-scan base-package="com.lcclovehww.service,com.lcclovehww.controller"></context:component-scan>
 
  	<!-- 加载db.properties文件中的内容，db.properties文件中key命名要有一定的特殊规则 -->
 	<context:property-placeholder location="classpath:db.properties" />
@@ -29,7 +31,7 @@
 	<!-- mapper扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
-		<property name="basePackage" value="com.tct.mapper"></property>
+		<property name="basePackage" value="com.lcclovehww.mapper"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 

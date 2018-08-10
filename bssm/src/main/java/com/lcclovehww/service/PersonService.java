@@ -29,7 +29,6 @@ import com.lcclovehww.po.Person;
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
 
-@Service
 public interface PersonService {
     public List<Person> getallPerson(Map map);
 
