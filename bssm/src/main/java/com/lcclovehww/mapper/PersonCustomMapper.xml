@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcclovehww.mapper.PersonCustomMapper">
+	 <resultMap type="com.lcclovehww.po.Person" id="studentList">
+	      <result column="pid" property="pid"/>
+	      <result column="pname"  property="pname"/>
+	      <result column="age"  property="age"/>
+	</resultMap>
+
+	<select id="selectByPersonQueryVo" parameterType="map" resultMap="studentList">
+		select pid,pname,age from person
+		<where>
+			<if test="pid!=null">
+				pid=#{pid}
+			</if>
+			<if test="pname!=null">
+				and pname like '%#{pname}%'
+			</if>
+			<if test="age!+null">
+				and age=#{age}
+			</if>
+		</where>
+		limit #{offset},#{pageSize}
+	</select>
+</mapper>

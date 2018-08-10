@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.desert.dao.IPerson01">
+    <select id="getPersonById" parameterType="int" resultType="com.desert.entity.Person">
+        select * from person where pid=#{pid}
+    </select>
+
+    <select id="getallPerson" resultType="com.desert.entity.Person" parameterType="map">
+        select * from person limit #{offset},#{pageSize}
+    </select>
+
+
+    <select id="getallPersonByPname" resultType="com.desert.entity.Person" parameterType="map">
+        select * from person p
+        <where>
+            <if test="pname != null">
+                and p.pname like '%${pname}%'
+            </if>
+            <if test="page != null">
+                and p.page =#{page}
+            </if>
+        </where>
+        limit #{offset},#{pageSize}
+    </select>
+
+    <delete id="delperson" parameterType="int">
+        delete from person where pid=#{pid}
+    </delete>
+
+    <insert id="addperson" parameterType="com.desert.entity.Person">
+        insert into person(pname,page)
+        values(#{pname},#{page})
+    </insert>
+
+    <update id="updateperson" parameterType="com.desert.entity.Person">
+        update person set pname =#{pname}, page =#{page} where pid=#{pid}
+    </update>
+    
+</mapper>
