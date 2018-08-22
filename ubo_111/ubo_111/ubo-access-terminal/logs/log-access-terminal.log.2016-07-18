@@ -1,0 +1,36 @@
+[2016-07-18 14:11:21,831] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 14:11:22,964] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 14:11:22,969] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 14:52:52,315] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 14:52:52,399] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 14:52:52,402] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 15:46:54,099] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 15:46:54,178] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 15:46:54,182] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 15:47:21,098] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 15:47:21,217] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 15:47:21,221] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 15:48:29,468] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 15:48:29,854] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 15:48:29,860] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 15:49:21,329] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 15:49:21,404] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 15:49:21,410] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 15:52:03,902] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 15:52:03,978] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 15:52:03,981] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 15:55:51,108] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 15:55:51,202] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 15:55:51,206] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 15:56:26,217] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 15:56:26,361] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 15:56:26,364] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 15:57:27,418] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 15:57:27,510] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 15:57:27,513] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 15:57:48,348] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 15:57:48,449] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 15:57:48,453] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.
+[2016-07-18 17:53:19,125] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-18 17:53:19,211] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-18 17:53:19,213] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.0.110.

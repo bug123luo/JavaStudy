@@ -1,0 +1,3 @@
+[2016-07-15 08:49:11,392] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2016-07-15 08:49:11,510] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2016-07-15 08:49:11,515] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.2.114.

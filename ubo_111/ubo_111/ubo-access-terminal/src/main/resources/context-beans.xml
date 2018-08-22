@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/jms 
+                           http://www.springframework.org/schema/jms/spring-jms.xsd">
+	<import resource="context-redis.xml"/>
+	<context:component-scan base-package="com.ubo.terminal" />
+	<context:component-scan base-package="com.ubo.terminal.handler" />
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:server-test.properties</value>
+		</property>
+		<property name="fileEncoding" value="utf-8" />
+	</bean>
+
+	<bean id="serverPort" class="java.lang.Integer">
+		<constructor-arg index="0">
+			<value>${server.port}</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="peerPort" class="java.lang.Integer">
+		<constructor-arg index="0">
+			<value>${server.peerPort}</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="readTimeoutSecondes" class="java.lang.Integer">
+		<constructor-arg index="0">
+			<value>${server.readTimeoutSeconds}</value>
+		</constructor-arg>
+	</bean>
+	<bean id="saveFileService" class="dudu.service.impl.SaveFileServiceImpl">
+		<property name="threadNum" value="10"></property>
+	</bean>
+	<bean id="channelHandlers" class="java.util.ArrayList" scope="prototype">
+		<constructor-arg>
+			<list>
+				
+				<!-- <ref bean="lineFrameDecoder" />  -->
+			    <ref bean="mixFrameDecoder" /> 
+				<ref bean="lineFrameEncoder" />
+				<ref bean="accessChannelHandler" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="basicProtocolDecoder" class="com.ubo.terminal.handler.BasicProtocolDecoder"
+		scope="prototype">
+		<property name="sdf" ref="sdf" />
+		<property name="cacheService" ref="redisCacheService"></property>
+		<property name="recordTimeOut" ref="recordTimeOut"></property>
+		<property name="saveFileService" ref="saveFileService"></property>
+	</bean>
+	
+	<bean id="accessChannelHandler" class="com.ubo.terminal.SessionChannelHandler"
+		scope="prototype">
+		<constructor-arg index="0" ref="basicProtocolDecoder" />
+		<constructor-arg index="1">
+			<map>
+				<entry key="LOGIN" value-ref="loginMsgHandler" />
+				<entry key="HB" value-ref="hbMsgHandler" />
+				<entry key="STRAPREQUEST" value-ref="strapDateRequestMsgHandler" />
+				<entry key="INWAREHOUSE" value-ref="inwarehouseRequestMsgHandler" />
+				<entry key="MARRY" value-ref="marryRequestMsgHandler" />
+				<entry key="SOSMAG" value-ref="sosMsgHandler" />
+				<entry key="LOGOUT" value-ref="logoutMsgHandler" />
+				<entry key="CLOSE" value-ref="closeMsgHandler" />
+				<entry key="SPACE-STATUS" value-ref="spaceStatusHandler" />
+				<entry key="default" value-ref="defaulMsgHandler" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="templateMap" class="java.util.HashMap" scope="prototype">
+		<constructor-arg index="0">
+			<map>
+				<entry key="LOGIN" value-ref="jmsUboProducerTemplate" />
+				<entry key="LOGIN-RESP-ACK" value-ref="jmsUboProducerTemplate" />
+				<entry key="HEARTBEAT" value-ref="jmsUboProducerTemplate" />
+				<entry key="RECORD" value-ref="jmsUboProducerTemplate" />
+				<entry key="LOGOUT" value-ref="jmsUboProducerTemplate" />
+				<entry key="CLOSE" value-ref="jmsUboProducerTemplate" />
+				<!-- above is used to be sent to login queue -->
+				<entry key="default" value-ref="jmsUboProducerTemplate" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="loginMsgHandler" class="com.ubo.terminal.handler.LoginMessageHandler"
+		scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+	<bean id="logoutMsgHandler" class="com.ubo.terminal.handler.LogoutMessageHandler"
+		scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+	<bean id="closeMsgHandler" class="com.ubo.terminal.handler.CloseMessageHandler"
+		scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+
+	<bean id="hbMsgHandler" class="com.ubo.terminal.handler.HeartbeatMessageHandler"
+		scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+
+	<bean id="strapDateRequestMsgHandler" class="com.ubo.terminal.handler.StrapDateRequestMessageHandler"
+		  scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+	<bean id="marryRequestMsgHandler" class="com.ubo.terminal.handler.MarryMessageHandler"
+		  scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+	<bean id="inwarehouseRequestMsgHandler" class="com.ubo.terminal.handler.InWarehouseMessageHandler"
+		  scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+
+	<bean id="sosMsgHandler" class="com.ubo.terminal.handler.SOSMessageHandler"
+		scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+	
+	<bean id="spaceStatusHandler" class="com.ubo.terminal.handler.SpaceStatusHandler"
+		scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+	
+	<bean id="defaulMsgHandler" class="com.ubo.terminal.handler.PassthroughWithoutAckHandler"
+		scope="prototype">
+		<property name="templateMap" ref="templateMap" />
+	</bean>
+
+	<bean id="sdf" class="java.text.SimpleDateFormat" scope="prototype">
+		<constructor-arg index="0" value="yyyyMMddHHmmss" />
+	</bean>
+	
+	<!--
+	<bean id="lineFrameDecoder" class="com.ubo.terminal.handler.LineFrameDecoder"
+		scope="prototype" />
+	-->
+	 
+	<bean id="mixFrameDecoder" class="com.ubo.terminal.handler.MixFrameDecoder"
+		scope="prototype" />
+		
+	<bean id="lineFrameDecoder" class="com.ubo.terminal.handler.LineFrameDecoder"
+		scope="prototype" />
+		
+	<bean id="lineFrameEncoder" class="com.ubo.terminal.handler.LineFrameEncoder"
+		scope="prototype">
+		<property name="sdf" ref="sdf" />
+	</bean>
+
+	<!-- JMS ConnectionFactory to use, configuring the embedded broker using 
+		XML -->
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL">
+			<value>${mq.brokerURL}</value>
+		</property>
+	</bean>
+
+	<bean id="jmsPooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="maxConnections">
+			<value>${mq.maxConnections}</value>
+		</property>
+	</bean>
+
+	<bean id="jmsSingleConnectionFactory"
+		class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="jmsPooledConnectionFactory" />
+		<property name="reconnectOnException" value="true" />
+	</bean>
+
+	<!-- ubo queue -->
+	<bean id="jmsUboDestinationQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0">
+			<value>${mq.uboQueue}</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="jmsUboProducerTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsSingleConnectionFactory" />
+		<property name="defaultDestination" ref="jmsUboDestinationQueue" />
+		<property name="sessionTransacted" value="false" />
+	</bean>
+
+	<!-- login queue -->
+	<bean id="jmsLoginDestinationQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0">
+			<value>${mq.loginQueue}</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="jmsLoginProducerTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsSingleConnectionFactory" />
+		<property name="defaultDestination" ref="jmsLoginDestinationQueue" />
+		<property name="sessionTransacted" value="false" />
+	</bean>
+
+	<!-- terminal push queue -->
+	<bean id="jmsPushSourceQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0">
+			<value>${mq.T-PushQueue}</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="jmsPushMessageListener" class="com.ubo.terminal.PushMessageListener" />
+
+	<bean id="jmsPushContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="destination" ref="jmsPushSourceQueue" />
+		<property name="messageListener" ref="jmsPushMessageListener" />
+	</bean>
+
+</beans>
+

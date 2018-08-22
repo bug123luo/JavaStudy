@@ -1,0 +1,687 @@
+[2018-08-02 20:28:01,722] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - channel[210bd430] active, channel group size: 1.
+[2018-08-02 20:28:01,732] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164fa9bf343.
+[2018-08-02 20:28:08,069] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-08-02 20:28:08,069] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]buffer.readableBytes: '0x2f' --> 47
+[2018-08-02 20:28:08,071] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=47
+5b 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31
+31 2c 31 32 2c 31 2c 30 31 2c 32 32 32 32 32 2c
+36 36 36 36 36 36 36 36 36 36 36 36 36 36 5d 
+end dump channel buffer========
+[2018-08-02 20:28:08,072] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decoder state: 0
+[2018-08-02 20:28:08,072] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:91
+[2018-08-02 20:28:08,072] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decoded frame header: state=STATE_ID,readerIndex=1,frameLength=1.
+[2018-08-02 20:28:08,072] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=16
+0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31
+
+end dump channel buffer========
+[2018-08-02 20:28:08,072] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decoded 唯一标识: "1111111111111111".
+[2018-08-02 20:28:08,072] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decode terminal id: state=STATE_SERIAL,readerIndex=18,frameLength=18.
+[2018-08-02 20:28:08,072] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x31 0x32 
+end dump channel buffer========
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decoded 格式版本 : "12".
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decode terminal id: state=STATE_SERIAL,readerIndex=21,frameLength=21.
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+0x31 
+end dump channel buffer========
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decoded terminal id: "1".
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decode 设备类型: state=STATE_SERIAL,readerIndex=23,frameLength=23.
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x30 0x31 
+end dump channel buffer========
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decoded 报文类型: "01".
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decode command: state=7,readerIndex=26,frameLength=26.
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=5
+0x32 0x32 0x32 0x32 0x32 
+end dump channel buffer========
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decoded 报文体: "22222".
+[2018-08-02 20:28:08,073] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decode command body: state=STATE_TAIL,readerIndex=31,frameLength=31.
+[2018-08-02 20:28:08,074] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=14
+0x2c 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 
+end dump channel buffer========
+[2018-08-02 20:28:08,074] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decoded 发报时间: ",6666666666666".
+[2018-08-02 20:28:08,074] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decode command body: state=STATE_TAIL,readerIndex=45,frameLength=44.
+[2018-08-02 20:28:08,074] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]decode fail: state=STATE_MEDIA,readerIndex=45,frameLength=44.
+[2018-08-02 20:28:08,075] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,075] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,075] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,075] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,075] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,075] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,075] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,075] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,075] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,076] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,076] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,076] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,076] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,076] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,076] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,076] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,076] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,076] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,077] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,077] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,077] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,077] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,077] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,077] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,077] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,077] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,082] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,082] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,082] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,083] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,083] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:28:08,083] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:28:08,083] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,083] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,083] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:28:08,083] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:28:08,083] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:28:08,083] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:28:08,084] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,084] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,084] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:28:08,084] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:28:08,084] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:48
+[2018-08-02 20:28:08,084] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x30'
+[2018-08-02 20:28:08,084] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:28:08,085] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:28:08,085] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:28:08,085] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:28:08,085] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:28:08,085] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:28:08,085] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:28:08,086] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:28:08,086] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:28:08,086] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:28:08,086] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:28:08,086] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:28:08,086] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:28:08,086] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:28:08,088] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:28:08,089] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:28:08,089] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,089] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,089] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,089] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,089] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,089] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,089] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,090] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,090] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,090] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,090] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,090] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,090] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,090] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,090] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,090] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,091] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,091] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,091] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,091] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,091] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,091] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,091] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,091] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,091] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,091] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,092] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:28:08,092] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:28:08,092] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:93
+[2018-08-02 20:28:08,092] WARN {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9bf343]STATE_IDLE::Unknow data: '0x5d'
+[2018-08-02 20:28:08,092] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-08-02 20:31:09,836] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2018-08-02 20:31:09,864] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2018-08-02 20:31:09,868] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.2.105.
+[2018-08-02 20:31:14,876] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - channel[d697cf79] active, channel group size: 1.
+[2018-08-02 20:31:14,878] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164fa9ee5be.
+[2018-08-02 20:31:19,227] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-08-02 20:31:19,228] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]buffer.readableBytes: '0x2f' --> 47
+[2018-08-02 20:31:19,230] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=47
+5b 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31
+31 2c 31 32 2c 31 2c 30 31 2c 32 32 32 32 32 2c
+36 36 36 36 36 36 36 36 36 36 36 36 36 36 5d 
+end dump channel buffer========
+[2018-08-02 20:31:19,230] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoder state: 0
+[2018-08-02 20:31:19,230] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:91
+[2018-08-02 20:31:19,231] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded frame header: state=STATE_ID,readerIndex=1,frameLength=1.
+[2018-08-02 20:31:19,241] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=16
+0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31
+
+end dump channel buffer========
+[2018-08-02 20:31:19,241] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 唯一标识: "1111111111111111".
+[2018-08-02 20:31:19,241] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode terminal id: state=STATE_SERIAL,readerIndex=18,frameLength=18.
+[2018-08-02 20:31:19,241] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x31 0x32 
+end dump channel buffer========
+[2018-08-02 20:31:19,241] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 格式版本 : "12".
+[2018-08-02 20:31:19,241] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode terminal id: state=STATE_SERIAL,readerIndex=21,frameLength=21.
+[2018-08-02 20:31:19,241] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+0x31 
+end dump channel buffer========
+[2018-08-02 20:31:19,241] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded terminal id: "1".
+[2018-08-02 20:31:19,241] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode 设备类型: state=STATE_SERIAL,readerIndex=23,frameLength=23.
+[2018-08-02 20:31:19,242] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x30 0x31 
+end dump channel buffer========
+[2018-08-02 20:31:19,242] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 报文类型: "01".
+[2018-08-02 20:31:19,242] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode command: state=7,readerIndex=26,frameLength=26.
+[2018-08-02 20:31:19,242] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=5
+0x32 0x32 0x32 0x32 0x32 
+end dump channel buffer========
+[2018-08-02 20:31:19,242] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 报文体: "22222".
+[2018-08-02 20:31:19,242] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode command body: state=STATE_TAIL,readerIndex=31,frameLength=31.
+[2018-08-02 20:31:19,242] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode fail: state=STATE_TEXT,readerIndex=31,frameLength=31.
+[2018-08-02 20:31:19,242] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,243] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,243] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,243] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,243] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,243] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,243] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,243] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,243] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,243] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,245] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,245] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,245] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,245] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,245] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,245] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,245] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,246] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,246] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,246] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,246] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,246] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,246] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,246] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,246] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,246] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,246] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,247] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,247] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,247] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,247] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,247] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,247] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:31:19,247] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:31:19,247] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,247] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,247] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:31:19,247] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:31:19,247] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:31:19,248] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:31:19,248] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,248] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,248] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:31:19,248] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:31:19,248] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:48
+[2018-08-02 20:31:19,248] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x30'
+[2018-08-02 20:31:19,248] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:31:19,249] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:31:19,249] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:31:19,249] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:31:19,249] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:31:19,249] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:31:19,249] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:31:19,249] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:31:19,249] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:31:19,249] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:31:19,249] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:31:19,249] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:31:19,249] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:31:19,250] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:31:19,250] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:31:19,250] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:31:19,250] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,250] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,250] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,250] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,250] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,250] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,250] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,250] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,251] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,251] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,251] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,251] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,251] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,251] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,251] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,251] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,251] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,251] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,251] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,252] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,252] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,252] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,252] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,252] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,252] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,252] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,252] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:31:19,252] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:31:19,252] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:93
+[2018-08-02 20:31:19,253] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x5d'
+[2018-08-02 20:31:19,253] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-08-02 20:32:17,498] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-08-02 20:32:17,498] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]buffer.readableBytes: '0x2f' --> 47
+[2018-08-02 20:32:17,500] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=47
+5b 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31
+31 2c 31 32 2c 31 2c 30 31 2c 32 32 32 32 32 2c
+36 36 36 36 36 36 36 36 36 36 36 36 36 36 5d 
+end dump channel buffer========
+[2018-08-02 20:32:17,500] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoder state: 0
+[2018-08-02 20:32:17,500] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:91
+[2018-08-02 20:32:17,501] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded frame header: state=STATE_ID,readerIndex=1,frameLength=1.
+[2018-08-02 20:32:17,501] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=16
+0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31
+
+end dump channel buffer========
+[2018-08-02 20:32:17,501] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 唯一标识: "1111111111111111".
+[2018-08-02 20:32:17,501] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode terminal id: state=STATE_SERIAL,readerIndex=18,frameLength=18.
+[2018-08-02 20:32:17,502] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x31 0x32 
+end dump channel buffer========
+[2018-08-02 20:32:17,502] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 格式版本 : "12".
+[2018-08-02 20:32:17,502] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode terminal id: state=STATE_SERIAL,readerIndex=21,frameLength=21.
+[2018-08-02 20:32:17,502] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+0x31 
+end dump channel buffer========
+[2018-08-02 20:32:17,502] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded terminal id: "1".
+[2018-08-02 20:32:17,502] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode 设备类型: state=STATE_SERIAL,readerIndex=23,frameLength=23.
+[2018-08-02 20:32:17,502] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x30 0x31 
+end dump channel buffer========
+[2018-08-02 20:32:17,502] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 报文类型: "01".
+[2018-08-02 20:32:17,502] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode command: state=7,readerIndex=26,frameLength=26.
+[2018-08-02 20:32:17,503] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=5
+0x32 0x32 0x32 0x32 0x32 
+end dump channel buffer========
+[2018-08-02 20:32:17,503] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 报文体: "22222".
+[2018-08-02 20:32:17,503] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode command body: state=STATE_TAIL,readerIndex=31,frameLength=31.
+[2018-08-02 20:33:03,547] WARN {InactivityMonitor Async Task: java.util.concurrent.ThreadPoolExecutor$Worker@1dc47d2[State = -1, empty queue]} org.apache.activemq.transport.failover.FailoverTransport - Transport failed to tcp://localhost:61616?keepAlive=true , attempting to automatically reconnect due to: org.apache.activemq.transport.InactivityIOException: Channel was inactive for too long: localhost/127.0.0.1:61616
+[2018-08-02 20:33:13,451] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully reconnected to tcp://localhost:61616?keepAlive=true
+[2018-08-02 20:33:21,225] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode fail: state=STATE_TEXT,readerIndex=31,frameLength=31.
+[2018-08-02 20:33:21,225] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,225] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,225] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,226] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,226] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,226] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,226] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,226] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,227] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,227] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,227] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,227] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,227] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,227] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,227] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,227] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,228] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,228] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,228] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,228] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,228] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,228] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,228] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,228] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,229] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,229] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,229] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,229] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,229] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,229] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,229] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,230] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,230] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:33:21,230] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:33:21,230] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,230] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,230] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:33:21,230] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:33:21,230] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:33:21,230] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:33:21,231] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,231] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,231] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:33:21,231] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:33:21,231] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:48
+[2018-08-02 20:33:21,231] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x30'
+[2018-08-02 20:33:21,231] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-08-02 20:33:21,231] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x31'
+[2018-08-02 20:33:21,232] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:33:21,232] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:33:21,232] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:33:21,232] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:33:21,232] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:33:21,232] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:33:21,232] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:33:21,232] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:33:21,233] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:33:21,233] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:33:21,233] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-08-02 20:33:21,233] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x32'
+[2018-08-02 20:33:21,233] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:44
+[2018-08-02 20:33:21,233] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x2c'
+[2018-08-02 20:33:21,233] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,233] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,234] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,234] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,234] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,234] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,234] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,234] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,234] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,234] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,235] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,235] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,235] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,235] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,235] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,235] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,235] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,235] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,235] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,236] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,236] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,236] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,236] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,236] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,236] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,236] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,236] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:54
+[2018-08-02 20:33:21,236] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x36'
+[2018-08-02 20:33:21,236] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:93
+[2018-08-02 20:33:21,237] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]STATE_IDLE::Unknow data: '0x5d'
+[2018-08-02 20:33:21,237] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-08-02 20:33:29,111] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-08-02 20:33:29,111] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]buffer.readableBytes: '0x2e' --> 46
+[2018-08-02 20:33:29,113] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=46
+5b 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31
+31 2c 31 32 2c 31 2c 30 31 2c 32 32 32 32 32 2c
+36 36 36 36 36 36 36 36 36 36 36 36 36 5d 
+end dump channel buffer========
+[2018-08-02 20:33:29,113] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoder state: 0
+[2018-08-02 20:33:29,113] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:91
+[2018-08-02 20:33:29,113] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded frame header: state=STATE_ID,readerIndex=1,frameLength=1.
+[2018-08-02 20:33:29,114] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=16
+0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31
+
+end dump channel buffer========
+[2018-08-02 20:33:29,114] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 唯一标识: "1111111111111111".
+[2018-08-02 20:33:29,114] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode terminal id: state=STATE_SERIAL,readerIndex=18,frameLength=18.
+[2018-08-02 20:33:29,114] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x31 0x32 
+end dump channel buffer========
+[2018-08-02 20:33:29,114] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 格式版本 : "12".
+[2018-08-02 20:33:29,114] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode terminal id: state=STATE_SERIAL,readerIndex=21,frameLength=21.
+[2018-08-02 20:33:29,114] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+0x31 
+end dump channel buffer========
+[2018-08-02 20:33:29,114] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded terminal id: "1".
+[2018-08-02 20:33:29,114] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode 设备类型: state=STATE_SERIAL,readerIndex=23,frameLength=23.
+[2018-08-02 20:33:29,115] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x30 0x31 
+end dump channel buffer========
+[2018-08-02 20:33:29,115] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 报文类型: "01".
+[2018-08-02 20:33:29,115] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode command: state=7,readerIndex=26,frameLength=26.
+[2018-08-02 20:33:29,115] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=5
+0x32 0x32 0x32 0x32 0x32 
+end dump channel buffer========
+[2018-08-02 20:33:29,115] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 报文体: "22222".
+[2018-08-02 20:33:29,115] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode command body: state=STATE_TAIL,readerIndex=31,frameLength=31.
+[2018-08-02 20:34:05,907] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=14
+0x2c 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 
+end dump channel buffer========
+[2018-08-02 20:34:05,907] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded 发报时间: ",6666666666666".
+[2018-08-02 20:34:05,907] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode command body: state=STATE_TAIL,readerIndex=45,frameLength=45.
+[2018-08-02 20:34:05,907] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+0x5d 
+end dump channel buffer========
+[2018-08-02 20:34:05,908] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decoded tail: state=STATE_TAIL,readerIndex=46,frameLength=46.
+[2018-08-02 20:34:05,908] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164fa9ee5be]decode tail: state=STATE_IDLE,readerIndex=46,frameLength=0.
+[2018-08-02 20:34:05,911] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - .channelRead()
+[2018-08-02 20:34:12,775] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.BasicProtocolDecoder - IMEI: 1
+[2018-08-02 20:34:12,775] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.BasicProtocolDecoder - Serial: null
+[2018-08-02 20:34:12,776] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.BasicProtocolDecoder - Command: 01
+[2018-08-02 20:34:12,777] ERROR {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164fa9ee5be][d697cf79] ChannelHandler Exception: com.ubo.terminal.InvalidMessageException: Login[01] body doesn't contain <9 parts.
+	at com.ubo.terminal.handler.BasicProtocolDecoder.decodeLoginMessage(BasicProtocolDecoder.java:78)
+	at com.ubo.terminal.handler.BasicProtocolDecoder.decode(BasicProtocolDecoder.java:656)
+	at com.ubo.terminal.SessionChannelHandler.channelRead(SessionChannelHandler.java:219)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.handler.timeout.ReadTimeoutHandler.channelRead(ReadTimeoutHandler.java:149)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:956)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:514)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:471)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:385)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:351)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:116)
+	at io.netty.util.internal.chmv8.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1412)
+	at io.netty.util.internal.chmv8.ForkJoinTask.doExec(ForkJoinTask.java:280)
+	at io.netty.util.internal.chmv8.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:877)
+	at io.netty.util.internal.chmv8.ForkJoinPool.scan(ForkJoinPool.java:1706)
+	at io.netty.util.internal.chmv8.ForkJoinPool.runWorker(ForkJoinPool.java:1661)
+	at io.netty.util.internal.chmv8.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:126)
+
+[2018-08-02 20:34:12,779] ERROR {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164fa9ee5be][d697cf79] ChannelHandler Exception: io.netty.handler.codec.DecoderException: java.util.IllegalFormatConversionException: d != java.lang.String
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:99)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.handler.timeout.ReadTimeoutHandler.channelRead(ReadTimeoutHandler.java:149)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:956)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:514)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:471)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:385)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:351)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:116)
+	at io.netty.util.internal.chmv8.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1412)
+	at io.netty.util.internal.chmv8.ForkJoinTask.doExec(ForkJoinTask.java:280)
+	at io.netty.util.internal.chmv8.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:877)
+	at io.netty.util.internal.chmv8.ForkJoinPool.scan(ForkJoinPool.java:1706)
+	at io.netty.util.internal.chmv8.ForkJoinPool.runWorker(ForkJoinPool.java:1661)
+	at io.netty.util.internal.chmv8.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:126)
+Caused by: java.util.IllegalFormatConversionException: d != java.lang.String
+	at java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4302)
+	at java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:2793)
+	at java.util.Formatter$FormatSpecifier.print(Formatter.java:2747)
+	at java.util.Formatter.format(Formatter.java:2520)
+	at java.util.Formatter.format(Formatter.java:2455)
+	at java.lang.String.format(String.java:2940)
+	at com.ubo.terminal.handler.MixFrameDecoder.decode(MixFrameDecoder.java:617)
+	at com.ubo.terminal.handler.MixFrameDecoder.decode(MixFrameDecoder.java:16)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:89)
+	... 22 more
+
+[2018-08-02 20:34:12,781] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - .channelReadComplete()
+[2018-08-02 20:34:12,781] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164fa9ee5be]channel[d697cf79] inactive preparing, channel group size: 0.
+[2018-08-02 20:34:12,781] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164fa9ee5be]channel map size: 0.
+[2018-08-02 20:34:12,782] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164fa9ee5be]channel[d697cf79] inactive, imei: "null", channel group size: 0, channel map size: 0.
+[2018-08-02 20:38:10,667] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2018-08-02 20:38:10,715] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2018-08-02 20:38:10,721] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.2.105.
+[2018-08-02 20:38:21,209] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - channel[41cdb719] active, channel group size: 1.
+[2018-08-02 20:38:21,210] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164faa5671a.
+[2018-08-02 20:38:32,830] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-08-02 20:38:32,830] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]buffer.readableBytes: '0x2f' --> 47
+[2018-08-02 20:38:32,832] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=47
+5b 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31
+31 2c 31 32 2c 31 2c 30 31 2c 32 32 32 32 32 2c
+36 36 36 36 36 36 36 36 36 36 36 36 36 36 5d 
+end dump channel buffer========
+[2018-08-02 20:38:32,832] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decoder state: 0
+[2018-08-02 20:38:32,832] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:91
+[2018-08-02 20:38:32,832] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decoded frame header: state=STATE_ID,readerIndex=1,frameLength=1.
+[2018-08-02 20:38:32,840] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=16
+0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31 0x31
+
+end dump channel buffer========
+[2018-08-02 20:38:32,840] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decoded 唯一标识: "1111111111111111".
+[2018-08-02 20:38:32,840] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decode terminal id: state=STATE_SERIAL,readerIndex=18,frameLength=18.
+[2018-08-02 20:38:32,841] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x31 0x32 
+end dump channel buffer========
+[2018-08-02 20:38:32,841] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decoded 格式版本 : "12".
+[2018-08-02 20:38:32,841] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decode terminal id: state=STATE_SERIAL,readerIndex=21,frameLength=21.
+[2018-08-02 20:38:32,841] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+0x31 
+end dump channel buffer========
+[2018-08-02 20:38:32,841] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decoded terminal id: "1".
+[2018-08-02 20:38:32,841] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decode 设备类型: state=STATE_SERIAL,readerIndex=23,frameLength=23.
+[2018-08-02 20:38:32,842] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0x30 0x31 
+end dump channel buffer========
+[2018-08-02 20:38:32,842] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decoded 报文类型: "01".
+[2018-08-02 20:38:32,842] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decode command: state=7,readerIndex=26,frameLength=26.
+[2018-08-02 20:38:32,842] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=5
+0x32 0x32 0x32 0x32 0x32 
+end dump channel buffer========
+[2018-08-02 20:38:32,842] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decoded 报文类型: "22222".
+[2018-08-02 20:38:32,842] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decode command: state=8,readerIndex=32,frameLength=32.
+[2018-08-02 20:38:37,555] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=14
+0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 0x36 
+end dump channel buffer========
+[2018-08-02 20:38:37,555] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decoded 发报时间: "66666666666666".
+[2018-08-02 20:38:37,555] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decode command body: state=STATE_TAIL,readerIndex=46,frameLength=46.
+[2018-08-02 20:38:37,555] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+0x5d 
+end dump channel buffer========
+[2018-08-02 20:38:37,556] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decoded tail: state=STATE_TAIL,readerIndex=47,frameLength=47.
+[2018-08-02 20:38:37,556] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164faa5671a]decode tail: state=STATE_IDLE,readerIndex=47,frameLength=0.
+[2018-08-02 20:38:37,557] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - .channelRead()
+[2018-08-02 20:38:37,557] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.BasicProtocolDecoder - IMEI: 1
+[2018-08-02 20:38:37,557] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.BasicProtocolDecoder - Serial: null
+[2018-08-02 20:38:37,558] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.BasicProtocolDecoder - Command: 22222
+[2018-08-02 20:38:37,559] ERROR {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164faa5671a][41cdb719] ChannelHandler Exception: java.lang.NumberFormatException: Value out of range. Value:"22222" Radix:10
+	at java.lang.Byte.parseByte(Byte.java:151)
+	at java.lang.Byte.parseByte(Byte.java:175)
+	at com.ubo.terminal.handler.BasicProtocolDecoder.decode(BasicProtocolDecoder.java:652)
+	at com.ubo.terminal.SessionChannelHandler.channelRead(SessionChannelHandler.java:219)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.handler.timeout.ReadTimeoutHandler.channelRead(ReadTimeoutHandler.java:149)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:956)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:514)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:471)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:385)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:351)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:116)
+	at io.netty.util.internal.chmv8.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1412)
+	at io.netty.util.internal.chmv8.ForkJoinTask.doExec(ForkJoinTask.java:280)
+	at io.netty.util.internal.chmv8.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:877)
+	at io.netty.util.internal.chmv8.ForkJoinPool.scan(ForkJoinPool.java:1706)
+	at io.netty.util.internal.chmv8.ForkJoinPool.runWorker(ForkJoinPool.java:1661)
+	at io.netty.util.internal.chmv8.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:126)
+
+[2018-08-02 20:38:37,562] ERROR {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164faa5671a][41cdb719] ChannelHandler Exception: io.netty.handler.codec.DecoderException: java.util.IllegalFormatConversionException: d != java.lang.String
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:99)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.handler.timeout.ReadTimeoutHandler.channelRead(ReadTimeoutHandler.java:149)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:956)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:514)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:471)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:385)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:351)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:116)
+	at io.netty.util.internal.chmv8.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1412)
+	at io.netty.util.internal.chmv8.ForkJoinTask.doExec(ForkJoinTask.java:280)
+	at io.netty.util.internal.chmv8.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:877)
+	at io.netty.util.internal.chmv8.ForkJoinPool.scan(ForkJoinPool.java:1706)
+	at io.netty.util.internal.chmv8.ForkJoinPool.runWorker(ForkJoinPool.java:1661)
+	at io.netty.util.internal.chmv8.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:126)
+Caused by: java.util.IllegalFormatConversionException: d != java.lang.String
+	at java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4302)
+	at java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:2793)
+	at java.util.Formatter$FormatSpecifier.print(Formatter.java:2747)
+	at java.util.Formatter.format(Formatter.java:2520)
+	at java.util.Formatter.format(Formatter.java:2455)
+	at java.lang.String.format(String.java:2940)
+	at com.ubo.terminal.handler.MixFrameDecoder.decode(MixFrameDecoder.java:619)
+	at com.ubo.terminal.handler.MixFrameDecoder.decode(MixFrameDecoder.java:16)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:89)
+	... 22 more
+
+[2018-08-02 20:38:37,563] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - .channelReadComplete()
+[2018-08-02 20:38:37,564] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164faa5671a]channel[41cdb719] inactive preparing, channel group size: 0.
+[2018-08-02 20:38:37,564] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164faa5671a]channel map size: 0.
+[2018-08-02 20:38:37,565] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164faa5671a]channel[41cdb719] inactive, imei: "null", channel group size: 0, channel map size: 0.

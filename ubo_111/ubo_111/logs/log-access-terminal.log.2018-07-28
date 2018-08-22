@@ -1,0 +1,322 @@
+[2018-07-28 09:59:44,868] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2018-07-28 09:59:45,040] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2018-07-28 09:59:45,044] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.3.87.
+[2018-07-28 10:01:04,218] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - channel[663292ae] active, channel group size: 1.
+[2018-07-28 10:01:04,238] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - : 00000164de9e27ee.
+[2018-07-28 10:03:55,979] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 10:03:55,979] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164de9e27ee]buffer.readableBytes: '0x1' --> 1
+[2018-07-28 10:03:55,983] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+31 
+end dump channel buffer========
+[2018-07-28 10:03:55,983] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164de9e27ee]decoder state: 0
+[2018-07-28 10:03:55,983] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:49
+[2018-07-28 10:03:55,983] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164de9e27ee]STATE_IDLE::Unknow data: '0x31'
+[2018-07-28 10:03:55,983] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-07-28 10:04:00,211] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 10:04:00,211] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164de9e27ee]buffer.readableBytes: '0x1' --> 1
+[2018-07-28 10:04:00,211] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+32 
+end dump channel buffer========
+[2018-07-28 10:04:00,211] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164de9e27ee]decoder state: 0
+[2018-07-28 10:04:00,211] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:50
+[2018-07-28 10:04:00,211] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164de9e27ee]STATE_IDLE::Unknow data: '0x32'
+[2018-07-28 10:04:00,211] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-07-28 10:05:24,011] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 10:05:26,435] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164de9e27ee]buffer.readableBytes: '0x1' --> 1
+[2018-07-28 10:06:05,140] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+41 
+end dump channel buffer========
+[2018-07-28 10:06:11,739] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164de9e27ee]decoder state: 0
+[2018-07-28 14:01:36,196] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:65
+[2018-07-28 14:01:36,197] WARN {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164de9e27ee]STATE_IDLE::Unknow data: '0x41'
+[2018-07-28 14:01:36,198] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-07-28 14:01:36,491] ERROR {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164de9e27ee][663292ae] ChannelHandler Exception: io.netty.handler.timeout.ReadTimeoutException
+
+[2018-07-28 14:01:36,613] WARN {ActiveMQ Transport: tcp://localhost/127.0.0.1:61616} org.apache.activemq.transport.failover.FailoverTransport - Transport failed to tcp://localhost:61616?keepAlive=true , attempting to automatically reconnect due to: java.io.EOFException
+[2018-07-28 14:01:36,642] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164de9e27ee]channel[663292ae] inactive preparing, channel group size: 0.
+[2018-07-28 14:01:36,642] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164de9e27ee]channel map size: 0.
+[2018-07-28 14:01:36,660] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - [00000164de9e27ee]channel[663292ae] inactive, imei: "null", channel group size: 0, channel map size: 0.
+[2018-07-28 14:01:36,668] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully reconnected to tcp://localhost:61616?keepAlive=true
+[2018-07-28 14:16:01,983] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - channel[92c28bc5] active, channel group size: 1.
+[2018-07-28 14:16:01,984] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164df8794c0.
+[2018-07-28 14:16:30,412] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 14:16:30,981] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164df8794c0]buffer.readableBytes: '0x2' --> 2
+[2018-07-28 14:16:33,189] DEBUG {nioEventLoopGroup-1-0} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+5b 42 
+end dump channel buffer========
+[2018-07-28 14:16:33,939] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164df8794c0]decoder state: 0
+[2018-07-28 14:16:38,436] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:91
+[2018-07-28 14:17:56,901] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - [00000164df8794c0]decoded frame header: state=STATE_ID,readerIndex=1,frameLength=1.
+[2018-07-28 14:18:17,707] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - half TCP pkg decoding ......
+[2018-07-28 14:18:18,214] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - length:1,paragraphReadedLen:0,paragraphTotalLen:18
+[2018-07-28 14:18:35,555] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-07-28 14:19:47,064] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 14:19:47,066] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164df8794c0]buffer.readableBytes: '0x53' --> 83
+[2018-07-28 14:19:47,077] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=83
+54 4f 46 46 50 4f 53 49 54 49 4f 4e 41 4c 41 52
+4d 2c 76 31 2c 31 2c 32 33 31 33 31 32 33 2c 30
+31 2c 5b 79 61 62 67 71 69 6e 67 68 75 69 3b 31
+31 31 31 3b 31 32 30 2e 30 30 3b 31 32 30 2e 30
+30 30 5d 2c 32 30 31 38 30 37 32 38 30 30 30 30
+30 30 5d 
+end dump channel buffer========
+[2018-07-28 14:19:47,081] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164df8794c0]decoder state: 1
+[2018-07-28 14:19:47,083] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=17
+0x54 0x4f 0x46 0x46 0x50 0x4f 0x53 0x49 0x54 0x49 0x4f 0x4e 0x41 0x4c 0x41 0x52
+0x4d 
+end dump channel buffer========
+[2018-07-28 14:19:47,103] ERROR {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164df8794c0][92c28bc5] ChannelHandler Exception: io.netty.handler.codec.DecoderException: java.lang.IndexOutOfBoundsException: dstIndex: 0, length: 17 (expected: range(0, 1))
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:99)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.handler.timeout.ReadTimeoutHandler.channelRead(ReadTimeoutHandler.java:149)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:956)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:514)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:471)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:385)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:351)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:116)
+	at io.netty.util.internal.chmv8.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1412)
+	at io.netty.util.internal.chmv8.ForkJoinTask.doExec(ForkJoinTask.java:280)
+	at io.netty.util.internal.chmv8.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:877)
+	at io.netty.util.internal.chmv8.ForkJoinPool.scan(ForkJoinPool.java:1706)
+	at io.netty.util.internal.chmv8.ForkJoinPool.runWorker(ForkJoinPool.java:1661)
+	at io.netty.util.internal.chmv8.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:126)
+Caused by: java.lang.IndexOutOfBoundsException: dstIndex: 0, length: 17 (expected: range(0, 1))
+	at io.netty.buffer.AbstractByteBuf.checkDstIndex(AbstractByteBuf.java:1122)
+	at io.netty.buffer.UnpooledHeapByteBuf.getBytes(UnpooledHeapByteBuf.java:175)
+	at io.netty.buffer.AbstractByteBuf.readBytes(AbstractByteBuf.java:649)
+	at com.ubo.terminal.handler.MixFrameDecoder.decode(MixFrameDecoder.java:152)
+	at com.ubo.terminal.handler.MixFrameDecoder.decode(MixFrameDecoder.java:17)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:89)
+	... 22 more
+
+[2018-07-28 14:19:47,106] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164df8794c0]channel[92c28bc5] inactive preparing, channel group size: 0.
+[2018-07-28 14:19:47,106] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164df8794c0]channel map size: 0.
+[2018-07-28 14:19:47,107] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164df8794c0]channel[92c28bc5] inactive, imei: "null", channel group size: 0, channel map size: 0.
+[2018-07-28 14:55:47,961] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2018-07-28 14:55:48,522] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2018-07-28 14:55:48,533] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.3.87.
+[2018-07-28 14:56:07,054] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2018-07-28 14:56:07,163] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2018-07-28 14:56:07,166] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.3.87.
+[2018-07-28 14:56:49,300] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - channel[f66f05df] active, channel group size: 1.
+[2018-07-28 14:56:49,328] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfacecae.
+[2018-07-28 14:57:23,489] WARN {nioEventLoopGroup-0-0} io.netty.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at io.netty.buffer.PooledUnsafeDirectByteBuf.setBytes(PooledUnsafeDirectByteBuf.java:311)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:853)
+	at io.netty.buffer.WrappedByteBuf.writeBytes(WrappedByteBuf.java:641)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:240)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:115)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:514)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:471)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:385)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:351)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:116)
+	at io.netty.util.internal.chmv8.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1412)
+	at io.netty.util.internal.chmv8.ForkJoinTask.doExec(ForkJoinTask.java:280)
+	at io.netty.util.internal.chmv8.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:877)
+	at io.netty.util.internal.chmv8.ForkJoinPool.scan(ForkJoinPool.java:1706)
+	at io.netty.util.internal.chmv8.ForkJoinPool.runWorker(ForkJoinPool.java:1661)
+	at io.netty.util.internal.chmv8.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:126)
+[2018-07-28 14:58:12,615] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully connected to tcp://localhost:61616?keepAlive=true
+[2018-07-28 14:58:12,700] WARN {main} com.ubo.terminal.AccessServer - No bean named 'peerAddress' is defined
+[2018-07-28 14:58:12,703] DEBUG {main} com.ubo.terminal.AccessServer - Local host address: 192.168.3.87.
+[2018-07-28 14:58:33,788] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - channel[fd5fc52a] active, channel group size: 1.
+[2018-07-28 14:58:33,791] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfae84be.
+[2018-07-28 15:00:25,126] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - .channelReadComplete()
+[2018-07-28 15:00:25,131] ERROR {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164dfae84be][fd5fc52a] ChannelHandler Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at io.netty.buffer.PooledUnsafeDirectByteBuf.setBytes(PooledUnsafeDirectByteBuf.java:311)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:853)
+	at io.netty.buffer.WrappedByteBuf.writeBytes(WrappedByteBuf.java:641)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:240)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:115)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:514)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:471)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:385)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:351)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:116)
+	at io.netty.util.internal.chmv8.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1412)
+	at io.netty.util.internal.chmv8.ForkJoinTask.doExec(ForkJoinTask.java:280)
+	at io.netty.util.internal.chmv8.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:877)
+	at io.netty.util.internal.chmv8.ForkJoinPool.scan(ForkJoinPool.java:1706)
+	at io.netty.util.internal.chmv8.ForkJoinPool.runWorker(ForkJoinPool.java:1661)
+	at io.netty.util.internal.chmv8.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:126)
+
+[2018-07-28 15:00:25,135] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164dfae84be]channel[fd5fc52a] inactive preparing, channel group size: 0.
+[2018-07-28 15:00:25,135] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164dfae84be]channel map size: 0.
+[2018-07-28 15:00:25,137] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164dfae84be]channel[fd5fc52a] inactive, imei: "null", channel group size: 0, channel map size: 0.
+[2018-07-28 15:00:29,252] INFO {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - channel[8c258b35] active, channel group size: 1.
+[2018-07-28 15:00:29,253] DEBUG {nioEventLoopGroup-1-0} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfb047c4.
+[2018-07-28 15:02:46,188] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - channel[75113f57] active, channel group size: 2.
+[2018-07-28 15:02:46,189] DEBUG {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfb25ead.
+[2018-07-28 15:03:35,057] INFO {nioEventLoopGroup-1-4} com.ubo.terminal.SessionChannelHandler - channel[eba18702] active, channel group size: 3.
+[2018-07-28 15:03:35,057] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfb31d91.
+[2018-07-28 15:03:57,381] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 15:05:45,663] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfb31d91]buffer.readableBytes: '0x1' --> 1
+[2018-07-28 15:05:50,701] DEBUG {nioEventLoopGroup-1-4} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+61 
+end dump channel buffer========
+[2018-07-28 15:05:51,289] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfb31d91]decoder state: 0
+[2018-07-28 15:05:51,291] WARN {ActiveMQ Transport: tcp://localhost/127.0.0.1:61616} org.apache.activemq.transport.failover.FailoverTransport - Transport failed to tcp://localhost:61616?keepAlive=true , attempting to automatically reconnect due to: java.io.EOFException
+[2018-07-28 15:05:52,356] INFO {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:97
+[2018-07-28 15:05:53,449] WARN {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfb31d91]STATE_IDLE::Unknow data: '0x61'
+[2018-07-28 15:05:53,935] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully reconnected to tcp://localhost:61616?keepAlive=true
+[2018-07-28 15:05:55,300] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-07-28 15:09:29,226] WARN {ActiveMQ Transport: tcp://localhost/127.0.0.1:61616} org.apache.activemq.transport.failover.FailoverTransport - Transport failed to tcp://localhost:61616?keepAlive=true , attempting to automatically reconnect due to: java.io.EOFException
+[2018-07-28 15:09:29,418] ERROR {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - [00000164dfb25ead][75113f57] ChannelHandler Exception: io.netty.handler.timeout.ReadTimeoutException
+
+[2018-07-28 15:09:29,418] ERROR {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - [00000164dfb047c4][8c258b35] ChannelHandler Exception: io.netty.handler.timeout.ReadTimeoutException
+
+[2018-07-28 15:09:32,950] INFO {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - [00000164dfb25ead]channel[75113f57] inactive preparing, channel group size: 1.
+[2018-07-28 15:09:32,950] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - [00000164dfb047c4]channel[8c258b35] inactive preparing, channel group size: 1.
+[2018-07-28 15:09:32,950] INFO {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - [00000164dfb25ead]channel map size: 0.
+[2018-07-28 15:09:32,950] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - [00000164dfb047c4]channel map size: 0.
+[2018-07-28 15:09:32,950] INFO {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - [00000164dfb25ead]channel[75113f57] inactive, imei: "null", channel group size: 1, channel map size: 0.
+[2018-07-28 15:09:32,950] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - [00000164dfb047c4]channel[8c258b35] inactive, imei: "null", channel group size: 1, channel map size: 0.
+[2018-07-28 15:09:33,918] ERROR {nioEventLoopGroup-1-4} com.ubo.terminal.SessionChannelHandler - [00000164dfb31d91][eba18702] ChannelHandler Exception: io.netty.handler.timeout.ReadTimeoutException
+
+[2018-07-28 15:09:33,919] INFO {nioEventLoopGroup-1-4} com.ubo.terminal.SessionChannelHandler - [00000164dfb31d91]channel[eba18702] inactive preparing, channel group size: 0.
+[2018-07-28 15:09:33,919] INFO {nioEventLoopGroup-1-4} com.ubo.terminal.SessionChannelHandler - [00000164dfb31d91]channel map size: 0.
+[2018-07-28 15:09:33,919] INFO {nioEventLoopGroup-1-4} com.ubo.terminal.SessionChannelHandler - [00000164dfb31d91]channel[eba18702] inactive, imei: "null", channel group size: 0, channel map size: 0.
+[2018-07-28 15:09:34,019] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully reconnected to tcp://localhost:61616?keepAlive=true
+[2018-07-28 15:09:56,562] INFO {nioEventLoopGroup-1-4} com.ubo.terminal.SessionChannelHandler - channel[7f5ed78b] active, channel group size: 1.
+[2018-07-28 15:09:56,562] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfb8efd2.
+[2018-07-28 15:11:14,946] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 15:11:22,586] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfb8efd2]buffer.readableBytes: '0xb' --> 11
+[2018-07-28 15:11:58,089] DEBUG {nioEventLoopGroup-1-4} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=11
+5b 79 61 6e 67 71 69 67 68 75 69 
+end dump channel buffer========
+[2018-07-28 15:11:58,527] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfb8efd2]decoder state: 0
+[2018-07-28 15:11:59,475] INFO {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:91
+[2018-07-28 15:12:02,042] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfb8efd2]decoded frame header: state=STATE_ID,readerIndex=1,frameLength=1.
+[2018-07-28 15:13:57,687] WARN {ActiveMQ Transport: tcp://localhost/127.0.0.1:61616} org.apache.activemq.transport.failover.FailoverTransport - Transport failed to tcp://localhost:61616?keepAlive=true , attempting to automatically reconnect due to: java.io.EOFException
+[2018-07-28 15:14:01,266] INFO {ActiveMQ Task} org.apache.activemq.transport.failover.FailoverTransport - Successfully reconnected to tcp://localhost:61616?keepAlive=true
+[2018-07-28 15:14:22,829] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - half TCP pkg decoding ......
+[2018-07-28 15:14:22,864] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - length:10,paragraphReadedLen:0,paragraphTotalLen:18
+[2018-07-28 15:14:22,865] DEBUG {nioEventLoopGroup-1-4} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-07-28 15:15:47,477] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 15:15:55,083] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfb8efd2]buffer.readableBytes: '0x11' --> 17
+[2018-07-28 15:15:55,084] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=17
+5b 34 39 33 30 30 32 34 30 37 35 39 39 35 32 31
+2c 
+end dump channel buffer========
+[2018-07-28 15:15:55,084] DEBUG {nioEventLoopGroup-1-1} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfb8efd2]decoder state: 1
+[2018-07-28 15:15:55,085] DEBUG {nioEventLoopGroup-1-1} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=16
+0x5b 0x34 0x39 0x33 0x30 0x30 0x32 0x34 0x30 0x37 0x35 0x39 0x39 0x35 0x32 0x31
+
+end dump channel buffer========
+[2018-07-28 15:15:55,101] ERROR {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164dfb8efd2][7f5ed78b] ChannelHandler Exception: io.netty.handler.codec.DecoderException: java.lang.IndexOutOfBoundsException: dstIndex: 0, length: 16 (expected: range(0, 10))
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:99)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.handler.timeout.ReadTimeoutHandler.channelRead(ReadTimeoutHandler.java:149)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:84)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153)
+	at io.netty.channel.PausableChannelEventExecutor.invokeChannelRead(PausableChannelEventExecutor.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:389)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:956)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:514)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:471)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:385)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:351)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:116)
+	at io.netty.util.internal.chmv8.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1412)
+	at io.netty.util.internal.chmv8.ForkJoinTask.doExec(ForkJoinTask.java:280)
+	at io.netty.util.internal.chmv8.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:877)
+	at io.netty.util.internal.chmv8.ForkJoinPool.scan(ForkJoinPool.java:1706)
+	at io.netty.util.internal.chmv8.ForkJoinPool.runWorker(ForkJoinPool.java:1661)
+	at io.netty.util.internal.chmv8.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:126)
+Caused by: java.lang.IndexOutOfBoundsException: dstIndex: 0, length: 16 (expected: range(0, 10))
+	at io.netty.buffer.AbstractByteBuf.checkDstIndex(AbstractByteBuf.java:1122)
+	at io.netty.buffer.UnpooledHeapByteBuf.getBytes(UnpooledHeapByteBuf.java:175)
+	at io.netty.buffer.AbstractByteBuf.readBytes(AbstractByteBuf.java:649)
+	at com.ubo.terminal.handler.MixFrameDecoder.decode(MixFrameDecoder.java:152)
+	at com.ubo.terminal.handler.MixFrameDecoder.decode(MixFrameDecoder.java:17)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:89)
+	... 22 more
+
+[2018-07-28 15:15:55,102] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164dfb8efd2]channel[7f5ed78b] inactive preparing, channel group size: 0.
+[2018-07-28 15:15:55,103] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164dfb8efd2]channel map size: 0.
+[2018-07-28 15:15:55,103] INFO {nioEventLoopGroup-1-1} com.ubo.terminal.SessionChannelHandler - [00000164dfb8efd2]channel[7f5ed78b] inactive, imei: "null", channel group size: 0, channel map size: 0.
+[2018-07-28 15:16:18,386] INFO {nioEventLoopGroup-1-7} com.ubo.terminal.SessionChannelHandler - channel[0dc1e994] active, channel group size: 1.
+[2018-07-28 15:16:18,387] DEBUG {nioEventLoopGroup-1-7} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfbec353.
+[2018-07-28 15:16:21,934] DEBUG {nioEventLoopGroup-1-7} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 15:16:32,730] DEBUG {nioEventLoopGroup-1-7} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfbec353]buffer.readableBytes: '0x1' --> 1
+[2018-07-28 15:16:32,731] DEBUG {nioEventLoopGroup-1-7} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=1
+5d 
+end dump channel buffer========
+[2018-07-28 15:16:32,731] DEBUG {nioEventLoopGroup-1-7} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfbec353]decoder state: 0
+[2018-07-28 15:16:32,731] INFO {nioEventLoopGroup-1-7} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:93
+[2018-07-28 15:16:32,731] WARN {nioEventLoopGroup-1-7} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfbec353]STATE_IDLE::Unknow data: '0x5d'
+[2018-07-28 15:16:32,732] DEBUG {nioEventLoopGroup-1-7} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-07-28 15:21:56,937] ERROR {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - [00000164dfbec353][0dc1e994] ChannelHandler Exception: io.netty.handler.timeout.ReadTimeoutException
+
+[2018-07-28 15:21:56,945] INFO {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - [00000164dfbec353]channel[0dc1e994] inactive preparing, channel group size: 0.
+[2018-07-28 15:21:56,945] INFO {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - [00000164dfbec353]channel map size: 0.
+[2018-07-28 15:21:56,946] INFO {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - [00000164dfbec353]channel[0dc1e994] inactive, imei: "null", channel group size: 0, channel map size: 0.
+[2018-07-28 15:59:46,945] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - channel[d131dc8b] active, channel group size: 1.
+[2018-07-28 15:59:46,953] DEBUG {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfe69106.
+[2018-07-28 16:01:48,273] INFO {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - channel[1cd37edc] active, channel group size: 2.
+[2018-07-28 16:01:48,275] DEBUG {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfe86af3.
+[2018-07-28 16:03:12,892] DEBUG {nioEventLoopGroup-1-2} com.ubo.terminal.handler.MixFrameDecoder - decode()
+[2018-07-28 16:03:17,289] DEBUG {nioEventLoopGroup-1-2} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfe69106]buffer.readableBytes: '0x2' --> 2
+[2018-07-28 16:03:17,290] DEBUG {nioEventLoopGroup-1-2} dudu.service.core.utils.Utils - begin dump channel buffer========
+length=2
+0d 0a 
+end dump channel buffer========
+[2018-07-28 16:03:17,290] DEBUG {nioEventLoopGroup-1-2} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfe69106]decoder state: 0
+[2018-07-28 16:03:17,290] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:13
+[2018-07-28 16:03:17,290] WARN {nioEventLoopGroup-1-2} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfe69106]STATE_IDLE::Unknow data: '0xd'
+[2018-07-28 16:03:17,290] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.handler.MixFrameDecoder - msg的readByte:10
+[2018-07-28 16:03:17,291] WARN {nioEventLoopGroup-1-2} com.ubo.terminal.handler.MixFrameDecoder - [00000164dfe69106]STATE_IDLE::Unknow data: '0xa'
+[2018-07-28 16:03:17,291] DEBUG {nioEventLoopGroup-1-2} com.ubo.terminal.handler.MixFrameDecoder - ********************ByteBuf hashcode is :1*********************
+[2018-07-28 16:05:52,821] INFO {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - channel[b7deb3b1] active, channel group size: 3.
+[2018-07-28 16:05:52,821] DEBUG {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - Channel session token: 00000164dfec2635.
+[2018-07-28 16:07:23,251] ERROR {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - [00000164dfe86af3][1cd37edc] ChannelHandler Exception: io.netty.handler.timeout.ReadTimeoutException
+
+[2018-07-28 16:07:23,273] INFO {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - [00000164dfe86af3]channel[1cd37edc] inactive preparing, channel group size: 2.
+[2018-07-28 16:07:23,273] INFO {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - [00000164dfe86af3]channel map size: 0.
+[2018-07-28 16:07:23,274] INFO {nioEventLoopGroup-1-6} com.ubo.terminal.SessionChannelHandler - [00000164dfe86af3]channel[1cd37edc] inactive, imei: "null", channel group size: 2, channel map size: 0.
+[2018-07-28 16:08:47,894] ERROR {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - [00000164dfe69106][d131dc8b] ChannelHandler Exception: io.netty.handler.timeout.ReadTimeoutException
+
+[2018-07-28 16:08:47,895] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - [00000164dfe69106]channel[d131dc8b] inactive preparing, channel group size: 1.
+[2018-07-28 16:08:47,896] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - [00000164dfe69106]channel map size: 0.
+[2018-07-28 16:08:47,896] INFO {nioEventLoopGroup-1-2} com.ubo.terminal.SessionChannelHandler - [00000164dfe69106]channel[d131dc8b] inactive, imei: "null", channel group size: 1, channel map size: 0.
+[2018-07-28 16:11:27,810] ERROR {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - [00000164dfec2635][b7deb3b1] ChannelHandler Exception: io.netty.handler.timeout.ReadTimeoutException
+
+[2018-07-28 16:11:27,811] INFO {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - [00000164dfec2635]channel[b7deb3b1] inactive preparing, channel group size: 0.
+[2018-07-28 16:11:27,811] INFO {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - [00000164dfec2635]channel map size: 0.
+[2018-07-28 16:11:27,811] INFO {nioEventLoopGroup-1-5} com.ubo.terminal.SessionChannelHandler - [00000164dfec2635]channel[b7deb3b1] inactive, imei: "null", channel group size: 0, channel map size: 0.
