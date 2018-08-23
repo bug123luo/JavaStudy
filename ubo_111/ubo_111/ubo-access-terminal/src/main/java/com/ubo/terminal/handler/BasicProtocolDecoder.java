@@ -154,8 +154,6 @@ public class BasicProtocolDecoder implements ProtocolDecoder {
         return responMessage;
     }
 
-
-
     private Object decodeMarryMessage(
             UboTerminalMessage tMsg,
             ChannelHandlerContext ctx) throws InvalidMessageException {

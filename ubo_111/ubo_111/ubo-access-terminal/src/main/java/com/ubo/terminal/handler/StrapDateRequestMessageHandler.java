@@ -7,6 +7,8 @@ import dudu.service.core.MessageBean;
 import dudu.service.core.ProtocolHandler;
 import dudu.service.core.SimpleMessageHandler;
 import dudu.service.core.utils.Utils;
+import dudu.service.pojo.ClientOutWareHouseBody;
+import dudu.service.pojo.ClientOutWareHouseMessage;
 import dudu.service.pojo.UboSimpleMessage;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -37,8 +39,33 @@ public class StrapDateRequestMessageHandler extends SimpleMessageHandler impleme
 		BasicResponMessage responMessage = (BasicResponMessage)message;
 		SessionChannelHandler.Session session = ctx.channel().pipeline().get(SessionChannelHandler.class).getSession();
 
+		//20180823 lcc 添加
+		ClientOutWareHouseMessage clientOutWareHouseMessage = new ClientOutWareHouseMessage();
+		ClientOutWareHouseBody clientOutWareHouseBody = new ClientOutWareHouseBody();
+		clientOutWareHouseBody.setUsername(responMessage.getDeviceName());
+		clientOutWareHouseBody.setAuthCode(responMessage.getSessionId());
+		clientOutWareHouseBody.setCommand(responMessage.getToken());
+		clientOutWareHouseBody.setLa(responMessage.getLg());
+		clientOutWareHouseBody.setLo(responMessage.getLo());
+		
+		clientOutWareHouseMessage.setServiceType(responMessage.getTid());
+		clientOutWareHouseMessage.setFormatVersion(responMessage.getDeviceVersion());
+		clientOutWareHouseMessage.setDeviceType(Integer.parseInt(responMessage.getDeviceType()));
+		clientOutWareHouseMessage.setSerialNumber(responMessage.getSerial());
+		clientOutWareHouseMessage.setMessageType(responMessage.getCmd());
+		clientOutWareHouseMessage.setSendTime(responMessage.getSerial().substring(0, 14));
+		clientOutWareHouseMessage.setSessionToken(session.getToken());
+		clientOutWareHouseMessage.setMessageBody(clientOutWareHouseBody);
+		
+		JSONObject jsonObject = JSONObject.fromObject(clientOutWareHouseMessage);
+		String outWareHouseMessage = jsonObject.toString();
+		sendMessage("object/" + responMessage.getType(), outWareHouseMessage);
+		LOG.info("腕表出库消息发送成功{}", outWareHouseMessage);
+		
+		
 		//1 reply terminal
-		UboSimpleMessage replyMsg = new UboSimpleMessage();
+		//20180823 lcc注释
+/*		UboSimpleMessage replyMsg = new UboSimpleMessage();
 		replyMsg.setServiceType(responMessage.getTid());
 		replyMsg.setFormatVersion(responMessage.getDeviceVersion());
 		replyMsg.setDeviceType(Integer.parseInt(responMessage.getDeviceType()));
@@ -55,6 +82,6 @@ public class StrapDateRequestMessageHandler extends SimpleMessageHandler impleme
 					LOG.error(Utils.getThrowableInfo(future.cause()));
 				}
 			}
-		});
+		});*/
 	}
 }

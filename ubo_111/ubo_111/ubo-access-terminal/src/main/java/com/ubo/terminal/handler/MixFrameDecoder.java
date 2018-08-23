@@ -18,7 +18,6 @@ public class MixFrameDecoder extends MessageToMessageDecoder<ByteBuf> {
     private static final Logger logger =
             LoggerFactory.getLogger(MixFrameDecoder.class);
 
-
     private int state;
     private int length;
     private int dataLength;
@@ -28,7 +27,6 @@ public class MixFrameDecoder extends MessageToMessageDecoder<ByteBuf> {
     private int paragraphTotalLen;//该字段的总长度
     private int paragraphReadedLen;//已经读取成功的字节数
     private byte[] paragraph;//一个段落的内容
-
 
     public final static int STATE_IDLE = 0;//开始[
     public final static int STATE_ID = 1;//唯一标示
