@@ -51,7 +51,7 @@ public class HeartbeatMessageHandler extends SimpleMessageHandler implements Pro
 		replyMsg.setDeviceType(Integer.parseInt(heartbeatMsg.getDeviceType()));
 		replyMsg.setSerialNumber(heartbeatMsg.getSerial());
 		replyMsg.setMessageType("14");
-		replyMsg.setMessageBody("0@"+session.getToken());
+		replyMsg.setMessageBody("["+"0"+";"+session.getToken()+"]");
 		replyMsg.setSendTime(heartbeatMsg.getSerial().substring(0,14));
 		ChannelFuture future = ctx.channel().write(replyMsg);
 		

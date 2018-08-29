@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dudu-service-common" />
+        <module name="dudu-service-core" />
+        <module name="ubo-access-terminal" />
+        <module name="ubo-common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dudu-service-common" target="1.8" />
+      <module name="dudu-service-core" target="1.8" />
+      <module name="ubo-111" target="JavaSE-1.6" />
+      <module name="ubo-access-terminal" target="1.8" />
+      <module name="ubo-common" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
