@@ -5,6 +5,7 @@ import dudu.service.core.terminal.TerMinalBasicMessage;
 import dudu.service.pojo.ClientHeartBeatBody;
 import dudu.service.pojo.ClientHeartBeatMessage;
 import dudu.service.pojo.UboSimpleMessage;
+import io.netty.channel.*;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +18,9 @@ import dudu.service.core.ProtocolHandler;
 import dudu.service.core.SimpleMessageHandler;
 import dudu.service.core.terminal.HeartbeatMessage;
 import dudu.service.core.utils.Utils;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
 import org.springframework.beans.BeanUtils;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class HeartbeatMessageHandler extends SimpleMessageHandler implements ProtocolHandler {
@@ -42,8 +42,23 @@ public class HeartbeatMessageHandler extends SimpleMessageHandler implements Pro
 		}
 
 		UboHeartbeatMessage heartbeatMsg = (UboHeartbeatMessage)message;
-		SessionChannelHandler.Session session = ctx.channel().pipeline().get(SessionChannelHandler.class).getSession();
 
+		ConcurrentHashMap<String, Channel> channelMap =
+				AccessServer.getInstance().getChannelMap();
+
+		LOG.info("当前连接有：{}",channelMap);
+
+		String sessionToken = heartbeatMsg.getAuthCode();
+		if (channelMap.containsKey(sessionToken)) {
+			ChannelPipeline pipeline = ctx.pipeline();
+			SessionChannelHandler.Session session = pipeline.get(SessionChannelHandler.class).getSession();
+			session.setToken(sessionToken);
+
+			channelMap.put(sessionToken, ctx.channel());
+		}else{
+			LOG.info("本次请求未登录token{},请先登录", heartbeatMsg.getAuthCode());
+			return;
+		}
 		//1 reply terminal
 		UboSimpleMessage replyMsg = new UboSimpleMessage();
 		replyMsg.setServiceType(heartbeatMsg.getTid());
@@ -51,7 +66,7 @@ public class HeartbeatMessageHandler extends SimpleMessageHandler implements Pro
 		replyMsg.setDeviceType(Integer.parseInt(heartbeatMsg.getDeviceType()));
 		replyMsg.setSerialNumber(heartbeatMsg.getSerial());
 		replyMsg.setMessageType("14");
-		replyMsg.setMessageBody("["+"0"+";"+session.getToken()+"]");
+		replyMsg.setMessageBody("["+"0"+";"+heartbeatMsg.getAuthCode()+"]");
 		replyMsg.setSendTime(heartbeatMsg.getSerial().substring(0,14));
 		ChannelFuture future = ctx.channel().write(replyMsg);
 		
@@ -63,11 +78,6 @@ public class HeartbeatMessageHandler extends SimpleMessageHandler implements Pro
 				}
 			}
 		});
-		
-		String sessionToken = session.getToken();
-		//2 send heart beat to login server
-
-
 
 		ClientHeartBeatMessage authCodeMessage = new ClientHeartBeatMessage();
 

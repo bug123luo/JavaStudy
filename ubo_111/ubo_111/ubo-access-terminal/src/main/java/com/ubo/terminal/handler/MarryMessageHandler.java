@@ -1,16 +1,21 @@
 package com.ubo.terminal.handler;
 
 import com.ubo.common.terminal.MarryRequestMessage;
+import com.ubo.terminal.AccessServer;
 import com.ubo.terminal.SessionChannelHandler;
 import dudu.service.core.MessageBean;
 import dudu.service.core.ProtocolHandler;
 import dudu.service.core.SimpleMessageHandler;
 import dudu.service.pojo.ClientDeviceBindingBody;
 import dudu.service.pojo.ClientDeviceBindingMessage;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelPipeline;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class MarryMessageHandler extends SimpleMessageHandler implements ProtocolHandler {
@@ -32,7 +37,21 @@ public class MarryMessageHandler extends SimpleMessageHandler implements Protoco
         }
 
         MarryRequestMessage responMessage = (MarryRequestMessage) message;
-        SessionChannelHandler.Session session = ctx.channel().pipeline().get(SessionChannelHandler.class).getSession();
+
+        ConcurrentHashMap<String, Channel> channelMap =
+                AccessServer.getInstance().getChannelMap();
+
+        String sessionToken = responMessage.getSessionId();
+        if (channelMap.containsKey(sessionToken)) {
+            ChannelPipeline pipeline = ctx.pipeline();
+            SessionChannelHandler.Session session = pipeline.get(SessionChannelHandler.class).getSession();
+            session.setToken(sessionToken);
+
+            channelMap.put(sessionToken, ctx.channel());
+        }else{
+            LOG.info("本次请求未登录token{},请先登录",sessionToken);
+            return;
+        }
 
         /*//1 reply terminal
         UboSimpleMessage replyMsg = new UboSimpleMessage();
@@ -70,7 +89,7 @@ public class MarryMessageHandler extends SimpleMessageHandler implements Protoco
         authCodeMessage.setSerialNumber(responMessage.getSerial());
         authCodeMessage.setMessageType(responMessage.getCmd());
         authCodeMessage.setSendTime(responMessage.getSerial().substring(0, 14));
-        authCodeMessage.setSessionToken(session.getToken());
+        authCodeMessage.setSessionToken(sessionToken);
         authCodeMessage.setMessageBody(responMessage);
         authCodeMessage.setMessageBody(clientDeviceBindingBody);
         JSONObject jsonObject = JSONObject.fromObject(authCodeMessage);

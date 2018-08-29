@@ -163,7 +163,7 @@ public class SessionChannelHandler extends ChannelHandlerAdapter {
 			Utils.dumpMap(channelMap);
 		}
 
-		if (channelMap.containsValue(channel)) {
+		/*if (channelMap.containsValue(channel)) {
 			channelMap.remove(token);
 
 			LOG.debug(String.format(
@@ -171,7 +171,7 @@ public class SessionChannelHandler extends ChannelHandlerAdapter {
 					sessionToken,
 					channel.id().asShortText(),
 					token));
-		}
+		}*/
 
 		LOG.info(String.format(
 				"[%s]channel[%s] inactive, imei: \"%s\", channel group size: %d, channel map size: %d.",

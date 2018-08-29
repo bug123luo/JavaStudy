@@ -51,18 +51,9 @@ public class LoginMessageHandler extends SimpleMessageHandler
         ChannelGroup channelGroup = AccessServer.getInstance().getChannelGroup();
         ConcurrentHashMap<String, Channel> channelMap =
                 AccessServer.getInstance().getChannelMap();
-
-        String sessionToken = loginMsg.getSessionToken();
+        String sessionToken= loginMsg.getDeviceName().hashCode()+"";
         if (channelMap.containsKey(sessionToken)) {
             Channel existChannel = (Channel) channelMap.get(sessionToken);
-
-            // duplicate login message
-			/*
-			if (existChannel == ctx.channel()) {
-				LOG.warn(String.format("duplicate login message imei(%s)", eqId));
-				return;
-			}
-			*/
 
             LOG.warn(String.format(
                     "channel[%s] with the same imei(%s) has been open, " +
@@ -109,7 +100,7 @@ public class LoginMessageHandler extends SimpleMessageHandler
         authCodeMessage.setMessageType(loginMsg.getCmd());
 
         authCodeMessage.setSendTime(loginMsg.getSerial().substring(0,14));
-        authCodeMessage.setSessionToken(loginMsg.getSessionToken());
+        authCodeMessage.setSessionToken(sessionToken);
         authCodeMessage.setMessageBody(authCodeMessageBody);
         JSONObject jsonObject = JSONObject.fromObject(authCodeMessage);
         String loginMessage = jsonObject.toString();

@@ -1,17 +1,22 @@
 package com.ubo.terminal.handler;
 
 import com.ubo.common.terminal.SOSRequestMessage;
+import com.ubo.terminal.AccessServer;
 import com.ubo.terminal.SessionChannelHandler;
 import dudu.service.core.MessageBean;
 import dudu.service.core.ProtocolHandler;
 import dudu.service.core.SimpleMessageHandler;
 import dudu.service.pojo.ClientOffLocationWarningBody;
 import dudu.service.pojo.ClientOffLocationWarningMessage;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelPipeline;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class SOSMessageHandler extends SimpleMessageHandler implements ProtocolHandler {
@@ -32,27 +37,20 @@ public class SOSMessageHandler extends SimpleMessageHandler implements ProtocolH
 		}
 
         SOSRequestMessage sosRequestMessage = (SOSRequestMessage)message;
-		SessionChannelHandler.Session session = ctx.channel().pipeline().get(SessionChannelHandler.class).getSession();
+		ConcurrentHashMap<String, Channel> channelMap =
+				AccessServer.getInstance().getChannelMap();
 
-		/*//1 reply terminal
-		UboSimpleMessage replyMsg = new UboSimpleMessage();
-		replyMsg.setServiceType(sosRequestMessage.getTid());
-		replyMsg.setFormatVersion(sosRequestMessage.getDeviceVersion());
-		replyMsg.setDeviceType(Integer.parseInt(sosRequestMessage.getDeviceType()));
-		replyMsg.setSerialNumber(sosRequestMessage.getSerial());
-		replyMsg.setMessageType("16");
-		replyMsg.setMessageBody("0@"+session.getToken());
-		replyMsg.setSendTime(sosRequestMessage.getSerial().substring(0,14));
-		ChannelFuture future = ctx.channel().write(replyMsg);
-		
-		future.addListener(new ChannelFutureListener() {
-			public void operationComplete(ChannelFuture future) throws Exception {
-				if (!future.isSuccess()) {
-					LOG.error("Fail to replay heartbeat message!");
-					LOG.error(Utils.getThrowableInfo(future.cause()));
-				}
-			}
-		});*/
+		String sessionToken = sosRequestMessage.getAuthCode();
+		if (channelMap.containsKey(sessionToken)) {
+			ChannelPipeline pipeline = ctx.pipeline();
+			SessionChannelHandler.Session session = pipeline.get(SessionChannelHandler.class).getSession();
+			session.setToken(sessionToken);
+
+			channelMap.put(sessionToken, ctx.channel());
+		}else{
+			LOG.info("本次请求未登录token{},请先登录",sessionToken);
+			return;
+		}
 
 		ClientOffLocationWarningMessage clientOffLocationWarningMessage = new ClientOffLocationWarningMessage();
 
@@ -66,7 +64,7 @@ public class SOSMessageHandler extends SimpleMessageHandler implements ProtocolH
 		clientOffLocationWarningMessage.setSerialNumber(sosRequestMessage.getSerial());
 		clientOffLocationWarningMessage.setMessageType(sosRequestMessage.getCmd());
 		clientOffLocationWarningMessage.setSendTime(sosRequestMessage.getSerial().substring(0, 14));
-		clientOffLocationWarningMessage.setSessionToken(session.getToken());
+		clientOffLocationWarningMessage.setSessionToken(sessionToken);
 		clientOffLocationWarningMessage.setMessageBody(sosRequestMessage);
 		clientOffLocationWarningMessage.setMessageBody(clientOffLocationWarningBody);
 		JSONObject jsonObject = JSONObject.fromObject(clientOffLocationWarningMessage);

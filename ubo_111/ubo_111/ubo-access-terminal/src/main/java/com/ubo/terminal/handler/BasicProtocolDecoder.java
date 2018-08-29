@@ -105,7 +105,7 @@ public class BasicProtocolDecoder implements ProtocolDecoder {
             ChannelHandlerContext ctx) throws InvalidMessageException {
 
         String[] parts = tMsg.getBody().split(";");
-        if (parts.length < 9) {
+        if (parts.length != 2) {
             throw new InvalidMessageException(String.format(
                     "Login[%s] body doesn't contain <9 parts.",
                     tMsg.getCmd()));
@@ -119,6 +119,7 @@ public class BasicProtocolDecoder implements ProtocolDecoder {
             LOG.error(Utils.getThrowableInfo(e));
             responsMessage.setCreateTime(new Date());
         }
+        responsMessage.setType("CLOSE");
         responsMessage.setState(parts[0]);
         responsMessage.setToken(parts[1]);
 
@@ -153,6 +154,8 @@ public class BasicProtocolDecoder implements ProtocolDecoder {
         responMessage.setSessionId(parts[4]);
         return responMessage;
     }
+
+
 
     private Object decodeMarryMessage(
             UboTerminalMessage tMsg,
