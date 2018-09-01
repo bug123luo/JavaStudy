@@ -18,7 +18,6 @@ public class MixFrameDecoder extends MessageToMessageDecoder<ByteBuf> {
     private static final Logger logger =
             LoggerFactory.getLogger(MixFrameDecoder.class);
 
-
     private int state;
     private int length;
     private int dataLength;
