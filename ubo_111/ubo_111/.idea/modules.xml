@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ubo-access-terminal/src/main/main.iml" filepath="$PROJECT_DIR$/ubo-access-terminal/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ubo-common/src/main/main1.iml" filepath="$PROJECT_DIR$/ubo-common/src/main/main1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dudu-service-common/src/main/main2.iml" filepath="$PROJECT_DIR$/dudu-service-common/src/main/main2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dudu-service-core/src/main/main3.iml" filepath="$PROJECT_DIR$/dudu-service-core/src/main/main3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ubo-common/src/test/test.iml" filepath="$PROJECT_DIR$/ubo-common/src/test/test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dudu-service-common/src/test/test1.iml" filepath="$PROJECT_DIR$/dudu-service-common/src/test/test1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dudu-service-core/src/test/test2.iml" filepath="$PROJECT_DIR$/dudu-service-core/src/test/test2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ubo-access-terminal/src/test/test3.iml" filepath="$PROJECT_DIR$/ubo-access-terminal/src/test/test3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dudu-service-common/dudu-service-common.iml" filepath="$PROJECT_DIR$/dudu-service-common/dudu-service-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dudu-service-core/dudu-service-core.iml" filepath="$PROJECT_DIR$/dudu-service-core/dudu-service-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ubo-111.iml" filepath="$PROJECT_DIR$/ubo-111.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ubo-access-terminal/ubo-access-terminal.iml" filepath="$PROJECT_DIR$/ubo-access-terminal/ubo-access-terminal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ubo-common/ubo-common.iml" filepath="$PROJECT_DIR$/ubo-common/ubo-common.iml" />
     </modules>
   </component>
 </project>

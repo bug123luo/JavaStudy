@@ -28,6 +28,7 @@ public class MixFrameDecoder extends MessageToMessageDecoder<ByteBuf> {
     private int paragraphReadedLen;//已经读取成功的字节数
     private byte[] paragraph;//一个段落的内容
 
+
     public final static int STATE_IDLE = 0;//开始[
     public final static int STATE_ID = 1;//唯一标示
     public final static int STATE_VERSION = 2;//版本
