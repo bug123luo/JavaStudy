@@ -1,4 +1,4 @@
-package com.tct.codec.pojo;
+package dudu.service.pojo;
 
 import lombok.Data;
 
