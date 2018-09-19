@@ -1,0 +1,2 @@
+Description	Resource	Path	Location	Type
+Archive for required library: 'E:/repo/org/springframework/data/spring-data-redis/2.0.9.RELEASE/spring-data-redis-2.0.9.RELEASE.jar' in project 'gunLocationMqServer' cannot be read or is not a valid ZIP file	gunLocationMqServer		Build path	Build Path Problem
