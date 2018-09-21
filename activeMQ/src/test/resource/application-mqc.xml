@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/jms 
+       http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
+       ">
+    <!-- 扫描包 -->
+    <context:component-scan base-package="com.mq.consumer" />
+	<!-- activeMQ连接工厂 -->
+	<bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616"></property>
+		<property name="userName" value="admin"></property>
+		<property name="password" value="admin"></property>
+	</bean>
+		<!-- Spring cachinglian连接工厂 -->
+	<bean id="mqConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+		<property name="targetConnectionFactory" ref="amqConnectionFactory"></property>
+		<property name="clientId" value="client_MQ" />
+		<property name="sessionCacheSize" value="100"></property>
+	</bean>
+	
+	<!-- 事务管理器 -->
+	<bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
+		<property name="connectionFactory" ref="amqConnectionFactory"/>
+	</bean>
+	
+	<!-- 队列监听 -->
+	<jms:listener-container destination-type="queue" container-type="default" 
+		connection-factory="mqConnectionFactory" acknowledge="transacted" transaction-manager="jmsTransactionManager">
+		<!-- 配置监听目标 和监听的对象 -->
+	    <jms:listener destination="spring_queue" ref="consumerQueue1"/>
+		<jms:listener destination="spring_queue" ref="consumerQueue2"/>
+	</jms:listener-container>
+	<!-- 广播监听 -->
+	<jms:listener-container destination-type="durableTopic" container-type="default"
+		connection-factory="mqConnectionFactory"  acknowledge="transacted" transaction-manager="jmsTransactionManager">
+		<!-- 配置监听目标 和监听的对象 -->
+		<jms:listener destination="spring_topic" ref="consumerTopic1" subscription="test.Consumer"/>
+		<jms:listener destination="spring_topic" ref="consumerTopic2" subscription="test.Consumer1"/>
+	</jms:listener-container>
+</beans>

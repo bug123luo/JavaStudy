@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context    
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       ">
+       <!-- 扫描包 -->
+    <context:component-scan base-package="com.roger.activemq" />
+       <!-- activeMQ连接工厂 -->
+	<bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616"></property>
+		<property name="userName" value="admin"></property>
+		<property name="password" value="admin"></property>
+	</bean>
+		<!-- Spring cachinglian连接工厂 -->
+	<bean id="mqConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+		<property name="targetConnectionFactory" ref="amqConnectionFactory"></property>
+		<property name="sessionCacheSize" value="100"></property>
+	</bean>
+		<!-- Spring JmsTemplate 的消息生产者 -->
+	<bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate" >
+		<constructor-arg ref="mqConnectionFactory"/>
+		<!-- 队列模式 -->
+		<property name="pubSubDomain" value="false"/>
+		<!-- 持久化 -->
+		<property name="deliveryMode" value="2"/>
+		<!-- 存活时间 -->
+		<!-- <property name="timeToLive" value="6000000"/> -->
+		<property name="explicitQosEnabled" value="true"/>
+	</bean>
+	<bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate" >
+		<constructor-arg ref="mqConnectionFactory"/>
+		<!-- 广播模式 -->
+		<property name="pubSubDomain" value="true"/>
+		<!-- 持久化 -->
+		<property name="deliveryMode" value="2"/>
+		<!-- 存活时间 -->
+		<!-- <property name="timeToLive" value="6000000"/> -->
+		<!-- 开启服务质量的开关 -->
+		<property name="explicitQosEnabled" value="true"/>
+	</bean>
+</beans>

@@ -1,0 +1,18 @@
+Queue：一位生产者，一位消费者      Topic：一位生产者，多位消费者
+
+--com.mq.consumer
+   --consumerQueue1.java  队列监听者1
+   --consumerQueue2.java  队列监听者2
+   --consumerTopic1.java  广播监听者1
+   --consumerTopic2.java  广播监听者2
+   --consumerTest.java  用于加载配置文件
+--com.mq.pojo
+   --User.java  用于测试的pojo类
+--com.mq.provider
+   --ProviderTest.java  生产消息的测试类
+   --application-mqp.xml  生产者的配置文件
+   --application-mqc.xml  消费者的配置文件
+   
+测试
+1.运行consumerTest中的方法，将监听者注入到Spring中
+2.ProviderTest中  运行测试用的方法，生产消息
