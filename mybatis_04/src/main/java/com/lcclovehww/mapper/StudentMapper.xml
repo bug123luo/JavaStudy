@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcclovehww.mapper.StudentMapper">
+	<resultMap type="com.lcclovehww.pojo.Student" id="studentMap">
+		<id property="id" column="id"/>
+		<result property="stuName" column="stu_name"/>
+		<result property="sex" column="sex" jdbcType="INTEGER" javaType="com.lcclovehww.enums.Sex"
+		typeHandler="com.lcclovehww.typeHandler.SexEnumTypeHandler"/>
+		<result property="selfcardNo" column="selfcard_no"/>
+		<result property="remark" column="remark"/>
+		<!-- 一对一级联查询方式 -->
+		<association property="studentSelfcard" column="id" select="com.lcclovehww.mapper.StudentSelfcardMapper.findStudentSelfcardByStudentId"/>
+		<!-- 一对多级联查询方式-->
+		<collection property="studentLectureList" column="id" select="com.lcclovehww.mapper.StudentLectureMapper.findStudentLectureByStuId"/>
+		<!-- 鉴别器级联查询 -->
+		<discriminator javaType="int" column="sex">
+			<case value="1" resultMap="maleStudentMap"/>
+			<case value="2" resultMap="femaleStudentMap"/>
+		</discriminator>
+	</resultMap>
+
+	<select id="getStudent" parameterType="long" resultMap="studentMap">
+		select id, stu_name, sex, selfcard_no, remark from student where id=#{id}
+	</select>
+	
+	<!-- 男性健康检查结果 -->
+	<resultMap type="com.lcclovehww.pojo.MaleStudent" id="maleStudentMap" extends="studentMap">
+		<collection property="studentHealthMaleList" select="com.lcclovehww.mapper.StudentHealthMaleMapper.findStudentHealthMaleByStuId" column="id"/>
+	</resultMap> 
+	<!-- 女性健康检查结果 -->
+	<resultMap type="com.lcclovehww.pojo.FemaleStudent" id="femaleStudentMap" extends="studentMap">
+		<collection property="studentHealthFemaleList" select="com.lcclovehww.mapper.StudentHealthFemaleMapper.findStudentHealthFemaleByStuId" column="id"/>
+	</resultMap>
+	
+</mapper>

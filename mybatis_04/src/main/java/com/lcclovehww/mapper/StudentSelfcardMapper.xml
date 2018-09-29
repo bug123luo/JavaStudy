@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcclovehww.mapper.StudentSelfcardMapper">
+	<resultMap type="com.lcclovehww.pojo.StudentSelfcard" id="studentSelfcardMap">
+		<id property="id" column="id"/>
+		<result property="stuId" column="stu_id"/>
+		<result property="nativePlace" column="native_place"/>
+		<result property="issueDate" column="issue_date"/>
+		<result property="endDate" column="end_date"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+	
+	<select id="findStudentSelfcardByStudentId" parameterType="long" resultMap="studentSelfcardMap">
+		select id, stu_id, native_place, issue_date, end_date, remark
+		from student_selfcard where stu_id=#{id}
+	</select>
+</mapper>

@@ -11,6 +11,10 @@
  */
 package com.lcclovehww.pojo;
 
+import java.util.List;
+
+import com.lcclovehww.enums.Sex;
+
 /**   
  * @ClassName:  Student   
  * @Description:TODO(这里用一句话描述这个类的作用)   
@@ -24,9 +28,12 @@ public class Student {
 	
 	private Long id;
 	private String stuName;
-	private Integer sex;
+	private Sex sex;
 	private Long selfcardNo;
 	private String remark;
+	
+	private StudentSelfcard studentSelfcard;
+	private List<StudentLecture> studentLectureList;
 	
 	public Long getId() {
 		return id;
@@ -40,10 +47,11 @@ public class Student {
 	public void setStuName(String stuName) {
 		this.stuName = stuName;
 	}
-	public Integer getSex() {
+
+	public Sex getSex() {
 		return sex;
 	}
-	public void setSex(Integer sex) {
+	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
 	public Long getSelfcardNo() {
@@ -58,4 +66,19 @@ public class Student {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	public StudentSelfcard getStudentSelfcard() {
+		return studentSelfcard;
+	}
+	public void setStudentSelfcard(StudentSelfcard studentSelfcard) {
+		this.studentSelfcard = studentSelfcard;
+	}
+	public List<StudentLecture> getStudentLectureList() {
+		return studentLectureList;
+	}
+	public void setStudentLectureList(List<StudentLecture> studentLectureList) {
+		this.studentLectureList = studentLectureList;
+	}
+	
+	
+	
 }

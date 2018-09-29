@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcclovehww.mapper.RoleMapper">
+	<sql id="role_columns">
+		id, role_name as roleName, remark
+	</sql>
+
+	<sql id="role_columns_prefix">
+		#{prefix}.id, #{prefix}.role_name as roleName, #{prefix}.remark
+	</sql>
+
+	<resultMap type="com.lcclovehww.pojo.Role" id="roleMap">
+		<id property="id" column="id"/>
+		<result property="roleName" column="role_name"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+
+	<!-- 简单参数类型 long 对应java中的Long -->
+	<select id="getRole" parameterType="long" resultType="role">
+		select <include refid="role_columns"/> from role where id = #{id}
+	</select>
+	<insert id="insertRole" parameterType="role">
+		insert into role(role_name,remark) values(#{roleName},#{remark})
+	</insert>
+	<delete id="deleteRole">
+		delete from role where id=#{id}
+	</delete>
+	<!-- 输入参数采用MAP方式 -->
+	<select id="findRoleByMap" parameterType="map" resultMap="roleMap">
+		select id, role_name, remark from role where role_name like concat('%',#{roleName},'%')
+		and remark like concat('%',#{remark},'%');
+	</select>
+	<!-- 输入参数采用注解@Params方式 -->
+	<select id="findRoleByAnnotation" resultMap="roleMap">
+		select id, role_name, remark from role where role_name like concat('%',#{roleName},'%')
+		and remark like concat('%',#{remark},'%')
+	</select>
+	
+	<!-- 输入参数采用JavaBean方式 -->
+	<select id="findRoleByParms" parameterType="com.lcclovehww.pojo.RoleParams" resultMap="roleMap">
+		select id, role_name, remark from role where role_name like concat('%',#{roleName},'%')
+		and remark like concat('%',#{remark}, '%')
+	</select>
+	<!-- 使用JDBC数据库驱动自动增加健来增长ID -->
+	<insert id="insertRoleGetKey" parameterType="role" useGeneratedKeys="true" keyProperty="id">
+		insert into role(role_name, remark) values(#{roleName}, #{remark})
+	</insert>
+	<!-- 在插入数据之前先查看本地的数据库有没有id,如果没有设置默认值为1，如果存在，则在其基础上加1再插入数据库中 主要是用来处理表已经取消了自动增长健值来生成主健 -->
+	<insert id="insertRoleSelectKey" parameterType="role" useGeneratedKeys="true" keyProperty="id">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+			select if(max(id) is null,1,max(id)+1)) as newId from role
+		</selectKey>
+		insert into role(id, role_name, remark) values(#{id}, #{roleName}, #{remark})
+	</insert>
+	
+	<update id="updateRole" parameterType="role">
+		update role set role_name=#{roleName},remark=#{remark} where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="long">
+		delete from role where id=#{id}
+	</delete>
+	
+	
+	<select id="findRoles" parameterType="map">
+		select <include refid="role_columns"/> from role where role_name like concat('%',#{roleName},'%')
+		and remark like concat('%',#{remark},'%');
+	</select>
+	
+	<select id="findRolesPrefix" parameterType="long" resultMap="roleMap">
+		select 
+			<include refid="role_columns_prefix">
+				<property name="prefix" value="r"></property>
+			</include>
+		from role r where id=#{id}
+	</select>
+</mapper>

@@ -7,6 +7,10 @@
 		<typeAlias alias="role" type="com.lcclovehww.pojo.Role"/>
 	</typeAliases>
 	
+	<typeHandlers>
+		<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.lcclovehww.enums.Sex"/>
+	</typeHandlers>
+	
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC">
@@ -23,5 +27,9 @@
 	
 	<mappers>
 		<mapper resource="com/lcclovehww/mapper/Role.xml"/>
+		<mapper resource="com/lcclovehww/mapper/StudentMapper.xml"/>
+		<mapper resource="com/lcclovehww/mapper/StudentSelfcardMapper.xml"/>
+		<mapper resource="com/lcclovehww/mapper/StudentLectureMapper.xml"/>
+		<mapper resource="com/lcclovehww/mapper/LectureMapper.xml"/>
 	</mappers>
 </configuration>

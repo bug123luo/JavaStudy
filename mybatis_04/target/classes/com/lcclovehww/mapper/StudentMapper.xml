@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcclovehww.mapper.StudentMapper">
+	<resultMap type="com.lcclovehww.pojo.Student" id="studentMap">
+		<id property="id" column="id"/>
+		<result property="stuName" column="stu_name"/>
+		<result property="sex" column="sex" jdbcType="INTEGER" javaType="com.lcclovehww.enums.Sex"
+		typeHandler="com.lcclovehww.typeHandler.SexEnumTypeHandler"/>
+		<result property="selfcardNo" column="selfcard_no"/>
+		<result property="remark" column="remark"/>
+		<association property="studentSelfcard" column="id" select="com.lcclovehww.mapper.StudentSelfcardMapper.findStudentSelfcardByStudentId"/>
+		<collection property="studentLectureList" column="id" select="com.lcclovehww.mapper.StudentLectureMapper.findStudentLectureByStuId"/>
+	</resultMap>
+
+	<select id="getStudent" parameterType="long" resultMap="studentMap">
+		select id, stu_name, sex, selfcard_no, remark from student where id=#{id}
+	</select>
+	
+	
+</mapper>

@@ -7,7 +7,9 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.lcclovehww.mapper.RoleMapper;
+import com.lcclovehww.mapper.StudentMapper;
 import com.lcclovehww.pojo.Role;
+import com.lcclovehww.pojo.Student;
 import com.lcclovehww.util.SqlSessionFactoryUtil;
 
 /**
