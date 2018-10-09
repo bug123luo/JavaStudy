@@ -24,4 +24,6 @@ import com.lcclovehww.pojo.Student;
  */
 public interface StudentMapper {
 	Student getStudent(Long id);
+	//FemaleStudent getStudent(Long id);
+
 }

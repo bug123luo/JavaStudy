@@ -11,6 +11,7 @@
  */
 package com.lcclovehww.mybatis_04;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,7 +20,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.lcclovehww.mapper.StudentMapper;
+import com.lcclovehww.pojo.FemaleStudent;
 import com.lcclovehww.pojo.Lecture;
+import com.lcclovehww.pojo.MaleStudent;
 import com.lcclovehww.pojo.Student;
 import com.lcclovehww.pojo.StudentLecture;
 import com.lcclovehww.util.SqlSessionFactoryUtil;
@@ -105,4 +108,27 @@ public class CascadeTest {
 		}
 	}
 	
+	@Test
+	public void discTest() {
+        try {
+            sqlSession = SqlSessionFactoryUtil.openSqlSession();
+            StudentMapper studentDao = sqlSession.getMapper(StudentMapper.class);
+            Student student = studentDao.getStudent(1L);
+            System.out.println(student.getStuName());
+            System.out.println(student.getStudentLectureList().get(0).getGrade());
+            System.out.println(student.getStudentSelfcard().getIssueDate());
+            if(student instanceof FemaleStudent) {
+            	FemaleStudent ss=(FemaleStudent)student;
+            	System.out.println(ss.getStudentHealthFemaleList().get(0).getCheckDate());
+            }else if (student instanceof MaleStudent) {
+            	MaleStudent ss=(MaleStudent)student;
+            	System.out.println(ss.getStudentHealthMaleList().get(0).getCheckDate());
+			}
+
+        } finally {
+            if (sqlSession != null) {
+                sqlSession.close();
+            }
+        }
+	}
 }

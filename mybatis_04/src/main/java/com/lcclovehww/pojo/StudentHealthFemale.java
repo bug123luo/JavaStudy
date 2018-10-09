@@ -23,8 +23,8 @@ package com.lcclovehww.pojo;
 public class StudentHealthFemale {
 	
 	Long id;
-	String stu_id;
-	String check_date;
+	String stuId;
+	String checkDate;
 	String heart;
 	String liver;
 	String spleen;
@@ -39,17 +39,18 @@ public class StudentHealthFemale {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getStu_id() {
-		return stu_id;
+
+	public String getStuId() {
+		return stuId;
 	}
-	public void setStu_id(String stu_id) {
-		this.stu_id = stu_id;
+	public void setStuId(String stuId) {
+		this.stuId = stuId;
 	}
-	public String getCheck_date() {
-		return check_date;
+	public String getCheckDate() {
+		return checkDate;
 	}
-	public void setCheck_date(String check_date) {
-		this.check_date = check_date;
+	public void setCheckDate(String checkDate) {
+		this.checkDate = checkDate;
 	}
 	public String getHeart() {
 		return heart;

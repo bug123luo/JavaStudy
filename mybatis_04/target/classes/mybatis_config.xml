@@ -31,5 +31,7 @@
 		<mapper resource="com/lcclovehww/mapper/StudentSelfcardMapper.xml"/>
 		<mapper resource="com/lcclovehww/mapper/StudentLectureMapper.xml"/>
 		<mapper resource="com/lcclovehww/mapper/LectureMapper.xml"/>
+		<mapper resource="com/lcclovehww/mapper/StudentHealthFemaleMapper.xml"/>
+		<mapper resource="com/lcclovehww/mapper/StudentHealthMaleMapper.xml"/>
 	</mappers>
 </configuration>
