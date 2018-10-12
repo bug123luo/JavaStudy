@@ -1,0 +1,2 @@
+生成javadoc命令
+javadoc -d apidoc -windowtitle 测试 -doctitle 学习javadoc工具的测试API文档 -version -author -header 罗承聪自定义类 Test*.java

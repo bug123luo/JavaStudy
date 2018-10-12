@@ -1,0 +1,5 @@
+注意事项：
+源文件package 要加入所在文件夹的名称
+在package目录下执行
+生成javadoc命令
+javadoc -d apidoc -windowtitle 测试 -doctitle 学习javadoc工具的测试API文档 -version -author -header 罗承聪自定义类 lee yeeku
