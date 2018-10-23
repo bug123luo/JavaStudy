@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="mqttws31.js"></script>
+		<script src="jquery.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	$(document).ready(function() {
+    function doDisconnect() {
+        client.disconnect();//响应一次，就关闭
+    }
+
+    // Web Messaging API callbacks
+    var onSuccess = function(value) {
+		alert(1);
+    }
+
+    var onConnect = function(frame) {
+        client.subscribe("TestTopic");
+		//alert(1111111111);
+
+    }
+    var onFailure = function(error) {
+    }
+    var options = {
+        keepAliveInterval:10000,
+        onSuccess: onConnect,
+        onFailure: onFailure
+    };
+
+	//监听mqtt是否断开
+    function onConnectionLost(responseObject) {
+        client.connect(options);//断开，重连
+    }
+
+
+
+    function onMessageArrived(message) {
+
+	    //#===================  解析内容  ==================
+		alert(message.payloadString);
+        //var json = JSON.parse(message.payloadString);
+        //alert(json);
+      
+    }
+
+
+
+    var client;
+    var r = Math.round(Math.random()*Math.pow(10,5));
+    var d = new Date().getTime();
+    var cid = r.toString() + "-" + d.toString()
+
+    //112.74.51.194 1884  120.76.156.120 61614
+    client = new Messaging.Client("192.168.0.100", 61614, "luochengcong");
+    client.onConnect = onConnect;
+    client.onMessageArrived = onMessageArrived;
+    client.onConnectionLost = onConnectionLost;
+    client.connect(options);
+
+});
+</script>
