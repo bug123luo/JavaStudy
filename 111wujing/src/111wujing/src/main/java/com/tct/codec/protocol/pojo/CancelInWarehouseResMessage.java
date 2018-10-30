@@ -24,7 +24,11 @@ import lombok.Data;
  */
 
 @Data
-public class CancelInWarehouseResMessage extends TemplateMessage {
+//14号报文
+public class CancelInWarehouseResMessage extends TemplateMessage {/**   
+	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)   
+	 */ 
+	private static final long serialVersionUID = -2564754421726276466L;
 	
-	
+	private CancelInWarehouseResMessageBody messageBody;
 }

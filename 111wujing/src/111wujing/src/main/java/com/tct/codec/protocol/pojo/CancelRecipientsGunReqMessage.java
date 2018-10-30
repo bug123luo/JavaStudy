@@ -24,6 +24,7 @@ import lombok.Data;
  */
 
 @Data
+//09号报文
 public class CancelRecipientsGunReqMessage extends TemplateMessage {
 	
 	/**   
