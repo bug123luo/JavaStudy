@@ -1,0 +1,30 @@
+package com.tct.db.mapper;
+
+import com.tct.db.po.WebUser;
+import com.tct.db.po.WebUserExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface WebUserMapper {
+    long countByExample(WebUserExample example);
+
+    int deleteByExample(WebUserExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(WebUser record);
+
+    int insertSelective(WebUser record);
+
+    List<WebUser> selectByExample(WebUserExample example);
+
+    WebUser selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") WebUser record, @Param("example") WebUserExample example);
+
+    int updateByExample(@Param("record") WebUser record, @Param("example") WebUserExample example);
+
+    int updateByPrimaryKeySelective(WebUser record);
+
+    int updateByPrimaryKey(WebUser record);
+}
