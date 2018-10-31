@@ -11,6 +11,26 @@
  */
 package com.tct.codec.selector;
 
+
+import org.aspectj.weaver.NewConstructorTypeMunger;
+
+import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.impl.AuthorizationReqCodec;
+import com.tct.codec.impl.BindingReqCodec;
+import com.tct.codec.impl.CancelInWarehouseReqCodec;
+import com.tct.codec.impl.CancelRecipientsGunReqCodec;
+import com.tct.codec.impl.DeviceHeartReqCodec;
+import com.tct.codec.impl.GetBulletNumberReqCodec;
+import com.tct.codec.impl.InWarehouseReqCodec;
+import com.tct.codec.impl.MessageBodyCodec;
+import com.tct.codec.impl.OutWarehouseReqCodec;
+import com.tct.codec.impl.ParamSettingReqCodec;
+import com.tct.codec.impl.RegistReqCodec;
+import com.tct.codec.impl.ReportBulletNumberReqCodec;
+import com.tct.codec.impl.SearchGunReqCodec;
+import com.tct.codec.impl.StartStopSearchGunReqCodec;
+import com.tct.codec.impl.WatchHeartReqCodec;
+
 /**   
  * @ClassName:  MessageCodecSelector   
  * @Description:TODO(这里用一句话描述这个类的作用)   
@@ -21,5 +41,49 @@ package com.tct.codec.selector;
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
 public class MessageCodecSelector {
+	public MessageBodyCodec getMessageDecode(JSONObject tempjson) throws Exception {
+		JSONObject json= tempjson;
+		
+		MessageBodyCodec msgCodec = null;
+		
+		if (json.getString("messageType").equals("01")) {
+			msgCodec = new AuthorizationReqCodec();
+		}else if(json.getString("messageType").equals("03")) {
+			msgCodec = new RegistReqCodec();
+		}else if(json.getString("messageType").equals("05")) {
+			msgCodec = new BindingReqCodec();
+		}else if(json.getString("messageType").equals("07")) {
+			msgCodec = new OutWarehouseReqCodec();
+		}else if(json.getString("messageType").equals("09")) {
+			msgCodec = new CancelRecipientsGunReqCodec();
+		}else if(json.getString("messageType").equals("11")){
+		    msgCodec = new InWarehouseReqCodec();	
+		}else if(json.getString("messageType").equals("13")) {
+			msgCodec = new CancelInWarehouseReqCodec();
+		}else if(json.getString("messageType").equals("15")) {
+			msgCodec = new WatchHeartReqCodec();
+		}else if(json.getString("messageType").equals("17")) {
+			msgCodec = new DeviceHeartReqCodec();
+		}else if(json.getString("messageType").equals("19")){
+			msgCodec = new StartStopSearchGunReqCodec();
+		}else if(json.getString("messageType").equals("21")) {
+			msgCodec = new SearchGunReqCodec();
+		}else if(json.getString("messageType").equals("23")) {
+			msgCodec = new ReportBulletNumberReqCodec();
+		}else if(json.getString("messageType").equals("25")) {
+			msgCodec = new GetBulletNumberReqCodec();
+		}else if(json.getString("messageType").equals("27")) {
+			msgCodec = new ParamSettingReqCodec();
+		}else {
+			msgCodec = null;
+		}
+				
+		return msgCodec;
+	}
+
+/*	public MessageCodec encode(String outMsg) throws Exception {
+		
+		return null;
+	}*/
 
 }

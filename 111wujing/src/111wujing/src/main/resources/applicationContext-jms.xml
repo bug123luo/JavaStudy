@@ -108,5 +108,4 @@
         <property name="destination" ref="demoQueueDestination" />
         <property name="messageListener" ref="queueMessageListener" />
     </bean>
-
 </beans>
