@@ -3,9 +3,9 @@ package com.tct.db.po;
 import java.util.Date;
 
 public class GunDynamicData {
-    private Long id;
+    private Integer id;
 
-    private Integer gunId;
+    private String gunId;
 
     private Integer totalBulletNumber;
 
@@ -23,20 +23,20 @@ public class GunDynamicData {
 
     private Integer version;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Integer getGunId() {
+    public String getGunId() {
         return gunId;
     }
 
-    public void setGunId(Integer gunId) {
-        this.gunId = gunId;
+    public void setGunId(String gunId) {
+        this.gunId = gunId == null ? null : gunId.trim();
     }
 
     public Integer getTotalBulletNumber() {

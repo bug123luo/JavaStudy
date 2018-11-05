@@ -15,7 +15,7 @@ public class WarehouseRecords {
 
     private Integer appId;
 
-    private Integer gunId;
+    private String gunId;
 
     private Integer state;
 
@@ -69,12 +69,12 @@ public class WarehouseRecords {
         this.appId = appId;
     }
 
-    public Integer getGunId() {
+    public String getGunId() {
         return gunId;
     }
 
-    public void setGunId(Integer gunId) {
-        this.gunId = gunId;
+    public void setGunId(String gunId) {
+        this.gunId = gunId == null ? null : gunId.trim();
     }
 
     public Integer getState() {

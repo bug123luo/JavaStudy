@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tct.db.mapper.AppMapper">
+  <resultMap id="BaseResultMap" type="com.tct.db.po.App">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="app_system" jdbcType="CHAR" property="appSystem" />
+    <result column="app_system_version" jdbcType="CHAR" property="appSystemVersion" />
+    <result column="app_phone_type_name" jdbcType="CHAR" property="appPhoneTypeName" />
+    <result column="app_name" jdbcType="CHAR" property="appName" />
+    <result column="app_mac" jdbcType="CHAR" property="appMac" />
+    <result column="app_imei" jdbcType="CHAR" property="appImei" />
+    <result column="app_phone" jdbcType="CHAR" property="appPhone" />
+    <result column="app_readable_code" jdbcType="CHAR" property="appReadableCode" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, app_system, app_system_version, app_phone_type_name, app_name, app_mac, app_imei, 
+    app_phone, app_readable_code, version
+  </sql>
+  <select id="selectByExample" parameterType="com.tct.db.po.AppExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from app
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from app
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tct.db.po.AppExample">
+    delete from app
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tct.db.po.App">
+    insert into app (id, app_system, app_system_version, 
+      app_phone_type_name, app_name, app_mac, 
+      app_imei, app_phone, app_readable_code, 
+      version)
+    values (#{id,jdbcType=INTEGER}, #{appSystem,jdbcType=CHAR}, #{appSystemVersion,jdbcType=CHAR}, 
+      #{appPhoneTypeName,jdbcType=CHAR}, #{appName,jdbcType=CHAR}, #{appMac,jdbcType=CHAR}, 
+      #{appImei,jdbcType=CHAR}, #{appPhone,jdbcType=CHAR}, #{appReadableCode,jdbcType=CHAR}, 
+      #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tct.db.po.App">
+    insert into app
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="appSystem != null">
+        app_system,
+      </if>
+      <if test="appSystemVersion != null">
+        app_system_version,
+      </if>
+      <if test="appPhoneTypeName != null">
+        app_phone_type_name,
+      </if>
+      <if test="appName != null">
+        app_name,
+      </if>
+      <if test="appMac != null">
+        app_mac,
+      </if>
+      <if test="appImei != null">
+        app_imei,
+      </if>
+      <if test="appPhone != null">
+        app_phone,
+      </if>
+      <if test="appReadableCode != null">
+        app_readable_code,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="appSystem != null">
+        #{appSystem,jdbcType=CHAR},
+      </if>
+      <if test="appSystemVersion != null">
+        #{appSystemVersion,jdbcType=CHAR},
+      </if>
+      <if test="appPhoneTypeName != null">
+        #{appPhoneTypeName,jdbcType=CHAR},
+      </if>
+      <if test="appName != null">
+        #{appName,jdbcType=CHAR},
+      </if>
+      <if test="appMac != null">
+        #{appMac,jdbcType=CHAR},
+      </if>
+      <if test="appImei != null">
+        #{appImei,jdbcType=CHAR},
+      </if>
+      <if test="appPhone != null">
+        #{appPhone,jdbcType=CHAR},
+      </if>
+      <if test="appReadableCode != null">
+        #{appReadableCode,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tct.db.po.AppExample" resultType="java.lang.Long">
+    select count(*) from app
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update app
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.appSystem != null">
+        app_system = #{record.appSystem,jdbcType=CHAR},
+      </if>
+      <if test="record.appSystemVersion != null">
+        app_system_version = #{record.appSystemVersion,jdbcType=CHAR},
+      </if>
+      <if test="record.appPhoneTypeName != null">
+        app_phone_type_name = #{record.appPhoneTypeName,jdbcType=CHAR},
+      </if>
+      <if test="record.appName != null">
+        app_name = #{record.appName,jdbcType=CHAR},
+      </if>
+      <if test="record.appMac != null">
+        app_mac = #{record.appMac,jdbcType=CHAR},
+      </if>
+      <if test="record.appImei != null">
+        app_imei = #{record.appImei,jdbcType=CHAR},
+      </if>
+      <if test="record.appPhone != null">
+        app_phone = #{record.appPhone,jdbcType=CHAR},
+      </if>
+      <if test="record.appReadableCode != null">
+        app_readable_code = #{record.appReadableCode,jdbcType=CHAR},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update app
+    set id = #{record.id,jdbcType=INTEGER},
+      app_system = #{record.appSystem,jdbcType=CHAR},
+      app_system_version = #{record.appSystemVersion,jdbcType=CHAR},
+      app_phone_type_name = #{record.appPhoneTypeName,jdbcType=CHAR},
+      app_name = #{record.appName,jdbcType=CHAR},
+      app_mac = #{record.appMac,jdbcType=CHAR},
+      app_imei = #{record.appImei,jdbcType=CHAR},
+      app_phone = #{record.appPhone,jdbcType=CHAR},
+      app_readable_code = #{record.appReadableCode,jdbcType=CHAR},
+      version = #{record.version,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tct.db.po.App">
+    update app
+    <set>
+      <if test="appSystem != null">
+        app_system = #{appSystem,jdbcType=CHAR},
+      </if>
+      <if test="appSystemVersion != null">
+        app_system_version = #{appSystemVersion,jdbcType=CHAR},
+      </if>
+      <if test="appPhoneTypeName != null">
+        app_phone_type_name = #{appPhoneTypeName,jdbcType=CHAR},
+      </if>
+      <if test="appName != null">
+        app_name = #{appName,jdbcType=CHAR},
+      </if>
+      <if test="appMac != null">
+        app_mac = #{appMac,jdbcType=CHAR},
+      </if>
+      <if test="appImei != null">
+        app_imei = #{appImei,jdbcType=CHAR},
+      </if>
+      <if test="appPhone != null">
+        app_phone = #{appPhone,jdbcType=CHAR},
+      </if>
+      <if test="appReadableCode != null">
+        app_readable_code = #{appReadableCode,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tct.db.po.App">
+    update app
+    set app_system = #{appSystem,jdbcType=CHAR},
+      app_system_version = #{appSystemVersion,jdbcType=CHAR},
+      app_phone_type_name = #{appPhoneTypeName,jdbcType=CHAR},
+      app_name = #{appName,jdbcType=CHAR},
+      app_mac = #{appMac,jdbcType=CHAR},
+      app_imei = #{appImei,jdbcType=CHAR},
+      app_phone = #{appPhone,jdbcType=CHAR},
+      app_readable_code = #{appReadableCode,jdbcType=CHAR},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

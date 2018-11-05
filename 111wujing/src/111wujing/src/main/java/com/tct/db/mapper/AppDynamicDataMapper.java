@@ -10,7 +10,7 @@ public interface AppDynamicDataMapper {
 
     int deleteByExample(AppDynamicDataExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(AppDynamicData record);
 
@@ -18,7 +18,7 @@ public interface AppDynamicDataMapper {
 
     List<AppDynamicData> selectByExample(AppDynamicDataExample example);
 
-    AppDynamicData selectByPrimaryKey(Long id);
+    AppDynamicData selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") AppDynamicData record, @Param("example") AppDynamicDataExample example);
 

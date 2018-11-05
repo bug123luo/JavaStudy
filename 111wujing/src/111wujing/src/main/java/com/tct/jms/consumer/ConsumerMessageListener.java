@@ -37,7 +37,7 @@ public class ConsumerMessageListener implements MessageListener {
 				//编解码器选择器
 				MessageCodecSelector messageCodecSelector = new MessageCodecSelector();			
 				MessageBodyCodec messageBodyCodec = null;
-				JSONObject json = null;
+				JSONObject msg = null;
 				try {
 					//log.info(textMessage.getText());
 					String[] temps=textMessage.getText().split(",");
@@ -45,16 +45,16 @@ public class ConsumerMessageListener implements MessageListener {
 						log.info(str1);
 					}
 			        log.info("-------------------------------------------------------------------");
-			        json= JSONObject.parseObject(textMessage.getText());
+			        msg= JSONObject.parseObject(textMessage.getText());
 			        //log.info(json.toString());
-					messageBodyCodec = messageCodecSelector.getMessageDecode(json);
+					messageBodyCodec = messageCodecSelector.getMessageDecode(msg);
 				} catch (Exception e2) {
 					log.debug(e2+"消息解码器不存在");
 				}
 				
 				//业务处理选择器
 				ServiceSelector serviceSelector = new ServiceSelector();
-				serviceSelector.handlerService(messageBodyCodec, json);
+				serviceSelector.handlerService(messageBodyCodec, msg);
 			}
 		}else {
 			log.info("收到非TextMessage消息类型");

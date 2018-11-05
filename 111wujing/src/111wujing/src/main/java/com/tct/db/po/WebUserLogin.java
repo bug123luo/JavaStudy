@@ -3,11 +3,19 @@ package com.tct.db.po;
 import java.util.Date;
 
 public class WebUserLogin {
-    private Integer webUserId;
+    private Integer id;
+
+    private Integer uid;
+
+    private String userName;
 
     private String webIp;
 
     private Integer state;
+
+    private String browser;
+
+    private String systemName;
 
     private Date logintime;
 
@@ -15,12 +23,28 @@ public class WebUserLogin {
 
     private Integer version;
 
-    public Integer getWebUserId() {
-        return webUserId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setWebUserId(Integer webUserId) {
-        this.webUserId = webUserId;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
     public String getWebIp() {
@@ -37,6 +61,22 @@ public class WebUserLogin {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public String getBrowser() {
+        return browser;
+    }
+
+    public void setBrowser(String browser) {
+        this.browser = browser == null ? null : browser.trim();
+    }
+
+    public String getSystemName() {
+        return systemName;
+    }
+
+    public void setSystemName(String systemName) {
+        this.systemName = systemName == null ? null : systemName.trim();
     }
 
     public Date getLogintime() {

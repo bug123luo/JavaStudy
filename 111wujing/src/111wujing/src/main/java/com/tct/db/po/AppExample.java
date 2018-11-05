@@ -724,6 +724,66 @@ public class AppExample {
             return (Criteria) this;
         }
 
+        public Criteria andAppTypeIsNull() {
+            addCriterion("app_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeIsNotNull() {
+            addCriterion("app_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeEqualTo(Integer value) {
+            addCriterion("app_type =", value, "appType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeNotEqualTo(Integer value) {
+            addCriterion("app_type <>", value, "appType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeGreaterThan(Integer value) {
+            addCriterion("app_type >", value, "appType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("app_type >=", value, "appType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeLessThan(Integer value) {
+            addCriterion("app_type <", value, "appType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("app_type <=", value, "appType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeIn(List<Integer> values) {
+            addCriterion("app_type in", values, "appType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeNotIn(List<Integer> values) {
+            addCriterion("app_type not in", values, "appType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeBetween(Integer value1, Integer value2) {
+            addCriterion("app_type between", value1, value2, "appType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("app_type not between", value1, value2, "appType");
+            return (Criteria) this;
+        }
+
         public Criteria andVersionIsNull() {
             addCriterion("version is null");
             return (Criteria) this;

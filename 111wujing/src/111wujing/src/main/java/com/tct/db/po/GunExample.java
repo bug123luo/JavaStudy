@@ -165,6 +165,66 @@ public class GunExample {
             return (Criteria) this;
         }
 
+        public Criteria andUidIsNull() {
+            addCriterion("uid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidIsNotNull() {
+            addCriterion("uid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidEqualTo(Integer value) {
+            addCriterion("uid =", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidNotEqualTo(Integer value) {
+            addCriterion("uid <>", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidGreaterThan(Integer value) {
+            addCriterion("uid >", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("uid >=", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidLessThan(Integer value) {
+            addCriterion("uid <", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidLessThanOrEqualTo(Integer value) {
+            addCriterion("uid <=", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidIn(List<Integer> values) {
+            addCriterion("uid in", values, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidNotIn(List<Integer> values) {
+            addCriterion("uid not in", values, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidBetween(Integer value1, Integer value2) {
+            addCriterion("uid between", value1, value2, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidNotBetween(Integer value1, Integer value2) {
+            addCriterion("uid not between", value1, value2, "uid");
+            return (Criteria) this;
+        }
+
         public Criteria andGunIdIsNull() {
             addCriterion("gun_id is null");
             return (Criteria) this;
@@ -445,6 +505,66 @@ public class GunExample {
             return (Criteria) this;
         }
 
+        public Criteria andIsDelIsNull() {
+            addCriterion("is_del is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelIsNotNull() {
+            addCriterion("is_del is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelEqualTo(Byte value) {
+            addCriterion("is_del =", value, "isDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelNotEqualTo(Byte value) {
+            addCriterion("is_del <>", value, "isDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelGreaterThan(Byte value) {
+            addCriterion("is_del >", value, "isDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelGreaterThanOrEqualTo(Byte value) {
+            addCriterion("is_del >=", value, "isDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelLessThan(Byte value) {
+            addCriterion("is_del <", value, "isDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelLessThanOrEqualTo(Byte value) {
+            addCriterion("is_del <=", value, "isDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelIn(List<Byte> values) {
+            addCriterion("is_del in", values, "isDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelNotIn(List<Byte> values) {
+            addCriterion("is_del not in", values, "isDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelBetween(Byte value1, Byte value2) {
+            addCriterion("is_del between", value1, value2, "isDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDelNotBetween(Byte value1, Byte value2) {
+            addCriterion("is_del not between", value1, value2, "isDel");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;
@@ -622,6 +742,76 @@ public class GunExample {
 
         public Criteria andWarehouseIdNotBetween(Integer value1, Integer value2) {
             addCriterion("warehouse_id not between", value1, value2, "warehouseId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameIsNull() {
+            addCriterion("warehouse_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameIsNotNull() {
+            addCriterion("warehouse_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameEqualTo(String value) {
+            addCriterion("warehouse_name =", value, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameNotEqualTo(String value) {
+            addCriterion("warehouse_name <>", value, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameGreaterThan(String value) {
+            addCriterion("warehouse_name >", value, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_name >=", value, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameLessThan(String value) {
+            addCriterion("warehouse_name <", value, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_name <=", value, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameLike(String value) {
+            addCriterion("warehouse_name like", value, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameNotLike(String value) {
+            addCriterion("warehouse_name not like", value, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameIn(List<String> values) {
+            addCriterion("warehouse_name in", values, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameNotIn(List<String> values) {
+            addCriterion("warehouse_name not in", values, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameBetween(String value1, String value2) {
+            addCriterion("warehouse_name between", value1, value2, "warehouseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarehouseNameNotBetween(String value1, String value2) {
+            addCriterion("warehouse_name not between", value1, value2, "warehouseName");
             return (Criteria) this;
         }
 

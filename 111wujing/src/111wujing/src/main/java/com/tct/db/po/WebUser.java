@@ -5,6 +5,8 @@ import java.util.Date;
 public class WebUser {
     private Integer id;
 
+    private String name;
+
     private String webUserName;
 
     private String webUserPassword;
@@ -13,19 +15,17 @@ public class WebUser {
 
     private Integer departmentId;
 
+    private Boolean isDel;
+
+    private Boolean isJob;
+
+    private Integer uid;
+
     private Date createTime;
 
     private Date updateTime;
 
     private Integer version;
-
-    private String name;
-
-    private Boolean isDel;
-
-    private Boolean isJob;
-
-    private Integer insertid;
 
     public Integer getId() {
         return id;
@@ -33,6 +33,14 @@ public class WebUser {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getWebUserName() {
@@ -67,6 +75,30 @@ public class WebUser {
         this.departmentId = departmentId;
     }
 
+    public Boolean getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(Boolean isDel) {
+        this.isDel = isDel;
+    }
+
+    public Boolean getIsJob() {
+        return isJob;
+    }
+
+    public void setIsJob(Boolean isJob) {
+        this.isJob = isJob;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -89,37 +121,5 @@ public class WebUser {
 
     public void setVersion(Integer version) {
         this.version = version;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public Boolean getIsDel() {
-        return isDel;
-    }
-
-    public void setIsDel(Boolean isDel) {
-        this.isDel = isDel;
-    }
-
-    public Boolean getIsJob() {
-        return isJob;
-    }
-
-    public void setIsJob(Boolean isJob) {
-        this.isJob = isJob;
-    }
-
-    public Integer getInsertid() {
-        return insertid;
-    }
-
-    public void setInsertid(Integer insertid) {
-        this.insertid = insertid;
     }
 }

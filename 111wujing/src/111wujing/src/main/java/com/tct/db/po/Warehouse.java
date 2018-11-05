@@ -1,5 +1,7 @@
 package com.tct.db.po;
 
+import java.util.Date;
+
 public class Warehouse {
     private Integer id;
 
@@ -8,6 +10,12 @@ public class Warehouse {
     private String location;
 
     private String note;
+
+    private Integer uid;
+
+    private Date inserttime;
+
+    private Date updatetime;
 
     private Integer version;
 
@@ -41,6 +49,30 @@ public class Warehouse {
 
     public void setNote(String note) {
         this.note = note == null ? null : note.trim();
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public Date getInserttime() {
+        return inserttime;
+    }
+
+    public void setInserttime(Date inserttime) {
+        this.inserttime = inserttime;
+    }
+
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
     }
 
     public Integer getVersion() {

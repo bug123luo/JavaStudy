@@ -19,6 +19,8 @@ public class App {
 
     private String appReadableCode;
 
+    private Integer appType;
+
     private Integer version;
 
     public Integer getId() {
@@ -91,6 +93,14 @@ public class App {
 
     public void setAppReadableCode(String appReadableCode) {
         this.appReadableCode = appReadableCode == null ? null : appReadableCode.trim();
+    }
+
+    public Integer getAppType() {
+        return appType;
+    }
+
+    public void setAppType(Integer appType) {
+        this.appType = appType;
     }
 
     public Integer getVersion() {

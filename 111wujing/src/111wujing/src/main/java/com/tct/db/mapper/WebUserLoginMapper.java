@@ -10,7 +10,7 @@ public interface WebUserLoginMapper {
 
     int deleteByExample(WebUserLoginExample example);
 
-    int deleteByPrimaryKey(Integer webUserId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(WebUserLogin record);
 
@@ -18,7 +18,7 @@ public interface WebUserLoginMapper {
 
     List<WebUserLogin> selectByExample(WebUserLoginExample example);
 
-    WebUserLogin selectByPrimaryKey(Integer webUserId);
+    WebUserLogin selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") WebUserLogin record, @Param("example") WebUserLoginExample example);
 

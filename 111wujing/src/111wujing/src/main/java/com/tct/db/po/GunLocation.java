@@ -7,7 +7,7 @@ public class GunLocation {
 
     private Integer appId;
 
-    private Integer gunId;
+    private String gunId;
 
     private String gunMac;
 
@@ -39,12 +39,12 @@ public class GunLocation {
         this.appId = appId;
     }
 
-    public Integer getGunId() {
+    public String getGunId() {
         return gunId;
     }
 
-    public void setGunId(Integer gunId) {
-        this.gunId = gunId;
+    public void setGunId(String gunId) {
+        this.gunId = gunId == null ? null : gunId.trim();
     }
 
     public String getGunMac() {

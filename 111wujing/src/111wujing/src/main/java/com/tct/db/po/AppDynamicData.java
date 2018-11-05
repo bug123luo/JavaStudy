@@ -3,7 +3,7 @@ package com.tct.db.po;
 import java.util.Date;
 
 public class AppDynamicData {
-    private Long id;
+    private Integer id;
 
     private Integer appId;
 
@@ -13,11 +13,11 @@ public class AppDynamicData {
 
     private Integer version;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

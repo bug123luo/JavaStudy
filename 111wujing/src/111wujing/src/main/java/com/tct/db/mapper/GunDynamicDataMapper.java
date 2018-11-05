@@ -10,7 +10,7 @@ public interface GunDynamicDataMapper {
 
     int deleteByExample(GunDynamicDataExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(GunDynamicData record);
 
@@ -18,7 +18,7 @@ public interface GunDynamicDataMapper {
 
     List<GunDynamicData> selectByExample(GunDynamicDataExample example);
 
-    GunDynamicData selectByPrimaryKey(Long id);
+    GunDynamicData selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") GunDynamicData record, @Param("example") GunDynamicDataExample example);
 
