@@ -11,10 +11,30 @@
  */
 package com.tct.service.impl;
 
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.RegistReqMessage;
+import com.tct.codec.protocol.pojo.RegistReqMessageBody;
+import com.tct.codec.protocol.pojo.RegistResMessage;
+import com.tct.codec.protocol.pojo.RegistResMessageBody;
+import com.tct.db.dao.AuthCodeDao;
+import com.tct.db.po.AppCustom;
+import com.tct.db.po.AppCustomQueryVo;
+import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.MessageTypeConstant;
+import com.tct.util.StringConstant;
+import com.tct.util.StringUtil;
 
 /**   
  * @ClassName:  RegistReqService   
@@ -30,6 +50,24 @@ import com.alibaba.fastjson.JSONObject;
 @Scope("prototype")
 public class RegistReqService implements TemplateService {
 
+	@Autowired
+	@Qualifier("stringRedisTemplate")
+	private StringRedisTemplate stringRedisTemplate;
+	
+	@Autowired
+	@Qualifier("jedisTemplate")
+	private RedisTemplate<String,Map<String, ?>> jedisTemplate;
+	
+	@Resource
+	private OutQueueSender outQueueSender;
+	
+	@Resource
+	@Qualifier("outQueueDestination")
+	private Destination outQueueDestination;
+	
+	@Autowired
+	AuthCodeDao authcodeDao;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -39,8 +77,42 @@ public class RegistReqService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		// TODO Auto-generated method stub
+		RegistReqMessage regReqMsg = (RegistReqMessage)msg;
+		
+		String watchMac = regReqMsg.getMessageBody().getWatchMac();
+		String imei = regReqMsg.getMessageBody().getImei();
+		String phone = regReqMsg.getMessageBody().getPhone();
 
+		AppCustomQueryVo appCustomQueryVo = new AppCustomQueryVo();
+		AppCustom appCustomQuery = new AppCustom();
+		appCustomQuery.setAppImei(imei);
+		appCustomQuery.setAppMac(watchMac);
+		appCustomQuery.setAppPhone(phone);
+		appCustomQueryVo.setAppCustom(appCustomQuery);
+		AppCustom appCustom = authcodeDao.selectAppAllColumn(appCustomQueryVo);
+		
+		
+		RegistResMessageBody regResBody = new RegistResMessageBody(); 
+		if(appCustom!=null && (!appCustom.getAppReadableCode().isEmpty())){
+			regResBody.setReadableCode(appCustom.getAppReadableCode());
+			regResBody.setState(StringConstant.SUCCESS_OLD_STATE);
+		}else {
+			regResBody.setReadableCode("");
+			regResBody.setState(StringConstant.FAILURE_OLD_STATE);			
+		}
+		
+		RegistResMessage regResMsg = new RegistResMessage();
+		regResMsg.setDeviceType(regReqMsg.getDeviceType());
+		regResMsg.setFormatVersion(regReqMsg.getFormatVersion());
+		regResMsg.setMessageBody(regResBody);
+		regResMsg.setMessageType(MessageTypeConstant.MESSAGE04);
+		regResMsg.setSendTime(StringUtil.getDateString());
+		regResMsg.setSerialNumber(regReqMsg.getSerialNumber());
+		regResMsg.setSessionToken(regReqMsg.getSessionToken());
+		regResMsg.setUniqueIdentification(regReqMsg.getUniqueIdentification());
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(regResMsg));
+		
 	}
 
 }

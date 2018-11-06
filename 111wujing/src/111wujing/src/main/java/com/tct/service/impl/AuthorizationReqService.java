@@ -11,6 +11,8 @@
  */
 package com.tct.service.impl;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
@@ -20,11 +22,17 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
 import com.alibaba.fastjson.JSONObject;
-import com.sun.javafx.collections.MappingChange.Map;
 import com.tct.codec.protocol.pojo.AuthorizationReqMessage;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
+import com.tct.codec.protocol.pojo.AuthorizationResMessageBody;
+import com.tct.db.dao.AuthCodeDao;
+import com.tct.db.po.AppCustom;
+import com.tct.db.po.AppCustomQueryVo;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.MessageTypeConstant;
+import com.tct.util.StringConstant;
+import com.tct.util.StringUtil;
 
 /**   
  * @ClassName:  AuthorizationReqService   
@@ -55,6 +63,8 @@ public class AuthorizationReqService implements TemplateService {
 	@Qualifier("outQueueDestination")
 	private Destination outQueueDestination;
 	
+	@Autowired
+	AuthCodeDao authcodeDao;
 	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
@@ -71,8 +81,39 @@ public class AuthorizationReqService implements TemplateService {
 		String Imei = arq.getMessageBody().getImei();
 		String lo = arq.getMessageBody().getLo();
 		String la =  arq.getMessageBody().getLa();
+		String sessionToken = arq.getSessionToken();
+		AuthorizationResMessageBody msgBody = new AuthorizationResMessageBody();
 		
+		//数据库中查询是否存在，如果腕表存在，响应报文
 		
+		AppCustomQueryVo appCustomQueryVo = new AppCustomQueryVo();
+		AppCustom appCustomQuery = new AppCustom();
+		appCustomQuery.setAppImei(Imei);
+		appCustomQueryVo.setAppCustom(appCustomQuery);
+		AppCustom appCustom=authcodeDao.selectAppAllColumn(appCustomQueryVo);
+		if(appCustom!=null && (!appCustom.getAppImei().isEmpty())) {
+			msgBody.setState(StringConstant.SUCCESS_OLD_STATE);
+			msgBody.setAuthCode(StringConstant.AUTHCODE);
+			msgBody.setIp(StringConstant.IP);
+			msgBody.setPort(StringConstant.PORT);
+		}else {
+			msgBody.setState(StringConstant.FAILURE_OLD_STATE);
+			msgBody.setAuthCode("");
+			msgBody.setIp("");
+			msgBody.setPort("");
+		}
+		
+		AuthorizationResMessage arqRes =new AuthorizationResMessage();
+		arqRes.setDeviceType(arq.getDeviceType());
+		arqRes.setFormatVersion(arq.getFormatVersion());
+		arqRes.setMessageType(MessageTypeConstant.MESSAGE01);
+		arqRes.setSendTime(StringUtil.getDateString());
+		arqRes.setSerialNumber(arq.getSerialNumber());
+		arqRes.setSessionToken(sessionToken);
+		arqRes.setUniqueIdentification(arq.getUniqueIdentification());
+		arqRes.setMessageBody(msgBody);
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(arqRes));
 	}
 
 }

@@ -13,6 +13,8 @@ package com.tct.util;
 
 import javax.print.DocFlavor.STRING;
 
+import org.quartz.core.SampledStatistics;
+
 /**   
  * @ClassName:  StringConstant   
  * @Description:TODO(这里用一句话描述这个类的作用)   
@@ -31,4 +33,9 @@ public class StringConstant {
 	public static final String SESSION_MESSAGE_HASH="sessionMessageHash";
 	public static final String DEVICE_WEB_BINDINGHASH="deviceBingingWebHash";
 	public static final String SESSION_DEVICE_HASH="sessionDeviceHash";
+	public static final String AUTHCODE="00000000";
+	public static final String SUCCESS_OLD_STATE="0";
+	public static final String FAILURE_OLD_STATE="1";
+	public static final String SUCCESS_NEW_STATE="1";
+	public static final String FAILURE_NEW_STATE="0";
 }
