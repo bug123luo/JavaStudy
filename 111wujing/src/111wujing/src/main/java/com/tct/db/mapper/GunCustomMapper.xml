@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tct.db.mapper.GunCustomMapper">
+ 	<sql id="allColumns">
+ 		id,
+ 		uid,
+ 		gun_id,
+ 		gun_model,
+ 		gun_type,
+ 		bluetooth_mac,
+ 		is_del,
+ 		create_time,
+ 		update_time,
+ 		warehouse_id,
+ 		warehouse_name,
+ 		version
+ 	</sql>
+ 	
+ 	<select id="selectAllColumn" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.GunCustom">
+ 		select <include refid="allColumns"/> from gun
+ 		<where>
+ 			<if test="gunCustom.bluetoothMac!=null">
+ 				bluetooth_mac = #{gunCustom.bluetoothMac}
+ 			</if>
+ 		</where>
+ 	</select>
+ 	
+</mapper>

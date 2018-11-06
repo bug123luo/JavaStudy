@@ -25,7 +25,13 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.OutWarehouseReqMessage;
+import com.tct.db.dao.OutWarehouseDao;
+import com.tct.db.po.AppGunCustom;
+import com.tct.db.po.AppGunCustomQueryVo;
+import com.tct.db.po.GunCustom;
+import com.tct.db.po.GunCustomQueryVo;
 import com.tct.jms.producer.OutQueueSender;
+
 
 /**   
  * @ClassName:  OutWarehouseReqService   
@@ -56,6 +62,9 @@ public class OutWarehouseReqService implements TemplateService {
 	@Qualifier("outQueueDestination")
 	private Destination outQueueDestination;
 	
+	@Autowired
+	OutWarehouseDao outWarehouseDao;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -65,9 +74,21 @@ public class OutWarehouseReqService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		OutWarehouseReqMessage oWReqMeg = new OutWarehouseReqMessage();
+		OutWarehouseReqMessage oWReqMsg = (OutWarehouseReqMessage)msg;
 		
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(oWReqMeg));
+		AppGunCustomQueryVo appGunCustomQueryVo = new AppGunCustomQueryVo();
+		AppGunCustom appGunCustom = new AppGunCustom();
+		appGunCustom.setGunId(Integer.valueOf(oWReqMsg.getMessageBody().getGunId()));
+		appGunCustom.setAllotState(Integer.valueOf(1));
+		appGunCustomQueryVo.setAppGunCustom(appGunCustom);
+		
+		GunCustomQueryVo gunCustomQueryVo = new GunCustomQueryVo();
+		GunCustom gunCustom = new GunCustom();
+		gunCustom.setBluetoothMac(oWReqMsg.getMessageBody().getGunMac());
+		gunCustomQueryVo.setGunCustom(gunCustom);
+		
+		outWarehouseDao.insertWarehouseRecords(appGunCustomQueryVo, gunCustomQueryVo);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(oWReqMsg));
 	}
 
 }

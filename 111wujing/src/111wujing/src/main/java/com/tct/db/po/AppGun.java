@@ -11,6 +11,8 @@ public class AppGun {
 
     private Date createTime;
 
+    private Integer allotState;
+
     public Integer getId() {
         return id;
     }
@@ -41,5 +43,13 @@ public class AppGun {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getAllotState() {
+        return allotState;
+    }
+
+    public void setAllotState(Integer allotState) {
+        this.allotState = allotState;
     }
 }

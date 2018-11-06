@@ -344,6 +344,66 @@ public class AppGunExample {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
+
+        public Criteria andAllotStateIsNull() {
+            addCriterion("allot_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateIsNotNull() {
+            addCriterion("allot_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateEqualTo(Integer value) {
+            addCriterion("allot_state =", value, "allotState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateNotEqualTo(Integer value) {
+            addCriterion("allot_state <>", value, "allotState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateGreaterThan(Integer value) {
+            addCriterion("allot_state >", value, "allotState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("allot_state >=", value, "allotState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateLessThan(Integer value) {
+            addCriterion("allot_state <", value, "allotState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateLessThanOrEqualTo(Integer value) {
+            addCriterion("allot_state <=", value, "allotState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateIn(List<Integer> values) {
+            addCriterion("allot_state in", values, "allotState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateNotIn(List<Integer> values) {
+            addCriterion("allot_state not in", values, "allotState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateBetween(Integer value1, Integer value2) {
+            addCriterion("allot_state between", value1, value2, "allotState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllotStateNotBetween(Integer value1, Integer value2) {
+            addCriterion("allot_state not between", value1, value2, "allotState");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

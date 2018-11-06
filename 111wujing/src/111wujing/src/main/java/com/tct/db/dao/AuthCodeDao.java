@@ -14,7 +14,7 @@ package com.tct.db.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.tct.db.mapper.AppMapperCustomer;
+import com.tct.db.mapper.AppCustomMapper;
 import com.tct.db.po.AppCustom;
 import com.tct.db.po.AppCustomQueryVo;
 
@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AuthCodeDao {
 	
 	@Autowired
-	AppMapperCustomer appDao;
+	AppCustomMapper appDao;
 	
 	public AppCustom selectAppAllColumn(AppCustomQueryVo appCustomQueryVo) {
 		AppCustom appCustom =null;

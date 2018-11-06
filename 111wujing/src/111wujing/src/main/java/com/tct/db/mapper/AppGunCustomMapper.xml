@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tct.db.mapper.AppGunCustomMapper">
+ 	<sql id="allColumns">
+ 		id,
+ 		app_id,
+ 		gun_id,
+ 		create_time,
+ 		alloc_state
+ 	</sql>
+ 	
+<!--  	<select id="selectAllColumn" parameterType="com.tct.db.po.AppGunCustomQueryVo" resultType="com.tct.db.po.AppGunCustom">
+ 		select <include refid="allColumns"/> from app_gun
+ 		<where>
+ 			<if test="appCustom.gunId !=null">
+ 				gun_id=#{appCustom.gunId}
+ 			</if>
+ 			<if test="appCustom.allotState!=null">
+ 				and allot_state=#{appCustom.allotState}
+ 			</if>
+ 		</where>
+ 	</select> -->
+ 	
+ 	<select id="selectAllColumn" parameterType="com.tct.db.po.AppGunCustomQueryVo" resultType="com.tct.db.po.AppGunCustom">
+ 		select <include refid="allColumns"/> from app_gun
+ 		<trim prefix="WHERE (" suffix=")" prefixOverrides="AND |OR ">
+ 			<if test="appCustom.gunId !=null">
+ 				gun_id=#{appCustom.gunId}
+ 			</if>
+ 			<if test="appCustom.allotState!=null">
+ 				and allot_state=#{appCustom.allotState}
+ 			</if>
+ 		</trim>
+ 	</select>
+ 	
+
+</mapper>
