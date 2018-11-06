@@ -9,6 +9,8 @@ public class AppDynamicData {
 
     private String appBatteryPower;
 
+    private Integer state;
+
     private Date createTime;
 
     private Integer version;
@@ -35,6 +37,14 @@ public class AppDynamicData {
 
     public void setAppBatteryPower(String appBatteryPower) {
         this.appBatteryPower = appBatteryPower == null ? null : appBatteryPower.trim();
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public Date getCreateTime() {

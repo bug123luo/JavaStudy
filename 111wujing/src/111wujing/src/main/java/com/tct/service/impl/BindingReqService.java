@@ -11,10 +11,22 @@
  */
 package com.tct.service.impl;
 
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+import com.tct.codec.protocol.pojo.BindingReqMessage;
+import com.tct.jms.producer.OutQueueSender;
 
 /**   
  * @ClassName:  BindingReqService   
@@ -30,6 +42,21 @@ import com.alibaba.fastjson.JSONObject;
 @Scope("prototype")
 public class BindingReqService implements TemplateService {
 
+	@Autowired
+	@Qualifier("stringRedisTemplate")
+	private StringRedisTemplate stringRedisTemplate;
+	
+	@Autowired
+	@Qualifier("jedisTemplate")
+	private RedisTemplate<String,Map<String, ?>> jedisTemplate;
+	
+	@Resource
+	private OutQueueSender outQueueSender;
+	
+	@Resource
+	@Qualifier("outQueueDestination")
+	private Destination outQueueDestination;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -39,8 +66,9 @@ public class BindingReqService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		// TODO Auto-generated method stub
-
+		BindingReqMessage bReqMsg = (BindingReqMessage)msg;
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(bReqMsg));
 	}
 
 }

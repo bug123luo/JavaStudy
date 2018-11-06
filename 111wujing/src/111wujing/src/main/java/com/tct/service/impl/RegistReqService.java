@@ -24,6 +24,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.BindingReqMessage;
+import com.tct.codec.protocol.pojo.BindingReqMessageBody;
 import com.tct.codec.protocol.pojo.RegistReqMessage;
 import com.tct.codec.protocol.pojo.RegistReqMessageBody;
 import com.tct.codec.protocol.pojo.RegistResMessage;
@@ -96,6 +98,8 @@ public class RegistReqService implements TemplateService {
 		if(appCustom!=null && (!appCustom.getAppReadableCode().isEmpty())){
 			regResBody.setReadableCode(appCustom.getAppReadableCode());
 			regResBody.setState(StringConstant.SUCCESS_OLD_STATE);
+			stringRedisTemplate.opsForValue().set(regReqMsg.getUniqueIdentification(), regReqMsg.getSessionToken());
+			jedisTemplate.opsForHash().put(StringConstant.SESSION_DEVICE_HASH, regReqMsg.getSessionToken(), regReqMsg.getUniqueIdentification());
 		}else {
 			regResBody.setReadableCode("");
 			regResBody.setState(StringConstant.FAILURE_OLD_STATE);			
@@ -110,9 +114,9 @@ public class RegistReqService implements TemplateService {
 		regResMsg.setSerialNumber(regReqMsg.getSerialNumber());
 		regResMsg.setSessionToken(regReqMsg.getSessionToken());
 		regResMsg.setUniqueIdentification(regReqMsg.getUniqueIdentification());
-		
+		//发送04好报文给用户
 		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(regResMsg));
-		
+				
 	}
 
 }

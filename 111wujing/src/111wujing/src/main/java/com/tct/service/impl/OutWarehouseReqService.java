@@ -11,10 +11,21 @@
  */
 package com.tct.service.impl;
 
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.OutWarehouseReqMessage;
+import com.tct.jms.producer.OutQueueSender;
 
 /**   
  * @ClassName:  OutWarehouseReqService   
@@ -30,6 +41,21 @@ import com.alibaba.fastjson.JSONObject;
 @Scope("prototype")
 public class OutWarehouseReqService implements TemplateService {
 
+	@Autowired
+	@Qualifier("stringRedisTemplate")
+	private StringRedisTemplate stringRedisTemplate;
+	
+	@Autowired
+	@Qualifier("jedisTemplate")
+	private RedisTemplate<String,Map<String, ?>> jedisTemplate;
+	
+	@Resource
+	private OutQueueSender outQueueSender;
+	
+	@Resource
+	@Qualifier("outQueueDestination")
+	private Destination outQueueDestination;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -39,8 +65,9 @@ public class OutWarehouseReqService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		// TODO Auto-generated method stub
-
+		OutWarehouseReqMessage oWReqMeg = new OutWarehouseReqMessage();
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(oWReqMeg));
 	}
 
 }

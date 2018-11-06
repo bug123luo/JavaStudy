@@ -51,6 +51,7 @@
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
 		<table tableName="app"></table>
+		<table tableName="app_gun"></table>
 		<table tableName="app_dynamic_data"></table>
 		<table tableName="app_gun_user"></table>
 		<table tableName="department"></table>

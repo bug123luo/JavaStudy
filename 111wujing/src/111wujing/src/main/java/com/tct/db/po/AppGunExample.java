@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class AppDynamicDataExample {
+public class AppGunExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public AppDynamicDataExample() {
+    public AppGunExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -225,133 +225,63 @@ public class AppDynamicDataExample {
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerIsNull() {
-            addCriterion("app_battery_power is null");
+        public Criteria andGunIdIsNull() {
+            addCriterion("gun_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerIsNotNull() {
-            addCriterion("app_battery_power is not null");
+        public Criteria andGunIdIsNotNull() {
+            addCriterion("gun_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerEqualTo(String value) {
-            addCriterion("app_battery_power =", value, "appBatteryPower");
+        public Criteria andGunIdEqualTo(Integer value) {
+            addCriterion("gun_id =", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerNotEqualTo(String value) {
-            addCriterion("app_battery_power <>", value, "appBatteryPower");
+        public Criteria andGunIdNotEqualTo(Integer value) {
+            addCriterion("gun_id <>", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerGreaterThan(String value) {
-            addCriterion("app_battery_power >", value, "appBatteryPower");
+        public Criteria andGunIdGreaterThan(Integer value) {
+            addCriterion("gun_id >", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerGreaterThanOrEqualTo(String value) {
-            addCriterion("app_battery_power >=", value, "appBatteryPower");
+        public Criteria andGunIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("gun_id >=", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerLessThan(String value) {
-            addCriterion("app_battery_power <", value, "appBatteryPower");
+        public Criteria andGunIdLessThan(Integer value) {
+            addCriterion("gun_id <", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerLessThanOrEqualTo(String value) {
-            addCriterion("app_battery_power <=", value, "appBatteryPower");
+        public Criteria andGunIdLessThanOrEqualTo(Integer value) {
+            addCriterion("gun_id <=", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerLike(String value) {
-            addCriterion("app_battery_power like", value, "appBatteryPower");
+        public Criteria andGunIdIn(List<Integer> values) {
+            addCriterion("gun_id in", values, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerNotLike(String value) {
-            addCriterion("app_battery_power not like", value, "appBatteryPower");
+        public Criteria andGunIdNotIn(List<Integer> values) {
+            addCriterion("gun_id not in", values, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerIn(List<String> values) {
-            addCriterion("app_battery_power in", values, "appBatteryPower");
+        public Criteria andGunIdBetween(Integer value1, Integer value2) {
+            addCriterion("gun_id between", value1, value2, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andAppBatteryPowerNotIn(List<String> values) {
-            addCriterion("app_battery_power not in", values, "appBatteryPower");
-            return (Criteria) this;
-        }
-
-        public Criteria andAppBatteryPowerBetween(String value1, String value2) {
-            addCriterion("app_battery_power between", value1, value2, "appBatteryPower");
-            return (Criteria) this;
-        }
-
-        public Criteria andAppBatteryPowerNotBetween(String value1, String value2) {
-            addCriterion("app_battery_power not between", value1, value2, "appBatteryPower");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateIsNull() {
-            addCriterion("state is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateIsNotNull() {
-            addCriterion("state is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateEqualTo(Integer value) {
-            addCriterion("state =", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateNotEqualTo(Integer value) {
-            addCriterion("state <>", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateGreaterThan(Integer value) {
-            addCriterion("state >", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateGreaterThanOrEqualTo(Integer value) {
-            addCriterion("state >=", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateLessThan(Integer value) {
-            addCriterion("state <", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateLessThanOrEqualTo(Integer value) {
-            addCriterion("state <=", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateIn(List<Integer> values) {
-            addCriterion("state in", values, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateNotIn(List<Integer> values) {
-            addCriterion("state not in", values, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateBetween(Integer value1, Integer value2) {
-            addCriterion("state between", value1, value2, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateNotBetween(Integer value1, Integer value2) {
-            addCriterion("state not between", value1, value2, "state");
+        public Criteria andGunIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("gun_id not between", value1, value2, "gunId");
             return (Criteria) this;
         }
 
@@ -412,66 +342,6 @@ public class AppDynamicDataExample {
 
         public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
             addCriterion("create_time not between", value1, value2, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionIsNull() {
-            addCriterion("version is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionIsNotNull() {
-            addCriterion("version is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionEqualTo(Integer value) {
-            addCriterion("version =", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionNotEqualTo(Integer value) {
-            addCriterion("version <>", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionGreaterThan(Integer value) {
-            addCriterion("version >", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionGreaterThanOrEqualTo(Integer value) {
-            addCriterion("version >=", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionLessThan(Integer value) {
-            addCriterion("version <", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionLessThanOrEqualTo(Integer value) {
-            addCriterion("version <=", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionIn(List<Integer> values) {
-            addCriterion("version in", values, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionNotIn(List<Integer> values) {
-            addCriterion("version not in", values, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionBetween(Integer value1, Integer value2) {
-            addCriterion("version between", value1, value2, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionNotBetween(Integer value1, Integer value2) {
-            addCriterion("version not between", value1, value2, "version");
             return (Criteria) this;
         }
     }
