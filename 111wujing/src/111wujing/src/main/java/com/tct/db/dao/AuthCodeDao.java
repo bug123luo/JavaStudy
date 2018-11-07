@@ -14,6 +14,8 @@ package com.tct.db.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.tct.codec.protocol.pojo.AuthorizationReqMessage;
+import com.tct.codec.protocol.pojo.RegistReqMessage;
 import com.tct.db.mapper.AppCustomMapper;
 import com.tct.db.po.AppCustom;
 import com.tct.db.po.AppCustomQueryVo;
@@ -38,6 +40,39 @@ public class AuthCodeDao {
 	AppCustomMapper appDao;
 	
 	public AppCustom selectAppAllColumn(AppCustomQueryVo appCustomQueryVo) {
+		AppCustom appCustom =null;
+		try {
+			appCustom = appDao.selectAppAllColumn(appCustomQueryVo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return appCustom;
+	}
+	
+	public AppCustom selectAppAllColumn(AuthorizationReqMessage arq) {
+		AppCustomQueryVo appCustomQueryVo = new AppCustomQueryVo();
+		AppCustom appCustomQuery = new AppCustom();
+		appCustomQuery.setAppImei(arq.getMessageBody().getImei());
+		appCustomQueryVo.setAppCustom(appCustomQuery);
+		
+		AppCustom appCustom =null;
+		try {
+			appCustom = appDao.selectAppAllColumn(appCustomQueryVo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return appCustom;
+	}
+	
+	public AppCustom selectAppAllColumn(RegistReqMessage regReqMsg) {
+		
+		AppCustomQueryVo appCustomQueryVo = new AppCustomQueryVo();
+		AppCustom appCustomQuery = new AppCustom();
+		appCustomQuery.setAppImei(regReqMsg.getMessageBody().getImei());
+		appCustomQuery.setAppMac(regReqMsg.getMessageBody().getWatchMac());
+		appCustomQuery.setAppPhone(regReqMsg.getMessageBody().getPhone());
+		appCustomQueryVo.setAppCustom(appCustomQuery);
+		
 		AppCustom appCustom =null;
 		try {
 			appCustom = appDao.selectAppAllColumn(appCustomQueryVo);

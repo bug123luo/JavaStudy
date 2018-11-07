@@ -77,20 +77,10 @@ public class AuthorizationReqService implements TemplateService {
 	public void handleCodeMsg(Object msg) throws Exception {
 		
 		AuthorizationReqMessage arq = (AuthorizationReqMessage)msg;
-		
-		String Imei = arq.getMessageBody().getImei();
-		String lo = arq.getMessageBody().getLo();
-		String la =  arq.getMessageBody().getLa();
-		String sessionToken = arq.getSessionToken();
 		AuthorizationResMessageBody msgBody = new AuthorizationResMessageBody();
 		
 		//数据库中查询是否存在，如果腕表存在，响应报文
-		
-		AppCustomQueryVo appCustomQueryVo = new AppCustomQueryVo();
-		AppCustom appCustomQuery = new AppCustom();
-		appCustomQuery.setAppImei(Imei);
-		appCustomQueryVo.setAppCustom(appCustomQuery);
-		AppCustom appCustom=authcodeDao.selectAppAllColumn(appCustomQueryVo);
+		AppCustom appCustom=authcodeDao.selectAppAllColumn(arq);
 		if(appCustom!=null && (!appCustom.getAppImei().isEmpty())) {
 			msgBody.setState(StringConstant.SUCCESS_OLD_STATE);
 			msgBody.setAuthCode(StringConstant.AUTHCODE);
@@ -103,17 +93,23 @@ public class AuthorizationReqService implements TemplateService {
 			msgBody.setPort("");
 		}
 		
+		AuthorizationResMessage arqRes =constructRes(arq, msgBody);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(arqRes));
+	}
+	
+	public AuthorizationResMessage constructRes(AuthorizationReqMessage arq, AuthorizationResMessageBody msgBody) {
+		
 		AuthorizationResMessage arqRes =new AuthorizationResMessage();
 		arqRes.setDeviceType(arq.getDeviceType());
 		arqRes.setFormatVersion(arq.getFormatVersion());
 		arqRes.setMessageType(MessageTypeConstant.MESSAGE01);
 		arqRes.setSendTime(StringUtil.getDateString());
 		arqRes.setSerialNumber(arq.getSerialNumber());
-		arqRes.setSessionToken(sessionToken);
+		arqRes.setSessionToken(arq.getSessionToken());
 		arqRes.setUniqueIdentification(arq.getUniqueIdentification());
 		arqRes.setMessageBody(msgBody);
 		
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(arqRes));
+		return arqRes;
 	}
 
 }

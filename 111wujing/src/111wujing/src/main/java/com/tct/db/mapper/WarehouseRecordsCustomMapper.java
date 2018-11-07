@@ -1,6 +1,8 @@
 package com.tct.db.mapper;
 
 import com.tct.db.po.WarehouseRecords;
+import com.tct.db.po.WarehouseRecordsCustom;
+import com.tct.db.po.WarehouseRecordsQueryVo;
 
 /**
  * 
@@ -15,4 +17,8 @@ import com.tct.db.po.WarehouseRecords;
 
 public interface WarehouseRecordsCustomMapper {
 	int insertSelective(WarehouseRecords warehouseRecords);
+	
+	int updateSelectiveByGunId(WarehouseRecords warehouseRecords);
+	
+	WarehouseRecordsCustom selectByGunIdAndState(WarehouseRecordsQueryVo warehouseRecordsQueryVo);
 }

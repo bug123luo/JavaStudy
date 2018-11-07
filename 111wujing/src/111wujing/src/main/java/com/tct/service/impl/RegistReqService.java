@@ -80,21 +80,9 @@ public class RegistReqService implements TemplateService {
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
 		RegistReqMessage regReqMsg = (RegistReqMessage)msg;
+		RegistResMessageBody regResBody = new RegistResMessageBody();
 		
-		String watchMac = regReqMsg.getMessageBody().getWatchMac();
-		String imei = regReqMsg.getMessageBody().getImei();
-		String phone = regReqMsg.getMessageBody().getPhone();
-
-		AppCustomQueryVo appCustomQueryVo = new AppCustomQueryVo();
-		AppCustom appCustomQuery = new AppCustom();
-		appCustomQuery.setAppImei(imei);
-		appCustomQuery.setAppMac(watchMac);
-		appCustomQuery.setAppPhone(phone);
-		appCustomQueryVo.setAppCustom(appCustomQuery);
-		AppCustom appCustom = authcodeDao.selectAppAllColumn(appCustomQueryVo);
-		
-		
-		RegistResMessageBody regResBody = new RegistResMessageBody(); 
+		AppCustom appCustom = authcodeDao.selectAppAllColumn(regReqMsg); 
 		if(appCustom!=null && (!appCustom.getAppReadableCode().isEmpty())){
 			regResBody.setReadableCode(appCustom.getAppReadableCode());
 			regResBody.setState(StringConstant.SUCCESS_OLD_STATE);
@@ -105,6 +93,23 @@ public class RegistReqService implements TemplateService {
 			regResBody.setState(StringConstant.FAILURE_OLD_STATE);			
 		}
 		
+		RegistResMessage regResMsg = constructRes(regReqMsg, regResBody);
+		//发送04好报文给用户
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(regResMsg));		
+	}
+	
+	/**
+	 * 
+	 * @Title: constructRes   
+	 * @Description: TODO(构造返回报文)   
+	 * @param: @param regReqMsg
+	 * @param: @param regResBody
+	 * @param: @return      
+	 * @return: RegistResMessage      
+	 * @throws
+	 */
+	public RegistResMessage constructRes(RegistReqMessage regReqMsg, RegistResMessageBody regResBody) {
+		
 		RegistResMessage regResMsg = new RegistResMessage();
 		regResMsg.setDeviceType(regReqMsg.getDeviceType());
 		regResMsg.setFormatVersion(regReqMsg.getFormatVersion());
@@ -114,9 +119,8 @@ public class RegistReqService implements TemplateService {
 		regResMsg.setSerialNumber(regReqMsg.getSerialNumber());
 		regResMsg.setSessionToken(regReqMsg.getSessionToken());
 		regResMsg.setUniqueIdentification(regReqMsg.getUniqueIdentification());
-		//发送04好报文给用户
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(regResMsg));
-				
+		
+		return regResMsg;
 	}
 
 }

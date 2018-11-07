@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.impl.AuthorizationReqCodec;
 import com.tct.codec.impl.BindingReqCodec;
+import com.tct.codec.impl.BindingResCodec;
 import com.tct.codec.impl.CancelInWarehouseReqCodec;
 import com.tct.codec.impl.CancelRecipientsGunReqCodec;
 import com.tct.codec.impl.DeviceHeartReqCodec;
@@ -30,6 +31,7 @@ import com.tct.codec.impl.StartStopSearchGunReqCodec;
 import com.tct.codec.impl.WatchHeartReqCodec;
 import com.tct.codec.protocol.pojo.AuthorizationReqMessage;
 import com.tct.codec.protocol.pojo.BindingReqMessage;
+import com.tct.codec.protocol.pojo.BindingResMessage;
 import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
 import com.tct.codec.protocol.pojo.DeviceHeartReqMessage;
@@ -44,6 +46,7 @@ import com.tct.codec.protocol.pojo.StartStopSearchGunReqMessage;
 import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
 import com.tct.service.impl.AuthorizationReqService;
 import com.tct.service.impl.BindingReqService;
+import com.tct.service.impl.BindingResService;
 import com.tct.service.impl.CancelInWarehouseReqService;
 import com.tct.service.impl.CancelRecipientsGunReqService;
 import com.tct.service.impl.DeviceHeartReqService;
@@ -112,6 +115,9 @@ public class ServiceSelector {
 	
 	@Resource(name = "watchHeartReqService")
 	private WatchHeartReqService watchHeartReqService;
+	
+	@Resource(name = "bindingResService")
+	private BindingResService bindingResService;
 	
 	public void handlerService(MessageBodyCodec messageCodec,JSONObject msg){
 		
@@ -213,6 +219,13 @@ public class ServiceSelector {
 			service = watchHeartReqService;
 			try {
 				objmsg = (WatchHeartReqMessage)messageCodec.decode(msg);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(messageCodec instanceof BindingResCodec){
+			service = bindingResService;
+			try {
+				objmsg = (BindingResMessage)messageCodec.decode(msg);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

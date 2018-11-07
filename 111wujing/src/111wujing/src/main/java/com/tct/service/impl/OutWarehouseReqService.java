@@ -23,6 +23,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.druid.support.logging.Log;
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.OutWarehouseReqMessage;
 import com.tct.db.dao.OutWarehouseDao;
@@ -30,7 +31,12 @@ import com.tct.db.po.AppGunCustom;
 import com.tct.db.po.AppGunCustomQueryVo;
 import com.tct.db.po.GunCustom;
 import com.tct.db.po.GunCustomQueryVo;
+import com.tct.db.po.WarehouseRecords;
+import com.tct.db.po.WarehouseRecordsCustom;
+import com.tct.db.po.WarehouseRecordsQueryVo;
 import com.tct.jms.producer.OutQueueSender;
+
+import lombok.extern.slf4j.Slf4j;
 
 
 /**   
@@ -43,6 +49,7 @@ import com.tct.jms.producer.OutQueueSender;
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
 
+@Slf4j
 @Service("outWarehouseReqService")
 @Scope("prototype")
 public class OutWarehouseReqService implements TemplateService {
@@ -75,20 +82,20 @@ public class OutWarehouseReqService implements TemplateService {
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
 		OutWarehouseReqMessage oWReqMsg = (OutWarehouseReqMessage)msg;
-		
-		AppGunCustomQueryVo appGunCustomQueryVo = new AppGunCustomQueryVo();
-		AppGunCustom appGunCustom = new AppGunCustom();
-		appGunCustom.setGunId(Integer.valueOf(oWReqMsg.getMessageBody().getGunId()));
-		appGunCustom.setAllotState(Integer.valueOf(1));
-		appGunCustomQueryVo.setAppGunCustom(appGunCustom);
-		
-		GunCustomQueryVo gunCustomQueryVo = new GunCustomQueryVo();
-		GunCustom gunCustom = new GunCustom();
-		gunCustom.setBluetoothMac(oWReqMsg.getMessageBody().getGunMac());
-		gunCustomQueryVo.setGunCustom(gunCustom);
-		
-		outWarehouseDao.insertWarehouseRecords(appGunCustomQueryVo, gunCustomQueryVo);
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(oWReqMsg));
-	}
 
+		WarehouseRecordsCustom tempObj=outWarehouseDao.selectByGunIdAndState(oWReqMsg);
+		if (tempObj!=null) {
+			//update更新领用时间和截止时间
+			return;
+		}
+				
+		int i=outWarehouseDao.insertWarehouseRecords(oWReqMsg);
+		if(i!=0) {
+			String sessionToken =  stringRedisTemplate.opsForValue().get(oWReqMsg.getUniqueIdentification());
+			oWReqMsg.setSessionToken(sessionToken);
+			outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(oWReqMsg));
+		}else {
+			log.info("插入数据不成功，请检查插入数据!");
+		}
+	}
 }
