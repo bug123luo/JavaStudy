@@ -35,6 +35,7 @@ import com.tct.db.po.WarehouseRecords;
 import com.tct.db.po.WarehouseRecordsCustom;
 import com.tct.db.po.WarehouseRecordsQueryVo;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -85,8 +86,14 @@ public class OutWarehouseReqService implements TemplateService {
 
 		WarehouseRecordsCustom tempObj=outWarehouseDao.selectByGunIdAndState(oWReqMsg);
 		if (tempObj!=null) {
-			//update更新领用时间和截止时间
-			return;
+			if(tempObj.getState().equals(StringConstant.OUT_WAREHOUSE_ING_STATE)) {
+				//如果需要update更新领用时间和截止时间
+				return;
+			}else if(tempObj.getState().equals(StringConstant.OUT_WAREHOUSE_STATE) 
+					|| tempObj.getState().equals(StringConstant.IN_WAREHOUSE_ING_STATE)){
+				return;
+			}
+
 		}
 				
 		int i=outWarehouseDao.insertWarehouseRecords(oWReqMsg);

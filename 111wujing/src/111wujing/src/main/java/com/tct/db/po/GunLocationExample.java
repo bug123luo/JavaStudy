@@ -744,6 +744,346 @@ public class GunLocationExample {
             addCriterion("version not between", value1, value2, "version");
             return (Criteria) this;
         }
+
+        public Criteria andAreaCodeIsNull() {
+            addCriterion("area_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeIsNotNull() {
+            addCriterion("area_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeEqualTo(String value) {
+            addCriterion("area_code =", value, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeNotEqualTo(String value) {
+            addCriterion("area_code <>", value, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeGreaterThan(String value) {
+            addCriterion("area_code >", value, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("area_code >=", value, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeLessThan(String value) {
+            addCriterion("area_code <", value, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeLessThanOrEqualTo(String value) {
+            addCriterion("area_code <=", value, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeLike(String value) {
+            addCriterion("area_code like", value, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeNotLike(String value) {
+            addCriterion("area_code not like", value, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeIn(List<String> values) {
+            addCriterion("area_code in", values, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeNotIn(List<String> values) {
+            addCriterion("area_code not in", values, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeBetween(String value1, String value2) {
+            addCriterion("area_code between", value1, value2, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaCodeNotBetween(String value1, String value2) {
+            addCriterion("area_code not between", value1, value2, "areaCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedIsNull() {
+            addCriterion("speed is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedIsNotNull() {
+            addCriterion("speed is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedEqualTo(String value) {
+            addCriterion("speed =", value, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedNotEqualTo(String value) {
+            addCriterion("speed <>", value, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedGreaterThan(String value) {
+            addCriterion("speed >", value, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedGreaterThanOrEqualTo(String value) {
+            addCriterion("speed >=", value, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedLessThan(String value) {
+            addCriterion("speed <", value, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedLessThanOrEqualTo(String value) {
+            addCriterion("speed <=", value, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedLike(String value) {
+            addCriterion("speed like", value, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedNotLike(String value) {
+            addCriterion("speed not like", value, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedIn(List<String> values) {
+            addCriterion("speed in", values, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedNotIn(List<String> values) {
+            addCriterion("speed not in", values, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedBetween(String value1, String value2) {
+            addCriterion("speed between", value1, value2, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpeedNotBetween(String value1, String value2) {
+            addCriterion("speed not between", value1, value2, "speed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorIsNull() {
+            addCriterion("director is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorIsNotNull() {
+            addCriterion("director is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorEqualTo(String value) {
+            addCriterion("director =", value, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorNotEqualTo(String value) {
+            addCriterion("director <>", value, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorGreaterThan(String value) {
+            addCriterion("director >", value, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorGreaterThanOrEqualTo(String value) {
+            addCriterion("director >=", value, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorLessThan(String value) {
+            addCriterion("director <", value, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorLessThanOrEqualTo(String value) {
+            addCriterion("director <=", value, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorLike(String value) {
+            addCriterion("director like", value, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorNotLike(String value) {
+            addCriterion("director not like", value, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorIn(List<String> values) {
+            addCriterion("director in", values, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorNotIn(List<String> values) {
+            addCriterion("director not in", values, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorBetween(String value1, String value2) {
+            addCriterion("director between", value1, value2, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectorNotBetween(String value1, String value2) {
+            addCriterion("director not between", value1, value2, "director");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerIsNull() {
+            addCriterion("gun_device_battery_power is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerIsNotNull() {
+            addCriterion("gun_device_battery_power is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerEqualTo(String value) {
+            addCriterion("gun_device_battery_power =", value, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerNotEqualTo(String value) {
+            addCriterion("gun_device_battery_power <>", value, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerGreaterThan(String value) {
+            addCriterion("gun_device_battery_power >", value, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerGreaterThanOrEqualTo(String value) {
+            addCriterion("gun_device_battery_power >=", value, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerLessThan(String value) {
+            addCriterion("gun_device_battery_power <", value, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerLessThanOrEqualTo(String value) {
+            addCriterion("gun_device_battery_power <=", value, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerLike(String value) {
+            addCriterion("gun_device_battery_power like", value, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerNotLike(String value) {
+            addCriterion("gun_device_battery_power not like", value, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerIn(List<String> values) {
+            addCriterion("gun_device_battery_power in", values, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerNotIn(List<String> values) {
+            addCriterion("gun_device_battery_power not in", values, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerBetween(String value1, String value2) {
+            addCriterion("gun_device_battery_power between", value1, value2, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceBatteryPowerNotBetween(String value1, String value2) {
+            addCriterion("gun_device_battery_power not between", value1, value2, "gunDeviceBatteryPower");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateIsNull() {
+            addCriterion("gun_device_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateIsNotNull() {
+            addCriterion("gun_device_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateEqualTo(Integer value) {
+            addCriterion("gun_device_state =", value, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateNotEqualTo(Integer value) {
+            addCriterion("gun_device_state <>", value, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateGreaterThan(Integer value) {
+            addCriterion("gun_device_state >", value, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("gun_device_state >=", value, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateLessThan(Integer value) {
+            addCriterion("gun_device_state <", value, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateLessThanOrEqualTo(Integer value) {
+            addCriterion("gun_device_state <=", value, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateIn(List<Integer> values) {
+            addCriterion("gun_device_state in", values, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateNotIn(List<Integer> values) {
+            addCriterion("gun_device_state not in", values, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateBetween(Integer value1, Integer value2) {
+            addCriterion("gun_device_state between", value1, value2, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunDeviceStateNotBetween(Integer value1, Integer value2) {
+            addCriterion("gun_device_state not between", value1, value2, "gunDeviceState");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

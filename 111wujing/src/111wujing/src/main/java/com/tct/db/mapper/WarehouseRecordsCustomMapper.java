@@ -20,5 +20,7 @@ public interface WarehouseRecordsCustomMapper {
 	
 	int updateSelectiveByGunId(WarehouseRecords warehouseRecords);
 	
+	int updateSelectiveByGunIdAndOutState(WarehouseRecords warehouseRecords);
+	
 	WarehouseRecordsCustom selectByGunIdAndState(WarehouseRecordsQueryVo warehouseRecordsQueryVo);
 }

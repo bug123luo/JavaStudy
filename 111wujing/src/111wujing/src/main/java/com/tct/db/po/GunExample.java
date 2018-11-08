@@ -435,73 +435,73 @@ public class GunExample {
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacIsNull() {
-            addCriterion("bluetooth_mac is null");
+        public Criteria andGunMacIsNull() {
+            addCriterion("gun_mac is null");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacIsNotNull() {
-            addCriterion("bluetooth_mac is not null");
+        public Criteria andGunMacIsNotNull() {
+            addCriterion("gun_mac is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacEqualTo(String value) {
-            addCriterion("bluetooth_mac =", value, "bluetoothMac");
+        public Criteria andGunMacEqualTo(String value) {
+            addCriterion("gun_mac =", value, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacNotEqualTo(String value) {
-            addCriterion("bluetooth_mac <>", value, "bluetoothMac");
+        public Criteria andGunMacNotEqualTo(String value) {
+            addCriterion("gun_mac <>", value, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacGreaterThan(String value) {
-            addCriterion("bluetooth_mac >", value, "bluetoothMac");
+        public Criteria andGunMacGreaterThan(String value) {
+            addCriterion("gun_mac >", value, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacGreaterThanOrEqualTo(String value) {
-            addCriterion("bluetooth_mac >=", value, "bluetoothMac");
+        public Criteria andGunMacGreaterThanOrEqualTo(String value) {
+            addCriterion("gun_mac >=", value, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacLessThan(String value) {
-            addCriterion("bluetooth_mac <", value, "bluetoothMac");
+        public Criteria andGunMacLessThan(String value) {
+            addCriterion("gun_mac <", value, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacLessThanOrEqualTo(String value) {
-            addCriterion("bluetooth_mac <=", value, "bluetoothMac");
+        public Criteria andGunMacLessThanOrEqualTo(String value) {
+            addCriterion("gun_mac <=", value, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacLike(String value) {
-            addCriterion("bluetooth_mac like", value, "bluetoothMac");
+        public Criteria andGunMacLike(String value) {
+            addCriterion("gun_mac like", value, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacNotLike(String value) {
-            addCriterion("bluetooth_mac not like", value, "bluetoothMac");
+        public Criteria andGunMacNotLike(String value) {
+            addCriterion("gun_mac not like", value, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacIn(List<String> values) {
-            addCriterion("bluetooth_mac in", values, "bluetoothMac");
+        public Criteria andGunMacIn(List<String> values) {
+            addCriterion("gun_mac in", values, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacNotIn(List<String> values) {
-            addCriterion("bluetooth_mac not in", values, "bluetoothMac");
+        public Criteria andGunMacNotIn(List<String> values) {
+            addCriterion("gun_mac not in", values, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacBetween(String value1, String value2) {
-            addCriterion("bluetooth_mac between", value1, value2, "bluetoothMac");
+        public Criteria andGunMacBetween(String value1, String value2) {
+            addCriterion("gun_mac between", value1, value2, "gunMac");
             return (Criteria) this;
         }
 
-        public Criteria andBluetoothMacNotBetween(String value1, String value2) {
-            addCriterion("bluetooth_mac not between", value1, value2, "bluetoothMac");
+        public Criteria andGunMacNotBetween(String value1, String value2) {
+            addCriterion("gun_mac not between", value1, value2, "gunMac");
             return (Criteria) this;
         }
 
@@ -872,6 +872,126 @@ public class GunExample {
 
         public Criteria andVersionNotBetween(Integer value1, Integer value2) {
             addCriterion("version not between", value1, value2, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberIsNull() {
+            addCriterion("total_bullet_number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberIsNotNull() {
+            addCriterion("total_bullet_number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberEqualTo(Integer value) {
+            addCriterion("total_bullet_number =", value, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberNotEqualTo(Integer value) {
+            addCriterion("total_bullet_number <>", value, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberGreaterThan(Integer value) {
+            addCriterion("total_bullet_number >", value, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("total_bullet_number >=", value, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberLessThan(Integer value) {
+            addCriterion("total_bullet_number <", value, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("total_bullet_number <=", value, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberIn(List<Integer> values) {
+            addCriterion("total_bullet_number in", values, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberNotIn(List<Integer> values) {
+            addCriterion("total_bullet_number not in", values, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberBetween(Integer value1, Integer value2) {
+            addCriterion("total_bullet_number between", value1, value2, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalBulletNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("total_bullet_number not between", value1, value2, "totalBulletNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateIsNull() {
+            addCriterion("real_time_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateIsNotNull() {
+            addCriterion("real_time_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateEqualTo(Integer value) {
+            addCriterion("real_time_state =", value, "realTimeState");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateNotEqualTo(Integer value) {
+            addCriterion("real_time_state <>", value, "realTimeState");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateGreaterThan(Integer value) {
+            addCriterion("real_time_state >", value, "realTimeState");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("real_time_state >=", value, "realTimeState");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateLessThan(Integer value) {
+            addCriterion("real_time_state <", value, "realTimeState");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateLessThanOrEqualTo(Integer value) {
+            addCriterion("real_time_state <=", value, "realTimeState");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateIn(List<Integer> values) {
+            addCriterion("real_time_state in", values, "realTimeState");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateNotIn(List<Integer> values) {
+            addCriterion("real_time_state not in", values, "realTimeState");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateBetween(Integer value1, Integer value2) {
+            addCriterion("real_time_state between", value1, value2, "realTimeState");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealTimeStateNotBetween(Integer value1, Integer value2) {
+            addCriterion("real_time_state not between", value1, value2, "realTimeState");
             return (Criteria) this;
         }
     }

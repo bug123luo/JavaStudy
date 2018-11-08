@@ -21,6 +21,8 @@ public class WarehouseRecords {
 
     private Integer version;
 
+    private Date cancelTime;
+
     public Integer getId() {
         return id;
     }
@@ -91,5 +93,13 @@ public class WarehouseRecords {
 
     public void setVersion(Integer version) {
         this.version = version;
+    }
+
+    public Date getCancelTime() {
+        return cancelTime;
+    }
+
+    public void setCancelTime(Date cancelTime) {
+        this.cancelTime = cancelTime;
     }
 }

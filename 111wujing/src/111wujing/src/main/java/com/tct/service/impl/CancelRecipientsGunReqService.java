@@ -11,10 +11,23 @@
  */
 package com.tct.service.impl;
 
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
+import com.tct.db.dao.MessageRecordsDao;
+import com.tct.db.dao.OutWarehouseDao;
+import com.tct.jms.producer.OutQueueSender;
 
 /**   
  * @ClassName:  CancelRecipientsGunReqService   
@@ -30,6 +43,27 @@ import com.alibaba.fastjson.JSONObject;
 @Scope("prototype")
 public class CancelRecipientsGunReqService implements TemplateService {
 
+	@Autowired
+	@Qualifier("stringRedisTemplate")
+	private StringRedisTemplate stringRedisTemplate;
+	
+	@Autowired
+	@Qualifier("jedisTemplate")
+	private RedisTemplate<String,Map<String, ?>> jedisTemplate;
+	
+	@Resource
+	private OutQueueSender outQueueSender;
+	
+	@Resource
+	@Qualifier("outQueueDestination")
+	private Destination outQueueDestination;
+	
+	@Autowired
+	OutWarehouseDao outWarehouseDao;
+	
+	@Autowired
+	MessageRecordsDao mRecDao;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -39,8 +73,14 @@ public class CancelRecipientsGunReqService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		// TODO Auto-generated method stub
-
+		CancelRecipientsGunReqMessage cRecReqMsg=(CancelRecipientsGunReqMessage)msg;
+		
+		mRecDao.insertSelective(cRecReqMsg);
+		outWarehouseDao.updateSelectiveByGunId(cRecReqMsg);
+		
+		String sessionToken = stringRedisTemplate.opsForValue().get(cRecReqMsg.getUniqueIdentification());
+		cRecReqMsg.setSessionToken(sessionToken);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(cRecReqMsg));
 	}
 
 }

@@ -74,7 +74,7 @@ public class BindingGunDao {
 		AppGunCustom appGunCustom = new AppGunCustom();
 		
 		appGunCustom.setAppId(Integer.valueOf(appCustomTemplate.getId()));
-		appGunCustom.setAllotState(Integer.valueOf(2));
+		appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTING_STATE));
 		for(GunInfo guninfo:gunList) {
 			appGunCustom.setGunId(Integer.valueOf(guninfo.getGunId()));
 			appGunDao.insertSelective(appGunCustom);
@@ -95,9 +95,9 @@ public class BindingGunDao {
 
 		AppGunCustom appGunCustom = new AppGunCustom();
 		if(state.equals(StringConstant.SUCCESS_OLD_STATE)) {
-			appGunCustom.setAllotState(Integer.valueOf(1));	
+			appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTED_STATE));	
 		}else {
-			appGunCustom.setAllotState(Integer.valueOf(0));
+			appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_UNALLOT_STATE));
 		}
 		appGunCustom.setAppId(appCustomTemp.getId());
 		appGunDao.updateSelectiveByAppIdAndState(appGunCustom);

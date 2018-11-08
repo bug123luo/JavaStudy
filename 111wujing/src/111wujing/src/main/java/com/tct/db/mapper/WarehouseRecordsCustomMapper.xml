@@ -10,7 +10,8 @@
 		app_id,
 		gun_id,
 		state,
-		version
+		version,
+		cancel_time
 	</sql>
 	<insert id="insertSelective" parameterType="com.tct.db.po.WarehouseRecords">
 		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
@@ -45,6 +46,7 @@
 	      <if test="version != null">
 	        version,
 	      </if>
+
 	    </trim>
 	    <trim prefix="values (" suffix=")" suffixOverrides=",">
 	      <if test="id != null">
@@ -100,8 +102,41 @@
 	      <if test="version != null">
 	        version = #{version,jdbcType=INTEGER},
 	      </if>
+          <if test="cancelTime != null">
+	        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+	      </if>
 	    </set>
 	    where gun_id = #{gunId,jdbcType=CHAR}
+	</update>
+	
+	<update id="updateSelectiveByGunIdAndOutState" parameterType="com.tct.db.po.WarehouseRecords">
+		<set>
+	      <if test="warehouseId != null">
+	        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+	      </if>
+	      <if test="warehouseInTime != null">
+	        warehouse_in_time = #{warehouseInTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="warehouseOutTime != null">
+	        warehouse_out_time = #{warehouseOutTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="webUserId != null">
+	        web_user_id = #{webUserId,jdbcType=INTEGER},
+	      </if>
+	      <if test="appId != null">
+	        app_id = #{appId,jdbcType=INTEGER},
+	      </if>
+	      <if test="state != null">
+	        state = #{state,jdbcType=INTEGER},
+	      </if>
+	      <if test="version != null">
+	        version = #{version,jdbcType=INTEGER},
+	      </if>
+          <if test="cancelTime != null">
+	        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+	      </if>
+	    </set>
+	    where gun_id = #{gunId,jdbcType=CHAR} and (state !=3 and state!=4)
 	</update>
 	
 	<select id="selectByGunIdAndState" parameterType="com.tct.db.po.WarehouseRecordsQueryVo" resultType="com.tct.db.po.WarehouseRecordsCustom">
@@ -110,8 +145,8 @@
  			<if test="warehouseRecordsCustom.gunId !=null">
  				gun_id=#{warehouseRecordsCustom.gunId}
  			</if>
- 			<if test="warehouseRecordsCustom.State!=null">
- 				and allot_state=#{warehouseRecordsCustom.State}
+ 			<if test="1==1">
+ 				and (allot_state=1 or allot_state=2 or allot_state=3)
  			</if>
  		</trim>
 	</select>

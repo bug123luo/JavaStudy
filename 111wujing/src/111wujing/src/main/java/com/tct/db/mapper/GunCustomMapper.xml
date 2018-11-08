@@ -7,20 +7,22 @@
  		gun_id,
  		gun_model,
  		gun_type,
- 		bluetooth_mac,
+ 		gun_mac,
  		is_del,
  		create_time,
  		update_time,
  		warehouse_id,
  		warehouse_name,
- 		version
+ 		version,
+ 		total_bullet_number,
+ 		real_time_state
  	</sql>
  	
  	<select id="selectAllColumn" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.GunCustom">
  		select <include refid="allColumns"/> from gun
  		<where>
- 			<if test="gunCustom.bluetoothMac!=null">
- 				bluetooth_mac = #{gunCustom.bluetoothMac}
+ 			<if test="gunCustom.gunMac!=null">
+ 				gun_mac = #{gunCustom.gunMac}
  			</if>
  		</where>
  	</select>

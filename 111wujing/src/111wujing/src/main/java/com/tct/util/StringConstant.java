@@ -14,6 +14,9 @@ package com.tct.util;
 import javax.print.DocFlavor.STRING;
 
 import org.quartz.core.SampledStatistics;
+import org.springframework.context.support.StaticApplicationContext;
+
+import com.mysql.jdbc.StatementInterceptor;
 
 /**   
  * @ClassName:  StringConstant   
@@ -38,4 +41,12 @@ public class StringConstant {
 	public static final String FAILURE_OLD_STATE="1";
 	public static final String SUCCESS_NEW_STATE="1";
 	public static final String FAILURE_NEW_STATE="0";
+	public static final String OUT_WAREHOUSE_STATE="2";//出库
+	public static final String OUT_WAREHOUSE_ING_STATE="1";//出库中
+	public static final String IN_WAREHOUSE_STATE="4";//入库
+	public static final String IN_WAREHOUSE_ING_STATE="3";//入库中
+	public static final String GUN_ALLOTING_STATE="2";//枪支分配中
+	public static final String GUN_ALLOTED_STATE="1";//枪支已分配
+	public static final String GUN_UNALLOT_STATE="0";//枪支未分配
+			
 }

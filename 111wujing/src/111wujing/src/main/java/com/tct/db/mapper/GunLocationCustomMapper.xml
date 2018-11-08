@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tct.db.mapper.GunLocationCustomMapper">
+	<insert id="insertSelective" parameterType="com.tct.db.po.GunLocationCustom">
+    insert into gun_location
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="gunId != null">
+        gun_id,
+      </if>
+      <if test="gunMac != null">
+        gun_mac,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="exceptionType != null">
+        exception_type,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="areaCode != null">
+        area_code,
+      </if>
+      <if test="speed != null">
+        speed,
+      </if>
+      <if test="director != null">
+        director,
+      </if>
+      <if test="gunDeviceBatteryPower != null">
+        gun_device_battery_power,
+      </if>
+      <if test="gunDeviceState != null">
+        gun_device_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="gunId != null">
+        #{gunId,jdbcType=CHAR},
+      </if>
+      <if test="gunMac != null">
+        #{gunMac,jdbcType=CHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=CHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exceptionType != null">
+        #{exceptionType,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="areaCode != null">
+        #{areaCode,jdbcType=CHAR},
+      </if>
+      <if test="speed != null">
+        #{speed,jdbcType=CHAR},
+      </if>
+      <if test="director != null">
+        #{director,jdbcType=CHAR},
+      </if>
+      <if test="gunDeviceBatteryPower != null">
+        #{gunDeviceBatteryPower,jdbcType=CHAR},
+      </if>
+      <if test="gunDeviceState != null">
+        #{gunDeviceState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+	
+</mapper>

@@ -22,6 +22,7 @@ import com.tct.codec.impl.BindingReqCodec;
 import com.tct.codec.impl.BindingResCodec;
 import com.tct.codec.impl.CancelInWarehouseReqCodec;
 import com.tct.codec.impl.CancelRecipientsGunReqCodec;
+import com.tct.codec.impl.CancelRecipientsGunResCodec;
 import com.tct.codec.impl.DeviceHeartReqCodec;
 import com.tct.codec.impl.GetBulletNumberReqCodec;
 import com.tct.codec.impl.InWarehouseReqCodec;
@@ -79,6 +80,8 @@ public class MessageCodecSelector {
 			msgCodec = new ParamSettingReqCodec();
 		}else if (json.getString("messageType").equals("06")) {
 			msgCodec = new BindingResCodec();
+		}else if(json.getString("messageType").equals("10")){
+			msgCodec = new CancelRecipientsGunResCodec();
 		}else {
 			msgCodec = null;
 		}

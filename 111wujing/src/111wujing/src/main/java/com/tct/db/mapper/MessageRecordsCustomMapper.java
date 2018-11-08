@@ -1,36 +1,32 @@
 /**  
  * All rights Reserved, Designed By www.tct.com
- * @Title:  CancelRecipientsGunResMessage.java   
- * @Package com.tct.codec.protocol.pojo   
+ * @Title:  MessageRecordsCustomMapper.java   
+ * @Package com.tct.db.mapper   
  * @Description:    TODO(用一句话描述该文件做什么)   
  * @author: 泰源云景科技     
- * @date:   2018年10月30日 下午5:27:47   
+ * @date:   2018年11月8日 上午11:28:28   
  * @version V1.0 
  * @Copyright: 2018 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技内部传阅，禁止外泄以及用于其他的商业目
  */
-package com.tct.codec.protocol.pojo;
+package com.tct.db.mapper;
 
-import lombok.Data;
+import com.tct.db.po.MessageRecordsCustom;
+import com.tct.db.po.MessageRecordsQueryVo;
 
 /**   
- * @ClassName:  CancelRecipientsGunResMessage   
+ * @ClassName:  MessageRecordsCustomMapper   
  * @Description:TODO(这里用一句话描述这个类的作用)   
  * @author: 泰源云景
- * @date:   2018年10月30日 下午5:27:47   
+ * @date:   2018年11月8日 上午11:28:28   
  *     
  * @Copyright: 2018 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
+public interface MessageRecordsCustomMapper {
 
-@Data
-//10号报文
-public class CancelRecipientsGunResMessage extends TemplateMessage {
-
-	/**   
-	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)   
-	 */ 
-	private static final long serialVersionUID = -1515013617569987011L;
-
-	private CancelRecipientsGunResMessageBody messageBody;
+	MessageRecordsCustom selectBySerlNum(MessageRecordsQueryVo messageRecordsQueryVo);
+	
+	int insertSelective(MessageRecordsCustom messageRecordsCustom);
+	
 }

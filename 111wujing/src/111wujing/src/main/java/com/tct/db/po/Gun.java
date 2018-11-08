@@ -13,7 +13,7 @@ public class Gun {
 
     private String gunType;
 
-    private String bluetoothMac;
+    private String gunMac;
 
     private Byte isDel;
 
@@ -26,6 +26,10 @@ public class Gun {
     private String warehouseName;
 
     private Integer version;
+
+    private Integer totalBulletNumber;
+
+    private Integer realTimeState;
 
     public Integer getId() {
         return id;
@@ -67,12 +71,12 @@ public class Gun {
         this.gunType = gunType == null ? null : gunType.trim();
     }
 
-    public String getBluetoothMac() {
-        return bluetoothMac;
+    public String getGunMac() {
+        return gunMac;
     }
 
-    public void setBluetoothMac(String bluetoothMac) {
-        this.bluetoothMac = bluetoothMac == null ? null : bluetoothMac.trim();
+    public void setGunMac(String gunMac) {
+        this.gunMac = gunMac == null ? null : gunMac.trim();
     }
 
     public Byte getIsDel() {
@@ -121,5 +125,21 @@ public class Gun {
 
     public void setVersion(Integer version) {
         this.version = version;
+    }
+
+    public Integer getTotalBulletNumber() {
+        return totalBulletNumber;
+    }
+
+    public void setTotalBulletNumber(Integer totalBulletNumber) {
+        this.totalBulletNumber = totalBulletNumber;
+    }
+
+    public Integer getRealTimeState() {
+        return realTimeState;
+    }
+
+    public void setRealTimeState(Integer realTimeState) {
+        this.realTimeState = realTimeState;
     }
 }

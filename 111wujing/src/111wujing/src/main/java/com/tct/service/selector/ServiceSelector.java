@@ -18,6 +18,7 @@ import com.tct.codec.impl.BindingReqCodec;
 import com.tct.codec.impl.BindingResCodec;
 import com.tct.codec.impl.CancelInWarehouseReqCodec;
 import com.tct.codec.impl.CancelRecipientsGunReqCodec;
+import com.tct.codec.impl.CancelRecipientsGunResCodec;
 import com.tct.codec.impl.DeviceHeartReqCodec;
 import com.tct.codec.impl.GetBulletNumberReqCodec;
 import com.tct.codec.impl.InWarehouseReqCodec;
@@ -34,6 +35,7 @@ import com.tct.codec.protocol.pojo.BindingReqMessage;
 import com.tct.codec.protocol.pojo.BindingResMessage;
 import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
+import com.tct.codec.protocol.pojo.CancelRecipientsGunResMessage;
 import com.tct.codec.protocol.pojo.DeviceHeartReqMessage;
 import com.tct.codec.protocol.pojo.GetBulletNumberReqMessage;
 import com.tct.codec.protocol.pojo.InWarehouseReqMessage;
@@ -49,6 +51,7 @@ import com.tct.service.impl.BindingReqService;
 import com.tct.service.impl.BindingResService;
 import com.tct.service.impl.CancelInWarehouseReqService;
 import com.tct.service.impl.CancelRecipientsGunReqService;
+import com.tct.service.impl.CancelRecipientsGunResService;
 import com.tct.service.impl.DeviceHeartReqService;
 import com.tct.service.impl.GetBulletNumberReqService;
 import com.tct.service.impl.InWarehouseReqService;
@@ -118,6 +121,9 @@ public class ServiceSelector {
 	
 	@Resource(name = "bindingResService")
 	private BindingResService bindingResService;
+	
+	@Resource(name = "cancelRecipientsGunResService")
+	private CancelRecipientsGunResService cancelRecipientsGunResService;
 	
 	public void handlerService(MessageBodyCodec messageCodec,JSONObject msg){
 		
@@ -226,6 +232,13 @@ public class ServiceSelector {
 			service = bindingResService;
 			try {
 				objmsg = (BindingResMessage)messageCodec.decode(msg);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(messageCodec instanceof CancelRecipientsGunResCodec){
+			service = cancelRecipientsGunResService;
+			try {
+				objmsg = (CancelRecipientsGunResMessage)messageCodec.decode(msg);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
