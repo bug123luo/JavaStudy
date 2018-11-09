@@ -29,6 +29,7 @@ import com.tct.codec.protocol.pojo.WatchHeartResMessage;
 import com.tct.codec.protocol.pojo.WatchHeartResMessageBody;
 import com.tct.db.dao.HeartbeatDao;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.MessageTypeConstant;
 import com.tct.util.StringConstant;
 import com.tct.util.StringUtil;
 
@@ -84,7 +85,7 @@ public class WatchHeartReqService implements TemplateService {
 		wHResMsg.setMessageBody(msgBody);
 		wHResMsg.setDeviceType(msg.getDeviceType());
 		wHResMsg.setFormatVersion(msg.getFormatVersion());
-		wHResMsg.setMessageType(msg.getMessageType());
+		wHResMsg.setMessageType(MessageTypeConstant.MESSAGE16);
 		wHResMsg.setSendTime(StringUtil.getDateString());
 		wHResMsg.setSerialNumber(msg.getSerialNumber());
 		wHResMsg.setSessionToken(msg.getSessionToken());
