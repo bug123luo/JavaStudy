@@ -19,8 +19,6 @@ public class GunLocation {
 
     private Date updateTime;
 
-    private Integer exceptionType;
-
     private Integer version;
 
     private String areaCode;
@@ -95,14 +93,6 @@ public class GunLocation {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getExceptionType() {
-        return exceptionType;
-    }
-
-    public void setExceptionType(Integer exceptionType) {
-        this.exceptionType = exceptionType;
     }
 
     public Integer getVersion() {

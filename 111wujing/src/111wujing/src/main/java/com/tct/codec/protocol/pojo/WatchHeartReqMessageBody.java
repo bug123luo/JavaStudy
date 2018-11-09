@@ -28,7 +28,7 @@ import lombok.Data;
 
 @Data
 public class WatchHeartReqMessageBody {
-	private String state;//腕表的出入库状态
+	private String state;//腕表的出入库状态?
 	private String deviceType;//设备类型
 	private String lo;//经度
 	private String la;//纬度
@@ -39,7 +39,7 @@ public class WatchHeartReqMessageBody {
 	private String authCode;//授权码
 	
 	@Data
-	class Guninfo{
+	public class Guninfo{
 		private String gunId;//枪号
 		private String realTimeState;//随行状态
 		private String gunDeviceBatteryPower;//定位模组电量

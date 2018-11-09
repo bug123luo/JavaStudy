@@ -25,7 +25,12 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
+import com.tct.codec.protocol.pojo.WatchHeartResMessage;
+import com.tct.codec.protocol.pojo.WatchHeartResMessageBody;
+import com.tct.db.dao.HeartbeatDao;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
+import com.tct.util.StringUtil;
 
 /**   
  * @ClassName:  WatchHeartReqService   
@@ -41,14 +46,6 @@ import com.tct.jms.producer.OutQueueSender;
 @Scope("prototype")
 public class WatchHeartReqService implements TemplateService {
 
-	@Autowired
-	@Qualifier("stringRedisTemplate")
-	private StringRedisTemplate stringRedisTemplate;
-	
-	@Autowired
-	@Qualifier("jedisTemplate")
-	private RedisTemplate<String,Map<String, ?>> jedisTemplate;
-	
 	@Resource
 	private OutQueueSender outQueueSender;
 	
@@ -56,6 +53,9 @@ public class WatchHeartReqService implements TemplateService {
 	@Qualifier("outQueueDestination")
 	private Destination outQueueDestination;
 		
+	@Autowired
+	private HeartbeatDao hbDao;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -67,7 +67,28 @@ public class WatchHeartReqService implements TemplateService {
 	public void handleCodeMsg(Object msg) throws Exception {
 		WatchHeartReqMessage wHRMsg = (WatchHeartReqMessage)msg;
 
+		//插入随行设备APP发过来的随行状态上报周期数据
+		hbDao.insertAppHeartbeatSelective(wHRMsg);
 		
+		WatchHeartResMessage wHResMsg = constructRes(wHRMsg);
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(wHResMsg));
 	}
 
+	public WatchHeartResMessage constructRes(WatchHeartReqMessage msg) {
+		
+		WatchHeartResMessage wHResMsg =new WatchHeartResMessage();
+		WatchHeartResMessageBody msgBody = new WatchHeartResMessageBody();
+		msgBody.setAuthCode(wHResMsg.getMessageBody().getAuthCode());
+		msgBody.setState(StringConstant.SUCCESS_NEW_STATE);
+		wHResMsg.setMessageBody(msgBody);
+		wHResMsg.setDeviceType(msg.getDeviceType());
+		wHResMsg.setFormatVersion(msg.getFormatVersion());
+		wHResMsg.setMessageType(msg.getMessageType());
+		wHResMsg.setSendTime(StringUtil.getDateString());
+		wHResMsg.setSerialNumber(msg.getSerialNumber());
+		wHResMsg.setSessionToken(msg.getSessionToken());
+		wHResMsg.setUniqueIdentification(msg.getUniqueIdentification());
+		return wHResMsg;
+	}
 }

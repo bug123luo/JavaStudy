@@ -13,6 +13,8 @@ public class AppDynamicData {
 
     private Integer version;
 
+    private Integer exceptionType;
+
     public Integer getId() {
         return id;
     }
@@ -51,5 +53,13 @@ public class AppDynamicData {
 
     public void setVersion(Integer version) {
         this.version = version;
+    }
+
+    public Integer getExceptionType() {
+        return exceptionType;
+    }
+
+    public void setExceptionType(Integer exceptionType) {
+        this.exceptionType = exceptionType;
     }
 }

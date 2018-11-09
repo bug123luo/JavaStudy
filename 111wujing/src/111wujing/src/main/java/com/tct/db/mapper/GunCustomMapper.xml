@@ -18,7 +18,7 @@
  		real_time_state
  	</sql>
  	
- 	<select id="selectAllColumn" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.GunCustom">
+ 	<select id="selectAllColumn" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.Gun">
  		select <include refid="allColumns"/> from gun
  		<where>
  			<if test="gunCustom.gunMac!=null">
@@ -27,4 +27,8 @@
  		</where>
  	</select>
  	
+ 	
+ 	<update id="updateByGunId" parameterType="com.tct.db.po.GunCustom">
+ 		update gun set total_bullet_number = (total_bullet_number + #{bulletNumber}) where gun_id=#{gunId}
+ 	</update>
 </mapper>

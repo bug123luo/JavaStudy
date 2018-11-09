@@ -62,7 +62,7 @@ public class OutWarehouseDao {
 		
 		GunCustomQueryVo gunCustomQueryVo = new GunCustomQueryVo();
 		GunCustom gunCustom = new GunCustom();
-		gunCustom.setBluetoothMac(oWReqMsg.getMessageBody().getGunMac());
+		gunCustom.setGunMac(oWReqMsg.getMessageBody().getGunMac());
 		gunCustomQueryVo.setGunCustom(gunCustom);
 		
 		AppGunCustom appGunCustomTemp = appGunDao.selectAllColumn(appGunCustomQueryVo);

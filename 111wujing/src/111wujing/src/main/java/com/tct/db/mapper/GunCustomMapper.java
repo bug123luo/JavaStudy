@@ -16,4 +16,6 @@ import com.tct.db.po.GunCustomQueryVo;
 
 public interface GunCustomMapper {
 	GunCustom selectAllColumn(GunCustomQueryVo gunCustomQueryVo);
+	
+	int updateByGunId(GunCustom gunCustom);
 }

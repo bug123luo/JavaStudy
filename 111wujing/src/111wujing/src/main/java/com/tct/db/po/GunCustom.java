@@ -1,4 +1,7 @@
 package com.tct.db.po;
+
+import lombok.Data;
+
 /**
  * 
  * @ClassName:  GunCustom   
@@ -10,6 +13,10 @@ package com.tct.db.po;
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目
  */
 
+@Data
 public class GunCustom extends Gun {
-
+	
+	//@Getter
+	//@Setter
+	private String bulletNumber;
 }

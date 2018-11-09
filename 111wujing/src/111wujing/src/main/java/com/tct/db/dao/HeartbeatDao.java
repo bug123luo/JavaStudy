@@ -11,9 +11,28 @@
  */
 package com.tct.db.dao;
 
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
+import com.tct.codec.protocol.pojo.WatchHeartReqMessageBody.Guninfo;
+import com.tct.db.mapper.AppCustomMapper;
+import com.tct.db.mapper.AppDynamicDataCustomMapper;
+
+import com.tct.db.mapper.GunCustomMapper;
+import com.tct.db.mapper.GunLocationCustomMapper;
+import com.tct.db.po.AppCustom;
+import com.tct.db.po.AppCustomQueryVo;
+import com.tct.db.po.AppDynamicDataCustom;
+import com.tct.db.po.GunCustom;
+import com.tct.db.po.GunLocationCustom;
+import com.tct.util.StringUtil;
 
 import lombok.extern.slf4j.Slf4j;
+
 
 /**   
  * @ClassName:  HeartbeatDao   
@@ -29,5 +48,54 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class HeartbeatDao {
 	
+	@Autowired
+	AppDynamicDataCustomMapper addcDao;
+	
+	@Autowired
+	GunLocationCustomMapper glcDao;
+		
+	@Autowired
+	GunCustomMapper gcDao;
+	
+	@Autowired
+	AppCustomMapper acDao;
+	
+	@Transactional
+	public int insertAppHeartbeatSelective(WatchHeartReqMessage wHRMsg) {
+		int i=0;
+		
+		AppCustomQueryVo appCustomQueryVo = new AppCustomQueryVo();
+		AppCustom appCustom = new AppCustom();
+		appCustom.setAppImei(wHRMsg.getUniqueIdentification());
+		appCustomQueryVo.setAppCustom(appCustom);
+		AppCustom appCustomTemp = acDao.selectAppAllColumn(appCustomQueryVo); 
+		
+		AppDynamicDataCustom appDynamicDataCustom = new AppDynamicDataCustom();
+		appDynamicDataCustom.setAppBatteryPower(wHRMsg.getMessageBody().getAppBatteryPower());
+		appDynamicDataCustom.setAppId(Integer.valueOf(appCustomTemp.getId()));
+		appDynamicDataCustom.setExceptionType(Integer.valueOf(wHRMsg.getMessageBody().getExceptionCode()));
+		appDynamicDataCustom.setCreateTime(StringUtil.getDate(wHRMsg.getSendTime()));
+		addcDao.insertSelective(appDynamicDataCustom);
+		
+		ArrayList<Guninfo> gList = wHRMsg.getMessageBody().getGunList();
+		GunCustom gunCustom = new GunCustom();
+		GunLocationCustom gunLocationCustom = new GunLocationCustom();
+		gunLocationCustom.setAppId(appDynamicDataCustom.getAppId());
+		gunLocationCustom.setAreaCode(wHRMsg.getMessageBody().getAreaCode());
+		gunLocationCustom.setCreateTime(StringUtil.getDate(wHRMsg.getSendTime()));
+		gunLocationCustom.setLongitude(wHRMsg.getMessageBody().getLo());
+		gunLocationCustom.setLatitude(wHRMsg.getMessageBody().getLa());
+		for(Guninfo guninfo:gList) {
+			gunLocationCustom.setGunId(guninfo.getGunId());
+			gunLocationCustom.setGunDeviceBatteryPower(guninfo.getGunDeviceBatteryPower());
+			glcDao.insertSelective(gunLocationCustom);
+			
+			gunCustom.setRealTimeState(Integer.valueOf(guninfo.getRealTimeState()));
+			gcDao.updateByGunId(gunCustom);
+		}
+		
+		i=1;
+		return i;
+	}
 	
 }
