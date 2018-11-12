@@ -18,8 +18,10 @@ import javax.jms.Destination;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Service;
 
 import com.tct.codec.protocol.pojo.OutWarehouseResMessage;
 import com.tct.db.dao.OutWarehouseDao;
@@ -34,6 +36,9 @@ import com.tct.jms.producer.OutQueueSender;
  * @Copyright: 2018 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
+
+@Service("outWarehouseResService")
+@Scope("prototype")
 public class OutWarehouseResService implements TemplateService {
 
 	@Autowired

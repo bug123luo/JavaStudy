@@ -24,10 +24,12 @@ import com.tct.codec.impl.CancelRecipientsGunReqCodec;
 import com.tct.codec.impl.CancelRecipientsGunResCodec;
 import com.tct.codec.impl.DeviceHeartReqCodec;
 import com.tct.codec.impl.GetBulletNumberReqCodec;
+import com.tct.codec.impl.GetBulletNumberResCodec;
 import com.tct.codec.impl.InWarehouseReqCodec;
 import com.tct.codec.impl.InWarehouseResCodec;
 import com.tct.codec.impl.MessageBodyCodec;
 import com.tct.codec.impl.OutWarehouseReqCodec;
+import com.tct.codec.impl.OutWarehouseResCodec;
 import com.tct.codec.impl.ParamSettingReqCodec;
 import com.tct.codec.impl.RegistReqCodec;
 import com.tct.codec.impl.ReportBulletNumberReqCodec;
@@ -42,9 +44,11 @@ import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunResMessage;
 import com.tct.codec.protocol.pojo.DeviceHeartReqMessage;
 import com.tct.codec.protocol.pojo.GetBulletNumberReqMessage;
+import com.tct.codec.protocol.pojo.GetBulletNumberResMessage;
 import com.tct.codec.protocol.pojo.InWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.InWarehouseResMessage;
 import com.tct.codec.protocol.pojo.OutWarehouseReqMessage;
+import com.tct.codec.protocol.pojo.OutWarehouseResMessage;
 import com.tct.codec.protocol.pojo.ParamSettingReqMessage;
 import com.tct.codec.protocol.pojo.RegistReqMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberReqMessage;
@@ -59,9 +63,11 @@ import com.tct.service.impl.CancelRecipientsGunReqService;
 import com.tct.service.impl.CancelRecipientsGunResService;
 import com.tct.service.impl.DeviceHeartReqService;
 import com.tct.service.impl.GetBulletNumberReqService;
+import com.tct.service.impl.GetBulletNumberResService;
 import com.tct.service.impl.InWarehouseReqService;
 import com.tct.service.impl.InWarehouseResService;
 import com.tct.service.impl.OutWarehouseReqService;
+import com.tct.service.impl.OutWarehouseResService;
 import com.tct.service.impl.ParamSettingReqService;
 import com.tct.service.impl.RegistReqService;
 import com.tct.service.impl.ReportBulletNumberReqService;
@@ -133,6 +139,12 @@ public class ServiceSelector {
 	
 	@Resource(name="inWarehouseResService")
 	private InWarehouseResService inWarehouseResService;
+	
+	@Resource(name="getBulletNumberResService")
+	private GetBulletNumberResService getBulletNumberResService;
+	
+	@Resource(name="outWarehouseResService")
+	private OutWarehouseResService outWarehouseResService;
 	
 	public void handlerService(MessageBodyCodec messageCodec,JSONObject msg){
 		
@@ -255,6 +267,27 @@ public class ServiceSelector {
 			service = inWarehouseResService;
 			try {
 				objmsg = (InWarehouseResMessage)messageCodec.decode(msg);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(messageCodec instanceof GetBulletNumberReqCodec) {
+			service = getBulletNumberReqService;
+			try {
+				objmsg = (GetBulletNumberReqMessage)messageCodec.decode(msg);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(messageCodec instanceof GetBulletNumberResCodec){
+			service = getBulletNumberResService;
+			try {
+				objmsg = (GetBulletNumberResMessage)messageCodec.decode(msg);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(messageCodec instanceof OutWarehouseResCodec){
+			service = outWarehouseResService;
+			try {
+				objmsg = (OutWarehouseResMessage)messageCodec.decode(msg);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
