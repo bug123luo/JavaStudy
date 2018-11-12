@@ -6,14 +6,14 @@
 		id,
 		serl_num,
 		message,
-		gun_imei
+		gun_id
 	</sql>
 	
 	<select id="selectBySerlNum" parameterType="MessageRecordsQueryVo" resultType="com.tct.db.po.MessageRecordsCustom">
 		select <include refid="allColumns"/> from message_records
 		<where>
 			<if test=" messageRecordsCustom.gunImei != null">
-				gun_imei = #{messageRecordsCustom.gunImei}
+				gun_id = #{messageRecordsCustom.gunId}
 			</if>		
 			<if test=" messageRecordsCustom.serlNum !=null">
 				serl_num = #{messageRecordsCustom.serlNum}
@@ -33,8 +33,8 @@
 	      <if test="message != null">
 	        message,
 	      </if>
-	      <if test="gunImei != null">
-	        gun_imei,
+	      <if test="gunId != null">
+	        gun_id,
 	      </if>
 	    </trim>
 	    <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -48,7 +48,7 @@
 	        #{message,jdbcType=VARCHAR},
 	      </if>
 	      <if test="gunImei != null">
-	        #{gunImei,jdbcType=CHAR},
+	        #{gunId,jdbcType=CHAR},
 	      </if>
 	    </trim>
 	</insert>

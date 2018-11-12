@@ -9,6 +9,8 @@ public class AppGunUser {
 
     private Integer gunUserId;
 
+    private Integer bindingState;
+
     private Date createTime;
 
     public Integer getId() {
@@ -33,6 +35,14 @@ public class AppGunUser {
 
     public void setGunUserId(Integer gunUserId) {
         this.gunUserId = gunUserId;
+    }
+
+    public Integer getBindingState() {
+        return bindingState;
+    }
+
+    public void setBindingState(Integer bindingState) {
+        this.bindingState = bindingState;
     }
 
     public Date getCreateTime() {

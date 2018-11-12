@@ -11,11 +11,6 @@
  */
 package com.tct.codec.selector;
 
-
-import java.nio.channels.NonWritableChannelException;
-
-import org.aspectj.weaver.NewConstructorTypeMunger;
-
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.impl.AuthorizationReqCodec;
 import com.tct.codec.impl.BindingReqCodec;
@@ -25,7 +20,9 @@ import com.tct.codec.impl.CancelRecipientsGunReqCodec;
 import com.tct.codec.impl.CancelRecipientsGunResCodec;
 import com.tct.codec.impl.DeviceHeartReqCodec;
 import com.tct.codec.impl.GetBulletNumberReqCodec;
+import com.tct.codec.impl.GetBulletNumberResCodec;
 import com.tct.codec.impl.InWarehouseReqCodec;
+import com.tct.codec.impl.InWarehouseResCodec;
 import com.tct.codec.impl.MessageBodyCodec;
 import com.tct.codec.impl.OutWarehouseReqCodec;
 import com.tct.codec.impl.ParamSettingReqCodec;
@@ -82,6 +79,10 @@ public class MessageCodecSelector {
 			msgCodec = new BindingResCodec();
 		}else if(json.getString("messageType").equals("10")){
 			msgCodec = new CancelRecipientsGunResCodec();
+		}else if(json.getString("messageType").equals("12")){
+			msgCodec = new InWarehouseResCodec();
+		}else if(json.getString("messageType").equals("26")){
+			msgCodec = new GetBulletNumberResCodec();
 		}else {
 			msgCodec = null;
 		}

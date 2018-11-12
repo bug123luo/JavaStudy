@@ -31,6 +31,8 @@ public class Gun {
 
     private Integer realTimeState;
 
+    private String gunImei;
+
     public Integer getId() {
         return id;
     }
@@ -141,5 +143,13 @@ public class Gun {
 
     public void setRealTimeState(Integer realTimeState) {
         this.realTimeState = realTimeState;
+    }
+
+    public String getGunImei() {
+        return gunImei;
+    }
+
+    public void setGunImei(String gunImei) {
+        this.gunImei = gunImei == null ? null : gunImei.trim();
     }
 }

@@ -32,7 +32,7 @@ public class StartStopSearchGunReqMessageBody {
 	private String authCode;//授权码
 	
 	@Data
-	class GunInfo{
+	public class GunInfo{
 		private String gunMac;//枪支MAC
 	}
 }

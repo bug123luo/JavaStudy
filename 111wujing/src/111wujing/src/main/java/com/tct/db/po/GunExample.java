@@ -994,6 +994,76 @@ public class GunExample {
             addCriterion("real_time_state not between", value1, value2, "realTimeState");
             return (Criteria) this;
         }
+
+        public Criteria andGunImeiIsNull() {
+            addCriterion("gun_imei is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiIsNotNull() {
+            addCriterion("gun_imei is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiEqualTo(String value) {
+            addCriterion("gun_imei =", value, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiNotEqualTo(String value) {
+            addCriterion("gun_imei <>", value, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiGreaterThan(String value) {
+            addCriterion("gun_imei >", value, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiGreaterThanOrEqualTo(String value) {
+            addCriterion("gun_imei >=", value, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiLessThan(String value) {
+            addCriterion("gun_imei <", value, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiLessThanOrEqualTo(String value) {
+            addCriterion("gun_imei <=", value, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiLike(String value) {
+            addCriterion("gun_imei like", value, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiNotLike(String value) {
+            addCriterion("gun_imei not like", value, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiIn(List<String> values) {
+            addCriterion("gun_imei in", values, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiNotIn(List<String> values) {
+            addCriterion("gun_imei not in", values, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiBetween(String value1, String value2) {
+            addCriterion("gun_imei between", value1, value2, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiNotBetween(String value1, String value2) {
+            addCriterion("gun_imei not between", value1, value2, "gunImei");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

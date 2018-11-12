@@ -7,7 +7,7 @@ public class MessageRecords {
 
     private String message;
 
-    private String gunImei;
+    private String gunId;
 
     public Integer getId() {
         return id;
@@ -33,11 +33,11 @@ public class MessageRecords {
         this.message = message == null ? null : message.trim();
     }
 
-    public String getGunImei() {
-        return gunImei;
+    public String getGunId() {
+        return gunId;
     }
 
-    public void setGunImei(String gunImei) {
-        this.gunImei = gunImei == null ? null : gunImei.trim();
+    public void setGunId(String gunId) {
+        this.gunId = gunId == null ? null : gunId.trim();
     }
 }

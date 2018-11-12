@@ -4294,6 +4294,1436 @@
   <resultMap id="BaseResultMap" type="com.tct.db.po.WebUserLogin">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="web_ip" jdbcType="CHAR" property="webIp" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="browser" jdbcType="CHAR" property="browser" />
+    <result column="system_name" jdbcType="CHAR" property="systemName" />
+    <result column="logintime" jdbcType="TIMESTAMP" property="logintime" />
+    <result column="logouttime" jdbcType="TIMESTAMP" property="logouttime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uid, user_name, web_ip, state, browser, system_name, logintime, logouttime, version
+  </sql>
+  <select id="selectByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tct.db.po.WebUserLoginExample">
+    delete from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login (id, uid, user_name, 
+      web_ip, state, browser, system_name, 
+      logintime, logouttime, version
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{userName,jdbcType=CHAR}, 
+      #{webIp,jdbcType=CHAR}, #{state,jdbcType=INTEGER}, #{browser,jdbcType=CHAR}, #{systemName,jdbcType=CHAR}, 
+      #{logintime,jdbcType=TIMESTAMP}, #{logouttime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="webIp != null">
+        web_ip,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="browser != null">
+        browser,
+      </if>
+      <if test="systemName != null">
+        system_name,
+      </if>
+      <if test="logintime != null">
+        logintime,
+      </if>
+      <if test="logouttime != null">
+        logouttime,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultType="java.lang.Long">
+    select count(*) from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update web_user_login
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=CHAR},
+      </if>
+      <if test="record.webIp != null">
+        web_ip = #{record.webIp,jdbcType=CHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.browser != null">
+        browser = #{record.browser,jdbcType=CHAR},
+      </if>
+      <if test="record.systemName != null">
+        system_name = #{record.systemName,jdbcType=CHAR},
+      </if>
+      <if test="record.logintime != null">
+        logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logouttime != null">
+        logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update web_user_login
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=CHAR},
+      web_ip = #{record.webIp,jdbcType=CHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      browser = #{record.browser,jdbcType=CHAR},
+      system_name = #{record.systemName,jdbcType=CHAR},
+      logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      version = #{record.version,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        web_ip = #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        browser = #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        system_name = #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        logintime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    set uid = #{uid,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=CHAR},
+      web_ip = #{webIp,jdbcType=CHAR},
+      state = #{state,jdbcType=INTEGER},
+      browser = #{browser,jdbcType=CHAR},
+      system_name = #{systemName,jdbcType=CHAR},
+      logintime = #{logintime,jdbcType=TIMESTAMP},
+      logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.tct.db.po.WebUserLogin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="web_ip" jdbcType="CHAR" property="webIp" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="browser" jdbcType="CHAR" property="browser" />
+    <result column="system_name" jdbcType="CHAR" property="systemName" />
+    <result column="logintime" jdbcType="TIMESTAMP" property="logintime" />
+    <result column="logouttime" jdbcType="TIMESTAMP" property="logouttime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uid, user_name, web_ip, state, browser, system_name, logintime, logouttime, version
+  </sql>
+  <select id="selectByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tct.db.po.WebUserLoginExample">
+    delete from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login (id, uid, user_name, 
+      web_ip, state, browser, system_name, 
+      logintime, logouttime, version
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{userName,jdbcType=CHAR}, 
+      #{webIp,jdbcType=CHAR}, #{state,jdbcType=INTEGER}, #{browser,jdbcType=CHAR}, #{systemName,jdbcType=CHAR}, 
+      #{logintime,jdbcType=TIMESTAMP}, #{logouttime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="webIp != null">
+        web_ip,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="browser != null">
+        browser,
+      </if>
+      <if test="systemName != null">
+        system_name,
+      </if>
+      <if test="logintime != null">
+        logintime,
+      </if>
+      <if test="logouttime != null">
+        logouttime,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultType="java.lang.Long">
+    select count(*) from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update web_user_login
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=CHAR},
+      </if>
+      <if test="record.webIp != null">
+        web_ip = #{record.webIp,jdbcType=CHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.browser != null">
+        browser = #{record.browser,jdbcType=CHAR},
+      </if>
+      <if test="record.systemName != null">
+        system_name = #{record.systemName,jdbcType=CHAR},
+      </if>
+      <if test="record.logintime != null">
+        logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logouttime != null">
+        logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update web_user_login
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=CHAR},
+      web_ip = #{record.webIp,jdbcType=CHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      browser = #{record.browser,jdbcType=CHAR},
+      system_name = #{record.systemName,jdbcType=CHAR},
+      logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      version = #{record.version,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        web_ip = #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        browser = #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        system_name = #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        logintime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    set uid = #{uid,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=CHAR},
+      web_ip = #{webIp,jdbcType=CHAR},
+      state = #{state,jdbcType=INTEGER},
+      browser = #{browser,jdbcType=CHAR},
+      system_name = #{systemName,jdbcType=CHAR},
+      logintime = #{logintime,jdbcType=TIMESTAMP},
+      logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.tct.db.po.WebUserLogin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="web_ip" jdbcType="CHAR" property="webIp" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="browser" jdbcType="CHAR" property="browser" />
+    <result column="system_name" jdbcType="CHAR" property="systemName" />
+    <result column="logintime" jdbcType="TIMESTAMP" property="logintime" />
+    <result column="logouttime" jdbcType="TIMESTAMP" property="logouttime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uid, user_name, web_ip, state, browser, system_name, logintime, logouttime, version
+  </sql>
+  <select id="selectByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tct.db.po.WebUserLoginExample">
+    delete from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login (id, uid, user_name, 
+      web_ip, state, browser, system_name, 
+      logintime, logouttime, version
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{userName,jdbcType=CHAR}, 
+      #{webIp,jdbcType=CHAR}, #{state,jdbcType=INTEGER}, #{browser,jdbcType=CHAR}, #{systemName,jdbcType=CHAR}, 
+      #{logintime,jdbcType=TIMESTAMP}, #{logouttime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="webIp != null">
+        web_ip,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="browser != null">
+        browser,
+      </if>
+      <if test="systemName != null">
+        system_name,
+      </if>
+      <if test="logintime != null">
+        logintime,
+      </if>
+      <if test="logouttime != null">
+        logouttime,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultType="java.lang.Long">
+    select count(*) from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update web_user_login
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=CHAR},
+      </if>
+      <if test="record.webIp != null">
+        web_ip = #{record.webIp,jdbcType=CHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.browser != null">
+        browser = #{record.browser,jdbcType=CHAR},
+      </if>
+      <if test="record.systemName != null">
+        system_name = #{record.systemName,jdbcType=CHAR},
+      </if>
+      <if test="record.logintime != null">
+        logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logouttime != null">
+        logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update web_user_login
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=CHAR},
+      web_ip = #{record.webIp,jdbcType=CHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      browser = #{record.browser,jdbcType=CHAR},
+      system_name = #{record.systemName,jdbcType=CHAR},
+      logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      version = #{record.version,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        web_ip = #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        browser = #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        system_name = #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        logintime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    set uid = #{uid,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=CHAR},
+      web_ip = #{webIp,jdbcType=CHAR},
+      state = #{state,jdbcType=INTEGER},
+      browser = #{browser,jdbcType=CHAR},
+      system_name = #{systemName,jdbcType=CHAR},
+      logintime = #{logintime,jdbcType=TIMESTAMP},
+      logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.tct.db.po.WebUserLogin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="web_ip" jdbcType="CHAR" property="webIp" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="browser" jdbcType="CHAR" property="browser" />
+    <result column="system_name" jdbcType="CHAR" property="systemName" />
+    <result column="logintime" jdbcType="TIMESTAMP" property="logintime" />
+    <result column="logouttime" jdbcType="TIMESTAMP" property="logouttime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uid, user_name, web_ip, state, browser, system_name, logintime, logouttime, version
+  </sql>
+  <select id="selectByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tct.db.po.WebUserLoginExample">
+    delete from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login (id, uid, user_name, 
+      web_ip, state, browser, system_name, 
+      logintime, logouttime, version
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{userName,jdbcType=CHAR}, 
+      #{webIp,jdbcType=CHAR}, #{state,jdbcType=INTEGER}, #{browser,jdbcType=CHAR}, #{systemName,jdbcType=CHAR}, 
+      #{logintime,jdbcType=TIMESTAMP}, #{logouttime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="webIp != null">
+        web_ip,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="browser != null">
+        browser,
+      </if>
+      <if test="systemName != null">
+        system_name,
+      </if>
+      <if test="logintime != null">
+        logintime,
+      </if>
+      <if test="logouttime != null">
+        logouttime,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultType="java.lang.Long">
+    select count(*) from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update web_user_login
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=CHAR},
+      </if>
+      <if test="record.webIp != null">
+        web_ip = #{record.webIp,jdbcType=CHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.browser != null">
+        browser = #{record.browser,jdbcType=CHAR},
+      </if>
+      <if test="record.systemName != null">
+        system_name = #{record.systemName,jdbcType=CHAR},
+      </if>
+      <if test="record.logintime != null">
+        logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logouttime != null">
+        logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update web_user_login
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=CHAR},
+      web_ip = #{record.webIp,jdbcType=CHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      browser = #{record.browser,jdbcType=CHAR},
+      system_name = #{record.systemName,jdbcType=CHAR},
+      logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      version = #{record.version,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        web_ip = #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        browser = #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        system_name = #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        logintime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    set uid = #{uid,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=CHAR},
+      web_ip = #{webIp,jdbcType=CHAR},
+      state = #{state,jdbcType=INTEGER},
+      browser = #{browser,jdbcType=CHAR},
+      system_name = #{systemName,jdbcType=CHAR},
+      logintime = #{logintime,jdbcType=TIMESTAMP},
+      logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.tct.db.po.WebUserLogin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="web_ip" jdbcType="CHAR" property="webIp" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="browser" jdbcType="CHAR" property="browser" />
+    <result column="system_name" jdbcType="CHAR" property="systemName" />
+    <result column="logintime" jdbcType="TIMESTAMP" property="logintime" />
+    <result column="logouttime" jdbcType="TIMESTAMP" property="logouttime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uid, user_name, web_ip, state, browser, system_name, logintime, logouttime, version
+  </sql>
+  <select id="selectByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from web_user_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tct.db.po.WebUserLoginExample">
+    delete from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login (id, uid, user_name, 
+      web_ip, state, browser, system_name, 
+      logintime, logouttime, version
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{userName,jdbcType=CHAR}, 
+      #{webIp,jdbcType=CHAR}, #{state,jdbcType=INTEGER}, #{browser,jdbcType=CHAR}, #{systemName,jdbcType=CHAR}, 
+      #{logintime,jdbcType=TIMESTAMP}, #{logouttime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tct.db.po.WebUserLogin">
+    insert into web_user_login
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="webIp != null">
+        web_ip,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="browser != null">
+        browser,
+      </if>
+      <if test="systemName != null">
+        system_name,
+      </if>
+      <if test="logintime != null">
+        logintime,
+      </if>
+      <if test="logouttime != null">
+        logouttime,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tct.db.po.WebUserLoginExample" resultType="java.lang.Long">
+    select count(*) from web_user_login
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update web_user_login
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=CHAR},
+      </if>
+      <if test="record.webIp != null">
+        web_ip = #{record.webIp,jdbcType=CHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.browser != null">
+        browser = #{record.browser,jdbcType=CHAR},
+      </if>
+      <if test="record.systemName != null">
+        system_name = #{record.systemName,jdbcType=CHAR},
+      </if>
+      <if test="record.logintime != null">
+        logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logouttime != null">
+        logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update web_user_login
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=CHAR},
+      web_ip = #{record.webIp,jdbcType=CHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      browser = #{record.browser,jdbcType=CHAR},
+      system_name = #{record.systemName,jdbcType=CHAR},
+      logintime = #{record.logintime,jdbcType=TIMESTAMP},
+      logouttime = #{record.logouttime,jdbcType=TIMESTAMP},
+      version = #{record.version,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="webIp != null">
+        web_ip = #{webIp,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="browser != null">
+        browser = #{browser,jdbcType=CHAR},
+      </if>
+      <if test="systemName != null">
+        system_name = #{systemName,jdbcType=CHAR},
+      </if>
+      <if test="logintime != null">
+        logintime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logouttime != null">
+        logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tct.db.po.WebUserLogin">
+    update web_user_login
+    set uid = #{uid,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=CHAR},
+      web_ip = #{webIp,jdbcType=CHAR},
+      state = #{state,jdbcType=INTEGER},
+      browser = #{browser,jdbcType=CHAR},
+      system_name = #{systemName,jdbcType=CHAR},
+      logintime = #{logintime,jdbcType=TIMESTAMP},
+      logouttime = #{logouttime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.tct.db.po.WebUserLogin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="web_ip" jdbcType="CHAR" property="webIp" />
     <result column="state" jdbcType="INTEGER" property="state" />

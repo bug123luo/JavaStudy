@@ -16,6 +16,7 @@ import com.tct.db.po.WarehouseRecordsQueryVo;
  */
 
 public interface WarehouseRecordsCustomMapper {
+	
 	int insertSelective(WarehouseRecords warehouseRecords);
 	
 	int updateSelectiveByGunId(WarehouseRecords warehouseRecords);
@@ -23,4 +24,10 @@ public interface WarehouseRecordsCustomMapper {
 	int updateSelectiveByGunIdAndOutState(WarehouseRecords warehouseRecords);
 	
 	WarehouseRecordsCustom selectByGunIdAndState(WarehouseRecordsQueryVo warehouseRecordsQueryVo);
+	
+	int updateSelectiveByGunIdAndInState(WarehouseRecords warehouseRecords);
+	
+	int updateSelectiveByGunIdAndRollbackState(WarehouseRecords warehouseRecords);
+	
+	WarehouseRecordsCustom selectByGunIdAndInState(WarehouseRecordsQueryVo warehouseRecordsQueryVo);
 }

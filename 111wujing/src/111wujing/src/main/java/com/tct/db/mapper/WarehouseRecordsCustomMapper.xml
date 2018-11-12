@@ -150,4 +150,77 @@
  			</if>
  		</trim>
 	</select>
+	
+	<update id="updateSelectiveByGunIdAndInState" parameterType="com.tct.db.po.WarehouseRecords">
+		<set>
+	      <if test="warehouseId != null">
+	        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+	      </if>
+	      <if test="warehouseInTime != null">
+	        warehouse_in_time = #{warehouseInTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="warehouseOutTime != null">
+	        warehouse_out_time = #{warehouseOutTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="webUserId != null">
+	        web_user_id = #{webUserId,jdbcType=INTEGER},
+	      </if>
+	      <if test="appId != null">
+	        app_id = #{appId,jdbcType=INTEGER},
+	      </if>
+	      <if test="state != null">
+	        state = #{state,jdbcType=INTEGER},
+	      </if>
+	      <if test="version != null">
+	        version = #{version,jdbcType=INTEGER},
+	      </if>
+          <if test="cancelTime != null">
+	        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+	      </if>
+	    </set>
+	    where gun_id = #{gunId,jdbcType=CHAR} and state = 2
+	</update>
+	
+	<update id="updateSelectiveByGunIdAndRollbackState" parameterType="com.tct.db.po.WarehouseRecords">
+		<set>
+	      <if test="warehouseId != null">
+	        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+	      </if>
+	      <if test="warehouseInTime != null">
+	        warehouse_in_time = #{warehouseInTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="warehouseOutTime != null">
+	        warehouse_out_time = #{warehouseOutTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="webUserId != null">
+	        web_user_id = #{webUserId,jdbcType=INTEGER},
+	      </if>
+	      <if test="appId != null">
+	        app_id = #{appId,jdbcType=INTEGER},
+	      </if>
+	      <if test="state != null">
+	        state = #{state,jdbcType=INTEGER},
+	      </if>
+	      <if test="version != null">
+	        version = #{version,jdbcType=INTEGER},
+	      </if>
+          <if test="cancelTime != null">
+	        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+	      </if>
+	    </set>
+	    where gun_id = #{gunId,jdbcType=CHAR} and state = 3
+	</update>
+	
+	
+	<select id="selectByGunIdAndInState" parameterType="com.tct.db.po.WarehouseRecordsQueryVo" resultType="com.tct.db.po.WarehouseRecordsCustom">
+		select <include refid="allColumns"/> from warehouse_records
+		<trim prefix="WHERE (" suffix=")" prefixOverrides="AND |OR ">
+ 			<if test="warehouseRecordsCustom.gunId !=null">
+ 				gun_id=#{warehouseRecordsCustom.gunId}
+ 			</if>
+ 			<if test="1==1">
+ 				and state = #{warehouseRecordsCustom.state}
+ 			</if>
+ 		</trim>
+	</select>
 </mapper>

@@ -304,73 +304,73 @@ public class MessageRecordsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiIsNull() {
-            addCriterion("gun_imei is null");
+        public Criteria andGunIdIsNull() {
+            addCriterion("gun_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiIsNotNull() {
-            addCriterion("gun_imei is not null");
+        public Criteria andGunIdIsNotNull() {
+            addCriterion("gun_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiEqualTo(String value) {
-            addCriterion("gun_imei =", value, "gunImei");
+        public Criteria andGunIdEqualTo(String value) {
+            addCriterion("gun_id =", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiNotEqualTo(String value) {
-            addCriterion("gun_imei <>", value, "gunImei");
+        public Criteria andGunIdNotEqualTo(String value) {
+            addCriterion("gun_id <>", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiGreaterThan(String value) {
-            addCriterion("gun_imei >", value, "gunImei");
+        public Criteria andGunIdGreaterThan(String value) {
+            addCriterion("gun_id >", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiGreaterThanOrEqualTo(String value) {
-            addCriterion("gun_imei >=", value, "gunImei");
+        public Criteria andGunIdGreaterThanOrEqualTo(String value) {
+            addCriterion("gun_id >=", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiLessThan(String value) {
-            addCriterion("gun_imei <", value, "gunImei");
+        public Criteria andGunIdLessThan(String value) {
+            addCriterion("gun_id <", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiLessThanOrEqualTo(String value) {
-            addCriterion("gun_imei <=", value, "gunImei");
+        public Criteria andGunIdLessThanOrEqualTo(String value) {
+            addCriterion("gun_id <=", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiLike(String value) {
-            addCriterion("gun_imei like", value, "gunImei");
+        public Criteria andGunIdLike(String value) {
+            addCriterion("gun_id like", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiNotLike(String value) {
-            addCriterion("gun_imei not like", value, "gunImei");
+        public Criteria andGunIdNotLike(String value) {
+            addCriterion("gun_id not like", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiIn(List<String> values) {
-            addCriterion("gun_imei in", values, "gunImei");
+        public Criteria andGunIdIn(List<String> values) {
+            addCriterion("gun_id in", values, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiNotIn(List<String> values) {
-            addCriterion("gun_imei not in", values, "gunImei");
+        public Criteria andGunIdNotIn(List<String> values) {
+            addCriterion("gun_id not in", values, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiBetween(String value1, String value2) {
-            addCriterion("gun_imei between", value1, value2, "gunImei");
+        public Criteria andGunIdBetween(String value1, String value2) {
+            addCriterion("gun_id between", value1, value2, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunImeiNotBetween(String value1, String value2) {
-            addCriterion("gun_imei not between", value1, value2, "gunImei");
+        public Criteria andGunIdNotBetween(String value1, String value2) {
+            addCriterion("gun_id not between", value1, value2, "gunId");
             return (Criteria) this;
         }
     }

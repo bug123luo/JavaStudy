@@ -235,52 +235,62 @@ public class AppGunExample {
             return (Criteria) this;
         }
 
-        public Criteria andGunIdEqualTo(Integer value) {
+        public Criteria andGunIdEqualTo(String value) {
             addCriterion("gun_id =", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunIdNotEqualTo(Integer value) {
+        public Criteria andGunIdNotEqualTo(String value) {
             addCriterion("gun_id <>", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunIdGreaterThan(Integer value) {
+        public Criteria andGunIdGreaterThan(String value) {
             addCriterion("gun_id >", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGunIdGreaterThanOrEqualTo(String value) {
             addCriterion("gun_id >=", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunIdLessThan(Integer value) {
+        public Criteria andGunIdLessThan(String value) {
             addCriterion("gun_id <", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunIdLessThanOrEqualTo(Integer value) {
+        public Criteria andGunIdLessThanOrEqualTo(String value) {
             addCriterion("gun_id <=", value, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunIdIn(List<Integer> values) {
+        public Criteria andGunIdLike(String value) {
+            addCriterion("gun_id like", value, "gunId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunIdNotLike(String value) {
+            addCriterion("gun_id not like", value, "gunId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunIdIn(List<String> values) {
             addCriterion("gun_id in", values, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunIdNotIn(List<Integer> values) {
+        public Criteria andGunIdNotIn(List<String> values) {
             addCriterion("gun_id not in", values, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunIdBetween(Integer value1, Integer value2) {
+        public Criteria andGunIdBetween(String value1, String value2) {
             addCriterion("gun_id between", value1, value2, "gunId");
             return (Criteria) this;
         }
 
-        public Criteria andGunIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andGunIdNotBetween(String value1, String value2) {
             addCriterion("gun_id not between", value1, value2, "gunId");
             return (Criteria) this;
         }

@@ -13,22 +13,29 @@ package com.tct.db.dao;
 
 import java.util.ArrayList;
 
+import javax.management.relation.RoleUnresolved;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tct.codec.protocol.pojo.DeviceHeartReqMessage;
 import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
 import com.tct.codec.protocol.pojo.WatchHeartReqMessageBody.Guninfo;
 import com.tct.db.mapper.AppCustomMapper;
 import com.tct.db.mapper.AppDynamicDataCustomMapper;
-
+import com.tct.db.mapper.AppGunCustomMapper;
 import com.tct.db.mapper.GunCustomMapper;
 import com.tct.db.mapper.GunLocationCustomMapper;
 import com.tct.db.po.AppCustom;
 import com.tct.db.po.AppCustomQueryVo;
 import com.tct.db.po.AppDynamicDataCustom;
+import com.tct.db.po.AppGunCustom;
+import com.tct.db.po.AppGunCustomQueryVo;
 import com.tct.db.po.GunCustom;
+import com.tct.db.po.GunCustomQueryVo;
 import com.tct.db.po.GunLocationCustom;
+import com.tct.util.StringConstant;
 import com.tct.util.StringUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -59,6 +66,9 @@ public class HeartbeatDao {
 	
 	@Autowired
 	AppCustomMapper acDao;
+	
+	@Autowired
+	AppGunCustomMapper accDao;
 	
 	@Transactional
 	public int insertAppHeartbeatSelective(WatchHeartReqMessage wHRMsg) {
@@ -96,6 +106,40 @@ public class HeartbeatDao {
 		
 		i=1;
 		return i;
+	}
+	
+	@Transactional
+	public int intsertDeviceSelective(DeviceHeartReqMessage dhrm) {
+		
+		int i =0;
+		
+		GunCustomQueryVo gunCustomQueryVo = new GunCustomQueryVo();
+		GunCustom gunCustom = new GunCustom();
+		gunCustom.setGunImei(dhrm.getUniqueIdentification());
+		gunCustomQueryVo.setGunCustom(gunCustom);
+		GunCustom gunCustomTemp = gcDao.selectAllColumnByGunImei(gunCustomQueryVo);
+		
+		AppGunCustomQueryVo appGunCustomQueryVo = new AppGunCustomQueryVo();
+		AppGunCustom appGunCustom = new AppGunCustom();
+		appGunCustom.setGunId(gunCustomTemp.getGunId());
+		appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTED_STATE));
+		appGunCustomQueryVo.setAppGunCustom(appGunCustom);
+		AppGunCustom appGunCustomTemp=accDao.selectAllColumn(appGunCustomQueryVo);
+		
+		GunLocationCustom gunLocationCustom = new GunLocationCustom();
+		gunLocationCustom.setAppId(appGunCustomTemp.getAppId());
+		gunLocationCustom.setGunId(gunCustomTemp.getGunId());
+		gunLocationCustom.setGunMac(gunCustomTemp.getGunMac());
+		gunLocationCustom.setAreaCode(dhrm.getMessageBody().getAreaCode());
+		gunLocationCustom.setDirector(dhrm.getMessageBody().getDirector());
+		gunLocationCustom.setGunDeviceBatteryPower(dhrm.getMessageBody().getGunDeviceBatteryPower());
+		gunLocationCustom.setGunDeviceState(Integer.valueOf(dhrm.getMessageBody().getInPosition()));
+		gunLocationCustom.setCreateTime(StringUtil.getDate(dhrm.getSendTime()));
+		gunLocationCustom.setLongitude(dhrm.getMessageBody().getLo());
+		gunLocationCustom.setLatitude(dhrm.getMessageBody().getLa());
+		glcDao.insertSelective(gunLocationCustom);
+		
+		return 1;
 	}
 	
 }

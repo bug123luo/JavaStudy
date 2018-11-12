@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
 
 /**   
  * @ClassName:  CancelInWarehouseReqService   
@@ -39,7 +40,7 @@ public class CancelInWarehouseReqService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		// TODO Auto-generated method stub
+		CancelInWarehouseReqMessage  cancelInWarehouseReqMessage = (CancelInWarehouseReqMessage)msg;
 
 	}
 

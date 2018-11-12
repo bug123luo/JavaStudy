@@ -354,6 +354,146 @@ public class GunBulletCountExample {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
+
+        public Criteria andLoIsNull() {
+            addCriterion("lo is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoIsNotNull() {
+            addCriterion("lo is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoEqualTo(String value) {
+            addCriterion("lo =", value, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoNotEqualTo(String value) {
+            addCriterion("lo <>", value, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoGreaterThan(String value) {
+            addCriterion("lo >", value, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoGreaterThanOrEqualTo(String value) {
+            addCriterion("lo >=", value, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoLessThan(String value) {
+            addCriterion("lo <", value, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoLessThanOrEqualTo(String value) {
+            addCriterion("lo <=", value, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoLike(String value) {
+            addCriterion("lo like", value, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoNotLike(String value) {
+            addCriterion("lo not like", value, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoIn(List<String> values) {
+            addCriterion("lo in", values, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoNotIn(List<String> values) {
+            addCriterion("lo not in", values, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoBetween(String value1, String value2) {
+            addCriterion("lo between", value1, value2, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoNotBetween(String value1, String value2) {
+            addCriterion("lo not between", value1, value2, "lo");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaIsNull() {
+            addCriterion("la is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaIsNotNull() {
+            addCriterion("la is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaEqualTo(String value) {
+            addCriterion("la =", value, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaNotEqualTo(String value) {
+            addCriterion("la <>", value, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaGreaterThan(String value) {
+            addCriterion("la >", value, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaGreaterThanOrEqualTo(String value) {
+            addCriterion("la >=", value, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaLessThan(String value) {
+            addCriterion("la <", value, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaLessThanOrEqualTo(String value) {
+            addCriterion("la <=", value, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaLike(String value) {
+            addCriterion("la like", value, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaNotLike(String value) {
+            addCriterion("la not like", value, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaIn(List<String> values) {
+            addCriterion("la in", values, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaNotIn(List<String> values) {
+            addCriterion("la not in", values, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaBetween(String value1, String value2) {
+            addCriterion("la between", value1, value2, "la");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaNotBetween(String value1, String value2) {
+            addCriterion("la not between", value1, value2, "la");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

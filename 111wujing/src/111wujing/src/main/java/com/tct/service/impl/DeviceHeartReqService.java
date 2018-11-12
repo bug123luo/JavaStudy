@@ -11,10 +11,24 @@
  */
 package com.tct.service.impl;
 
+import javax.annotation.Resource;
+import javax.jms.Destination;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.DeviceHeartReqMessage;
+import com.tct.codec.protocol.pojo.DeviceHeartResMessage;
+import com.tct.codec.protocol.pojo.DeviceHeartResMessageBody;
+import com.tct.db.dao.HeartbeatDao;
+import com.tct.db.mapper.AppGunCustomMapper;
+import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.MessageTypeConstant;
+import com.tct.util.StringConstant;
+import com.tct.util.StringUtil;
 
 /**   
  * @ClassName:  DeviceHeartReqService   
@@ -30,6 +44,18 @@ import com.alibaba.fastjson.JSONObject;
 @Scope("prototype")
 public class DeviceHeartReqService implements TemplateService {
 
+	@Resource
+	private OutQueueSender outQueueSender;
+	
+	@Resource
+	@Qualifier("outQueueDestination")
+	private Destination outQueueDestination;
+		
+	@Autowired
+	private HeartbeatDao hbDao;
+	
+
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -39,8 +65,33 @@ public class DeviceHeartReqService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		// TODO Auto-generated method stub
-
+		DeviceHeartReqMessage deviceHeartReqMessage = (DeviceHeartReqMessage)msg;
+		int i=0;
+		i=hbDao.intsertDeviceSelective(deviceHeartReqMessage);
+		
+		DeviceHeartResMessage dhrm = constructRes(deviceHeartReqMessage);
+		
+		if(0==i) {
+			dhrm.getMessageBody().setState(StringConstant.FAILURE_NEW_STATE);
+		}
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(dhrm));
 	}
 
+	
+	public DeviceHeartResMessage constructRes(DeviceHeartReqMessage msg) {
+		DeviceHeartResMessage dhrm = new DeviceHeartResMessage();
+		DeviceHeartResMessageBody messageBody = new DeviceHeartResMessageBody();
+		messageBody.setAuthCode(msg.getMessageBody().getAuthCode());
+		messageBody.setState(StringConstant.SUCCESS_NEW_STATE);
+		dhrm.setDeviceType(msg.getDeviceType());
+		dhrm.setFormatVersion(msg.getFormatVersion());
+		dhrm.setMessageType(MessageTypeConstant.MESSAGE18);
+		dhrm.setSendTime(StringUtil.getDateString());
+		dhrm.setSerialNumber(msg.getSerialNumber());
+		dhrm.setSessionToken(msg.getSessionToken());
+		dhrm.setUniqueIdentification(msg.getUniqueIdentification());
+		dhrm.setMessageBody(messageBody);
+		return dhrm;
+	}
 }

@@ -11,6 +11,10 @@ public class GunBulletCount {
 
     private Date createTime;
 
+    private String lo;
+
+    private String la;
+
     public Integer getId() {
         return id;
     }
@@ -41,5 +45,21 @@ public class GunBulletCount {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getLo() {
+        return lo;
+    }
+
+    public void setLo(String lo) {
+        this.lo = lo == null ? null : lo.trim();
+    }
+
+    public String getLa() {
+        return la;
+    }
+
+    public void setLa(String la) {
+        this.la = la == null ? null : la.trim();
     }
 }

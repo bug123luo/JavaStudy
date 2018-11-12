@@ -11,10 +11,21 @@
  */
 package com.tct.service.impl;
 
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.SearchGunReqMessage;
+import com.tct.jms.producer.OutQueueSender;
 
 /**   
  * @ClassName:  SearchGunReqService   
@@ -30,6 +41,21 @@ import com.alibaba.fastjson.JSONObject;
 @Scope("prototype")
 public class SearchGunReqService implements TemplateService {
 
+	@Autowired
+	@Qualifier("stringRedisTemplate")
+	private StringRedisTemplate stringRedisTemplate;
+	
+	@Autowired
+	@Qualifier("jedisTemplate")
+	private RedisTemplate<String,Map<String, ?>> jedisTemplate;
+	
+	@Resource
+	private OutQueueSender outQueueSender;
+	
+	@Resource
+	@Qualifier("outQueueDestination")
+	private Destination outQueueDestination;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -39,8 +65,12 @@ public class SearchGunReqService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		// TODO Auto-generated method stub
-
+		SearchGunReqMessage searchGunReqMessage = (SearchGunReqMessage)msg;
+		
+		String sessionToken = stringRedisTemplate.opsForValue().get(searchGunReqMessage.getUniqueIdentification());
+		
+		searchGunReqMessage.setSessionToken(sessionToken);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(searchGunReqMessage));
 	}
 
 }

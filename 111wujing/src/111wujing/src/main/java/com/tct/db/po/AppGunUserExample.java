@@ -285,6 +285,66 @@ public class AppGunUserExample {
             return (Criteria) this;
         }
 
+        public Criteria andBindingStateIsNull() {
+            addCriterion("binding_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateIsNotNull() {
+            addCriterion("binding_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateEqualTo(Integer value) {
+            addCriterion("binding_state =", value, "bindingState");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateNotEqualTo(Integer value) {
+            addCriterion("binding_state <>", value, "bindingState");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateGreaterThan(Integer value) {
+            addCriterion("binding_state >", value, "bindingState");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("binding_state >=", value, "bindingState");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateLessThan(Integer value) {
+            addCriterion("binding_state <", value, "bindingState");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateLessThanOrEqualTo(Integer value) {
+            addCriterion("binding_state <=", value, "bindingState");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateIn(List<Integer> values) {
+            addCriterion("binding_state in", values, "bindingState");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateNotIn(List<Integer> values) {
+            addCriterion("binding_state not in", values, "bindingState");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateBetween(Integer value1, Integer value2) {
+            addCriterion("binding_state between", value1, value2, "bindingState");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindingStateNotBetween(Integer value1, Integer value2) {
+            addCriterion("binding_state not between", value1, value2, "bindingState");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;
