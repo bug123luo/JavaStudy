@@ -11,11 +11,22 @@
  */
 package com.tct.service.impl;
 
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
+import com.tct.db.dao.MessageRecordsDao;
+import com.tct.jms.producer.OutQueueSender;
 
 /**   
  * @ClassName:  CancelInWarehouseReqService   
@@ -31,6 +42,24 @@ import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
 @Scope("prototype")
 public class CancelInWarehouseReqService implements TemplateService {
 
+	@Autowired
+	@Qualifier("stringRedisTemplate")
+	private StringRedisTemplate stringRedisTemplate;
+	
+	@Autowired
+	@Qualifier("jedisTemplate")
+	private RedisTemplate<String,Map<String, ?>> jedisTemplate;
+	
+	@Resource
+	private OutQueueSender outQueueSender;
+	
+	@Resource
+	@Qualifier("outQueueDestination")
+	private Destination outQueueDestination;
+	
+	@Autowired
+	MessageRecordsDao mrDao;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -41,7 +70,12 @@ public class CancelInWarehouseReqService implements TemplateService {
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
 		CancelInWarehouseReqMessage  cancelInWarehouseReqMessage = (CancelInWarehouseReqMessage)msg;
-
+		
+		mrDao.insertSelective(cancelInWarehouseReqMessage);
+		
+		String sessionToken =  stringRedisTemplate.opsForValue().get(cancelInWarehouseReqMessage.getUniqueIdentification());
+		cancelInWarehouseReqMessage.setSessionToken(sessionToken);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(cancelInWarehouseReqMessage));
 	}
 
 }

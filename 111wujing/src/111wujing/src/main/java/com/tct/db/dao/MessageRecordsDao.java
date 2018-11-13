@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunResMessage;
 import com.tct.codec.protocol.pojo.InWarehouseReqMessage;
@@ -44,6 +45,7 @@ public class MessageRecordsDao {
 	public int insertSelective(CancelRecipientsGunReqMessage cRecGunReqMsg) {
 		
 		MessageRecordsCustom mRecCustom = new MessageRecordsCustom();
+		mRecCustom.setGunId(cRecGunReqMsg.getMessageBody().getGunId());
 		mRecCustom.setSerlNum(cRecGunReqMsg.getSerialNumber());
 		mRecCustom.setMessage(JSONObject.toJSONString(cRecGunReqMsg));
 		
@@ -71,8 +73,21 @@ public class MessageRecordsDao {
 	public int insertSelective(InWarehouseReqMessage inWhReqMsg) {
 		MessageRecordsCustom mRecCustom = new MessageRecordsCustom();
 		
+		mRecCustom.setGunId(inWhReqMsg.getMessageBody().getGunId());
 		mRecCustom.setSerlNum(inWhReqMsg.getSerialNumber());
 		mRecCustom.setMessage(JSONObject.toJSONString(inWhReqMsg));
+		
+		int i =0;
+		i= msgDao.insertSelective(mRecCustom);
+		return i;
+	}
+	
+	public int insertSelective(CancelInWarehouseReqMessage msg) {
+		MessageRecordsCustom mRecCustom = new MessageRecordsCustom();
+		
+		mRecCustom.setGunId(msg.getMessageBody().getGunId());
+		mRecCustom.setSerlNum(msg.getSerialNumber());
+		mRecCustom.setMessage(JSONObject.toJSONString(msg));
 		
 		int i =0;
 		i= msgDao.insertSelective(mRecCustom);

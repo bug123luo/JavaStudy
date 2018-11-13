@@ -14,12 +14,14 @@ package com.tct.service.selector;
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.impl.AuthorizationReqCodec;
 import com.tct.codec.impl.BindingReqCodec;
 import com.tct.codec.impl.BindingResCodec;
 import com.tct.codec.impl.CancelInWarehouseReqCodec;
+import com.tct.codec.impl.CancelInWarehouseResCodec;
 import com.tct.codec.impl.CancelRecipientsGunReqCodec;
 import com.tct.codec.impl.CancelRecipientsGunResCodec;
 import com.tct.codec.impl.DeviceHeartReqCodec;
@@ -40,6 +42,7 @@ import com.tct.codec.protocol.pojo.AuthorizationReqMessage;
 import com.tct.codec.protocol.pojo.BindingReqMessage;
 import com.tct.codec.protocol.pojo.BindingResMessage;
 import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
+import com.tct.codec.protocol.pojo.CancelInWarehouseResMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunResMessage;
 import com.tct.codec.protocol.pojo.DeviceHeartReqMessage;
@@ -59,6 +62,7 @@ import com.tct.service.impl.AuthorizationReqService;
 import com.tct.service.impl.BindingReqService;
 import com.tct.service.impl.BindingResService;
 import com.tct.service.impl.CancelInWarehouseReqService;
+import com.tct.service.impl.CancelInWarehouseResService;
 import com.tct.service.impl.CancelRecipientsGunReqService;
 import com.tct.service.impl.CancelRecipientsGunResService;
 import com.tct.service.impl.DeviceHeartReqService;
@@ -145,6 +149,9 @@ public class ServiceSelector {
 	
 	@Resource(name="outWarehouseResService")
 	private OutWarehouseResService outWarehouseResService;
+	
+	@Resource(name="cancelInWarehouseResService")
+	private CancelInWarehouseResService cancelInWarehouseResService;
 	
 	public void handlerService(MessageBodyCodec messageCodec,JSONObject msg){
 		
@@ -288,6 +295,13 @@ public class ServiceSelector {
 			service = outWarehouseResService;
 			try {
 				objmsg = (OutWarehouseResMessage)messageCodec.decode(msg);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(messageCodec instanceof CancelInWarehouseResCodec){
+			service = outWarehouseResService;
+			try {
+				objmsg = (CancelInWarehouseResMessage)messageCodec.decode(msg);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

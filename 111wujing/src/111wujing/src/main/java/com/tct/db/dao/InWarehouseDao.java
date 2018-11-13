@@ -45,6 +45,16 @@ public class InWarehouseDao {
 	@Autowired
 	WarehouseRecordsCustomMapper wrcDao;
 	
+	public int updateSelectiveByGunIdAndMaxTime(String gunId) {
+		WarehouseRecords warehouseRecords= new WarehouseRecords();
+		warehouseRecords.setGunId(gunId);
+		warehouseRecords.setState(Integer.valueOf(StringConstant.OUT_WAREHOUSE_STATE));
+		
+		int i = 0;
+		i = wrcDao.updateSelectiveByGunIdAndMaxTime(warehouseRecords);
+		return i;
+	}
+	
 	public int updateSelectiveByGunIdAndRollbackState(String gunId) {
 		WarehouseRecords warehouseRecords= new WarehouseRecords();
 		//JSONObject jsontemp = JSONObject.parseObject(mRecCustom.getMessage());
@@ -62,7 +72,7 @@ public class InWarehouseDao {
 		WarehouseRecords warehouseRecords= new WarehouseRecords();
 		//JSONObject jsontemp = JSONObject.parseObject(mRecCustom.getMessage());
 		warehouseRecords.setGunId(gunId);
-		warehouseRecords.setState(Integer.valueOf(StringConstant.IN_WAREHOUSE_ING_STATE));
+		warehouseRecords.setState(Integer.valueOf(StringConstant.IN_WAREHOUSE_STATE));
 		//warehouseRecords.setCancelTime(new Date());
 		
 		int i = 0;

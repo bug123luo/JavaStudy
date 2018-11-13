@@ -80,6 +80,7 @@
 	</insert>
 	
 	<update id="updateSelectiveByGunId" parameterType="com.tct.db.po.WarehouseRecords">
+		update warehouse_records
 		<set>
 	      <if test="warehouseId != null">
 	        warehouse_id = #{warehouseId,jdbcType=INTEGER},
@@ -110,6 +111,7 @@
 	</update>
 	
 	<update id="updateSelectiveByGunIdAndOutState" parameterType="com.tct.db.po.WarehouseRecords">
+		update warehouse_records
 		<set>
 	      <if test="warehouseId != null">
 	        warehouse_id = #{warehouseId,jdbcType=INTEGER},
@@ -152,6 +154,7 @@
 	</select>
 	
 	<update id="updateSelectiveByGunIdAndInState" parameterType="com.tct.db.po.WarehouseRecords">
+		update warehouse_records
 		<set>
 	      <if test="warehouseId != null">
 	        warehouse_id = #{warehouseId,jdbcType=INTEGER},
@@ -182,6 +185,7 @@
 	</update>
 	
 	<update id="updateSelectiveByGunIdAndRollbackState" parameterType="com.tct.db.po.WarehouseRecords">
+		update warehouse_records
 		<set>
 	      <if test="warehouseId != null">
 	        warehouse_id = #{warehouseId,jdbcType=INTEGER},
@@ -223,4 +227,36 @@
  			</if>
  		</trim>
 	</select>
+	
+	<update id="updateSelectiveByGunIdAndMaxTime" parameterType="com.tct.db.po.WarehouseRecords">
+		update warehouse_records
+		<set>
+	      <if test="warehouseId != null">
+	        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+	      </if>
+	      <if test="warehouseInTime != null">
+	        warehouse_in_time = #{warehouseInTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="warehouseOutTime != null">
+	        warehouse_out_time = #{warehouseOutTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="webUserId != null">
+	        web_user_id = #{webUserId,jdbcType=INTEGER},
+	      </if>
+	      <if test="appId != null">
+	        app_id = #{appId,jdbcType=INTEGER},
+	      </if>
+	      <if test="state != null">
+	        state = #{state,jdbcType=INTEGER},
+	      </if>
+	      <if test="version != null">
+	        version = #{version,jdbcType=INTEGER},
+	      </if>
+          <if test="cancelTime != null">
+	        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+	      </if>
+	    </set>
+	    where gun_id = #{gunId,jdbcType=CHAR} and warehouse_out_time = (select MAX(warehouse_out_time) from warehouse_records where gun_id = #{gunId,jdbcType=CHAR})
+	</update>
+	
 </mapper>

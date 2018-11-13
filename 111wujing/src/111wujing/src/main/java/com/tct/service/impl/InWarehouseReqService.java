@@ -78,7 +78,7 @@ public class InWarehouseReqService implements TemplateService {
 	public void handleCodeMsg(Object msg) throws Exception {
 		InWarehouseReqMessage inWhReqMsg = (InWarehouseReqMessage)msg;
 		
-		//检查是否已经是出库中的记录，如果是，则不操作，直接返回，如果不是，则执行插入操作，并且将记录保存在数据库中
+		//检查是否已经是入库中的记录，如果是，则不操作，直接返回，如果不是，则执行插入操作，并且将记录保存在数据库中
 		WarehouseRecordsCustom whrc=inDao.selectByGunIdAndIngState(inWhReqMsg);
 		if(whrc!=null) {
 			return;

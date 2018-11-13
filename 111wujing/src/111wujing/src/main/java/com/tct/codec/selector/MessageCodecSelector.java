@@ -84,6 +84,8 @@ public class MessageCodecSelector {
 			msgCodec = new CancelRecipientsGunResCodec();
 		}else if(json.getString("messageType").equals("12")){
 			msgCodec = new InWarehouseResCodec();
+		}else if (json.getString("messageType").equals("14")) {
+			msgCodec = new CancelRecipientsGunResCodec();
 		}else if(json.getString("messageType").equals("26")){
 			msgCodec = new GetBulletNumberResCodec();
 		}else {
