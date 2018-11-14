@@ -76,7 +76,7 @@ public class BindingGunDao {
 		appGunCustom.setAppId(Integer.valueOf(appCustomTemplate.getId()));
 		appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTING_STATE));
 		for(GunInfo guninfo:gunList) {
-			appGunCustom.setGunId(Integer.valueOf(guninfo.getGunId()));
+			appGunCustom.setGunId(guninfo.getGunId());
 			appGunDao.insertSelective(appGunCustom);
 		}
 	}

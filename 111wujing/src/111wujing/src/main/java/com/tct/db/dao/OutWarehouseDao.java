@@ -56,7 +56,7 @@ public class OutWarehouseDao {
 	public int insertWarehouseRecords(OutWarehouseReqMessage oWReqMsg) {
 		AppGunCustomQueryVo appGunCustomQueryVo = new AppGunCustomQueryVo();
 		AppGunCustom appGunCustom = new AppGunCustom();
-		appGunCustom.setGunId(Integer.valueOf(oWReqMsg.getMessageBody().getGunId()));
+		appGunCustom.setGunId(oWReqMsg.getMessageBody().getGunId());
 		appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTED_STATE));
 		appGunCustomQueryVo.setAppGunCustom(appGunCustom);
 		

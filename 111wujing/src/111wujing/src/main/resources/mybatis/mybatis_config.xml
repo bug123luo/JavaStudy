@@ -13,6 +13,13 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="mapper/ServerMessageSerialnumberCustomMapper.xml"/>
+		<mapper resource="db/mapper/AppCustomMapper.xml"/>
+		<mapper resource="db/mapper/AppDynamicDataCustomMapper.xml"/>
+		<mapper resource="db/mapper/AppGunCustomMapper.xml"/>
+		<mapper resource="db/mapper/GunBulletCountCustomMapper.xml"/>
+		<mapper resource="db/mapper/GunCustomMapper.xml"/>
+		<mapper resource="db/mapper/GunLocationCustomMapper.xml"/>
+		<mapper resource="db/mapper/MessageRecordsCustomMapper.xml"/>
+		<mapper resource="db/mapper/WarehouseRecordsCustomMapper.xml"/>
 	</mappers>
 </configuration> 
