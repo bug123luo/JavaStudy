@@ -21,7 +21,7 @@
             <outputDirectory>logs</outputDirectory>
         </fileSet>
         <fileSet>
-      		<outputDirectory>/</outputDirectory>
+      		<outputDirectory>${basedir}/target</outputDirectory>
       		<includes>
        			 <include>README.txt</include>
       		</includes>

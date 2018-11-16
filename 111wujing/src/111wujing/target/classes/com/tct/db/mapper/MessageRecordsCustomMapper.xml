@@ -47,7 +47,7 @@
 	      <if test="message != null">
 	        #{message,jdbcType=VARCHAR},
 	      </if>
-	      <if test="gunId != null">
+	      <if test="gunImei != null">
 	        #{gunId,jdbcType=CHAR},
 	      </if>
 	    </trim>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tct.db.mapper.GunCustomMapper">
+ 	<sql id="allColumns">
+ 		id,
+ 		uid,
+ 		gun_id,
+ 		gun_model,
+ 		gun_type,
+ 		gun_mac,
+ 		is_del,
+ 		create_time,
+ 		update_time,
+ 		warehouse_id,
+ 		warehouse_name,
+ 		version,
+ 		total_bullet_number,
+ 		real_time_state,
+ 		gun_imei
+ 	</sql>
+ 	
+ 	<select id="selectAllColumn" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.Gun">
+ 		select <include refid="allColumns"/> from gun
+ 		<where>
+ 			<if test="gunCustom.gunMac!=null">
+ 				gun_mac = #{gunCustom.gunMac}
+ 			</if>
+ 		</where>
+ 	</select>
+ 	
+ 	<update id="updateByGunId" parameterType="com.tct.db.po.GunCustom">
+ 		update gun set total_bullet_number = (total_bullet_number + #{bulletNumber}) where gun_id=#{gunId}
+ 	</update>
+ 	
+ 	<update id="updateByGunIdAndCount" parameterType="com.tct.db.po.GunCustom">
+ 		update gun set total_bullet_number = #{totalBulletNumber} where gun_id=#{gunId}
+ 	</update> 	
+ 	
+ 	<select id="selectAllColumnByGunImei" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.Gun">
+ 		select <include refid="allColumns"/> from gun
+ 		<where>
+ 			<if test="gunCustom.gunImei!=null">
+ 				gun_mac = #{gunCustom.gunImei}
+ 			</if>
+ 		</where>
+ 	</select>
+</mapper>

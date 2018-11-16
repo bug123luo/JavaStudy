@@ -35,40 +35,40 @@
  	
 	<insert id="insertSelective" parameterType="com.tct.db.po.AppGunCustom">
 		 insert into app_gun
-	    <trim prefix="(" suffix=")" suffixOverrides=",">
-	      <if test="id != null">
-	        id,
-	      </if>
-	      <if test="appId != null">
-	        app_id,
-	      </if>
-	      <if test="gunId != null">
-	        gun_id,
-	      </if>
-	      <if test="createTime != null">
-	        create_time,
-	      </if>
-	      <if test="allotState != null">
-	        allot_state,
-	      </if>
-	    </trim>
-	    <trim prefix="values (" suffix=")" suffixOverrides=",">
-	      <if test="id != null">
-	        #{id,jdbcType=INTEGER},
-	      </if>
-	      <if test="appId != null">
-	        #{appId,jdbcType=INTEGER},
-	      </if>
-	      <if test="gunId != null">
-	        #{gunId,jdbcType=INTEGER},
-	      </if>
-	      <if test="createTime != null">
-	        #{createTime,jdbcType=TIMESTAMP},
-	      </if>
-	      <if test="allotState != null">
-	        #{allotState,jdbcType=INTEGER},
-	      </if>
-	    </trim>
+		    <trim prefix="(" suffix=")" suffixOverrides=",">
+		      <if test="id != null">
+		        id,
+		      </if>
+		      <if test="appId != null">
+		        app_id,
+		      </if>
+		      <if test="gunId != null">
+		        gun_id,
+		      </if>
+		      <if test="createTime != null">
+		        create_time,
+		      </if>
+		      <if test="allotState != null">
+		        allot_state,
+		      </if>
+		    </trim>
+		    <trim prefix="values (" suffix=")" suffixOverrides=",">
+		      <if test="id != null">
+		        #{id,jdbcType=INTEGER},
+		      </if>
+		      <if test="appId != null">
+		        #{appId,jdbcType=INTEGER},
+		      </if>
+		      <if test="gunId != null">
+		        #{gunId,jdbcType=INTEGER},
+		      </if>
+		      <if test="createTime != null">
+		        #{createTime,jdbcType=TIMESTAMP},
+		      </if>
+		      <if test="allotState != null">
+		        #{allotState,jdbcType=INTEGER},
+		      </if>
+		    </trim>
 	</insert>
 
 	<update id="updateSelectiveByAppId" parameterType="com.tct.db.po.AppGunCustom">
