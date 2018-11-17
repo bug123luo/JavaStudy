@@ -25,7 +25,9 @@ import org.springframework.stereotype.Service;
 
 import com.tct.codec.protocol.pojo.CancelRecipientsGunResMessage;
 import com.tct.db.dao.MessageRecordsDao;
+import com.tct.db.dao.MessageRecordsDaoImpl;
 import com.tct.db.dao.OutWarehouseDao;
+import com.tct.db.dao.OutWarehouseDaoImpl;
 import com.tct.db.po.MessageRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;

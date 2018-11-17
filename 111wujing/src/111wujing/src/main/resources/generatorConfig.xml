@@ -68,6 +68,5 @@
 		<table tableName="web_user"></table>
 		<table tableName="web_user_login"></table>
 		<table tableName="message_records"></table>
-		
 	</context>
 </generatorConfiguration>

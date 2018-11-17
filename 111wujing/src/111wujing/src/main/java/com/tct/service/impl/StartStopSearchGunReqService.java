@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.StartStopSearchGunReqMessage;
 import com.tct.db.dao.HeartbeatDao;
+import com.tct.db.dao.HeartbeatDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
 
 /**   

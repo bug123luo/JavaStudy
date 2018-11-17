@@ -15,7 +15,7 @@
 
 	<bean id="springContextUtil"  class="com.tct.util.SpringContextUtil"/>
 
-	<context:component-scan base-package="com.tct.service,com.tct.dao"/>
+	<context:component-scan base-package="com.tct.service.impl,com.tct.db.dao"/>
 
 	<!-- 加载db.properties文件中的内容，db.properties文件中key命名要有一定的特殊规则 -->
 	<context:property-placeholder location="classpath:db.properties,

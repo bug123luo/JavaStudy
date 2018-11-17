@@ -45,25 +45,25 @@
     <bean id="demoQueueDestination" class="org.apache.activemq.command.ActiveMQQueue">
         <!-- 设置消息队列的名字 -->
         <constructor-arg>
-            <value>InputQueue,WebInQueue</value>
+            <value>InputQueue1,WebInQueue1</value>
         </constructor-arg>
     </bean>
     <!-- 定义消息发送队列（Queue）  -->
     	<!-- 定义队列目的地 ，点对点 -->
 	<bean id="outQueueDestination" class="org.apache.activemq.command.ActiveMQQueue">
 		<constructor-arg>
-			<value>OutQueue</value>
+			<value>OutQueue1</value>
 		</constructor-arg>
     </bean>
     <bean id="webOutQueueDestination" class="org.apache.activemq.command.ActiveMQQueue">
     	<constructor-arg>
-    		<value>WebOutQueue</value>
+    		<value>WebOutQueue1</value>
     	</constructor-arg>
     </bean>
     
     <bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic" >
       <constructor-arg>
-    	  <value>WebTopic</value>
+    	  <value>WebTopic1</value>
   	  </constructor-arg>
   	</bean>
   	

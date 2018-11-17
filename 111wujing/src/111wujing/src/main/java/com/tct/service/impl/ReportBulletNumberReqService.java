@@ -29,6 +29,7 @@ import com.tct.codec.protocol.pojo.ReportBulletNumberReqMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberResMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberResMessageBody;
 import com.tct.db.dao.GunBulletDao;
+import com.tct.db.dao.GunBulletDaoImpl;
 import com.tct.db.mapper.GunBulletCountCustomMapper;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.MessageTypeConstant;

@@ -31,6 +31,7 @@ import com.tct.codec.protocol.pojo.RegistReqMessageBody;
 import com.tct.codec.protocol.pojo.RegistResMessage;
 import com.tct.codec.protocol.pojo.RegistResMessageBody;
 import com.tct.db.dao.AuthCodeDao;
+import com.tct.db.dao.AuthCodeDaoImpl;
 import com.tct.db.po.AppCustom;
 import com.tct.db.po.AppCustomQueryVo;
 import com.tct.jms.producer.OutQueueSender;

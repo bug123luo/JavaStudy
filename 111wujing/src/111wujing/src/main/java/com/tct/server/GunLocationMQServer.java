@@ -38,7 +38,7 @@ public class GunLocationMQServer {
 				"classpath:applicationContext-dao.xml",
 				"classpath:applicationContext-transaction.xml",
 				"classpath:applicationContext-jms.xml",
-				"classpath:applicationContext-timer.xml",
+				//"classpath:applicationContext-timer.xml",
 				"classpath:applicationContext-redis.xml"};
 		
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlFiles);

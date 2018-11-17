@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
 import com.tct.db.dao.MessageRecordsDao;
+import com.tct.db.dao.MessageRecordsDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
 
 /**   

@@ -25,7 +25,9 @@ import org.springframework.stereotype.Service;
 
 import com.tct.codec.protocol.pojo.InWarehouseResMessage;
 import com.tct.db.dao.InWarehouseDao;
+import com.tct.db.dao.InWarehouseDaoImpl;
 import com.tct.db.dao.MessageRecordsDao;
+import com.tct.db.dao.MessageRecordsDaoImpl;
 import com.tct.db.po.MessageRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;

@@ -22,18 +22,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
-import com.alibaba.druid.support.logging.Log;
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.OutWarehouseReqMessage;
 import com.tct.db.dao.OutWarehouseDao;
-import com.tct.db.po.AppGunCustom;
-import com.tct.db.po.AppGunCustomQueryVo;
-import com.tct.db.po.GunCustom;
-import com.tct.db.po.GunCustomQueryVo;
-import com.tct.db.po.WarehouseRecords;
 import com.tct.db.po.WarehouseRecordsCustom;
-import com.tct.db.po.WarehouseRecordsQueryVo;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
 

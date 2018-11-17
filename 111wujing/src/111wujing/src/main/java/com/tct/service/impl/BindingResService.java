@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.tct.codec.protocol.pojo.BindingResMessage;
 import com.tct.db.dao.BindingGunDao;
+import com.tct.db.dao.BindingGunDaoImpl;
 import com.tct.util.StringConstant;
 
 /**   

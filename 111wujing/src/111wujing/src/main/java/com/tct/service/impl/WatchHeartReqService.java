@@ -28,6 +28,7 @@ import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
 import com.tct.codec.protocol.pojo.WatchHeartResMessage;
 import com.tct.codec.protocol.pojo.WatchHeartResMessageBody;
 import com.tct.db.dao.HeartbeatDao;
+import com.tct.db.dao.HeartbeatDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.MessageTypeConstant;
 import com.tct.util.StringConstant;

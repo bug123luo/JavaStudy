@@ -24,7 +24,6 @@ import com.tct.codec.protocol.pojo.DeviceHeartReqMessage;
 import com.tct.codec.protocol.pojo.DeviceHeartResMessage;
 import com.tct.codec.protocol.pojo.DeviceHeartResMessageBody;
 import com.tct.db.dao.HeartbeatDao;
-import com.tct.db.mapper.AppGunCustomMapper;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.MessageTypeConstant;
 import com.tct.util.StringConstant;
@@ -52,7 +51,7 @@ public class DeviceHeartReqService implements TemplateService {
 	private Destination outQueueDestination;
 		
 	@Autowired
-	private HeartbeatDao hbDao;
+	private HeartbeatDao heartbeatDao;
 	
 
 	
@@ -67,7 +66,7 @@ public class DeviceHeartReqService implements TemplateService {
 	public void handleCodeMsg(Object msg) throws Exception {
 		DeviceHeartReqMessage deviceHeartReqMessage = (DeviceHeartReqMessage)msg;
 		int i=0;
-		i=hbDao.intsertDeviceSelective(deviceHeartReqMessage);
+		i=heartbeatDao.intsertDeviceSelective(deviceHeartReqMessage);
 		
 		DeviceHeartResMessage dhrm = constructRes(deviceHeartReqMessage);
 		

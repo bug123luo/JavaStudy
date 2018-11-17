@@ -25,6 +25,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.BindingReqMessage;
 import com.tct.db.dao.BindingGunDao;
+import com.tct.db.dao.BindingGunDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
 
 /**   
