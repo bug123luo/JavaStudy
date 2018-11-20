@@ -35,6 +35,7 @@ import com.tct.db.po.AppGunCustomQueryVo;
 import com.tct.db.po.GunCustom;
 import com.tct.db.po.GunCustomQueryVo;
 import com.tct.db.po.GunLocationCustom;
+import com.tct.util.CoordinateConvertUtil;
 import com.tct.util.StringConstant;
 import com.tct.util.StringUtil;
 
@@ -117,26 +118,53 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 		GunCustom gunCustom = new GunCustom();
 		gunCustom.setGunImei(dhrm.getUniqueIdentification());
 		gunCustomQueryVo.setGunCustom(gunCustom);
-		GunCustom gunCustomTemp = gcDao.selectAllColumnByGunImei(gunCustomQueryVo);
+		
+		//配合板子数据测试异常数据代码才修改，正常是必须存在对应的数据
+		GunCustom gunCustomTemp = null;
+		gunCustomTemp = gcDao.selectAllColumnByGunImei(gunCustomQueryVo);		
+		if(gunCustomTemp ==null) {
+			gunCustomTemp = new GunCustom();
+			gunCustom.setGunId("");
+			gunCustom.setGunMac("");
+		}
 		
 		AppGunCustomQueryVo appGunCustomQueryVo = new AppGunCustomQueryVo();
 		AppGunCustom appGunCustom = new AppGunCustom();
 		appGunCustom.setGunId(gunCustomTemp.getGunId());
 		appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTED_STATE));
 		appGunCustomQueryVo.setAppGunCustom(appGunCustom);
-		AppGunCustom appGunCustomTemp=accDao.selectAllColumn(appGunCustomQueryVo);
+
+		//配合板子数据测试异常数据代码才修改，正常是必须存在对应的数据
+		AppGunCustom appGunCustomTemp =null;
+		
+		try {
+			appGunCustomTemp=accDao.selectAllColumn(appGunCustomQueryVo);	
+		} catch (Exception e) {
+			if(null==appGunCustomTemp) {
+				appGunCustomTemp=new AppGunCustom();
+				appGunCustomTemp.setAppId(Integer.valueOf(0));
+			}
+		}
+
 		
 		GunLocationCustom gunLocationCustom = new GunLocationCustom();
 		gunLocationCustom.setAppId(appGunCustomTemp.getAppId());
 		gunLocationCustom.setGunId(gunCustomTemp.getGunId());
-		gunLocationCustom.setGunMac(gunCustomTemp.getGunMac());
+		gunLocationCustom.setGunMac(dhrm.getUniqueIdentification());
 		gunLocationCustom.setAreaCode(dhrm.getMessageBody().getAreaCode());
 		gunLocationCustom.setDirector(dhrm.getMessageBody().getDirector());
 		gunLocationCustom.setGunDeviceBatteryPower(dhrm.getMessageBody().getGunDeviceBatteryPower());
 		gunLocationCustom.setGunDeviceState(Integer.valueOf(dhrm.getMessageBody().getInPosition()));
 		gunLocationCustom.setCreateTime(StringUtil.getDate(dhrm.getSendTime()));
-		gunLocationCustom.setLongitude(dhrm.getMessageBody().getLo());
-		gunLocationCustom.setLatitude(dhrm.getMessageBody().getLa());
+		double[] temp= CoordinateConvertUtil.wgs2BD09(Double.valueOf(dhrm.getMessageBody().getLa())
+				,Double.valueOf(dhrm.getMessageBody().getLo()));	
+		String lo=String.format("%.6f", temp[1]);
+		String la=String.format("%.6f", temp[0]);
+		gunLocationCustom.setLongitude(lo);
+		gunLocationCustom.setLatitude(la);
+		
+/*		gunLocationCustom.setLongitude(dhrm.getMessageBody().getLo());
+		gunLocationCustom.setLatitude(dhrm.getMessageBody().getLa());*/
 		glcDao.insertSelective(gunLocationCustom);
 		
 		return 1;
