@@ -38,7 +38,7 @@ public class CancelRecipientsGunReqCodec implements MessageBodyCodec {
 	public Object decode(JSONObject json) throws Exception {
 		CancelRecipientsGunReqMessage msg= new CancelRecipientsGunReqMessage();
 		msg.setUniqueIdentification(json.getString("uniqueIdentification"));
-		msg.setDeviceType(json.getString("deviceType"));
+		msg.setDeviceType(json.getInteger("deviceType"));
 		msg.setFormatVersion(json.getString("formatVersion"));
 		msg.setMessageType(json.getString("messageType"));
 		msg.setSendTime(json.getString("sendTime"));

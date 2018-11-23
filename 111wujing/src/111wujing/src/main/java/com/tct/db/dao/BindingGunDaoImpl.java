@@ -12,13 +12,11 @@
 package com.tct.db.dao;
 
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.tct.codec.protocol.pojo.BindingReqMessage;
-import com.tct.codec.protocol.pojo.BindingReqMessageBody.GunInfo;
+import com.tct.codec.protocol.pojo.BindingReqMessageBodyGunInfo;
 import com.tct.codec.protocol.pojo.BindingResMessage;
 import com.tct.db.mapper.AppCustomMapper;
 import com.tct.db.mapper.AppGunCustomMapper;
@@ -26,7 +24,6 @@ import com.tct.db.po.AppCustom;
 import com.tct.db.po.AppCustomQueryVo;
 import com.tct.db.po.AppGunCustom;
 import com.tct.util.StringConstant;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**   
@@ -70,12 +67,12 @@ public class BindingGunDaoImpl implements BindingGunDao{
 		appCustom.setAppImei(imei);
 		appCustomQueryVo.setAppCustom(appCustom);
 		AppCustom appCustomTemplate=appDao.selectAppAllColumn(appCustomQueryVo);
-		ArrayList<GunInfo> gunList = msg.getMessageBody().getGunList();
+		ArrayList<BindingReqMessageBodyGunInfo> gunList = msg.getMessageBody().getGunList();
 		AppGunCustom appGunCustom = new AppGunCustom();
 		
 		appGunCustom.setAppId(Integer.valueOf(appCustomTemplate.getId()));
 		appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTING_STATE));
-		for(GunInfo guninfo:gunList) {
+		for(BindingReqMessageBodyGunInfo guninfo:gunList) {
 			appGunCustom.setGunId(guninfo.getGunId());
 			appGunDao.insertSelective(appGunCustom);
 		}

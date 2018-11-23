@@ -34,15 +34,8 @@ public class WatchHeartReqMessageBody {
 	private String la;//纬度
 	private String areaCode;//小区代码
 	private String appBatteryPower;//随行设备电量
-	private ArrayList<Guninfo> gunList;//枪支列表
+	private ArrayList<WatchHeartReqMessageBodyGunInfo> gunList;//枪支列表
 	private String exceptionCode;//异常时间码
 	private String authCode;//授权码
-	
-	@Data
-	public class Guninfo{
-		private String gunId;//枪号
-		private String realTimeState;//随行状态
-		private String gunDeviceBatteryPower;//定位模组电量
-	}
-	
+
 }

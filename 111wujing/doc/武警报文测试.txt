@@ -1,0 +1,32 @@
+测试需要准备报文
+03 号申请报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221201","messageType":"03","messageBody":{"watchMac":"90:3C:92:18:B6:08",imei:"357000066159862",phone:"13586541235"},"sendTime":"20180722222222","sessionToken":"123456"}
+06 号响应报文(还有测试 state为1的情况)
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221202","messageType":"06","messageBody":{"state":"0"},"sendTime":"20180722222222","sessionToken":"123456"}
+09 号报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221203","messageType":"09","messageBody":{"gunId":"","cancelTime":""},"sendTime":"20180722222222","sessionToken":"123456"}
+10号响应报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221204","messageType":"10","messageBody":{"state":""},"sendTime":"20180722222222","sessionToken":"123456"}
+15号上传报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221205","messageType:"15","messageBody":{"state":"","deviceType":"","lo":"","la":"","areaCode":"","appBatteryPower":"","gunList":[{"gunId":"","realTimeState":"","gunDeviceBatteryPower":""}],"exceptionCode":"","authCode":""},"sendTime":"20180722222222","sessionToken":"123456"}
+19号枪支查找启停报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221206","messageType":"19","messageBody":{"command":"","gunList":[{"gunMac":""}],"authCode":""},"sendTime":"20180722222222","sessionToken":"123456"}
+20号应答报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221207","messageType":"20","messageBody":{"state":"","authCode":""},"sendTime":"20180722222222",sessionToken:"123456"}
+21号命令报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221208","messageType":"21","messageBody":{"reserve":"","lo":"","la":"","lostGunList":[{"gunMac":"","gunId":"","lostTime":""}],"authCode":""},"sendTime":"20180722222222","sessionToken":"123456"}
+22号应答报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221209","messageType":"22","messageBody":{"state":"","authCode":""},"sendTime":"20180722222222","sessionToken":"123456"}
+23上报计弹数报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221210","messageType":"23","messageBody":{"gunId":"","bullet_number":"","lo":"","la":"","time":"","authCode":""},"sendTime":"20180722222222","sessionToken":"123456"}
+24应答报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221211","messageType":"24","messageBody":{"state":"","authCode":""},"sendTime":"20180722222222","sessionToken":"123456"}
+25服务器推送累计计弹数
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221212","messageType":"25","messageBody":{"gunMac":"","authCode":""},"sendTime":"20180722222222","sessionToken":"123456"}
+26应答报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221213","messageType":"26","messageBody":{"totalBulletNumber":"","authCode":""},"sendTime":"20180722222222","sessionToken":"123456"}
+07随行设备出库
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221214","messageType":"07","messageBody":{"reserve":"","username":"","userId":"","gunId":"","gunMac":"","begintime":"20180722222222","returnTime":"20180722222222"},"sendTime":"20180722222222","sessionToken":"123456"}
+08响应报文
+{"uniqueIdentification":"357000066159862","formatVersion":"0001","deviceType":3,"serialNumber":"201807222222221215","messageType":"08","messageBody":{"state":"","gunId":"","gunMac":""},"sendTime":"20180722222222","sessionToken":"123456"}
+

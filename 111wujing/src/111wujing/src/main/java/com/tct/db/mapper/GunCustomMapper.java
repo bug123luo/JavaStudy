@@ -1,5 +1,6 @@
 package com.tct.db.mapper;
 
+import com.tct.db.po.Gun;
 import com.tct.db.po.GunCustom;
 import com.tct.db.po.GunCustomQueryVo;
 
@@ -15,7 +16,7 @@ import com.tct.db.po.GunCustomQueryVo;
  */
 
 public interface GunCustomMapper {
-	GunCustom selectAllColumn(GunCustomQueryVo gunCustomQueryVo);
+	Gun selectAllColumn(GunCustomQueryVo gunCustomQueryVo);
 	
 	GunCustom selectAllColumnByGunImei(GunCustomQueryVo gunCustomQueryVo);
 	

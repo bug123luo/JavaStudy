@@ -12,9 +12,6 @@
 package com.tct.codec.protocol.pojo;
 
 import java.util.ArrayList;
-
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 import lombok.Data;
 
 /**   
@@ -29,16 +26,8 @@ import lombok.Data;
 
 @Data
 public class BindingReqMessageBody {
+	
 	private String userId;//人员编号
 
-	private ArrayList<GunInfo> gunList;//枪支列表
-	
-	@Data
-	public
-	class GunInfo{
-		private String gunType;//枪支类型：长枪 短枪
-		private String gunId;//枪号
-		private String gunModel;//枪行
-		private String gunMac;//枪支设备蓝牙编号
-	}
+	private ArrayList<BindingReqMessageBodyGunInfo> gunList;//枪支列表
 }

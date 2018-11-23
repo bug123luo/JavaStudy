@@ -3,10 +3,10 @@
 <mapper namespace="com.tct.db.mapper.AppGunCustomMapper">
  	<sql id="allColumns">
  		id,
- 		app_id,
- 		gun_id,
- 		create_time,
- 		alloc_state
+ 		app_id as appId,
+ 		gun_id as gunId,
+ 		create_time as createTime,
+ 		allot_state as allotState
  	</sql>
  	
 <!--  	<select id="selectAllColumn" parameterType="com.tct.db.po.AppGunCustomQueryVo" resultType="com.tct.db.po.AppGunCustom">
@@ -24,11 +24,11 @@
  	<select id="selectAllColumn" parameterType="com.tct.db.po.AppGunCustomQueryVo" resultType="com.tct.db.po.AppGunCustom">
  		select <include refid="allColumns"/> from app_gun
  		<trim prefix="WHERE (" suffix=")" prefixOverrides="AND |OR ">
- 			<if test="appCustom.gunId !=null">
- 				gun_id=#{appCustom.gunId}
+ 			<if test="appGunCustom.gunId !=null">
+ 				gun_id=#{appGunCustom.gunId}
  			</if>
- 			<if test="appCustom.allotState!=null">
- 				and allot_state=#{appCustom.allotState}
+ 			<if test="appGunCustom.allotState!=null">
+ 				and allot_state=#{appGunCustom.allotState}
  			</if>
  		</trim>
  	</select>

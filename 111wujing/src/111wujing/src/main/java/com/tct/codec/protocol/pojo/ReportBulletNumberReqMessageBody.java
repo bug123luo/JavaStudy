@@ -11,10 +11,6 @@
  */
 package com.tct.codec.protocol.pojo;
 
-import java.nio.channels.ScatteringByteChannel;
-
-import org.apache.camel.processor.validation.PredicateValidationException;
-
 import lombok.Data;
 
 /**   

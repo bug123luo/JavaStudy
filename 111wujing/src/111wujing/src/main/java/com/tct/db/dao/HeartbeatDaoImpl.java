@@ -12,16 +12,12 @@
 package com.tct.db.dao;
 
 import java.util.ArrayList;
-
-import javax.management.relation.RoleUnresolved;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.tct.codec.protocol.pojo.DeviceHeartReqMessage;
 import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
-import com.tct.codec.protocol.pojo.WatchHeartReqMessageBody.Guninfo;
+import com.tct.codec.protocol.pojo.WatchHeartReqMessageBodyGunInfo;
 import com.tct.db.mapper.AppCustomMapper;
 import com.tct.db.mapper.AppDynamicDataCustomMapper;
 import com.tct.db.mapper.AppGunCustomMapper;
@@ -88,7 +84,7 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 		appDynamicDataCustom.setCreateTime(StringUtil.getDate(wHRMsg.getSendTime()));
 		addcDao.insertSelective(appDynamicDataCustom);
 		
-		ArrayList<Guninfo> gList = wHRMsg.getMessageBody().getGunList();
+		ArrayList<WatchHeartReqMessageBodyGunInfo> gList = wHRMsg.getMessageBody().getGunList();
 		GunCustom gunCustom = new GunCustom();
 		GunLocationCustom gunLocationCustom = new GunLocationCustom();
 		gunLocationCustom.setAppId(appDynamicDataCustom.getAppId());
@@ -96,7 +92,7 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 		gunLocationCustom.setCreateTime(StringUtil.getDate(wHRMsg.getSendTime()));
 		gunLocationCustom.setLongitude(wHRMsg.getMessageBody().getLo());
 		gunLocationCustom.setLatitude(wHRMsg.getMessageBody().getLa());
-		for(Guninfo guninfo:gList) {
+		for(WatchHeartReqMessageBodyGunInfo guninfo:gList) {
 			gunLocationCustom.setGunId(guninfo.getGunId());
 			gunLocationCustom.setGunDeviceBatteryPower(guninfo.getGunDeviceBatteryPower());
 			glcDao.insertSelective(gunLocationCustom);

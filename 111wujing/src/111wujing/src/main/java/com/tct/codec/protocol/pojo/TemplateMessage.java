@@ -35,7 +35,7 @@ public class TemplateMessage implements Serializable {
 	
 	private String uniqueIdentification;//唯一标识符
 	private String formatVersion;//协议版本号
-	private String deviceType;//设备类型
+	private Integer deviceType;//设备类型
 	private String serialNumber;//交易流水号
 	private String messageType;//报文类型
 	private String sendTime;//发报时间

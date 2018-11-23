@@ -3,15 +3,15 @@
 <mapper namespace="com.tct.db.mapper.AppCustomMapper">
 	<sql id="selectColumn">
 		id,
-		app_system,
-		app_system_version,
-		app_phone_type_name,
-		app_name,
-		app_mac,
-		app_imei,
-		app_phone,
-		app_readable_code,
-		app_type,
+		app_system as appSystem,
+		app_system_version as appSystemVersion,
+		app_phone_type_name as appPhoneTypeName,
+		app_name as appName,
+		app_mac as appMac,
+		app_imei as appImei,
+		app_phone as appPhone,
+		app_readable_code as appReadableCode,
+		app_type as appType,
 		version
 	</sql>
 	

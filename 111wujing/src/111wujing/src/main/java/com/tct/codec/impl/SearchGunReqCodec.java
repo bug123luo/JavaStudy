@@ -38,7 +38,7 @@ public class SearchGunReqCodec implements MessageBodyCodec {
 	public Object decode(JSONObject json) throws Exception {
 		SearchGunReqMessage msg = new SearchGunReqMessage();
 		msg.setUniqueIdentification(json.getString("uniqueIdentification"));
-		msg.setDeviceType(json.getString("deviceType"));
+		msg.setDeviceType(json.getInteger("deviceType"));
 		msg.setFormatVersion(json.getString("formatVersion"));
 		msg.setMessageType(json.getString("messageType"));
 		msg.setSendTime(json.getString("sendTime"));

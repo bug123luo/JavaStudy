@@ -17,6 +17,7 @@ import com.tct.db.mapper.MessageRecordsCustomMapper;
 import com.tct.db.mapper.WarehouseRecordsCustomMapper;
 import com.tct.db.po.AppGunCustom;
 import com.tct.db.po.AppGunCustomQueryVo;
+import com.tct.db.po.Gun;
 import com.tct.db.po.GunCustom;
 import com.tct.db.po.GunCustomQueryVo;
 import com.tct.db.po.MessageRecordsCustom;
@@ -66,11 +67,12 @@ public class OutWarehouseDaoImpl implements OutWarehouseDao{
 		gunCustomQueryVo.setGunCustom(gunCustom);
 		
 		AppGunCustom appGunCustomTemp = appGunDao.selectAllColumn(appGunCustomQueryVo);
-		GunCustom gunCustomTemp = gunDao.selectAllColumn(gunCustomQueryVo);
+		Gun gunTemp = gunDao.selectAllColumn(gunCustomQueryVo);
 		WarehouseRecords warehouseRecords = new WarehouseRecords();
 		warehouseRecords.setState(Integer.valueOf(StringConstant.OUT_WAREHOUSE_ING_STATE));
 		warehouseRecords.setAppId(appGunCustomTemp.getAppId());
-		warehouseRecords.setGunId(gunCustomTemp.getGunId());
+		warehouseRecords.setGunId(gunTemp.getGunId());
+		warehouseRecords.setWarehouseId(gunTemp.getWarehouseId());
 		
 		int i = 0;
 		i=wrcDao.insertSelective(warehouseRecords);

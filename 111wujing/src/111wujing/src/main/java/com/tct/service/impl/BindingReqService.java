@@ -71,8 +71,8 @@ public class BindingReqService implements TemplateService {
 	public void handleCodeMsg(Object msg) throws Exception {
 		BindingReqMessage bReqMsg = (BindingReqMessage)msg;
 		
-		bindingGunDao.insertGugList(bReqMsg);
-		
+		//bindingGunDao.insertGugList(bReqMsg);
+				
 		String sessionToken = stringRedisTemplate.opsForValue().get(bReqMsg.getUniqueIdentification());
 		bReqMsg.setSessionToken(sessionToken);
 		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(bReqMsg));
