@@ -235,6 +235,76 @@ public class MissionExample {
             return (Criteria) this;
         }
 
+        public Criteria andAppImeiIsNull() {
+            addCriterion("app_imei is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiIsNotNull() {
+            addCriterion("app_imei is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiEqualTo(String value) {
+            addCriterion("app_imei =", value, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiNotEqualTo(String value) {
+            addCriterion("app_imei <>", value, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiGreaterThan(String value) {
+            addCriterion("app_imei >", value, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiGreaterThanOrEqualTo(String value) {
+            addCriterion("app_imei >=", value, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiLessThan(String value) {
+            addCriterion("app_imei <", value, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiLessThanOrEqualTo(String value) {
+            addCriterion("app_imei <=", value, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiLike(String value) {
+            addCriterion("app_imei like", value, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiNotLike(String value) {
+            addCriterion("app_imei not like", value, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiIn(List<String> values) {
+            addCriterion("app_imei in", values, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiNotIn(List<String> values) {
+            addCriterion("app_imei not in", values, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiBetween(String value1, String value2) {
+            addCriterion("app_imei between", value1, value2, "appImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppImeiNotBetween(String value1, String value2) {
+            addCriterion("app_imei not between", value1, value2, "appImei");
+            return (Criteria) this;
+        }
+
         public Criteria andWebUserIdIsNull() {
             addCriterion("web_user_id is null");
             return (Criteria) this;

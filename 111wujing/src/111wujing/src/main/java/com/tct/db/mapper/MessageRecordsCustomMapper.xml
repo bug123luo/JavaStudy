@@ -4,12 +4,21 @@
 	
 	<sql id="allColumns">
 		id,
-		serl_num,
+		serl_num as serlNum,
 		message,
-		gun_id
+		gun_id as gunId
 	</sql>
 	
 	<select id="selectBySerlNum" parameterType="MessageRecordsQueryVo" resultType="com.tct.db.po.MessageRecordsCustom">
+		select <include refid="allColumns"/> from message_records
+		<where>		
+			<if test=" messageRecordsCustom.serlNum !=null">
+				serl_num = #{messageRecordsCustom.serlNum}
+			</if>
+		</where>
+	</select>
+	
+		<select id="selectBySerlNumAndGunId" parameterType="MessageRecordsQueryVo" resultType="com.tct.db.po.MessageRecordsCustom">
 		select <include refid="allColumns"/> from message_records
 		<where>
 			<if test=" messageRecordsCustom.gunImei != null">

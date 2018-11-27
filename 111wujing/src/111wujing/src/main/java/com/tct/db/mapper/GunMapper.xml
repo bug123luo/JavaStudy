@@ -13,10 +13,10 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="warehouse_id" jdbcType="INTEGER" property="warehouseId" />
     <result column="warehouse_name" jdbcType="CHAR" property="warehouseName" />
-    <result column="version" jdbcType="INTEGER" property="version" />
     <result column="total_bullet_number" jdbcType="INTEGER" property="totalBulletNumber" />
     <result column="real_time_state" jdbcType="INTEGER" property="realTimeState" />
     <result column="gun_imei" jdbcType="CHAR" property="gunImei" />
+    <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, uid, gun_id, gun_model, gun_type, gun_mac, is_del, create_time, update_time, 
-    warehouse_id, warehouse_name, version, total_bullet_number, real_time_state, gun_imei
+    warehouse_id, warehouse_name, total_bullet_number, real_time_state, gun_imei, version
   </sql>
   <select id="selectByExample" parameterType="com.tct.db.po.GunExample" resultMap="BaseResultMap">
     select
@@ -114,13 +114,13 @@
     insert into gun (id, uid, gun_id, 
       gun_model, gun_type, gun_mac, is_del, 
       create_time, update_time, warehouse_id, 
-      warehouse_name, version, total_bullet_number, 
-      real_time_state, gun_imei)
+      warehouse_name, total_bullet_number, real_time_state, 
+      gun_imei, version)
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{gunId,jdbcType=CHAR}, 
       #{gunModel,jdbcType=CHAR}, #{gunType,jdbcType=CHAR}, #{gunMac,jdbcType=CHAR}, #{isDel,jdbcType=TINYINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{warehouseId,jdbcType=INTEGER}, 
-      #{warehouseName,jdbcType=CHAR}, #{version,jdbcType=INTEGER}, #{totalBulletNumber,jdbcType=INTEGER}, 
-      #{realTimeState,jdbcType=INTEGER}, #{gunImei,jdbcType=CHAR})
+      #{warehouseName,jdbcType=CHAR}, #{totalBulletNumber,jdbcType=INTEGER}, #{realTimeState,jdbcType=INTEGER}, 
+      #{gunImei,jdbcType=CHAR}, #{version,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.tct.db.po.Gun">
     insert into gun
@@ -158,9 +158,6 @@
       <if test="warehouseName != null">
         warehouse_name,
       </if>
-      <if test="version != null">
-        version,
-      </if>
       <if test="totalBulletNumber != null">
         total_bullet_number,
       </if>
@@ -169,6 +166,9 @@
       </if>
       <if test="gunImei != null">
         gun_imei,
+      </if>
+      <if test="version != null">
+        version,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -205,9 +205,6 @@
       <if test="warehouseName != null">
         #{warehouseName,jdbcType=CHAR},
       </if>
-      <if test="version != null">
-        #{version,jdbcType=INTEGER},
-      </if>
       <if test="totalBulletNumber != null">
         #{totalBulletNumber,jdbcType=INTEGER},
       </if>
@@ -216,6 +213,9 @@
       </if>
       <if test="gunImei != null">
         #{gunImei,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -261,9 +261,6 @@
       <if test="record.warehouseName != null">
         warehouse_name = #{record.warehouseName,jdbcType=CHAR},
       </if>
-      <if test="record.version != null">
-        version = #{record.version,jdbcType=INTEGER},
-      </if>
       <if test="record.totalBulletNumber != null">
         total_bullet_number = #{record.totalBulletNumber,jdbcType=INTEGER},
       </if>
@@ -272,6 +269,9 @@
       </if>
       <if test="record.gunImei != null">
         gun_imei = #{record.gunImei,jdbcType=CHAR},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -291,10 +291,10 @@
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       warehouse_id = #{record.warehouseId,jdbcType=INTEGER},
       warehouse_name = #{record.warehouseName,jdbcType=CHAR},
-      version = #{record.version,jdbcType=INTEGER},
       total_bullet_number = #{record.totalBulletNumber,jdbcType=INTEGER},
       real_time_state = #{record.realTimeState,jdbcType=INTEGER},
-      gun_imei = #{record.gunImei,jdbcType=CHAR}
+      gun_imei = #{record.gunImei,jdbcType=CHAR},
+      version = #{record.version,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -332,9 +332,6 @@
       <if test="warehouseName != null">
         warehouse_name = #{warehouseName,jdbcType=CHAR},
       </if>
-      <if test="version != null">
-        version = #{version,jdbcType=INTEGER},
-      </if>
       <if test="totalBulletNumber != null">
         total_bullet_number = #{totalBulletNumber,jdbcType=INTEGER},
       </if>
@@ -343,6 +340,9 @@
       </if>
       <if test="gunImei != null">
         gun_imei = #{gunImei,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -359,10 +359,10 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       warehouse_id = #{warehouseId,jdbcType=INTEGER},
       warehouse_name = #{warehouseName,jdbcType=CHAR},
-      version = #{version,jdbcType=INTEGER},
       total_bullet_number = #{totalBulletNumber,jdbcType=INTEGER},
       real_time_state = #{realTimeState,jdbcType=INTEGER},
-      gun_imei = #{gunImei,jdbcType=CHAR}
+      gun_imei = #{gunImei,jdbcType=CHAR},
+      version = #{version,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

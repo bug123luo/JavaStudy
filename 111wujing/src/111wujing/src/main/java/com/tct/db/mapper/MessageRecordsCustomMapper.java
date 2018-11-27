@@ -27,6 +27,8 @@ public interface MessageRecordsCustomMapper {
 
 	MessageRecordsCustom selectBySerlNum(MessageRecordsQueryVo messageRecordsQueryVo);
 	
+	MessageRecordsCustom selectBySerlNumAndGunId(MessageRecordsQueryVo messageRecordsQueryVo);
+	
 	int insertSelective(MessageRecordsCustom messageRecordsCustom);
 	
 }

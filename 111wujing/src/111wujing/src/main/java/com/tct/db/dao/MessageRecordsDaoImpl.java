@@ -58,6 +58,7 @@ public class MessageRecordsDaoImpl implements MessageRecordsDao{
 		MessageRecordsQueryVo messageRecordsQueryVo = new MessageRecordsQueryVo();
 		MessageRecordsCustom mRecCustomTemp = new MessageRecordsCustom();
 		mRecCustomTemp.setSerlNum(cRecGunResMsg.getSerialNumber());
+		messageRecordsQueryVo.setMessageRecordsCustom(mRecCustomTemp);
 		MessageRecordsCustom mRecCustom=msgDao.selectBySerlNum(messageRecordsQueryVo);
 		return mRecCustom;
 	}

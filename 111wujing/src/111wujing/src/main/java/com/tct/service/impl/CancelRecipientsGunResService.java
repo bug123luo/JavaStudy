@@ -70,7 +70,7 @@ public class CancelRecipientsGunResService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		CancelRecipientsGunResMessage cRecGunResMsg = new CancelRecipientsGunResMessage();
+		CancelRecipientsGunResMessage cRecGunResMsg = (CancelRecipientsGunResMessage)msg;
 		MessageRecordsCustom mRecCustom=mRecDao.selectBySerlNum(cRecGunResMsg);
 		
 		if(cRecGunResMsg.getMessageBody().getState().equals(StringConstant.SUCCESS_NEW_STATE)) {

@@ -25,13 +25,13 @@ public class Gun {
 
     private String warehouseName;
 
-    private Integer version;
-
     private Integer totalBulletNumber;
 
     private Integer realTimeState;
 
     private String gunImei;
+
+    private Integer version;
 
     public Integer getId() {
         return id;
@@ -121,14 +121,6 @@ public class Gun {
         this.warehouseName = warehouseName == null ? null : warehouseName.trim();
     }
 
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
     public Integer getTotalBulletNumber() {
         return totalBulletNumber;
     }
@@ -151,5 +143,13 @@ public class Gun {
 
     public void setGunImei(String gunImei) {
         this.gunImei = gunImei == null ? null : gunImei.trim();
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

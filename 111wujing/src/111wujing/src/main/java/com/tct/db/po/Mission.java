@@ -7,6 +7,8 @@ public class Mission {
 
     private String gunMac;
 
+    private String appImei;
+
     private Integer webUserId;
 
     private Integer type;
@@ -37,6 +39,14 @@ public class Mission {
 
     public void setGunMac(String gunMac) {
         this.gunMac = gunMac == null ? null : gunMac.trim();
+    }
+
+    public String getAppImei() {
+        return appImei;
+    }
+
+    public void setAppImei(String appImei) {
+        this.appImei = appImei == null ? null : appImei.trim();
     }
 
     public Integer getWebUserId() {

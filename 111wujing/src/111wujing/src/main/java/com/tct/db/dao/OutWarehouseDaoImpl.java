@@ -124,7 +124,11 @@ public class OutWarehouseDaoImpl implements OutWarehouseDao{
 		
 		WarehouseRecords warehouseRecords= new WarehouseRecords();
 		JSONObject jsontemp = JSONObject.parseObject(mRecCustom.getMessage());
-		warehouseRecords.setGunId(jsontemp.getString("gunId"));
+		String gunId=jsontemp.getString("gunId");
+		if (gunId==null) {
+			gunId="";
+		}
+		warehouseRecords.setGunId(gunId);
 		warehouseRecords.setState(Integer.valueOf(StringConstant.IN_WAREHOUSE_STATE));
 		warehouseRecords.setCancelTime(new Date());
 		
