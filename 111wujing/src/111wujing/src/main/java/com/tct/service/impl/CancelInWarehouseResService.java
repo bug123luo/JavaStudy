@@ -23,6 +23,8 @@ import com.tct.db.dao.MessageRecordsDaoImpl;
 import com.tct.db.po.MessageRecordsCustom;
 import com.tct.util.StringConstant;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**   
  * @ClassName:  CancelInWarehouseResService   
  * @Description:TODO(这里用一句话描述这个类的作用)   
@@ -35,6 +37,7 @@ import com.tct.util.StringConstant;
 
 @Service("cancelInWarehouseResService")
 @Scope("prototype")
+@Slf4j
 public class CancelInWarehouseResService implements TemplateService {
 
 	@Autowired
@@ -52,15 +55,18 @@ public class CancelInWarehouseResService implements TemplateService {
 	 */
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
-		CancelInWarehouseResMessage ciwhr = new CancelInWarehouseResMessage();
-		
+		CancelInWarehouseResMessage ciwhr = (CancelInWarehouseResMessage)msg;
+
 		MessageRecordsCustom mrsCustom=mrDao.selectBySerlNum(ciwhr.getSerialNumber());
 		
 		String state=ciwhr.getMessageBody().getState();
+
 		if(state.equals(StringConstant.SUCCESS_NEW_STATE)) {
-			iwhDao.updateSelectiveByGunIdAndMaxTime(mrsCustom.getGunId());
+			//iwhDao.updateSelectiveByGunIdAndMaxTime(mrsCustom.getGunId());
+			iwhDao.updateSelectiveByGunIdAndRollbackState(mrsCustom.getGunId());
 		}else {
-			
+			//iwhDao.updateSelectiveByGunIdAndMaxTime(mrsCustom.getGunId());
+			iwhDao.updateSelectiveByGunIdAndInState(mrsCustom.getGunId());
 		}
 
 	}

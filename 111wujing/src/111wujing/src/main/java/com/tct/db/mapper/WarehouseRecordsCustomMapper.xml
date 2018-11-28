@@ -3,15 +3,15 @@
 <mapper namespace="com.tct.db.mapper.WarehouseRecordsCustomMapper">
 	<sql id="allColumns">
 		id,
-		warehouse_id,
-		warehouse_in_time,
-		warehouse_out_time,
-		web_user_id,
-		app_id,
-		gun_id,
+		warehouse_id as warehouseId,
+		warehouse_in_time as warehouseInTime,
+		warehouse_out_time as warehouseOut,
+		web_user_id as webUserId,
+		app_id as appId,
+		gun_id as gunId,
 		state,
 		version,
-		cancel_time
+		cancel_time as cancelTime
 	</sql>
 	<insert id="insertSelective" parameterType="com.tct.db.po.WarehouseRecords">
 <!-- 		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
@@ -153,7 +153,7 @@
  		</trim>
 	</select>
 	
-	<update id="updateSelectiveByGunIdAndInState" parameterType="com.tct.db.po.WarehouseRecords">
+	<update id="updateSelectiveByGunIdAndIngState" parameterType="com.tct.db.po.WarehouseRecords">
 		update warehouse_records
 		<set>
 	      <if test="warehouseId != null">
@@ -183,6 +183,38 @@
 	    </set>
 	    where gun_id = #{gunId,jdbcType=CHAR} and state = 2
 	</update>
+	
+	<update id="updateSelectiveByGunIdAndInState" parameterType="com.tct.db.po.WarehouseRecords">
+			update warehouse_records
+		<set>
+	      <if test="warehouseId != null">
+	        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+	      </if>
+	      <if test="warehouseInTime != null">
+	        warehouse_in_time = #{warehouseInTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="warehouseOutTime != null">
+	        warehouse_out_time = #{warehouseOutTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="webUserId != null">
+	        web_user_id = #{webUserId,jdbcType=INTEGER},
+	      </if>
+	      <if test="appId != null">
+	        app_id = #{appId,jdbcType=INTEGER},
+	      </if>
+	      <if test="state != null">
+	        state = #{state,jdbcType=INTEGER},
+	      </if>
+	      <if test="version != null">
+	        version = #{version,jdbcType=INTEGER},
+	      </if>
+          <if test="cancelTime != null">
+	        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+	      </if>
+	    </set>
+	    where gun_id = #{gunId,jdbcType=CHAR} and state = 3
+	</update>
+	
 	
 	<update id="updateSelectiveByGunIdAndRollbackState" parameterType="com.tct.db.po.WarehouseRecords">
 		update warehouse_records

@@ -14,15 +14,18 @@ package com.tct.service.impl;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.DeviceHeartReqMessage;
 import com.tct.codec.protocol.pojo.DeviceHeartResMessage;
 import com.tct.codec.protocol.pojo.DeviceHeartResMessageBody;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.HeartbeatDao;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.MessageTypeConstant;
@@ -73,8 +76,9 @@ public class DeviceHeartReqService implements TemplateService {
 		if(0==i) {
 			dhrm.getMessageBody().setState(StringConstant.FAILURE_NEW_STATE);
 		}
+		SimpleReplyMessage simpleReplyMessage =constructReply(dhrm);
 		
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(dhrm));
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
 	}
 
 	
@@ -92,5 +96,17 @@ public class DeviceHeartReqService implements TemplateService {
 		dhrm.setUniqueIdentification(msg.getUniqueIdentification());
 		dhrm.setMessageBody(messageBody);
 		return dhrm;
+	}
+	
+	public SimpleReplyMessage constructReply(DeviceHeartResMessage dhrm) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(dhrm,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+dhrm.getMessageBody().getState()
+		+StringConstant.MSG_BODY_SEPARATOR+dhrm.getMessageBody().getAuthCode()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 }

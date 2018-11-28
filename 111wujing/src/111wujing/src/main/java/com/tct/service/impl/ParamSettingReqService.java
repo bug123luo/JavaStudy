@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -24,8 +25,11 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.ParamSettingReqMessage;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
 
 /**   
  * @ClassName:  ParamSettingReqService   
@@ -69,8 +73,31 @@ public class ParamSettingReqService implements TemplateService {
 		
 		String sessionToken=stringRedisTemplate.opsForValue().get(paramSettingReqMessage.getUniqueIdentification());
 		paramSettingReqMessage.setSessionToken(sessionToken);
+		SimpleReplyMessage simpleReplyMessage =constructReply(paramSettingReqMessage);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
+	}
+	
+	public SimpleReplyMessage constructReply(ParamSettingReqMessage paramSettingReqMessage) {
 		
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(paramSettingReqMessage));
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(paramSettingReqMessage,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+paramSettingReqMessage.getMessageBody().getPowerAlarmLevel()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getTransmittingPower()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getBroadcastInterval()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getConnectionInterval()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getConnectionTimeout()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getSoftwareDeviceVersion()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getHeartbeat()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getPowerSampling()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getSystemTime()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getMatchTime()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getPositioningInterval()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getSafeCode()
+		+StringConstant.MSG_BODY_SEPARATOR+paramSettingReqMessage.getMessageBody().getAuthCode()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 
 }

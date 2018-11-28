@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -24,8 +25,11 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.GetBulletNumberReqMessage;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
 
 /**   
  * @ClassName:  GetBulletNumberReqService   
@@ -69,8 +73,20 @@ public class GetBulletNumberReqService implements TemplateService {
 		
 		String sessionToken = stringRedisTemplate.opsForValue().get(gbnrMsg.getUniqueIdentification());
 		gbnrMsg.setSessionToken(sessionToken);
+		SimpleReplyMessage simpleReplyMessage =constructReply(gbnrMsg);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
+	}
+	
+	public SimpleReplyMessage constructReply(GetBulletNumberReqMessage gbnrMsg) {
 		
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(gbnrMsg));
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(gbnrMsg,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+gbnrMsg.getMessageBody().getGunMac()
+		+StringConstant.MSG_BODY_SEPARATOR+gbnrMsg.getMessageBody().getAuthCode()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 
 }

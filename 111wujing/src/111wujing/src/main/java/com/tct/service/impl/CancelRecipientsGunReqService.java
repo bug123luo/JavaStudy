@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -24,12 +25,15 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.MessageRecordsDao;
 import com.tct.db.dao.MessageRecordsDaoImpl;
 import com.tct.db.dao.OutWarehouseDao;
 import com.tct.db.dao.OutWarehouseDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
 
 /**   
  * @ClassName:  CancelRecipientsGunReqService   
@@ -82,7 +86,21 @@ public class CancelRecipientsGunReqService implements TemplateService {
 		
 		String sessionToken = stringRedisTemplate.opsForValue().get(cRecReqMsg.getUniqueIdentification());
 		cRecReqMsg.setSessionToken(sessionToken);
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(cRecReqMsg));
+		
+		SimpleReplyMessage simpleReplyMessage =constructReply(cRecReqMsg);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
 	}
 
+	
+	public SimpleReplyMessage constructReply(CancelRecipientsGunReqMessage cRecReqMsg) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(cRecReqMsg,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+cRecReqMsg.getMessageBody().getGunId()
+		+StringConstant.MSG_BODY_SEPARATOR+cRecReqMsg.getMessageBody().getCancelTime()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
+	}
 }

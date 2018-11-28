@@ -84,9 +84,10 @@ public class InWarehouseResService implements TemplateService {
 			String gunId = mrc.getGunId();
 			inDao.updateSelectiveByGunIdAndIngState(gunId);
 		}else if(inWarehouseResMessage.getMessageBody().getState().equals(StringConstant.FAILURE_NEW_STATE)) {
-			MessageRecordsCustom mrc=mcDao.selectBySerlNum(inWarehouseResMessage.getSerialNumber());
+			return;
+/*			MessageRecordsCustom mrc=mcDao.selectBySerlNum(inWarehouseResMessage.getSerialNumber());
 			String gunId = mrc.getGunId();
-			inDao.updateSelectiveByGunIdAndRollbackState(gunId);
+			inDao.updateSelectiveByGunIdAndRollbackState(gunId);*/
 		}
 
 	}

@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -24,7 +25,9 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.InWarehouseReqMessage;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.InWarehouseDao;
 import com.tct.db.dao.InWarehouseDaoImpl;
 import com.tct.db.dao.MessageRecordsDao;
@@ -33,6 +36,7 @@ import com.tct.db.mapper.WarehouseRecordsCustomMapper;
 import com.tct.db.po.WarehouseRecords;
 import com.tct.db.po.WarehouseRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
 
 /**   
  * @ClassName:  InWarehouseReqService   
@@ -87,11 +91,23 @@ public class InWarehouseReqService implements TemplateService {
 		}
 		
 		mcDao.insertSelective(inWhReqMsg);
-		//int i = inDao.updateSelectiveByGunIdAndInState(inWhReqMsg);
 		
 		String sessionToken = stringRedisTemplate.opsForValue().get(inWhReqMsg.getUniqueIdentification());
 		inWhReqMsg.setSessionToken(sessionToken);
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(inWhReqMsg));
+		SimpleReplyMessage simpleReplyMessage=constructReply(inWhReqMsg);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
+	}
+	
+	public SimpleReplyMessage constructReply(InWarehouseReqMessage inWhReqMsg) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(inWhReqMsg,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+inWhReqMsg.getMessageBody().getGunId()
+		+StringConstant.MSG_BODY_SEPARATOR+inWhReqMsg.getMessageBody().getStage()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 
 }

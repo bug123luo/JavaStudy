@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -23,10 +24,14 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.BindingReqMessage;
+import com.tct.codec.protocol.pojo.BindingReqMessageBodyGunInfo;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.BindingGunDao;
 import com.tct.db.dao.BindingGunDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
 
 /**   
  * @ClassName:  BindingReqService   
@@ -75,7 +80,34 @@ public class BindingReqService implements TemplateService {
 				
 		String sessionToken = stringRedisTemplate.opsForValue().get(bReqMsg.getUniqueIdentification());
 		bReqMsg.setSessionToken(sessionToken);
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(bReqMsg));
+		
+		SimpleReplyMessage simpleReplyMessage =constructReply(bReqMsg);
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
+	}
+	
+	public SimpleReplyMessage constructReply(BindingReqMessage bReqMsg) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(bReqMsg,simpleReplyMessage);
+		String gunList ="";
+		for(BindingReqMessageBodyGunInfo gun:bReqMsg.getMessageBody().getGunList()) {
+			if(gunList.length()>1) {
+				gunList+=StringConstant.MSG_BODY_SEPARATOR+gun.getGunType()+StringConstant.MSG_BODY_SEPARATOR
+						+gun.getGunId()+StringConstant.MSG_BODY_SEPARATOR+gun.getGunModel();
+			}else {
+				gunList+=gun.getGunType()+StringConstant.MSG_BODY_SEPARATOR
+						+gun.getGunId()+StringConstant.MSG_BODY_SEPARATOR+gun.getGunModel();
+			}
+
+		}
+		
+		String replyBody = StringConstant.MSG_BODY_PREFIX+bReqMsg.getMessageBody().getUserId()
+		+StringConstant.MSG_BODY_SEPARATOR+gunList
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 
 }

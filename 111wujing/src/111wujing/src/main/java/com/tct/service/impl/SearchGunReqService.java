@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -24,8 +25,13 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
+import com.tct.codec.protocol.pojo.BindingReqMessageBodyGunInfo;
 import com.tct.codec.protocol.pojo.SearchGunReqMessage;
+import com.tct.codec.protocol.pojo.SearchGunReqMessageBodyGunInfo;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
 
 /**   
  * @ClassName:  SearchGunReqService   
@@ -70,7 +76,37 @@ public class SearchGunReqService implements TemplateService {
 		String sessionToken = stringRedisTemplate.opsForValue().get(searchGunReqMessage.getUniqueIdentification());
 		
 		searchGunReqMessage.setSessionToken(sessionToken);
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(searchGunReqMessage));
+		
+		SimpleReplyMessage simpleReplyMessage =constructReply(searchGunReqMessage);
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
+	}
+	
+	public SimpleReplyMessage constructReply(SearchGunReqMessage searchGunReqMessage) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(searchGunReqMessage,simpleReplyMessage);
+		
+		String gunList ="";
+		for(SearchGunReqMessageBodyGunInfo gun:searchGunReqMessage.getMessageBody().getLostGunList()) {
+			if(gunList.length()>1) {
+				gunList+=StringConstant.MSG_BODY_SEPARATOR+gun.getGunMac()+StringConstant.MSG_BODY_SEPARATOR
+						+gun.getGunId()+StringConstant.MSG_BODY_SEPARATOR+gun.getLostTime();
+			}else {
+				gunList+=gun.getGunMac()+StringConstant.MSG_BODY_SEPARATOR
+						+gun.getGunId()+StringConstant.MSG_BODY_SEPARATOR+gun.getLostTime();
+			}
+
+		}
+		String replyBody = StringConstant.MSG_BODY_PREFIX+searchGunReqMessage.getMessageBody().getReserve()
+		+StringConstant.MSG_BODY_SEPARATOR+searchGunReqMessage.getMessageBody().getLo()
+		+StringConstant.MSG_BODY_SEPARATOR+searchGunReqMessage.getMessageBody().getLa()
+		+StringConstant.MSG_BODY_SEPARATOR+gunList
+		+StringConstant.MSG_BODY_SEPARATOR+searchGunReqMessage.getMessageBody().getAuthCode()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 
 }

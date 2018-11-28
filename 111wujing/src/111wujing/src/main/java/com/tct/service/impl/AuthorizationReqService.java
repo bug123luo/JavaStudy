@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -26,8 +27,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.AuthorizationReqMessage;
 import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.AuthorizationResMessageBody;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.AuthCodeDao;
-import com.tct.db.dao.AuthCodeDaoImpl;
 import com.tct.db.po.AppCustom;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.MessageTypeConstant;
@@ -93,8 +94,11 @@ public class AuthorizationReqService implements TemplateService {
 			msgBody.setPort("");
 		}
 		
-		AuthorizationResMessage arqRes =constructRes(arq, msgBody);
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(arqRes));
+		AuthorizationResMessage arqRes=constructRes(arq, msgBody);
+		
+		SimpleReplyMessage simpleReplyMessage=constructReply(arqRes);
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
 	}
 	
 	public AuthorizationResMessage constructRes(AuthorizationReqMessage arq, AuthorizationResMessageBody msgBody) {
@@ -102,7 +106,7 @@ public class AuthorizationReqService implements TemplateService {
 		AuthorizationResMessage arqRes =new AuthorizationResMessage();
 		arqRes.setDeviceType(arq.getDeviceType());
 		arqRes.setFormatVersion(arq.getFormatVersion());
-		arqRes.setMessageType(MessageTypeConstant.MESSAGE01);
+		arqRes.setMessageType(MessageTypeConstant.MESSAGE02);
 		arqRes.setSendTime(StringUtil.getDateString());
 		arqRes.setSerialNumber(arq.getSerialNumber());
 		arqRes.setSessionToken(arq.getSessionToken());
@@ -110,6 +114,20 @@ public class AuthorizationReqService implements TemplateService {
 		arqRes.setMessageBody(msgBody);
 		
 		return arqRes;
+	}
+	
+	public SimpleReplyMessage constructReply(AuthorizationResMessage arqRes) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(arqRes,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+arqRes.getMessageBody().getState()
+		+StringConstant.MSG_BODY_SEPARATOR+StringConstant.AUTHCODE
+		+StringConstant.MSG_BODY_SEPARATOR+StringConstant.IP
+		+StringConstant.MSG_BODY_SEPARATOR+StringConstant.PORT
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 
 }

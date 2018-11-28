@@ -31,5 +31,7 @@ public interface InWarehouseDao {
 	
 	public int updateSelectiveByGunIdAndIngState(String gunId);
 	
+	public int updateSelectiveByGunIdAndInState(String gunId);
+		
 	public WarehouseRecordsCustom selectByGunIdAndIngState(InWarehouseReqMessage inWhReqMsg);
 }

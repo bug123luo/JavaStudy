@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/com/tct/codec/protocol/pojo/SimpleMessage.java=UTF-8
 encoding//src/main/java/com/tct/util/SpringContextUtil.java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/test/java=UTF-8

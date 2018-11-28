@@ -11,8 +11,6 @@
  */
 package com.tct.codec.protocol.pojo;
 
-import javax.print.DocFlavor.STRING;
-
 import lombok.Data;
 
 /**   

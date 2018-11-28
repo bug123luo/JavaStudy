@@ -12,7 +12,6 @@
 package com.tct.codec.protocol.pojo;
 
 import java.util.ArrayList;
-
 import lombok.Data;
 
 /**   
@@ -30,13 +29,6 @@ public class SearchGunReqMessageBody {
 	private String reserve;//预留字
 	private String lo;//经度
 	private String la;//纬度
-	private ArrayList<GunInfo> lostGunList;//枪支列表信息
+	private ArrayList<SearchGunReqMessageBodyGunInfo> lostGunList;//枪支列表信息
 	private String authCode;//授权码
-	
-	class GunInfo{
-		private String gunMac;//枪支MAC号
-		private String gunId;//枪支ID
-		private String lostTime;//丢失时间
-		
-	}
 }

@@ -84,8 +84,8 @@ public class OutWarehouseDaoImpl implements OutWarehouseDao{
 		
 		warehouseRecords.setGunId(oWRMsg.getMessageBody().getGunId());
 		if(oWRMsg.getMessageBody().getState().equals(StringConstant.SUCCESS_NEW_STATE)) {
-			warehouseRecords.setState(Integer.valueOf(StringConstant.OUT_WAREHOUSE_ING_STATE));
-		}else if (oWRMsg.getMessageBody().getState().equals(StringConstant.SUCCESS_OLD_STATE)) {
+			warehouseRecords.setState(Integer.valueOf(StringConstant.OUT_WAREHOUSE_STATE));
+		}else if (oWRMsg.getMessageBody().getState().equals(StringConstant.FAILURE_NEW_STATE)) {
 			warehouseRecords.setState(Integer.valueOf(StringConstant.OUT_WAREHOUSE_ING_STATE));
 		}else {
 			

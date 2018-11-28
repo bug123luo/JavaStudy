@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 import javax.jms.Destination;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -25,9 +26,11 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberReqMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberResMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberResMessageBody;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.GunBulletDao;
 import com.tct.db.dao.GunBulletDaoImpl;
 import com.tct.db.mapper.GunBulletCountCustomMapper;
@@ -91,7 +94,9 @@ public class ReportBulletNumberReqService implements TemplateService {
 			message.getMessageBody().setState(StringConstant.FAILURE_OLD_STATE);
 
 		}
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(message));
+		SimpleReplyMessage simpleReplyMessage =constructReply(message);
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
 
 	}
 
@@ -113,5 +118,17 @@ public class ReportBulletNumberReqService implements TemplateService {
 		
 		return resMsg;
 		
+	}
+	
+	public SimpleReplyMessage constructReply(ReportBulletNumberResMessage message) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(message,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+message.getMessageBody().getState()
+		+StringConstant.MSG_BODY_SEPARATOR+message.getMessageBody().getAuthCode()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 }

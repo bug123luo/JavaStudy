@@ -170,7 +170,7 @@ public class ServiceSelector {
 				e.printStackTrace();
 			}
 		}else if (messageCodec instanceof CancelInWarehouseReqCodec) {
-			service = SpringContextUtil.getBean("cancelRecipientsGunReqService");
+			service = SpringContextUtil.getBean("cancelInWarehouseReqService");
 			try {
 				objmsg = (CancelInWarehouseReqMessage)messageCodec.decode(msg);
 			} catch (Exception e) {
@@ -296,7 +296,7 @@ public class ServiceSelector {
 				e.printStackTrace();
 			}
 		}else if(messageCodec instanceof CancelInWarehouseResCodec){
-			service = SpringContextUtil.getBean("outWarehouseResService");
+			service = SpringContextUtil.getBean("cancelInWarehouseResService");
 			try {
 				objmsg = (CancelInWarehouseResMessage)messageCodec.decode(msg);
 			} catch (Exception e) {

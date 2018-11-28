@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -24,6 +25,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
 import com.tct.codec.protocol.pojo.WatchHeartResMessage;
 import com.tct.codec.protocol.pojo.WatchHeartResMessageBody;
@@ -73,8 +76,8 @@ public class WatchHeartReqService implements TemplateService {
 		hbDao.insertAppHeartbeatSelective(wHRMsg);
 		
 		WatchHeartResMessage wHResMsg = constructRes(wHRMsg);
-		
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(wHResMsg));
+		SimpleReplyMessage simpleReplyMessage =constructReply(wHResMsg);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
 	}
 
 	public WatchHeartResMessage constructRes(WatchHeartReqMessage msg) {
@@ -92,5 +95,17 @@ public class WatchHeartReqService implements TemplateService {
 		wHResMsg.setSessionToken(msg.getSessionToken());
 		wHResMsg.setUniqueIdentification(msg.getUniqueIdentification());
 		return wHResMsg;
+	}
+	
+	public SimpleReplyMessage constructReply(WatchHeartResMessage wHResMsg) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(wHResMsg,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+wHResMsg.getMessageBody().getState()
+		+StringConstant.MSG_BODY_SEPARATOR+wHResMsg.getMessageBody().getAuthCode()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 }

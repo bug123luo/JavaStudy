@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -24,12 +25,14 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.BindingReqMessage;
 import com.tct.codec.protocol.pojo.BindingReqMessageBody;
 import com.tct.codec.protocol.pojo.RegistReqMessage;
 import com.tct.codec.protocol.pojo.RegistReqMessageBody;
 import com.tct.codec.protocol.pojo.RegistResMessage;
 import com.tct.codec.protocol.pojo.RegistResMessageBody;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.AuthCodeDao;
 import com.tct.db.dao.AuthCodeDaoImpl;
 import com.tct.db.po.AppCustom;
@@ -96,7 +99,9 @@ public class RegistReqService implements TemplateService {
 		
 		RegistResMessage regResMsg = constructRes(regReqMsg, regResBody);
 		//发送04好报文给用户
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(regResMsg));		
+		SimpleReplyMessage simpleReplyMessage = constructReply(regResMsg);
+		
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));		
 	}
 	
 	/**
@@ -122,6 +127,18 @@ public class RegistReqService implements TemplateService {
 		regResMsg.setUniqueIdentification(regReqMsg.getUniqueIdentification());
 		
 		return regResMsg;
+	}
+	
+	public SimpleReplyMessage constructReply(RegistResMessage regResMsg) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(regResMsg,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+regResMsg.getMessageBody().getState()
+		+StringConstant.MSG_BODY_SEPARATOR+regResMsg.getMessageBody().getReadableCode()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 
 }

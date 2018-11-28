@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -24,10 +25,13 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
+import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.MessageRecordsDao;
 import com.tct.db.dao.MessageRecordsDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
 
 /**   
  * @ClassName:  CancelInWarehouseReqService   
@@ -76,7 +80,22 @@ public class CancelInWarehouseReqService implements TemplateService {
 		
 		String sessionToken =  stringRedisTemplate.opsForValue().get(cancelInWarehouseReqMessage.getUniqueIdentification());
 		cancelInWarehouseReqMessage.setSessionToken(sessionToken);
-		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(cancelInWarehouseReqMessage));
+		
+		SimpleReplyMessage simpleReplyMessage =constructReply(cancelInWarehouseReqMessage);
+		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));
+	}
+	
+	public SimpleReplyMessage constructReply(CancelInWarehouseReqMessage  cancelInWarehouseReqMessage) {
+		
+		SimpleReplyMessage simpleReplyMessage = new SimpleReplyMessage();
+		BeanUtils.copyProperties(cancelInWarehouseReqMessage,simpleReplyMessage);
+		String replyBody = StringConstant.MSG_BODY_PREFIX+cancelInWarehouseReqMessage.getMessageBody().getGunId()
+		+StringConstant.MSG_BODY_SEPARATOR+cancelInWarehouseReqMessage.getMessageBody().getGunMac()
+		+StringConstant.MSG_BODY_SEPARATOR+cancelInWarehouseReqMessage.getMessageBody().getState()
+		+StringConstant.MSG_BODY_SUFFIX;
+		simpleReplyMessage.setMessageBody(replyBody);
+		
+		return simpleReplyMessage;
 	}
 
 }
