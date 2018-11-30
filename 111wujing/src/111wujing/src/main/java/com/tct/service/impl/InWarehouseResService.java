@@ -32,6 +32,9 @@ import com.tct.db.po.MessageRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
 
+import lombok.extern.slf4j.Slf4j;
+import sun.util.logging.resources.logging;
+
 /**   
  * @ClassName:  InWarehouseResService   
  * @Description:TODO(这里用一句话描述这个类的作用)   
@@ -44,6 +47,7 @@ import com.tct.util.StringConstant;
 
 @Service("inWarehouseResService")
 @Scope("prototype")
+@Slf4j
 public class InWarehouseResService implements TemplateService {
 
 	@Autowired
@@ -81,6 +85,10 @@ public class InWarehouseResService implements TemplateService {
 		if(inWarehouseResMessage.getMessageBody().getState().equals(StringConstant.SUCCESS_NEW_STATE)){
 			//更新数据
 			MessageRecordsCustom mrc=mcDao.selectBySerlNum(inWarehouseResMessage.getSerialNumber());
+			if (null==mrc) {
+				log.info("该序列号不存在，请检查12号报文对应的11号报文序列号是否正确");
+				return;
+			}
 			String gunId = mrc.getGunId();
 			inDao.updateSelectiveByGunIdAndIngState(gunId);
 		}else if(inWarehouseResMessage.getMessageBody().getState().equals(StringConstant.FAILURE_NEW_STATE)) {

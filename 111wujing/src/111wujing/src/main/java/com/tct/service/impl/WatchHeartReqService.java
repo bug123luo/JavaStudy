@@ -37,6 +37,9 @@ import com.tct.util.MessageTypeConstant;
 import com.tct.util.StringConstant;
 import com.tct.util.StringUtil;
 
+import lombok.extern.slf4j.Slf4j;
+import sun.util.logging.resources.logging;
+
 /**   
  * @ClassName:  WatchHeartReqService   
  * @Description:TODO(这里用一句话描述这个类的作用)   
@@ -49,6 +52,7 @@ import com.tct.util.StringUtil;
 
 @Service("watchHeartReqService")
 @Scope("prototype")
+@Slf4j
 public class WatchHeartReqService implements TemplateService {
 
 	@Resource
@@ -73,7 +77,12 @@ public class WatchHeartReqService implements TemplateService {
 		WatchHeartReqMessage wHRMsg = (WatchHeartReqMessage)msg;
 
 		//插入随行设备APP发过来的随行状态上报周期数据
-		hbDao.insertAppHeartbeatSelective(wHRMsg);
+		try {
+			hbDao.insertAppHeartbeatSelective(wHRMsg);
+		} catch (Exception e) {
+			log.info("15号数据插入错误");
+			return;
+		}
 		
 		WatchHeartResMessage wHResMsg = constructRes(wHRMsg);
 		SimpleReplyMessage simpleReplyMessage =constructReply(wHResMsg);
@@ -84,7 +93,7 @@ public class WatchHeartReqService implements TemplateService {
 		
 		WatchHeartResMessage wHResMsg =new WatchHeartResMessage();
 		WatchHeartResMessageBody msgBody = new WatchHeartResMessageBody();
-		msgBody.setAuthCode(wHResMsg.getMessageBody().getAuthCode());
+		msgBody.setAuthCode(msg.getMessageBody().getAuthCode());
 		msgBody.setState(StringConstant.SUCCESS_NEW_STATE);
 		wHResMsg.setMessageBody(msgBody);
 		wHResMsg.setDeviceType(msg.getDeviceType());

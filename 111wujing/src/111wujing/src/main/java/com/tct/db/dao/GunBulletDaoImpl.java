@@ -62,7 +62,7 @@ public class GunBulletDaoImpl  implements GunBulletDao{
 	public int updateTotalCount(GetBulletNumberResMessage gbnrMsg) {
 		GunCustom gunCustom = new GunCustom();
 		gunCustom.setTotalBulletNumber(Integer.valueOf(gbnrMsg.getMessageBody().getTotalBulletNumber()));
-		gcDao.updateByGunIdAndCount(gunCustom);
-		return gcDao.updateByGunIdAndCount(gunCustom);
+		//gcDao.updateByGunIdAndCount(gunCustom);
+		return gcDao.updateByGunId(gunCustom);
 	}
 }

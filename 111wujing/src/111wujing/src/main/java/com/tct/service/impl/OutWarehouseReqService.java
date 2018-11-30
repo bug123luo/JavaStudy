@@ -110,6 +110,7 @@ public class OutWarehouseReqService implements TemplateService {
 		String replyBody = StringConstant.MSG_BODY_PREFIX+oWReqMsg.getMessageBody().getReserve()
 		+StringConstant.MSG_BODY_SEPARATOR+oWReqMsg.getMessageBody().getUsername()
 		+StringConstant.MSG_BODY_SEPARATOR+oWReqMsg.getMessageBody().getUserId()
+		+StringConstant.MSG_BODY_SEPARATOR+oWReqMsg.getMessageBody().getGunId()
 		+StringConstant.MSG_BODY_SEPARATOR+oWReqMsg.getMessageBody().getGunMac()
 		+StringConstant.MSG_BODY_SEPARATOR+oWReqMsg.getMessageBody().getBegintime()
 		+StringConstant.MSG_BODY_SEPARATOR+oWReqMsg.getMessageBody().getReturnTime()

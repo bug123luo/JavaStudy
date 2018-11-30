@@ -33,6 +33,9 @@ import com.tct.db.dao.BindingGunDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
 
+import lombok.extern.slf4j.Slf4j;
+import sun.util.logging.resources.logging;
+
 /**   
  * @ClassName:  BindingReqService   
  * @Description:TODO(这里用一句话描述这个类的作用)   
@@ -45,6 +48,7 @@ import com.tct.util.StringConstant;
 
 @Service("bindingReqService")
 @Scope("prototype")
+@Slf4j
 public class BindingReqService implements TemplateService {
 
 	@Autowired
@@ -79,6 +83,7 @@ public class BindingReqService implements TemplateService {
 		//bindingGunDao.insertGugList(bReqMsg);
 				
 		String sessionToken = stringRedisTemplate.opsForValue().get(bReqMsg.getUniqueIdentification());
+		//log.info("kkkkkkkkkkkkkkkkkkkkkkkk "+sessionToken);
 		bReqMsg.setSessionToken(sessionToken);
 		
 		SimpleReplyMessage simpleReplyMessage =constructReply(bReqMsg);
@@ -94,10 +99,10 @@ public class BindingReqService implements TemplateService {
 		for(BindingReqMessageBodyGunInfo gun:bReqMsg.getMessageBody().getGunList()) {
 			if(gunList.length()>1) {
 				gunList+=StringConstant.MSG_BODY_SEPARATOR+gun.getGunType()+StringConstant.MSG_BODY_SEPARATOR
-						+gun.getGunId()+StringConstant.MSG_BODY_SEPARATOR+gun.getGunModel();
+						+gun.getGunId()+StringConstant.MSG_BODY_SEPARATOR+gun.getGunModel()+StringConstant.MSG_BODY_SEPARATOR+gun.getGunMac();
 			}else {
 				gunList+=gun.getGunType()+StringConstant.MSG_BODY_SEPARATOR
-						+gun.getGunId()+StringConstant.MSG_BODY_SEPARATOR+gun.getGunModel();
+						+gun.getGunId()+StringConstant.MSG_BODY_SEPARATOR+gun.getGunModel()+StringConstant.MSG_BODY_SEPARATOR+gun.getGunMac();
 			}
 
 		}
