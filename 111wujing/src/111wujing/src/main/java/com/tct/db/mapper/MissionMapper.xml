@@ -3,14 +3,14 @@
 <mapper namespace="com.tct.db.mapper.MissionMapper">
   <resultMap id="BaseResultMap" type="com.tct.db.po.Mission">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="gun_mac" jdbcType="CHAR" property="gunMac" />
     <result column="app_imei" jdbcType="CHAR" property="appImei" />
     <result column="web_user_id" jdbcType="INTEGER" property="webUserId" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
     <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="body" jdbcType="CHAR" property="body" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="body" jdbcType="VARCHAR" property="body" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, gun_mac, app_imei, web_user_id, type, send_time, state, body, create_time, update_time, 
+    id, create_time, gun_mac, app_imei, web_user_id, type, send_time, state, body, update_time, 
     version
   </sql>
   <select id="selectByExample" parameterType="com.tct.db.po.MissionExample" resultMap="BaseResultMap">
@@ -90,15 +90,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="com.tct.db.po.MissionKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from mission
     where id = #{id,jdbcType=INTEGER}
+      and create_time = #{createTime,jdbcType=TIMESTAMP}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="com.tct.db.po.MissionKey">
     delete from mission
     where id = #{id,jdbcType=INTEGER}
+      and create_time = #{createTime,jdbcType=TIMESTAMP}
   </delete>
   <delete id="deleteByExample" parameterType="com.tct.db.po.MissionExample">
     delete from mission
@@ -107,13 +109,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.tct.db.po.Mission">
-    insert into mission (id, gun_mac, app_imei, 
-      web_user_id, type, send_time, 
-      state, body, create_time, 
+    insert into mission (id, create_time, gun_mac, 
+      app_imei, web_user_id, type, 
+      send_time, state, body, 
       update_time, version)
-    values (#{id,jdbcType=INTEGER}, #{gunMac,jdbcType=CHAR}, #{appImei,jdbcType=CHAR}, 
-      #{webUserId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{sendTime,jdbcType=TIMESTAMP}, 
-      #{state,jdbcType=INTEGER}, #{body,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{gunMac,jdbcType=CHAR}, 
+      #{appImei,jdbcType=CHAR}, #{webUserId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{sendTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{body,jdbcType=VARCHAR}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.tct.db.po.Mission">
@@ -121,6 +123,9 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="createTime != null">
+        create_time,
       </if>
       <if test="gunMac != null">
         gun_mac,
@@ -143,9 +148,6 @@
       <if test="body != null">
         body,
       </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
       <if test="updateTime != null">
         update_time,
       </if>
@@ -156,6 +158,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="gunMac != null">
         #{gunMac,jdbcType=CHAR},
@@ -176,10 +181,7 @@
         #{state,jdbcType=INTEGER},
       </if>
       <if test="body != null">
-        #{body,jdbcType=CHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+        #{body,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
@@ -201,6 +203,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.gunMac != null">
         gun_mac = #{record.gunMac,jdbcType=CHAR},
       </if>
@@ -220,10 +225,7 @@
         state = #{record.state,jdbcType=INTEGER},
       </if>
       <if test="record.body != null">
-        body = #{record.body,jdbcType=CHAR},
-      </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        body = #{record.body,jdbcType=VARCHAR},
       </if>
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -239,14 +241,14 @@
   <update id="updateByExample" parameterType="map">
     update mission
     set id = #{record.id,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
       gun_mac = #{record.gunMac,jdbcType=CHAR},
       app_imei = #{record.appImei,jdbcType=CHAR},
       web_user_id = #{record.webUserId,jdbcType=INTEGER},
       type = #{record.type,jdbcType=INTEGER},
       send_time = #{record.sendTime,jdbcType=TIMESTAMP},
       state = #{record.state,jdbcType=INTEGER},
-      body = #{record.body,jdbcType=CHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      body = #{record.body,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       version = #{record.version,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -275,10 +277,7 @@
         state = #{state,jdbcType=INTEGER},
       </if>
       <if test="body != null">
-        body = #{body,jdbcType=CHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        body = #{body,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -288,6 +287,7 @@
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
+      and create_time = #{createTime,jdbcType=TIMESTAMP}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.tct.db.po.Mission">
     update mission
@@ -297,10 +297,10 @@
       type = #{type,jdbcType=INTEGER},
       send_time = #{sendTime,jdbcType=TIMESTAMP},
       state = #{state,jdbcType=INTEGER},
-      body = #{body,jdbcType=CHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
+      body = #{body,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       version = #{version,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
+      and create_time = #{createTime,jdbcType=TIMESTAMP}
   </update>
 </mapper>

@@ -11,7 +11,6 @@
  */
 package com.tct.service.impl;
 
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.jms.Destination;
@@ -20,25 +19,20 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
 import com.tct.codec.protocol.pojo.WatchHeartResMessage;
 import com.tct.codec.protocol.pojo.WatchHeartResMessageBody;
 import com.tct.db.dao.HeartbeatDao;
-import com.tct.db.dao.HeartbeatDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.MessageTypeConstant;
 import com.tct.util.StringConstant;
 import com.tct.util.StringUtil;
 
 import lombok.extern.slf4j.Slf4j;
-import sun.util.logging.resources.logging;
 
 /**   
  * @ClassName:  WatchHeartReqService   

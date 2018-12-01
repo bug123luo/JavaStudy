@@ -89,9 +89,9 @@ public class ReportBulletNumberReqService implements TemplateService {
 		
 		ReportBulletNumberResMessage message=constructRes(reportBulletNumberReqMessage);
 		if(i==0) {
-			message.getMessageBody().setState(StringConstant.SUCCESS_OLD_STATE);
-		}else {
 			message.getMessageBody().setState(StringConstant.FAILURE_OLD_STATE);
+		}else {
+			message.getMessageBody().setState(StringConstant.SUCCESS_OLD_STATE);
 
 		}
 		SimpleReplyMessage simpleReplyMessage =constructReply(message);

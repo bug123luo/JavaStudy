@@ -23,14 +23,17 @@ import com.tct.db.mapper.AppDynamicDataCustomMapper;
 import com.tct.db.mapper.AppGunCustomMapper;
 import com.tct.db.mapper.GunCustomMapper;
 import com.tct.db.mapper.GunLocationCustomMapper;
+import com.tct.db.mapper.SosMessageCustomMapper;
 import com.tct.db.po.AppCustom;
 import com.tct.db.po.AppCustomQueryVo;
 import com.tct.db.po.AppDynamicDataCustom;
 import com.tct.db.po.AppGunCustom;
 import com.tct.db.po.AppGunCustomQueryVo;
+import com.tct.db.po.Gun;
 import com.tct.db.po.GunCustom;
 import com.tct.db.po.GunCustomQueryVo;
 import com.tct.db.po.GunLocationCustom;
+import com.tct.db.po.SosMessageCustom;
 import com.tct.util.CoordinateConvertUtil;
 import com.tct.util.StringConstant;
 import com.tct.util.StringUtil;
@@ -67,6 +70,9 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 	@Autowired
 	AppGunCustomMapper accDao;
 	
+	@Autowired
+	SosMessageCustomMapper sosDao;
+	
 	@Transactional
 	public int insertAppHeartbeatSelective(WatchHeartReqMessage wHRMsg) {
 		int i=0;
@@ -97,8 +103,23 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 			gunLocationCustom.setGunDeviceBatteryPower(guninfo.getGunDeviceBatteryPower());
 			glcDao.insertSelective(gunLocationCustom);
 			
+			gunCustom.setGunId(guninfo.getGunId());
 			gunCustom.setRealTimeState(Integer.valueOf(guninfo.getRealTimeState()));
-			gcDao.updateByGunId(gunCustom);
+			gcDao.updateSelectiveByGunId(gunCustom);
+			
+			//20181201添加异常功能
+			if(!wHRMsg.getMessageBody().getExceptionCode().equals("1")) {
+				GunCustomQueryVo gunCustomQueryVo = new GunCustomQueryVo();
+				gunCustomQueryVo.setGunCustom(gunCustom);
+				Gun gun=gcDao.selectAllColumnByGunId(gunCustomQueryVo);
+				SosMessageCustom sosMessageCustom = new SosMessageCustom();
+				sosMessageCustom.setGunImei(gun.getGunImei());
+				sosMessageCustom.setGunMac(gun.getGunMac());
+				sosMessageCustom.setLatitude(gunLocationCustom.getLatitude());
+				sosMessageCustom.setLongitude(gunLocationCustom.getLongitude());
+				sosMessageCustom.setExceptionId(Integer.valueOf(wHRMsg.getMessageBody().getExceptionCode()));
+				sosDao.insertSelective(sosMessageCustom);
+			}
 		}
 		
 		i=1;

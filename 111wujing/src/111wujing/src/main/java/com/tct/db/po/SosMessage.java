@@ -9,7 +9,7 @@ public class SosMessage {
 
     private String longitude;
 
-    private Integer appId;
+    private String gunImei;
 
     private String gunMac;
 
@@ -24,6 +24,8 @@ public class SosMessage {
     private Date updateTime;
 
     private Integer version;
+
+    private Integer exceptionId;
 
     public Integer getId() {
         return id;
@@ -49,12 +51,12 @@ public class SosMessage {
         this.longitude = longitude == null ? null : longitude.trim();
     }
 
-    public Integer getAppId() {
-        return appId;
+    public String getGunImei() {
+        return gunImei;
     }
 
-    public void setAppId(Integer appId) {
-        this.appId = appId;
+    public void setGunImei(String gunImei) {
+        this.gunImei = gunImei == null ? null : gunImei.trim();
     }
 
     public String getGunMac() {
@@ -111,5 +113,13 @@ public class SosMessage {
 
     public void setVersion(Integer version) {
         this.version = version;
+    }
+
+    public Integer getExceptionId() {
+        return exceptionId;
+    }
+
+    public void setExceptionId(Integer exceptionId) {
+        this.exceptionId = exceptionId;
     }
 }

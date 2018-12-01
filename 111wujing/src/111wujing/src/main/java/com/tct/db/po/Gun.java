@@ -15,6 +15,8 @@ public class Gun {
 
     private String gunMac;
 
+    private String gunImei;
+
     private Byte isDel;
 
     private Date createTime;
@@ -28,8 +30,6 @@ public class Gun {
     private Integer totalBulletNumber;
 
     private Integer realTimeState;
-
-    private String gunImei;
 
     private Integer version;
 
@@ -79,6 +79,14 @@ public class Gun {
 
     public void setGunMac(String gunMac) {
         this.gunMac = gunMac == null ? null : gunMac.trim();
+    }
+
+    public String getGunImei() {
+        return gunImei;
+    }
+
+    public void setGunImei(String gunImei) {
+        this.gunImei = gunImei == null ? null : gunImei.trim();
     }
 
     public Byte getIsDel() {
@@ -135,14 +143,6 @@ public class Gun {
 
     public void setRealTimeState(Integer realTimeState) {
         this.realTimeState = realTimeState;
-    }
-
-    public String getGunImei() {
-        return gunImei;
-    }
-
-    public void setGunImei(String gunImei) {
-        this.gunImei = gunImei == null ? null : gunImei.trim();
     }
 
     public Integer getVersion() {

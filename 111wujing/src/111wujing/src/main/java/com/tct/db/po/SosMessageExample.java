@@ -305,63 +305,73 @@ public class SosMessageExample {
             return (Criteria) this;
         }
 
-        public Criteria andAppIdIsNull() {
-            addCriterion("app_id is null");
+        public Criteria andGunImeiIsNull() {
+            addCriterion("gun_imei is null");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdIsNotNull() {
-            addCriterion("app_id is not null");
+        public Criteria andGunImeiIsNotNull() {
+            addCriterion("gun_imei is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdEqualTo(Integer value) {
-            addCriterion("app_id =", value, "appId");
+        public Criteria andGunImeiEqualTo(String value) {
+            addCriterion("gun_imei =", value, "gunImei");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdNotEqualTo(Integer value) {
-            addCriterion("app_id <>", value, "appId");
+        public Criteria andGunImeiNotEqualTo(String value) {
+            addCriterion("gun_imei <>", value, "gunImei");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdGreaterThan(Integer value) {
-            addCriterion("app_id >", value, "appId");
+        public Criteria andGunImeiGreaterThan(String value) {
+            addCriterion("gun_imei >", value, "gunImei");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("app_id >=", value, "appId");
+        public Criteria andGunImeiGreaterThanOrEqualTo(String value) {
+            addCriterion("gun_imei >=", value, "gunImei");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdLessThan(Integer value) {
-            addCriterion("app_id <", value, "appId");
+        public Criteria andGunImeiLessThan(String value) {
+            addCriterion("gun_imei <", value, "gunImei");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdLessThanOrEqualTo(Integer value) {
-            addCriterion("app_id <=", value, "appId");
+        public Criteria andGunImeiLessThanOrEqualTo(String value) {
+            addCriterion("gun_imei <=", value, "gunImei");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdIn(List<Integer> values) {
-            addCriterion("app_id in", values, "appId");
+        public Criteria andGunImeiLike(String value) {
+            addCriterion("gun_imei like", value, "gunImei");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdNotIn(List<Integer> values) {
-            addCriterion("app_id not in", values, "appId");
+        public Criteria andGunImeiNotLike(String value) {
+            addCriterion("gun_imei not like", value, "gunImei");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdBetween(Integer value1, Integer value2) {
-            addCriterion("app_id between", value1, value2, "appId");
+        public Criteria andGunImeiIn(List<String> values) {
+            addCriterion("gun_imei in", values, "gunImei");
             return (Criteria) this;
         }
 
-        public Criteria andAppIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("app_id not between", value1, value2, "appId");
+        public Criteria andGunImeiNotIn(List<String> values) {
+            addCriterion("gun_imei not in", values, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiBetween(String value1, String value2) {
+            addCriterion("gun_imei between", value1, value2, "gunImei");
+            return (Criteria) this;
+        }
+
+        public Criteria andGunImeiNotBetween(String value1, String value2) {
+            addCriterion("gun_imei not between", value1, value2, "gunImei");
             return (Criteria) this;
         }
 
@@ -792,6 +802,66 @@ public class SosMessageExample {
 
         public Criteria andVersionNotBetween(Integer value1, Integer value2) {
             addCriterion("version not between", value1, value2, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdIsNull() {
+            addCriterion("exception_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdIsNotNull() {
+            addCriterion("exception_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdEqualTo(Integer value) {
+            addCriterion("exception_id =", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdNotEqualTo(Integer value) {
+            addCriterion("exception_id <>", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdGreaterThan(Integer value) {
+            addCriterion("exception_id >", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("exception_id >=", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdLessThan(Integer value) {
+            addCriterion("exception_id <", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("exception_id <=", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdIn(List<Integer> values) {
+            addCriterion("exception_id in", values, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdNotIn(List<Integer> values) {
+            addCriterion("exception_id not in", values, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdBetween(Integer value1, Integer value2) {
+            addCriterion("exception_id between", value1, value2, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("exception_id not between", value1, value2, "exceptionId");
             return (Criteria) this;
         }
     }

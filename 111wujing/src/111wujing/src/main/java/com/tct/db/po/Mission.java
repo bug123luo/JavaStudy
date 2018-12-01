@@ -2,9 +2,7 @@ package com.tct.db.po;
 
 import java.util.Date;
 
-public class Mission {
-    private Integer id;
-
+public class Mission extends MissionKey {
     private String gunMac;
 
     private String appImei;
@@ -19,19 +17,9 @@ public class Mission {
 
     private String body;
 
-    private Date createTime;
-
     private Date updateTime;
 
     private Integer version;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getGunMac() {
         return gunMac;
@@ -87,14 +75,6 @@ public class Mission {
 
     public void setBody(String body) {
         this.body = body == null ? null : body.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 
     public Date getUpdateTime() {

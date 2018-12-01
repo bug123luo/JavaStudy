@@ -8,6 +8,7 @@
     <result column="gun_model" jdbcType="CHAR" property="gunModel" />
     <result column="gun_type" jdbcType="CHAR" property="gunType" />
     <result column="gun_mac" jdbcType="CHAR" property="gunMac" />
+    <result column="gun_imei" jdbcType="CHAR" property="gunImei" />
     <result column="is_del" jdbcType="TINYINT" property="isDel" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -15,7 +16,6 @@
     <result column="warehouse_name" jdbcType="CHAR" property="warehouseName" />
     <result column="total_bullet_number" jdbcType="INTEGER" property="totalBulletNumber" />
     <result column="real_time_state" jdbcType="INTEGER" property="realTimeState" />
-    <result column="gun_imei" jdbcType="CHAR" property="gunImei" />
     <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -77,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, uid, gun_id, gun_model, gun_type, gun_mac, is_del, create_time, update_time, 
-    warehouse_id, warehouse_name, total_bullet_number, real_time_state, gun_imei, version
+    id, uid, gun_id, gun_model, gun_type, gun_mac, gun_imei, is_del, create_time, update_time, 
+    warehouse_id, warehouse_name, total_bullet_number, real_time_state, version
   </sql>
   <select id="selectByExample" parameterType="com.tct.db.po.GunExample" resultMap="BaseResultMap">
     select
@@ -112,15 +112,15 @@
   </delete>
   <insert id="insert" parameterType="com.tct.db.po.Gun">
     insert into gun (id, uid, gun_id, 
-      gun_model, gun_type, gun_mac, is_del, 
-      create_time, update_time, warehouse_id, 
-      warehouse_name, total_bullet_number, real_time_state, 
-      gun_imei, version)
+      gun_model, gun_type, gun_mac, gun_imei, 
+      is_del, create_time, update_time, 
+      warehouse_id, warehouse_name, total_bullet_number, 
+      real_time_state, version)
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{gunId,jdbcType=CHAR}, 
-      #{gunModel,jdbcType=CHAR}, #{gunType,jdbcType=CHAR}, #{gunMac,jdbcType=CHAR}, #{isDel,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{warehouseId,jdbcType=INTEGER}, 
-      #{warehouseName,jdbcType=CHAR}, #{totalBulletNumber,jdbcType=INTEGER}, #{realTimeState,jdbcType=INTEGER}, 
-      #{gunImei,jdbcType=CHAR}, #{version,jdbcType=INTEGER})
+      #{gunModel,jdbcType=CHAR}, #{gunType,jdbcType=CHAR}, #{gunMac,jdbcType=CHAR}, #{gunImei,jdbcType=CHAR}, 
+      #{isDel,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{warehouseId,jdbcType=INTEGER}, #{warehouseName,jdbcType=CHAR}, #{totalBulletNumber,jdbcType=INTEGER}, 
+      #{realTimeState,jdbcType=INTEGER}, #{version,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.tct.db.po.Gun">
     insert into gun
@@ -143,6 +143,9 @@
       <if test="gunMac != null">
         gun_mac,
       </if>
+      <if test="gunImei != null">
+        gun_imei,
+      </if>
       <if test="isDel != null">
         is_del,
       </if>
@@ -163,9 +166,6 @@
       </if>
       <if test="realTimeState != null">
         real_time_state,
-      </if>
-      <if test="gunImei != null">
-        gun_imei,
       </if>
       <if test="version != null">
         version,
@@ -190,6 +190,9 @@
       <if test="gunMac != null">
         #{gunMac,jdbcType=CHAR},
       </if>
+      <if test="gunImei != null">
+        #{gunImei,jdbcType=CHAR},
+      </if>
       <if test="isDel != null">
         #{isDel,jdbcType=TINYINT},
       </if>
@@ -210,9 +213,6 @@
       </if>
       <if test="realTimeState != null">
         #{realTimeState,jdbcType=INTEGER},
-      </if>
-      <if test="gunImei != null">
-        #{gunImei,jdbcType=CHAR},
       </if>
       <if test="version != null">
         #{version,jdbcType=INTEGER},
@@ -246,6 +246,9 @@
       <if test="record.gunMac != null">
         gun_mac = #{record.gunMac,jdbcType=CHAR},
       </if>
+      <if test="record.gunImei != null">
+        gun_imei = #{record.gunImei,jdbcType=CHAR},
+      </if>
       <if test="record.isDel != null">
         is_del = #{record.isDel,jdbcType=TINYINT},
       </if>
@@ -267,9 +270,6 @@
       <if test="record.realTimeState != null">
         real_time_state = #{record.realTimeState,jdbcType=INTEGER},
       </if>
-      <if test="record.gunImei != null">
-        gun_imei = #{record.gunImei,jdbcType=CHAR},
-      </if>
       <if test="record.version != null">
         version = #{record.version,jdbcType=INTEGER},
       </if>
@@ -286,6 +286,7 @@
       gun_model = #{record.gunModel,jdbcType=CHAR},
       gun_type = #{record.gunType,jdbcType=CHAR},
       gun_mac = #{record.gunMac,jdbcType=CHAR},
+      gun_imei = #{record.gunImei,jdbcType=CHAR},
       is_del = #{record.isDel,jdbcType=TINYINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -293,7 +294,6 @@
       warehouse_name = #{record.warehouseName,jdbcType=CHAR},
       total_bullet_number = #{record.totalBulletNumber,jdbcType=INTEGER},
       real_time_state = #{record.realTimeState,jdbcType=INTEGER},
-      gun_imei = #{record.gunImei,jdbcType=CHAR},
       version = #{record.version,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -317,6 +317,9 @@
       <if test="gunMac != null">
         gun_mac = #{gunMac,jdbcType=CHAR},
       </if>
+      <if test="gunImei != null">
+        gun_imei = #{gunImei,jdbcType=CHAR},
+      </if>
       <if test="isDel != null">
         is_del = #{isDel,jdbcType=TINYINT},
       </if>
@@ -338,9 +341,6 @@
       <if test="realTimeState != null">
         real_time_state = #{realTimeState,jdbcType=INTEGER},
       </if>
-      <if test="gunImei != null">
-        gun_imei = #{gunImei,jdbcType=CHAR},
-      </if>
       <if test="version != null">
         version = #{version,jdbcType=INTEGER},
       </if>
@@ -354,6 +354,7 @@
       gun_model = #{gunModel,jdbcType=CHAR},
       gun_type = #{gunType,jdbcType=CHAR},
       gun_mac = #{gunMac,jdbcType=CHAR},
+      gun_imei = #{gunImei,jdbcType=CHAR},
       is_del = #{isDel,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -361,7 +362,6 @@
       warehouse_name = #{warehouseName,jdbcType=CHAR},
       total_bullet_number = #{totalBulletNumber,jdbcType=INTEGER},
       real_time_state = #{realTimeState,jdbcType=INTEGER},
-      gun_imei = #{gunImei,jdbcType=CHAR},
       version = #{version,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

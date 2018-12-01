@@ -31,6 +31,9 @@ import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
 
+import lombok.extern.slf4j.Slf4j;
+import sun.util.logging.resources.logging;
+
 /**   
  * @ClassName:  GetBulletNumberReqService   
  * @Description:TODO(这里用一句话描述这个类的作用)   
@@ -43,6 +46,7 @@ import com.tct.util.StringConstant;
 
 @Service("getBulletNumberReqService")
 @Scope("prototype")
+@Slf4j
 public class GetBulletNumberReqService implements TemplateService {
 
 	@Autowired
@@ -72,6 +76,11 @@ public class GetBulletNumberReqService implements TemplateService {
 		GetBulletNumberReqMessage gbnrMsg = (GetBulletNumberReqMessage)msg;
 		
 		String sessionToken = stringRedisTemplate.opsForValue().get(gbnrMsg.getUniqueIdentification());
+		
+		if(null==sessionToken) {
+			log.info("腕表没有注册，请先注册");
+			return;
+		}
 		gbnrMsg.setSessionToken(sessionToken);
 		SimpleReplyMessage simpleReplyMessage =constructReply(gbnrMsg);
 		outQueueSender.sendMessage(outQueueDestination, JSONObject.toJSONString(simpleReplyMessage));

@@ -2,6 +2,7 @@ package com.tct.db.mapper;
 
 import com.tct.db.po.Mission;
 import com.tct.db.po.MissionExample;
+import com.tct.db.po.MissionKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +11,7 @@ public interface MissionMapper {
 
     int deleteByExample(MissionExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(MissionKey key);
 
     int insert(Mission record);
 
@@ -18,7 +19,7 @@ public interface MissionMapper {
 
     List<Mission> selectByExample(MissionExample example);
 
-    Mission selectByPrimaryKey(Integer id);
+    Mission selectByPrimaryKey(MissionKey key);
 
     int updateByExampleSelective(@Param("record") Mission record, @Param("example") MissionExample example);
 
