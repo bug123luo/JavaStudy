@@ -54,6 +54,7 @@ import com.tct.codec.protocol.pojo.ReportBulletNumberReqMessage;
 import com.tct.codec.protocol.pojo.SearchGunReqMessage;
 import com.tct.codec.protocol.pojo.StartStopSearchGunReqMessage;
 import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
+import com.tct.util.MessageTypeConstant;
 import com.tct.util.SpringContextUtil;
 import com.tct.service.impl.AuthorizationReqService;
 import com.tct.service.impl.BindingReqService;
@@ -154,158 +155,174 @@ public class ServiceSelector {
 		
 		TemplateService service =null;
 		Object objmsg = null;
+		JSONObject json= msg;
 		
-		if (messageCodec instanceof AuthorizationReqCodec) {
-			service = SpringContextUtil.getBean("authorizationReqService");	
-			try {
-				objmsg = (AuthorizationReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof BindingReqCodec) {
-			service = SpringContextUtil.getBean("bindingReqService");
-			try {
-				objmsg = (BindingReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (messageCodec instanceof CancelInWarehouseReqCodec) {
-			service = SpringContextUtil.getBean("cancelInWarehouseReqService");
-			try {
-				objmsg = (CancelInWarehouseReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (messageCodec instanceof CancelRecipientsGunReqCodec) {
-			service = SpringContextUtil.getBean("cancelRecipientsGunReqService");
-			try {
-				objmsg = (CancelRecipientsGunReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (messageCodec instanceof DeviceHeartReqCodec) {
-			service = SpringContextUtil.getBean("deviceHeartReqService");
-			try {
-				objmsg = (DeviceHeartReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof GetBulletNumberReqCodec) {
-			service = SpringContextUtil.getBean("getBulletNumberReqService");
-			try {
-				objmsg = (GetBulletNumberReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof InWarehouseReqCodec) {
-			service = SpringContextUtil.getBean("inWarehouseReqService");
-			try {
-				objmsg = (InWarehouseReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof OutWarehouseReqCodec) {
-			service = SpringContextUtil.getBean("outWarehouseReqService");
-			try {
-				objmsg = (OutWarehouseReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (messageCodec instanceof ParamSettingReqCodec) {
-			service = SpringContextUtil.getBean("paramSettingReqService");
-			try {
-				objmsg = (ParamSettingReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (messageCodec instanceof RegistReqCodec) {
-			service = SpringContextUtil.getBean("registReqService");
-			try {
-				objmsg = (RegistReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (messageCodec instanceof ReportBulletNumberReqCodec) {
-			service = SpringContextUtil.getBean("reportBulletNumberReqService");
-			try {
-				objmsg = (ReportBulletNumberReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (messageCodec instanceof SearchGunReqCodec) {
-			service = SpringContextUtil.getBean("searchGunReqService");
-			try {
-				objmsg = (SearchGunReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof StartStopSearchGunReqCodec) {
-			service = SpringContextUtil.getBean("startStopSearchGunReqService");
-			try {
-				objmsg = (StartStopSearchGunReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (messageCodec instanceof WatchHeartReqCodec) {
-			service = SpringContextUtil.getBean("watchHeartReqService");
-			try {
-				objmsg = (WatchHeartReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof BindingResCodec){
-			service = SpringContextUtil.getBean("bindingResService");
-			try {
-				objmsg = (BindingResMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof CancelRecipientsGunResCodec){
-			service = SpringContextUtil.getBean("cancelRecipientsGunResService");
-			try {
-				objmsg = (CancelRecipientsGunResMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof InWarehouseResCodec){
-			service = SpringContextUtil.getBean("inWarehouseResService");
-			try {
-				objmsg = (InWarehouseResMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof GetBulletNumberReqCodec) {
-			service = SpringContextUtil.getBean("getBulletNumberReqService");
-			try {
-				objmsg = (GetBulletNumberReqMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof GetBulletNumberResCodec){
-			service = SpringContextUtil.getBean("getBulletNumberResService");
-			try {
-				objmsg = (GetBulletNumberResMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof OutWarehouseResCodec){
-			service = SpringContextUtil.getBean("outWarehouseResService");
-			try {
-				objmsg = (OutWarehouseResMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(messageCodec instanceof CancelInWarehouseResCodec){
-			service = SpringContextUtil.getBean("cancelInWarehouseResService");
-			try {
-				objmsg = (CancelInWarehouseResMessage)messageCodec.decode(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else {
-			
-		}
+		String msgType=json.getString("messageType");
 		
+		switch (msgType) {
+			case MessageTypeConstant.MESSAGE01:
+				service = SpringContextUtil.getBean("authorizationReqService");	
+				try {
+					objmsg = (AuthorizationReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE03:
+				service = SpringContextUtil.getBean("registReqService");
+				try {
+					objmsg = (RegistReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE05:
+				service = SpringContextUtil.getBean("bindingReqService");
+				try {
+					objmsg = (BindingReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE06:
+				service = SpringContextUtil.getBean("bindingResService");
+				try {
+					objmsg = (BindingResMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE07:
+				service = SpringContextUtil.getBean("outWarehouseReqService");
+				try {
+					objmsg = (OutWarehouseReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE08:
+				service = SpringContextUtil.getBean("outWarehouseResService");
+				try {
+					objmsg = (OutWarehouseResMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE09:
+				service = SpringContextUtil.getBean("cancelRecipientsGunReqService");
+				try {
+					objmsg = (CancelRecipientsGunReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE10:
+				service = SpringContextUtil.getBean("cancelRecipientsGunResService");
+				try {
+					objmsg = (CancelRecipientsGunResMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE11:
+				service = SpringContextUtil.getBean("inWarehouseReqService");
+				try {
+					objmsg = (InWarehouseReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE12:
+				service = SpringContextUtil.getBean("inWarehouseResService");
+				try {
+					objmsg = (InWarehouseResMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE13:
+				service = SpringContextUtil.getBean("cancelInWarehouseReqService");
+				try {
+					objmsg = (CancelInWarehouseReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE14:
+				service = SpringContextUtil.getBean("cancelInWarehouseResService");
+				try {
+					objmsg = (CancelInWarehouseResMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE15:
+				service = SpringContextUtil.getBean("watchHeartReqService");
+				try {
+					objmsg = (WatchHeartReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE17:
+				service = SpringContextUtil.getBean("deviceHeartReqService");
+				try {
+					objmsg = (DeviceHeartReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE19:
+				service = SpringContextUtil.getBean("startStopSearchGunReqService");
+				try {
+					objmsg = (StartStopSearchGunReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE21:
+				service = SpringContextUtil.getBean("searchGunReqService");
+				try {
+					objmsg = (SearchGunReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE23:
+				service = SpringContextUtil.getBean("reportBulletNumberReqService");
+				try {
+					objmsg = (ReportBulletNumberReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE25:
+				service = SpringContextUtil.getBean("getBulletNumberReqService");
+				try {
+					objmsg = (GetBulletNumberReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE26:
+				service = SpringContextUtil.getBean("getBulletNumberResService");
+				try {
+					objmsg = (GetBulletNumberResMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case MessageTypeConstant.MESSAGE27:
+				service = SpringContextUtil.getBean("paramSettingReqService");
+				try {
+					objmsg = (ParamSettingReqMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			default:
+				break;
+		}		
 		
 		try {
 			service.handleCodeMsg(objmsg);

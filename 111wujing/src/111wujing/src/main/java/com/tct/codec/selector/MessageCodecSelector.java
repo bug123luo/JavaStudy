@@ -33,6 +33,7 @@ import com.tct.codec.impl.ReportBulletNumberReqCodec;
 import com.tct.codec.impl.SearchGunReqCodec;
 import com.tct.codec.impl.StartStopSearchGunReqCodec;
 import com.tct.codec.impl.WatchHeartReqCodec;
+import com.tct.util.MessageTypeConstant;
 
 /**   
  * @ClassName:  MessageCodecSelector   
@@ -49,50 +50,74 @@ public class MessageCodecSelector {
 		
 		MessageBodyCodec msgCodec = null;
 		
-		if (json.getString("messageType").equals("01")) {
+		String msgType=json.getString("messageType");
+		
+		switch (msgType) {
+		case MessageTypeConstant.MESSAGE01:
 			msgCodec = new AuthorizationReqCodec();
-		}else if(json.getString("messageType").equals("03")) {
+			break;
+		case MessageTypeConstant.MESSAGE03:
 			msgCodec = new RegistReqCodec();
-		}else if(json.getString("messageType").equals("05")) {
+			break;
+		case MessageTypeConstant.MESSAGE05:
 			msgCodec = new BindingReqCodec();
-		}else if(json.getString("messageType").equals("07")) {
-			msgCodec = new OutWarehouseReqCodec();
-		}else if(json.getString("messageType").equals("09")) {
-			msgCodec = new CancelRecipientsGunReqCodec();
-		}else if(json.getString("messageType").equals("11")){
-		    msgCodec = new InWarehouseReqCodec();	
-		}else if(json.getString("messageType").equals("13")) {
-			msgCodec = new CancelInWarehouseReqCodec();
-		}else if(json.getString("messageType").equals("15")) {
-			msgCodec = new WatchHeartReqCodec();
-		}else if(json.getString("messageType").equals("17")) {
-			msgCodec = new DeviceHeartReqCodec();
-		}else if(json.getString("messageType").equals("19")){
-			msgCodec = new StartStopSearchGunReqCodec();
-		}else if(json.getString("messageType").equals("21")) {
-			msgCodec = new SearchGunReqCodec();
-		}else if(json.getString("messageType").equals("23")) {
-			msgCodec = new ReportBulletNumberReqCodec();
-		}else if(json.getString("messageType").equals("25")) {
-			msgCodec = new GetBulletNumberReqCodec();
-		}else if(json.getString("messageType").equals("27")) {
-			msgCodec = new ParamSettingReqCodec();
-		}else if (json.getString("messageType").equals("06")) {
+			break;
+		case MessageTypeConstant.MESSAGE06:
 			msgCodec = new BindingResCodec();
-		}else if(json.getString("messageType").equals("08")) {
+			break;
+		case MessageTypeConstant.MESSAGE07:
+			msgCodec = new OutWarehouseReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE08:
 			msgCodec = new OutWarehouseResCodec();
-		}else if(json.getString("messageType").equals("10")){
+			break;
+		case MessageTypeConstant.MESSAGE09:
+			msgCodec = new CancelRecipientsGunReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE10:
 			msgCodec = new CancelRecipientsGunResCodec();
-		}else if(json.getString("messageType").equals("12")){
+			break;
+		case MessageTypeConstant.MESSAGE11:
+			msgCodec = new InWarehouseReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE12:
 			msgCodec = new InWarehouseResCodec();
-		}else if (json.getString("messageType").equals("14")) {
+			break;
+		case MessageTypeConstant.MESSAGE13:
+			msgCodec = new CancelInWarehouseReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE14:
 			msgCodec = new CancelInWarehouseResCodec();
-		}else if(json.getString("messageType").equals("26")){
+			break;
+		case MessageTypeConstant.MESSAGE15:
+			msgCodec = new WatchHeartReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE17:
+			msgCodec = new DeviceHeartReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE19:
+			msgCodec = new StartStopSearchGunReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE21:
+			msgCodec = new SearchGunReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE23:
+			msgCodec = new ReportBulletNumberReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE25:
+			msgCodec = new GetBulletNumberReqCodec();
+			break;
+		case MessageTypeConstant.MESSAGE26:
 			msgCodec = new GetBulletNumberResCodec();
-		}else {
+			break;
+		case MessageTypeConstant.MESSAGE27:
+			msgCodec = new ParamSettingReqCodec();
+			break;
+		default:
 			msgCodec = null;
+			break;
 		}
-				
+		
 		return msgCodec;
 	}
 
