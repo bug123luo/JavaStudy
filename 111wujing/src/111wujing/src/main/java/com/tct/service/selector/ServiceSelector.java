@@ -32,10 +32,16 @@ import com.tct.codec.protocol.pojo.ParamSettingReqMessage;
 import com.tct.codec.protocol.pojo.RegistReqMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberReqMessage;
 import com.tct.codec.protocol.pojo.SearchGunReqMessage;
+import com.tct.codec.protocol.pojo.SearchGunResMessage;
 import com.tct.codec.protocol.pojo.StartStopSearchGunReqMessage;
 import com.tct.codec.protocol.pojo.WatchHeartReqMessage;
 import com.tct.util.MessageTypeConstant;
 import com.tct.util.SpringContextUtil;
+
+import lombok.extern.slf4j.Slf4j;
+import sun.print.resources.serviceui_pt_BR;
+import sun.util.logging.resources.logging;
+
 import com.tct.service.impl.AuthorizationReqService;
 import com.tct.service.impl.BindingReqService;
 import com.tct.service.impl.BindingResService;
@@ -69,6 +75,7 @@ import com.tct.service.impl.WatchHeartReqService;
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
 
+@Slf4j
 public class ServiceSelector {
 	
 	@Resource(name = "authorizationReqService")
@@ -268,6 +275,14 @@ public class ServiceSelector {
 					e.printStackTrace();
 				}
 				break;
+			case MessageTypeConstant.MESSAGE22:
+				service = SpringContextUtil.getBean("searchGunResService");
+				try {
+					objmsg = (SearchGunResMessage)messageCodec.decode(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
 			case MessageTypeConstant.MESSAGE23:
 				service = SpringContextUtil.getBean("reportBulletNumberReqService");
 				try {
@@ -301,8 +316,14 @@ public class ServiceSelector {
 				}
 				break;
 			default:
+				service = null;
 				break;
 		}		
+		
+		if(null==service) {
+			log.info("没有对应服务");
+			return;
+		}
 		
 		try {
 			service.handleCodeMsg(objmsg);

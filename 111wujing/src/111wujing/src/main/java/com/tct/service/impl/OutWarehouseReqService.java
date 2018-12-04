@@ -75,16 +75,11 @@ public class OutWarehouseReqService implements TemplateService {
 	public void handleCodeMsg(Object msg) throws Exception {
 		OutWarehouseReqMessage oWReqMsg = (OutWarehouseReqMessage)msg;
 
+		//判断是否挺有重复记录，否则
 		WarehouseRecordsCustom tempObj=outWarehouseDao.selectByGunIdAndState(oWReqMsg);
-		if (tempObj!=null) {
-			if(tempObj.getState().equals(StringConstant.OUT_WAREHOUSE_ING_STATE)) {
-				//如果需要update更新领用时间和截止时间
-				return;
-			}else if(tempObj.getState().equals(StringConstant.OUT_WAREHOUSE_STATE) 
-					|| tempObj.getState().equals(StringConstant.IN_WAREHOUSE_ING_STATE)){
-				return;
-			}
-
+		if(null!=tempObj) {
+			log.info("改枪正在使用中，还未入库，请先入库，在进行插入操作");
+			return;
 		}
 				
 		int i=outWarehouseDao.insertWarehouseRecords(oWReqMsg);

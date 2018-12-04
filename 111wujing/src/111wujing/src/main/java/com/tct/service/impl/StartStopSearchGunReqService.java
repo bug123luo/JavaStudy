@@ -84,8 +84,8 @@ public class StartStopSearchGunReqService implements TemplateService {
 
 		}
 		String replyBody = StringConstant.MSG_BODY_PREFIX+startStopSearchGunReqMessage.getMessageBody().getCommand()
-		+StringConstant.MSG_BODY_SEPARATOR+startStopSearchGunReqMessage.getMessageBody()
 		+StringConstant.MSG_BODY_SEPARATOR+gunList
+		+StringConstant.MSG_BODY_SEPARATOR+startStopSearchGunReqMessage.getMessageBody().getAuthCode()
 		+StringConstant.MSG_BODY_SUFFIX;
 		simpleReplyMessage.setMessageBody(replyBody);
 		

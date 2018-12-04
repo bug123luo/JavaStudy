@@ -31,9 +31,12 @@ import com.tct.codec.impl.ParamSettingReqCodec;
 import com.tct.codec.impl.RegistReqCodec;
 import com.tct.codec.impl.ReportBulletNumberReqCodec;
 import com.tct.codec.impl.SearchGunReqCodec;
+import com.tct.codec.impl.SearchGunResCodec;
 import com.tct.codec.impl.StartStopSearchGunReqCodec;
 import com.tct.codec.impl.WatchHeartReqCodec;
 import com.tct.util.MessageTypeConstant;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**   
  * @ClassName:  MessageCodecSelector   
@@ -44,6 +47,8 @@ import com.tct.util.MessageTypeConstant;
  * @Copyright: 2018 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
+
+@Slf4j
 public class MessageCodecSelector {
 	public MessageBodyCodec getMessageDecode(JSONObject tempjson) throws Exception {
 		JSONObject json= tempjson;
@@ -101,6 +106,9 @@ public class MessageCodecSelector {
 		case MessageTypeConstant.MESSAGE21:
 			msgCodec = new SearchGunReqCodec();
 			break;
+		case MessageTypeConstant.MESSAGE22:
+			msgCodec = new SearchGunResCodec();
+			break;
 		case MessageTypeConstant.MESSAGE23:
 			msgCodec = new ReportBulletNumberReqCodec();
 			break;
@@ -118,7 +126,13 @@ public class MessageCodecSelector {
 			break;
 		}
 		
-		return msgCodec;
+		if (null==msgCodec) {
+			log.debug("没有对应的协议报文解析器，请与产品经理 联系");
+			return null;
+		} else {
+			return msgCodec;
+		}
+		
 	}
 
 /*	public MessageCodec encode(String outMsg) throws Exception {

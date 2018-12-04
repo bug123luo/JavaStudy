@@ -80,4 +80,44 @@
       </if>
     </trim>
   </insert>
+  
+  <update id="updateSelectiveByGunMac" parameterType="com.tct.db.po.SosMessage">
+  	update sos_message
+    <set>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=CHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=CHAR},
+      </if>
+      <if test="gunImei != null">
+        gun_imei = #{gunImei,jdbcType=CHAR},
+      </if>
+      <if test="gunMac != null">
+        gun_mac = #{gunMac,jdbcType=CHAR},
+      </if>
+      <if test="sosTime != null">
+        sos_time = #{sosTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleTime != null">
+        handle_time = #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="exceptionId != null">
+        exception_id = #{exceptionId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where gun_mac = #{gunMac,jdbcType=CHAR}
+  </update>
 </mapper>

@@ -148,7 +148,7 @@
  				gun_id=#{warehouseRecordsCustom.gunId}
  			</if>
  			<if test="1==1">
- 				and (state=1 or state=2 or state=3)
+ 				and state!=4
  			</if>
  		</trim>
 	</select>
