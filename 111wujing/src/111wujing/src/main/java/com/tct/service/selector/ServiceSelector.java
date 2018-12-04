@@ -13,6 +13,7 @@ package com.tct.service.selector;
 
 import javax.annotation.Resource;
 import com.alibaba.fastjson.JSONObject;
+import com.tct.codec.impl.MessageBodyCodec;
 import com.tct.codec.protocol.pojo.AuthorizationReqMessage;
 import com.tct.codec.protocol.pojo.BindingReqMessage;
 import com.tct.codec.protocol.pojo.BindingResMessage;
