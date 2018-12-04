@@ -99,26 +99,36 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 		gunLocationCustom.setLongitude(wHRMsg.getMessageBody().getLo());
 		gunLocationCustom.setLatitude(wHRMsg.getMessageBody().getLa());
 		for(WatchHeartReqMessageBodyGunInfo guninfo:gList) {
+			GunCustomQueryVo gunCustomQueryVo2 = new GunCustomQueryVo();
+			GunCustom gunCustom2 = new GunCustom();
+			gunCustom2.setGunId(guninfo.getGunId());
+			gunCustomQueryVo2.setGunCustom(gunCustom2);
+			Gun gun2=gcDao.selectAllColumnByGunId(gunCustomQueryVo2);
+			
 			gunLocationCustom.setGunId(guninfo.getGunId());
+			gunLocationCustom.setGunMac(gun2.getGunMac());
 			gunLocationCustom.setGunDeviceBatteryPower(guninfo.getGunDeviceBatteryPower());
 			glcDao.insertSelective(gunLocationCustom);
-			
+		
 			gunCustom.setGunId(guninfo.getGunId());
 			gunCustom.setRealTimeState(Integer.valueOf(guninfo.getRealTimeState()));
 			gcDao.updateSelectiveByGunId(gunCustom);
 			
 			//20181201添加异常功能
 			if(!wHRMsg.getMessageBody().getExceptionCode().equals("1")) {
-				GunCustomQueryVo gunCustomQueryVo = new GunCustomQueryVo();
-				gunCustomQueryVo.setGunCustom(gunCustom);
-				Gun gun=gcDao.selectAllColumnByGunId(gunCustomQueryVo);
-				SosMessageCustom sosMessageCustom = new SosMessageCustom();
-				sosMessageCustom.setGunImei(gun.getGunImei());
-				sosMessageCustom.setGunMac(gun.getGunMac());
-				sosMessageCustom.setLatitude(gunLocationCustom.getLatitude());
-				sosMessageCustom.setLongitude(gunLocationCustom.getLongitude());
-				sosMessageCustom.setExceptionId(Integer.valueOf(wHRMsg.getMessageBody().getExceptionCode()));
-				sosDao.insertSelective(sosMessageCustom);
+				if(wHRMsg.getMessageBody().getExceptionCode().equals("8")) {
+					GunCustomQueryVo gunCustomQueryVo = new GunCustomQueryVo();
+					gunCustomQueryVo.setGunCustom(gunCustom);
+					Gun gun=gcDao.selectAllColumnByGunId(gunCustomQueryVo);
+					SosMessageCustom sosMessageCustom = new SosMessageCustom();
+					sosMessageCustom.setGunImei(gun.getGunImei());
+					sosMessageCustom.setGunMac(gun.getGunMac());
+					sosMessageCustom.setLatitude(gunLocationCustom.getLatitude());
+					sosMessageCustom.setLongitude(gunLocationCustom.getLongitude());
+					sosMessageCustom.setExceptionId(Integer.valueOf(wHRMsg.getMessageBody().getExceptionCode()));
+					sosDao.insertSelective(sosMessageCustom);
+				}
+
 			}
 		}
 		

@@ -14,6 +14,7 @@ package com.tct.db.dao;
 import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunResMessage;
+import com.tct.codec.protocol.pojo.GetBulletNumberReqMessage;
 import com.tct.codec.protocol.pojo.InWarehouseReqMessage;
 import com.tct.db.po.MessageRecordsCustom;
 
@@ -37,4 +38,6 @@ public interface MessageRecordsDao {
 	public int insertSelective(InWarehouseReqMessage inWhReqMsg);
 	
 	public int insertSelective(CancelInWarehouseReqMessage msg);
+	
+	public int insertSelective(GetBulletNumberReqMessage msg);
 }

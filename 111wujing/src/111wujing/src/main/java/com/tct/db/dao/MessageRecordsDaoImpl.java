@@ -18,8 +18,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunResMessage;
+import com.tct.codec.protocol.pojo.GetBulletNumberReqMessage;
 import com.tct.codec.protocol.pojo.InWarehouseReqMessage;
+import com.tct.db.mapper.GunCustomMapper;
 import com.tct.db.mapper.MessageRecordsCustomMapper;
+import com.tct.db.po.Gun;
+import com.tct.db.po.GunCustom;
+import com.tct.db.po.GunCustomQueryVo;
 import com.tct.db.po.MessageRecordsCustom;
 import com.tct.db.po.MessageRecordsQueryVo;
 
@@ -41,6 +46,9 @@ public class MessageRecordsDaoImpl implements MessageRecordsDao{
 
 	@Autowired
 	MessageRecordsCustomMapper msgDao;
+	
+	@Autowired
+	GunCustomMapper gcDao;
 	
 	public int insertSelective(CancelRecipientsGunReqMessage cRecGunReqMsg) {
 		
@@ -88,6 +96,34 @@ public class MessageRecordsDaoImpl implements MessageRecordsDao{
 		MessageRecordsCustom mRecCustom = new MessageRecordsCustom();
 		
 		mRecCustom.setGunId(msg.getMessageBody().getGunId());
+		mRecCustom.setSerlNum(msg.getSerialNumber());
+		mRecCustom.setMessage(JSONObject.toJSONString(msg));
+		
+		int i =0;
+		i= msgDao.insertSelective(mRecCustom);
+		return i;
+	}
+
+	/**   
+	 * <p>Title: insertSelective</p>   
+	 * <p>Description: </p>   
+	 * @param msg
+	 * @return   
+	 * @see com.tct.db.dao.MessageRecordsDao#insertSelective(com.tct.codec.protocol.pojo.GetBulletNumberReqMessage)   
+	 */
+	@Override
+	public int insertSelective(GetBulletNumberReqMessage msg) {
+		
+		String gunMac = msg.getMessageBody().getGunMac();		
+		GunCustomQueryVo gunCustomQueryVo=new GunCustomQueryVo();
+		GunCustom gunCustom = new GunCustom();
+		gunCustom.setGunMac(gunMac);
+		gunCustomQueryVo.setGunCustom(gunCustom);
+		Gun gun=gcDao.selectAllColumn(gunCustomQueryVo);
+		String gunId = gun.getGunId();
+		
+		MessageRecordsCustom mRecCustom = new MessageRecordsCustom();
+		mRecCustom.setGunId(gunId);
 		mRecCustom.setSerlNum(msg.getSerialNumber());
 		mRecCustom.setMessage(JSONObject.toJSONString(msg));
 		

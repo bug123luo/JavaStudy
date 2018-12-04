@@ -12,28 +12,21 @@
 package com.tct.service.impl;
 
 import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.jms.Destination;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
 import com.tct.codec.protocol.pojo.InWarehouseResMessage;
 import com.tct.db.dao.InWarehouseDao;
-import com.tct.db.dao.InWarehouseDaoImpl;
 import com.tct.db.dao.MessageRecordsDao;
-import com.tct.db.dao.MessageRecordsDaoImpl;
 import com.tct.db.po.MessageRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
-
 import lombok.extern.slf4j.Slf4j;
-import sun.util.logging.resources.logging;
 
 /**   
  * @ClassName:  InWarehouseResService   

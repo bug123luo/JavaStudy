@@ -14,11 +14,9 @@ package com.tct.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-
 import com.tct.codec.protocol.pojo.BindingResMessage;
 import com.tct.db.dao.BindingGunDao;
-import com.tct.db.dao.BindingGunDaoImpl;
-import com.tct.util.StringConstant;
+
 
 /**   
  * @ClassName:  BindingResService   

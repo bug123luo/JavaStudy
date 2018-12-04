@@ -11,8 +11,6 @@
  */
 package com.tct.codec.impl;
 
-import org.apache.ibatis.reflection.wrapper.BaseWrapper;
-
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.RegistReqMessage;
 import com.tct.codec.protocol.pojo.RegistReqMessageBody;

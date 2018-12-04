@@ -27,5 +27,5 @@ public interface GunBulletDao {
 
 	public int insertSelective(ReportBulletNumberReqMessage msg);
 	
-	public int updateTotalCount(GetBulletNumberResMessage gbnrMsg);
+	public int updateTotalCount(GetBulletNumberResMessage gbnrMsg,String gunId);
 }

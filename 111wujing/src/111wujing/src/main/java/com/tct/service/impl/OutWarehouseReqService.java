@@ -12,10 +12,8 @@
 package com.tct.service.impl;
 
 import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.jms.Destination;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,15 +22,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
-import com.tct.codec.protocol.pojo.BindingReqMessage;
-import com.tct.codec.protocol.pojo.BindingReqMessageBodyGunInfo;
 import com.tct.codec.protocol.pojo.OutWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.OutWarehouseDao;
 import com.tct.db.po.WarehouseRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
-
 import lombok.extern.slf4j.Slf4j;
 
 

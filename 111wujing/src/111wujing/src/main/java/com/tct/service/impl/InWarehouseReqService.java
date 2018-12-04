@@ -15,7 +15,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.jms.Destination;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,17 +22,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
 import com.alibaba.fastjson.JSONObject;
-import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.InWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.InWarehouseDao;
-import com.tct.db.dao.InWarehouseDaoImpl;
 import com.tct.db.dao.MessageRecordsDao;
-import com.tct.db.dao.MessageRecordsDaoImpl;
-import com.tct.db.mapper.WarehouseRecordsCustomMapper;
-import com.tct.db.po.WarehouseRecords;
 import com.tct.db.po.WarehouseRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;

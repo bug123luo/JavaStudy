@@ -138,7 +138,7 @@
 	        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
 	      </if>
 	    </set>
-	    where gun_id = #{gunId,jdbcType=CHAR} and (state !=3 and state!=4)
+	    where gun_id = #{gunId,jdbcType=CHAR} and state=1
 	</update>
 	
 	<select id="selectByGunIdAndState" parameterType="com.tct.db.po.WarehouseRecordsQueryVo" resultType="com.tct.db.po.WarehouseRecordsCustom">

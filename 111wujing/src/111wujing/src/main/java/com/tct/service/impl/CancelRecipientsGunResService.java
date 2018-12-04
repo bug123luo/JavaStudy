@@ -13,8 +13,7 @@ package com.tct.service.impl;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.jms.Destination;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,14 +21,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tct.codec.protocol.pojo.CancelRecipientsGunResMessage;
+import com.tct.db.dao.AuthCodeDao;
 import com.tct.db.dao.MessageRecordsDao;
-import com.tct.db.dao.MessageRecordsDaoImpl;
 import com.tct.db.dao.OutWarehouseDao;
-import com.tct.db.dao.OutWarehouseDaoImpl;
+import com.tct.db.po.AppCustom;
+import com.tct.db.po.AppCustomQueryVo;
 import com.tct.db.po.MessageRecordsCustom;
-import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
 
 /**   
@@ -61,6 +61,9 @@ public class CancelRecipientsGunResService implements TemplateService {
 	@Autowired
 	MessageRecordsDao mRecDao;
 	
+	@Autowired
+	AuthCodeDao atcDao;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -69,12 +72,23 @@ public class CancelRecipientsGunResService implements TemplateService {
 	 * @see com.tct.service.impl.TemplateService#handleCodeMsg(java.lang.Object)   
 	 */
 	@Override
+	@Transactional
 	public void handleCodeMsg(Object msg) throws Exception {
 		CancelRecipientsGunResMessage cRecGunResMsg = (CancelRecipientsGunResMessage)msg;
 		MessageRecordsCustom mRecCustom=mRecDao.selectBySerlNum(cRecGunResMsg);
 		
 		if(cRecGunResMsg.getMessageBody().getState().equals(StringConstant.SUCCESS_NEW_STATE)) {
 			outWarehouseDao.updateSelectiveByGunIdAndOutState(mRecCustom);
+		
+			AppCustomQueryVo appCustomQueryVo = new AppCustomQueryVo();
+			AppCustom appCustom = new AppCustom();
+			appCustom.setAppImei(cRecGunResMsg.getUniqueIdentification());
+			appCustomQueryVo.setAppCustom(appCustom);
+			AppCustom appCustom2=atcDao.selectAppAllColumn(appCustomQueryVo);
+			Integer appId=appCustom2.getId();
+			
+			outWarehouseDao.updateSelectiveByAppIdAndGunId(appId, mRecCustom.getGunId());
+			
 		}else {
 			
 		}

@@ -12,7 +12,6 @@
 package com.tct.codec.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.tct.codec.protocol.pojo.CancelInWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.CancelInWarehouseResMessage;
 import com.tct.codec.protocol.pojo.CancelInWarehouseResMessageBody;
 

@@ -37,4 +37,6 @@ public interface OutWarehouseDao {
 	public int updateSelectiveByGunId(CancelRecipientsGunReqMessage cRecReqMsg);
 	
 	public int updateSelectiveByGunIdAndOutState(MessageRecordsCustom mRecCustom);
+	
+	public int updateSelectiveByAppIdAndGunId(Integer appId, String gunId);
 }

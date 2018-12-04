@@ -22,9 +22,6 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.jms.*;
-
-import dudu.service.core.processor.Processor;
-import dudu.service.core.push.FollowMessageBean;
 import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;

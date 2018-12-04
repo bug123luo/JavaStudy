@@ -124,7 +124,8 @@ public class OutWarehouseDaoImpl implements OutWarehouseDao{
 		
 		WarehouseRecords warehouseRecords= new WarehouseRecords();
 		JSONObject jsontemp = JSONObject.parseObject(mRecCustom.getMessage());
-		String gunId=jsontemp.getString("gunId");
+		JSONObject jsontemp2 =  jsontemp.getJSONObject("messageBody");
+		String gunId=jsontemp2.getString("gunId");
 		if (gunId==null) {
 			gunId="";
 		}
@@ -135,6 +136,27 @@ public class OutWarehouseDaoImpl implements OutWarehouseDao{
 		int i = 0;
 		i = wrcDao.updateSelectiveByGunIdAndOutState(warehouseRecords);
 		return i;
+	}
+
+	/**   
+	 * <p>Title: updateSelectiveByAppIdAndGunId</p>   
+	 * <p>Description: </p>   
+	 * @param appId
+	 * @param gunId
+	 * @return   
+	 * @see com.tct.db.dao.OutWarehouseDao#updateSelectiveByAppIdAndGunId(java.lang.Integer, java.lang.String)   
+	 */
+	@Override
+	public int updateSelectiveByAppIdAndGunId(Integer appId, String gunId) {
+		
+		AppGunCustom appGunCustom = new AppGunCustom();
+		appGunCustom.setAppId(appId);
+		appGunCustom.setGunId(gunId);
+		appGunCustom.setAllotState(0);
+		
+		int i=0;
+		i = appGunDao.updateSelectiveByAppId(appGunCustom);
+		return 0;
 	}
 	
 }

@@ -22,4 +22,6 @@ public interface AppGunCustomMapper {
 	int updateSelectiveByAppId(AppGunCustom appGunCustom);
 	
 	int updateSelectiveByAppIdAndState(AppGunCustom appGunCustom);
+	
+	int updateSelectiveByAppIdAndGunId(AppGunCustom appGunCustom);
 }

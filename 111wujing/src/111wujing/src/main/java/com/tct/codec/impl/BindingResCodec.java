@@ -12,8 +12,6 @@
 package com.tct.codec.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.tct.codec.protocol.pojo.BindingReqMessage;
-import com.tct.codec.protocol.pojo.BindingReqMessageBody;
 import com.tct.codec.protocol.pojo.BindingResMessage;
 import com.tct.codec.protocol.pojo.BindingResMessageBody;
 

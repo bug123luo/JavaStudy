@@ -25,6 +25,8 @@ import org.springframework.stereotype.Service;
 
 import com.tct.codec.protocol.pojo.GetBulletNumberResMessage;
 import com.tct.db.dao.GunBulletDao;
+import com.tct.db.dao.MessageRecordsDao;
+import com.tct.db.po.MessageRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
 
 /**   
@@ -59,6 +61,9 @@ public class GetBulletNumberResService implements TemplateService{
 	@Autowired
 	private GunBulletDao gbDao; 
 	
+	@Autowired
+	private MessageRecordsDao msgDao;
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -70,7 +75,8 @@ public class GetBulletNumberResService implements TemplateService{
 	public void handleCodeMsg(Object msg) throws Exception {
 		GetBulletNumberResMessage gbnrMsg= (GetBulletNumberResMessage)msg;
 		
-		gbDao.updateTotalCount(gbnrMsg);
+		MessageRecordsCustom messageRecordsCustom=msgDao.selectBySerlNum(gbnrMsg.getSerialNumber());
+		gbDao.updateTotalCount(gbnrMsg,messageRecordsCustom.getGunId());
 		
 	}
 	

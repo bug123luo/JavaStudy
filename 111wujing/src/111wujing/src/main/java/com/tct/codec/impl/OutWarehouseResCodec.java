@@ -14,7 +14,6 @@ package com.tct.codec.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.OutWarehouseResMessage;
 import com.tct.codec.protocol.pojo.OutWarehouseResMessageBody;
-import com.tct.service.impl.TemplateService;
 
 /**   
  * @ClassName:  OutWarehouseResCodec   

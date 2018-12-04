@@ -87,6 +87,16 @@
 	    where app_id = #{appId,jdbcType=INTEGER}
 	</update>
 	
+	<update id="updateSelectiveByAppIdAndGunId" parameterType="com.tct.db.po.AppGunCustom">
+		update app_gun
+	    <set>
+	      <if test="allotState != null">
+	        allot_state = #{allotState,jdbcType=INTEGER},
+	      </if>
+	    </set>
+	    where app_id = #{appId,jdbcType=INTEGER} and gun_id =#{gunId,jdbcType=INTEGER} and allot_state =1
+	</update>
+	
 	<update id="updateSelectiveByAppIdAndState" parameterType="com.tct.db.po.AppGunCustom">
 		update app_gun
 	    <set>

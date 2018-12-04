@@ -14,7 +14,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.jms.Destination;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,19 +21,14 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
 import com.alibaba.fastjson.JSONObject;
-import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.BindingReqMessage;
 import com.tct.codec.protocol.pojo.BindingReqMessageBodyGunInfo;
 import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.BindingGunDao;
-import com.tct.db.dao.BindingGunDaoImpl;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
 
-import lombok.extern.slf4j.Slf4j;
-import sun.util.logging.resources.logging;
 
 /**   
  * @ClassName:  BindingReqService   
@@ -48,7 +42,6 @@ import sun.util.logging.resources.logging;
 
 @Service("bindingReqService")
 @Scope("prototype")
-@Slf4j
 public class BindingReqService implements TemplateService {
 
 	@Autowired

@@ -152,13 +152,14 @@ public class CoordinateConvertUtil {
                 // 116.39806876799298,39.90830142538959
                 // 116.397826,39.90894374525333
                 // 116.3978262189183,39.90894374525333
-                String lon = "116.391910";
+            	
+/*                String lon = "116.391910";
                 String lat = "39.906050";
                 lon = "";
                 lat = "";
                 double [] arr2 = bd092GCJ(39.9151, 116.4039595 );
                 System.out.println(arr2[0]+ "," + arr2[1]);
                 double [] arr = bd092WGS(39.9151, 116.4039595 );
-                System.out.println(arr[0]+ "," + arr[1]);
+                System.out.println(arr[0]+ "," + arr[1]);*/
             }
 }

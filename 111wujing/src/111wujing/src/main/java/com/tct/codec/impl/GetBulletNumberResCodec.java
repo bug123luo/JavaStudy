@@ -11,8 +11,6 @@
  */
 package com.tct.codec.impl;
 
-import org.aspectj.weaver.NewConstructorTypeMunger;
-
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.GetBulletNumberResMessage;
 import com.tct.codec.protocol.pojo.GetBulletNumberResMessageBody;

@@ -15,8 +15,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.jms.Destination;
-
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,16 +22,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
 import com.alibaba.fastjson.JSONObject;
-import com.tct.codec.protocol.pojo.AuthorizationResMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberReqMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberResMessage;
 import com.tct.codec.protocol.pojo.ReportBulletNumberResMessageBody;
 import com.tct.codec.protocol.pojo.SimpleReplyMessage;
 import com.tct.db.dao.GunBulletDao;
-import com.tct.db.dao.GunBulletDaoImpl;
-import com.tct.db.mapper.GunBulletCountCustomMapper;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.MessageTypeConstant;
 import com.tct.util.StringConstant;
