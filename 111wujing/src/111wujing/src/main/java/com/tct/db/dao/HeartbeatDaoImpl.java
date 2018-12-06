@@ -147,7 +147,7 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 		gunCustomQueryVo.setGunCustom(gunCustom);
 		
 		//配合板子数据测试异常数据代码才修改，正常是必须存在对应的数据
-		GunCustom gunCustomTemp = null;
+		Gun gunCustomTemp = null;
 		gunCustomTemp = gcDao.selectAllColumnByGunImei(gunCustomQueryVo);		
 		if(gunCustomTemp ==null) {
 			gunCustomTemp = new GunCustom();
@@ -167,17 +167,23 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 		try {
 			appGunCustomTemp=accDao.selectAllColumn(appGunCustomQueryVo);	
 		} catch (Exception e) {
-			if(null==appGunCustomTemp) {
-				appGunCustomTemp=new AppGunCustom();
-				appGunCustomTemp.setAppId(Integer.valueOf(0));
-			}
+
+		}
+		
+		if(null==appGunCustomTemp) {
+			log.info("设备之前没有绑定枪支，只是硬件的自适应测试，所以不插入数据库");
+			return 0;
+/*				appGunCustomTemp=new AppGunCustom();
+			appGunCustomTemp.setAppId(Integer.valueOf(0));*/
 		}
 
 		
 		GunLocationCustom gunLocationCustom = new GunLocationCustom();
 		gunLocationCustom.setAppId(appGunCustomTemp.getAppId());
 		gunLocationCustom.setGunId(gunCustomTemp.getGunId());
-		gunLocationCustom.setGunMac(dhrm.getUniqueIdentification());
+		//gunLocationCustom.setGunMac(dhrm.getUniqueIdentification());
+		gunLocationCustom.setGunMac(gunCustomTemp.getGunMac());
+
 		gunLocationCustom.setAreaCode(dhrm.getMessageBody().getAreaCode());
 		gunLocationCustom.setDirector(dhrm.getMessageBody().getDirector());
 		gunLocationCustom.setGunDeviceBatteryPower(dhrm.getMessageBody().getGunDeviceBatteryPower());

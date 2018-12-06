@@ -1,19 +1,15 @@
 package com.tct.db.dao;
 
 import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.tct.codec.protocol.pojo.CancelRecipientsGunReqMessage;
 import com.tct.codec.protocol.pojo.OutWarehouseReqMessage;
 import com.tct.codec.protocol.pojo.OutWarehouseResMessage;
 import com.tct.db.mapper.AppGunCustomMapper;
 import com.tct.db.mapper.GunCustomMapper;
-import com.tct.db.mapper.MessageRecordsCustomMapper;
 import com.tct.db.mapper.WarehouseRecordsCustomMapper;
 import com.tct.db.po.AppGunCustom;
 import com.tct.db.po.AppGunCustomQueryVo;
@@ -26,7 +22,6 @@ import com.tct.db.po.WarehouseRecordsCustom;
 import com.tct.db.po.WarehouseRecordsQueryVo;
 import com.tct.util.StringConstant;
 import com.tct.util.StringUtil;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -86,7 +81,7 @@ public class OutWarehouseDaoImpl implements OutWarehouseDao{
 		if(oWRMsg.getMessageBody().getState().equals(StringConstant.SUCCESS_NEW_STATE)) {
 			warehouseRecords.setState(Integer.valueOf(StringConstant.OUT_WAREHOUSE_STATE));
 		}else if (oWRMsg.getMessageBody().getState().equals(StringConstant.FAILURE_NEW_STATE)) {
-			warehouseRecords.setState(Integer.valueOf(StringConstant.OUT_WAREHOUSE_ING_STATE));
+			warehouseRecords.setState(Integer.valueOf(StringConstant.IN_WAREHOUSE_STATE));
 		}else {
 			
 		}

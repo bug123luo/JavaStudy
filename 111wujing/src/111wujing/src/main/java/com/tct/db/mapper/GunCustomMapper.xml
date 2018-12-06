@@ -95,7 +95,7 @@
  		select <include refid="allColumns"/> from gun
  		<where>
  			<if test="gunCustom.gunImei!=null">
- 				gun_mac = #{gunCustom.gunImei}
+ 				gun_imei = #{gunCustom.gunImei}
  			</if>
  		</where>
  	</select>

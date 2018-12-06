@@ -20,7 +20,7 @@ public interface GunCustomMapper {
 	
 	Gun selectAllColumnByGunId(GunCustomQueryVo gunCustomQueryVo);
 	
-	GunCustom selectAllColumnByGunImei(GunCustomQueryVo gunCustomQueryVo);
+	Gun selectAllColumnByGunImei(GunCustomQueryVo gunCustomQueryVo);
 	
 	int updateSelectiveByGunId(GunCustom gunCustom);
 	
