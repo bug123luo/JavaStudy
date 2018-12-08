@@ -15,6 +15,7 @@ import com.tct.db.po.AppGunCustomQueryVo;
  */
 
 public interface AppGunCustomMapper {
+	
 	AppGunCustom selectAllColumn(AppGunCustomQueryVo appGunCustomQueryVo);
 	
 	int insertSelective(AppGunCustom appGunCustom);
@@ -23,5 +24,11 @@ public interface AppGunCustomMapper {
 	
 	int updateSelectiveByAppIdAndState(AppGunCustom appGunCustom);
 	
-	int updateSelectiveByAppIdAndGunId(AppGunCustom appGunCustom);
+	//int updateSelectiveByAppIdAndGunId(AppGunCustom appGunCustom);
+	
+	int updateSelectiveByGunIdAndUnallocState(AppGunCustom appGunCustom);
+	
+	int updateSelectiveByGunIdAndAllocState(AppGunCustom appGunCustom);
+	
+	int updateSelectiveByGunIdAndInitState(AppGunCustom appGunCustom);
 }

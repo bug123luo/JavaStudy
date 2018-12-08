@@ -60,11 +60,9 @@ public class CancelInWarehouseResService implements TemplateService {
 		String state=ciwhr.getMessageBody().getState();
 
 		if(state.equals(StringConstant.SUCCESS_NEW_STATE)) {
-			//iwhDao.updateSelectiveByGunIdAndMaxTime(mrsCustom.getGunId());
-			iwhDao.updateSelectiveByGunIdAndRollbackState(mrsCustom.getGunId());
+			//iwhDao.updateSelectiveByGunIdAndRollbackState(mrsCustom.getGunId());
 		}else {
-			//iwhDao.updateSelectiveByGunIdAndMaxTime(mrsCustom.getGunId());
-			iwhDao.updateSelectiveByGunIdAndInState(mrsCustom.getGunId());
+			//iwhDao.updateSelectiveByGunIdAndInState(mrsCustom.getGunId());
 		}
 
 	}

@@ -24,8 +24,11 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.tct.codec.protocol.pojo.OutWarehouseResMessage;
+import com.tct.db.dao.AppGunDao;
 import com.tct.db.dao.OutWarehouseDao;
+import com.tct.db.po.AppGunCustom;
 import com.tct.jms.producer.OutQueueSender;
+import com.tct.util.StringConstant;
 
 /**   
  * @ClassName:  OutWarehouseResService   
@@ -59,6 +62,8 @@ public class OutWarehouseResService implements TemplateService {
 	@Autowired
 	OutWarehouseDao outWarehouseDao;
 	
+	@Autowired
+	AppGunDao apDao;
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -69,6 +74,21 @@ public class OutWarehouseResService implements TemplateService {
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
 		OutWarehouseResMessage oWRMsg = (OutWarehouseResMessage)msg;
+		String state=oWRMsg.getMessageBody().getState();
+		
+		if(state.equals(StringConstant.SUCCESS_NEW_STATE)) {
+			AppGunCustom appGunCustom = new AppGunCustom();
+			appGunCustom.setAllotState(1);
+			appGunCustom.setGunId(oWRMsg.getMessageBody().getGunId());
+			apDao.updateSelectiveByGunIdAndAllocState(appGunCustom);
+		}else if(state.equals(StringConstant.FAILURE_NEW_STATE)) {
+			AppGunCustom appGunCustom = new AppGunCustom();
+			appGunCustom.setAllotState(3);
+			appGunCustom.setGunId(oWRMsg.getMessageBody().getGunId());
+			apDao.updateSelectiveByGunIdAndUnallocState(appGunCustom);
+		}else {
+			
+		}
 		
 		outWarehouseDao.updateSelectiveByGunId(oWRMsg);
 	}

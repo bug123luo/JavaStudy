@@ -53,7 +53,7 @@ public class OutWarehouseDaoImpl implements OutWarehouseDao{
 		AppGunCustomQueryVo appGunCustomQueryVo = new AppGunCustomQueryVo();
 		AppGunCustom appGunCustom = new AppGunCustom();
 		appGunCustom.setGunId(oWReqMsg.getMessageBody().getGunId());
-		appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTED_STATE));
+		appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTING_STATE));
 		appGunCustomQueryVo.setAppGunCustom(appGunCustom);
 		
 		GunCustomQueryVo gunCustomQueryVo = new GunCustomQueryVo();
@@ -62,6 +62,11 @@ public class OutWarehouseDaoImpl implements OutWarehouseDao{
 		gunCustomQueryVo.setGunCustom(gunCustom);
 		
 		AppGunCustom appGunCustomTemp = appGunDao.selectAllColumn(appGunCustomQueryVo);
+		if(null==appGunCustomTemp) {
+			log.info("枪支未分配，请确认枪支已分配");
+			return 0;
+		}
+		
 		Gun gunTemp = gunDao.selectAllColumn(gunCustomQueryVo);
 		WarehouseRecords warehouseRecords = new WarehouseRecords();
 		warehouseRecords.setState(Integer.valueOf(StringConstant.OUT_WAREHOUSE_ING_STATE));

@@ -77,7 +77,7 @@ public class CancelRecipientsGunReqService implements TemplateService {
 		CancelRecipientsGunReqMessage cRecReqMsg=(CancelRecipientsGunReqMessage)msg;
 		
 		mRecDao.insertSelective(cRecReqMsg);
-		outWarehouseDao.updateSelectiveByGunId(cRecReqMsg);
+		/*outWarehouseDao.updateSelectiveByGunId(cRecReqMsg);*/
 		
 		String sessionToken = stringRedisTemplate.opsForValue().get(cRecReqMsg.getUniqueIdentification());
 		cRecReqMsg.setSessionToken(sessionToken);

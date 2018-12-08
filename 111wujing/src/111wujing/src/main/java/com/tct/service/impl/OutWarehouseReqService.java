@@ -78,7 +78,7 @@ public class OutWarehouseReqService implements TemplateService {
 		//判断是否挺有重复记录，否则
 		WarehouseRecordsCustom tempObj=outWarehouseDao.selectByGunIdAndState(oWReqMsg);
 		if(null!=tempObj) {
-			log.info("改枪正在使用中，还未入库，请先入库，在进行插入操作");
+			log.info("枪正在使用中，还未入库，请先入库，在进行插入操作");
 			return;
 		}
 				

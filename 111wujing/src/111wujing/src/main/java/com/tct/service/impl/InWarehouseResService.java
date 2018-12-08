@@ -21,8 +21,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import com.tct.codec.protocol.pojo.InWarehouseResMessage;
+import com.tct.db.dao.AppGunDao;
 import com.tct.db.dao.InWarehouseDao;
 import com.tct.db.dao.MessageRecordsDao;
+import com.tct.db.po.AppGunCustom;
 import com.tct.db.po.MessageRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
@@ -64,6 +66,10 @@ public class InWarehouseResService implements TemplateService {
 	@Autowired
 	MessageRecordsDao mcDao;
 	
+	@Autowired
+	AppGunDao agDao;
+	
+	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
 	 * <p>Description: </p>   
@@ -74,21 +80,22 @@ public class InWarehouseResService implements TemplateService {
 	@Override
 	public void handleCodeMsg(Object msg) throws Exception {
 		InWarehouseResMessage inWarehouseResMessage = (InWarehouseResMessage)msg;
+
+		MessageRecordsCustom mrc=mcDao.selectBySerlNum(inWarehouseResMessage.getSerialNumber());
+		if (null==mrc) {
+			log.info("该序列号不存在，请检查12号报文对应的11号报文序列号是否正确");
+			return;
+		}
+		String gunId = mrc.getGunId();
 		
 		if(inWarehouseResMessage.getMessageBody().getState().equals(StringConstant.SUCCESS_NEW_STATE)){
-			//更新数据
-			MessageRecordsCustom mrc=mcDao.selectBySerlNum(inWarehouseResMessage.getSerialNumber());
-			if (null==mrc) {
-				log.info("该序列号不存在，请检查12号报文对应的11号报文序列号是否正确");
-				return;
-			}
-			String gunId = mrc.getGunId();
-			inDao.updateSelectiveByGunIdAndIngState(gunId);
-		}else if(inWarehouseResMessage.getMessageBody().getState().equals(StringConstant.FAILURE_NEW_STATE)) {
-			return;
-/*			MessageRecordsCustom mrc=mcDao.selectBySerlNum(inWarehouseResMessage.getSerialNumber());
-			String gunId = mrc.getGunId();
-			inDao.updateSelectiveByGunIdAndRollbackState(gunId);*/
+			inDao.updateSelectiveByGunIdAndInState(gunId);
+			AppGunCustom appGunCustom = new AppGunCustom();
+			appGunCustom.setAllotState(0);
+			appGunCustom.setGunId(gunId);
+			agDao.updateSelectiveByGunIdAndInitState(appGunCustom);
+		}else if(inWarehouseResMessage.getMessageBody().getState().equals(StringConstant.FAILURE_NEW_STATE)) {	
+			inDao.updateSelectiveByGunIdAndRollbackState(gunId);
 		}
 
 	}

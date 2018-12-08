@@ -78,7 +78,7 @@ public class CancelRecipientsGunResService implements TemplateService {
 		MessageRecordsCustom mRecCustom=mRecDao.selectBySerlNum(cRecGunResMsg);
 		
 		if(cRecGunResMsg.getMessageBody().getState().equals(StringConstant.SUCCESS_NEW_STATE)) {
-			outWarehouseDao.updateSelectiveByGunIdAndOutState(mRecCustom);
+/*			outWarehouseDao.updateSelectiveByGunIdAndOutState(mRecCustom);
 		
 			AppCustomQueryVo appCustomQueryVo = new AppCustomQueryVo();
 			AppCustom appCustom = new AppCustom();
@@ -87,7 +87,7 @@ public class CancelRecipientsGunResService implements TemplateService {
 			AppCustom appCustom2=atcDao.selectAppAllColumn(appCustomQueryVo);
 			Integer appId=appCustom2.getId();
 			
-			outWarehouseDao.updateSelectiveByAppIdAndGunId(appId, mRecCustom.getGunId());
+			outWarehouseDao.updateSelectiveByAppIdAndGunId(appId, mRecCustom.getGunId());*/
 			
 		}else {
 			

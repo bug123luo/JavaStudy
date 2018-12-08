@@ -45,7 +45,8 @@ public class StringConstant {
 	public static final String OUT_WAREHOUSE_ING_STATE="1";//出库中
 	public static final String IN_WAREHOUSE_STATE="4";//入库
 	public static final String IN_WAREHOUSE_ING_STATE="3";//入库中
-	public static final String GUN_ALLOTING_STATE="2";//枪支分配中
+	public static final String GUN_PRE_ALLOTE_STATE="3";//枪支预分配
+	public static final String GUN_ALLOTING_STATE="2";//枪支预分配中
 	public static final String GUN_ALLOTED_STATE="1";//枪支已分配
 	public static final String GUN_UNALLOT_STATE="0";//枪支未分配
 }

@@ -92,9 +92,10 @@ public class BindingGunDaoImpl implements BindingGunDao{
 
 		AppGunCustom appGunCustom = new AppGunCustom();
 		if(state.equals(StringConstant.SUCCESS_OLD_STATE)) {
-			appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTED_STATE));	
+			appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_ALLOTING_STATE));	
 		}else {
-			appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_UNALLOT_STATE));
+			return;
+			//appGunCustom.setAllotState(Integer.valueOf(StringConstant.GUN_UNALLOT_STATE));
 		}
 		appGunCustom.setAppId(appCustomTemp.getId());
 		appGunDao.updateSelectiveByAppIdAndState(appGunCustom);
