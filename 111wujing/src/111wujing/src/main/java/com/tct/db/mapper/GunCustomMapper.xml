@@ -89,7 +89,8 @@
  	
  	<update id="updateByGunIdAndCount" parameterType="com.tct.db.po.GunCustom">
  		update gun set total_bullet_number = #{totalBulletNumber} where gun_id=#{gunId}
- 	</update> 	
+ 	</update> 
+ 		
  	
  	<select id="selectAllColumnByGunImei" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.Gun">
  		select <include refid="allColumns"/> from gun

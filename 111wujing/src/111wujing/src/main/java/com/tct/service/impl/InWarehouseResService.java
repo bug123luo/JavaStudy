@@ -22,9 +22,11 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import com.tct.codec.protocol.pojo.InWarehouseResMessage;
 import com.tct.db.dao.AppGunDao;
+import com.tct.db.dao.GunDao;
 import com.tct.db.dao.InWarehouseDao;
 import com.tct.db.dao.MessageRecordsDao;
 import com.tct.db.po.AppGunCustom;
+import com.tct.db.po.GunCustom;
 import com.tct.db.po.MessageRecordsCustom;
 import com.tct.jms.producer.OutQueueSender;
 import com.tct.util.StringConstant;
@@ -69,6 +71,9 @@ public class InWarehouseResService implements TemplateService {
 	@Autowired
 	AppGunDao agDao;
 	
+	@Autowired
+	GunDao gunDao;
+	
 	
 	/**   
 	 * <p>Title: handleCodeMsg</p>   
@@ -94,6 +99,11 @@ public class InWarehouseResService implements TemplateService {
 			appGunCustom.setAllotState(0);
 			appGunCustom.setGunId(gunId);
 			agDao.updateSelectiveByGunIdAndInitState(appGunCustom);
+			
+			GunCustom gunCustom = new GunCustom();
+			gunCustom.setGunId(gunId);
+			gunCustom.setRealTimeState(0);
+			gunDao.updateSelectiveByGunId(gunCustom);
 		}else if(inWarehouseResMessage.getMessageBody().getState().equals(StringConstant.FAILURE_NEW_STATE)) {	
 			inDao.updateSelectiveByGunIdAndRollbackState(gunId);
 		}
