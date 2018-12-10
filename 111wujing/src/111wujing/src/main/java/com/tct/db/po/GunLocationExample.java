@@ -625,66 +625,6 @@ public class GunLocationExample {
             return (Criteria) this;
         }
 
-        public Criteria andVersionIsNull() {
-            addCriterion("version is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionIsNotNull() {
-            addCriterion("version is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionEqualTo(Integer value) {
-            addCriterion("version =", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionNotEqualTo(Integer value) {
-            addCriterion("version <>", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionGreaterThan(Integer value) {
-            addCriterion("version >", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionGreaterThanOrEqualTo(Integer value) {
-            addCriterion("version >=", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionLessThan(Integer value) {
-            addCriterion("version <", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionLessThanOrEqualTo(Integer value) {
-            addCriterion("version <=", value, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionIn(List<Integer> values) {
-            addCriterion("version in", values, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionNotIn(List<Integer> values) {
-            addCriterion("version not in", values, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionBetween(Integer value1, Integer value2) {
-            addCriterion("version between", value1, value2, "version");
-            return (Criteria) this;
-        }
-
-        public Criteria andVersionNotBetween(Integer value1, Integer value2) {
-            addCriterion("version not between", value1, value2, "version");
-            return (Criteria) this;
-        }
-
         public Criteria andAreaCodeIsNull() {
             addCriterion("area_code is null");
             return (Criteria) this;
@@ -1022,6 +962,196 @@ public class GunLocationExample {
 
         public Criteria andGunDeviceStateNotBetween(Integer value1, Integer value2) {
             addCriterion("gun_device_state not between", value1, value2, "gunDeviceState");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiIsNull() {
+            addCriterion("imei is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiIsNotNull() {
+            addCriterion("imei is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiEqualTo(String value) {
+            addCriterion("imei =", value, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiNotEqualTo(String value) {
+            addCriterion("imei <>", value, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiGreaterThan(String value) {
+            addCriterion("imei >", value, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiGreaterThanOrEqualTo(String value) {
+            addCriterion("imei >=", value, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiLessThan(String value) {
+            addCriterion("imei <", value, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiLessThanOrEqualTo(String value) {
+            addCriterion("imei <=", value, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiLike(String value) {
+            addCriterion("imei like", value, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiNotLike(String value) {
+            addCriterion("imei not like", value, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiIn(List<String> values) {
+            addCriterion("imei in", values, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiNotIn(List<String> values) {
+            addCriterion("imei not in", values, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiBetween(String value1, String value2) {
+            addCriterion("imei between", value1, value2, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiNotBetween(String value1, String value2) {
+            addCriterion("imei not between", value1, value2, "imei");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeIsNull() {
+            addCriterion("imei_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeIsNotNull() {
+            addCriterion("imei_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeEqualTo(Integer value) {
+            addCriterion("imei_type =", value, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeNotEqualTo(Integer value) {
+            addCriterion("imei_type <>", value, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeGreaterThan(Integer value) {
+            addCriterion("imei_type >", value, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("imei_type >=", value, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeLessThan(Integer value) {
+            addCriterion("imei_type <", value, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("imei_type <=", value, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeIn(List<Integer> values) {
+            addCriterion("imei_type in", values, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeNotIn(List<Integer> values) {
+            addCriterion("imei_type not in", values, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeBetween(Integer value1, Integer value2) {
+            addCriterion("imei_type between", value1, value2, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andImeiTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("imei_type not between", value1, value2, "imeiType");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionIsNull() {
+            addCriterion("version is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionIsNotNull() {
+            addCriterion("version is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionEqualTo(Integer value) {
+            addCriterion("version =", value, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionNotEqualTo(Integer value) {
+            addCriterion("version <>", value, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionGreaterThan(Integer value) {
+            addCriterion("version >", value, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionGreaterThanOrEqualTo(Integer value) {
+            addCriterion("version >=", value, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionLessThan(Integer value) {
+            addCriterion("version <", value, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionLessThanOrEqualTo(Integer value) {
+            addCriterion("version <=", value, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionIn(List<Integer> values) {
+            addCriterion("version in", values, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionNotIn(List<Integer> values) {
+            addCriterion("version not in", values, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionBetween(Integer value1, Integer value2) {
+            addCriterion("version between", value1, value2, "version");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionNotBetween(Integer value1, Integer value2) {
+            addCriterion("version not between", value1, value2, "version");
             return (Criteria) this;
         }
     }

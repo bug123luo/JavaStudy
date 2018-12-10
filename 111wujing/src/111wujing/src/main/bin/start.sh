@@ -18,5 +18,5 @@ done
  
 LOG_DIR=${GUN_HOME}/logs
  
-CLASS=com.tct.server.GunLocationMQServer
-nohup ${JAVA_HOME}/bin/java -classpath "$CLASSPATH" $CLASS > ${LOG_DIR}/gunlocation.log 2>&1 < /dev/null &
+CLASS=com.tct.server.WuJingGunLocationMQServer
+nohup ${JAVA_HOME}/bin/java -classpath "$CLASSPATH" $CLASS > ${LOG_DIR}/wujinggunlocation.log 2>&1 < /dev/null &

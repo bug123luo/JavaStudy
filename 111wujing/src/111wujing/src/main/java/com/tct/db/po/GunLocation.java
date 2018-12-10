@@ -19,8 +19,6 @@ public class GunLocation {
 
     private Date updateTime;
 
-    private Integer version;
-
     private String areaCode;
 
     private String speed;
@@ -30,6 +28,12 @@ public class GunLocation {
     private String gunDeviceBatteryPower;
 
     private Integer gunDeviceState;
+
+    private String imei;
+
+    private Integer imeiType;
+
+    private Integer version;
 
     public Long getId() {
         return id;
@@ -95,14 +99,6 @@ public class GunLocation {
         this.updateTime = updateTime;
     }
 
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
     public String getAreaCode() {
         return areaCode;
     }
@@ -141,5 +137,29 @@ public class GunLocation {
 
     public void setGunDeviceState(Integer gunDeviceState) {
         this.gunDeviceState = gunDeviceState;
+    }
+
+    public String getImei() {
+        return imei;
+    }
+
+    public void setImei(String imei) {
+        this.imei = imei == null ? null : imei.trim();
+    }
+
+    public Integer getImeiType() {
+        return imeiType;
+    }
+
+    public void setImeiType(Integer imeiType) {
+        this.imeiType = imeiType;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

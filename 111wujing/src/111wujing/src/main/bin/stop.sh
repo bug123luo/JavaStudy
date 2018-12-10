@@ -1,6 +1,6 @@
 #!/bin/sh
  
-NAME='com.tct.server.GunLocationMQServer'
+NAME='com.tct.server.WuJingGunLocationMQServer'
 echo $NAME
 ID=`ps -ef | grep "$NAME" | grep -v "grep" | awk '{print $2}'`
 echo $ID

@@ -23,7 +23,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @Copyright: 2018 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
-public class GunLocationMQServer {
+public class WuJingGunLocationMQServer {
 
 	/**   
 	 * @Title: main   
