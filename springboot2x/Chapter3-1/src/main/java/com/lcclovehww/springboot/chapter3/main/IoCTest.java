@@ -9,15 +9,17 @@
  * @Copyright: 2018 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技内部传阅，禁止外泄以及用于其他的商业目
  */
-package com.lcclovehww.springboot.chapter2.main;
+package com.lcclovehww.springboot.chapter3.main;
 
-import static org.assertj.core.api.Assertions.useRepresentation;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.lcclovehww.springboot.chapter2.config.AppConfig;
-import com.lcclovehww.springboot.chapter2.pojo.User;
+import com.lcclovehww.springboot.chapter3.config.AppConfig;
+import com.lcclovehww.springboot.chapter3.other.pojo.Squirrel;
+import com.lcclovehww.springboot.chapter3.pojo.BussinessPerson;
+import com.lcclovehww.springboot.chapter3.pojo.ScopeBean;
+import com.lcclovehww.springboot.chapter3.pojo.User;
+import com.lcclovehww.springboot.chapter3.pojo.definition.Person;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,8 +47,16 @@ public class IoCTest {
 	 */
 	public static void main(String[] args) {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-		User user= ctx.getBean(User.class);
-		log.info(user.getId().toString());
+//		User user= ctx.getBean(User.class);
+//		log.info(user.getId().toString());
+/*		Person person = ctx.getBean(BussinessPerson.class);
+		person.service();*/
+		
+//		ScopeBean scopeBean1 = ctx.getBean(ScopeBean.class);
+//		ScopeBean scopeBean2 = ctx.getBean(ScopeBean.class);
+//		System.out.println(scopeBean1 == scopeBean2);
+		
+		ctx.getBean(Squirrel.class).use();
 	}
 
 }

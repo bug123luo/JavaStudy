@@ -15,6 +15,10 @@ public class GunLocation {
 
     private String longitude;
 
+    private String imei;
+
+    private Integer imeiType;
+
     private Date createTime;
 
     private Date updateTime;
@@ -28,10 +32,6 @@ public class GunLocation {
     private String gunDeviceBatteryPower;
 
     private Integer gunDeviceState;
-
-    private String imei;
-
-    private Integer imeiType;
 
     private Integer version;
 
@@ -81,6 +81,22 @@ public class GunLocation {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude == null ? null : longitude.trim();
+    }
+
+    public String getImei() {
+        return imei;
+    }
+
+    public void setImei(String imei) {
+        this.imei = imei == null ? null : imei.trim();
+    }
+
+    public Integer getImeiType() {
+        return imeiType;
+    }
+
+    public void setImeiType(Integer imeiType) {
+        this.imeiType = imeiType;
     }
 
     public Date getCreateTime() {
@@ -137,22 +153,6 @@ public class GunLocation {
 
     public void setGunDeviceState(Integer gunDeviceState) {
         this.gunDeviceState = gunDeviceState;
-    }
-
-    public String getImei() {
-        return imei;
-    }
-
-    public void setImei(String imei) {
-        this.imei = imei == null ? null : imei.trim();
-    }
-
-    public Integer getImeiType() {
-        return imeiType;
-    }
-
-    public void setImeiType(Integer imeiType) {
-        this.imeiType = imeiType;
     }
 
     public Integer getVersion() {

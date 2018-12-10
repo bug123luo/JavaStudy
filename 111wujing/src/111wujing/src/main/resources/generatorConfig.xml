@@ -53,20 +53,11 @@
 		<table tableName="app"></table>
 		<table tableName="app_gun"></table>
 		<table tableName="app_dynamic_data"></table>
-		<table tableName="app_gun_user"></table>
-		<table tableName="department"></table>
-		<table tableName="exception"></table>
 		<table tableName="gun"></table>
 		<table tableName="gun_bullet_count"></table>
 		<table tableName="gun_location"></table>
-		<table tableName="gun_user"></table>
-		<table tableName="mission"></table>
 		<table tableName="sos_message"></table>
-		<table tableName="third_server_user"></table>
-		<table tableName="warehouse"></table>
 		<table tableName="warehouse_records"></table>
-		<table tableName="web_user"></table>
-		<table tableName="web_user_login"></table>
 		<table tableName="message_records"></table>
 	</context>
 </generatorConfiguration>

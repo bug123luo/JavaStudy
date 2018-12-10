@@ -108,6 +108,7 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 			gunLocationCustom.setGunId(guninfo.getGunId());
 			gunLocationCustom.setGunMac(gun2.getGunMac());
 			gunLocationCustom.setGunDeviceBatteryPower(guninfo.getGunDeviceBatteryPower());
+			gunLocationCustom.setImei(appCustom.getAppImei());
 			glcDao.insertSelective(gunLocationCustom);
 		
 			gunCustom.setGunId(guninfo.getGunId());
@@ -195,6 +196,8 @@ public class HeartbeatDaoImpl implements HeartbeatDao{
 		String la=String.format("%.6f", temp[0]);
 		gunLocationCustom.setLongitude(lo);
 		gunLocationCustom.setLatitude(la);
+		gunLocationCustom.setImei(gunCustom.getGunImei());
+		gunLocationCustom.setImeiType(1);
 		
 /*		gunLocationCustom.setLongitude(dhrm.getMessageBody().getLo());
 		gunLocationCustom.setLatitude(dhrm.getMessageBody().getLa());*/

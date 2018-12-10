@@ -1,4 +1,4 @@
-package com.lcclovehww.springboot.chapter2.main;
+package com.lcclovehww.springboot.chapter3.main;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
