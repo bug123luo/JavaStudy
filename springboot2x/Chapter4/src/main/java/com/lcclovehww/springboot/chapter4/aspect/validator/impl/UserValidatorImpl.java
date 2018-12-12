@@ -11,6 +11,9 @@
  */
 package com.lcclovehww.springboot.chapter4.aspect.validator.impl;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.lcclovehww.springboot.chapter4.aspect.validator.UserValidator;
 import com.lcclovehww.springboot.chapter4.jdbc.pojo.User;
 

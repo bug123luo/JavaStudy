@@ -11,6 +11,7 @@
  */
 package com.lcclovehww.springboot.chapter4.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -23,6 +24,7 @@ import org.aspectj.lang.annotation.Pointcut;
 
 import com.lcclovehww.springboot.chapter4.aspect.validator.UserValidator;
 import com.lcclovehww.springboot.chapter4.aspect.validator.impl.UserValidatorImpl;
+import com.lcclovehww.springboot.chapter4.jdbc.pojo.User;
 
 /**   
  * @ClassName:  MyAspect   
@@ -37,7 +39,7 @@ import com.lcclovehww.springboot.chapter4.aspect.validator.impl.UserValidatorImp
 @Aspect
 public class MyAspect {
 	
-	@DeclareParents(value="com.lcclovehww.springboot.chapter4.aspect.service.impl.UserServiceImpl+",
+	@DeclareParents(value="com.lcclovehww.springboot.chapter4.aspect.service.impl.UserServiceImpl",
 			defaultImpl=UserValidatorImpl.class)
 	public UserValidator userValidator;
 	
@@ -46,11 +48,17 @@ public class MyAspect {
 		
 	}
 
+	@Before("pointcut() && args(user)")
+	public void beforeParam(JoinPoint point, User user) {
+		Object[] args = point.getArgs();
+		System.out.println("before ........");
+	}
+	
 //	@Before("execution(* com.lcclovehww.springboot.chapter4.aspect.service.impl.UserServiceImpl.printUser(..))")
-	@Before("pointcut()")
+/*	@Before("pointcut()")
 	public void before() {
 		System.out.println("before ......");
-	}
+	}*/
 	
 //	@After("execution(* com.lcclovehww.springboot.chapter4.aspect.service.impl.UserServiceImpl.printUser(..))")
 	@After("pointcut()")

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tct.db.mapper.GunCustomMapper">
+ 	<sql id="allColumns">
+ 		id,
+ 		uid,
+ 		gun_id as gunId,
+ 		gun_model as gunModel,
+ 		gun_type as gunType,
+ 		gun_mac as gunMac,
+ 		is_del as isDel,
+ 		create_time as createTime,
+ 		update_time as updateTime,
+ 		warehouse_id as warehouseId,
+ 		warehouse_name as warehouseName,
+ 		version,
+ 		total_bullet_number as totalBulletNumber,
+ 		real_time_state as realTimeState,
+ 		gun_imei
+ 	</sql>
+ 	
+ 	<select id="selectAllColumn" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.Gun">
+ 		select <include refid="allColumns"/> from gun
+ 		<where>
+ 			<if test="gunCustom.gunMac!=null">
+ 				gun_mac = #{gunCustom.gunMac}
+ 			</if>
+ 		</where>
+ 	</select>
+ 	
+ 	<select id="selectAllColumnByGunId" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.Gun">
+ 		select <include refid="allColumns"/> from gun
+ 		<where>
+ 			<if test="gunCustom.gunId!=null">
+ 				gun_id = #{gunCustom.gunId}
+ 			</if>
+ 		</where>
+ 	</select>
+ 	
+ 	<update id="updateSelectiveByGunId" parameterType="com.tct.db.po.GunCustom">
+ 	update gun
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="gunModel != null">
+        gun_model = #{gunModel,jdbcType=CHAR},
+      </if>
+      <if test="gunType != null">
+        gun_type = #{gunType,jdbcType=CHAR},
+      </if>
+      <if test="gunMac != null">
+        gun_mac = #{gunMac,jdbcType=CHAR},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseName != null">
+        warehouse_name = #{warehouseName,jdbcType=CHAR},
+      </if>
+      <if test="totalBulletNumber != null">
+        total_bullet_number = #{totalBulletNumber,jdbcType=INTEGER},
+      </if>
+      <if test="realTimeState != null">
+        real_time_state = #{realTimeState,jdbcType=INTEGER},
+      </if>
+      <if test="gunImei != null">
+        gun_imei = #{gunImei,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where gun_id = #{gunId,jdbcType=CHAR}
+ 	</update>
+ 	
+ 	<update id="updateByGunId" parameterType="com.tct.db.po.GunCustom">
+ 		update gun set total_bullet_number = (total_bullet_number + #{bulletNumber}) where gun_id=#{gunId}
+ 	</update>
+ 	
+ 	<update id="updateByGunIdAndCount" parameterType="com.tct.db.po.GunCustom">
+ 		update gun set total_bullet_number = #{totalBulletNumber} where gun_id=#{gunId}
+ 	</update> 
+ 		
+ 	
+ 	<select id="selectAllColumnByGunImei" parameterType="com.tct.db.po.GunCustomQueryVo" resultType="com.tct.db.po.Gun">
+ 		select <include refid="allColumns"/> from gun
+ 		<where>
+ 			<if test="gunCustom.gunImei!=null">
+ 				gun_imei = #{gunCustom.gunImei}
+ 			</if>
+ 		</where>
+ 	</select>
+</mapper>

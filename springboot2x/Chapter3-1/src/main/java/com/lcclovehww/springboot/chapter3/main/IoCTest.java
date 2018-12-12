@@ -47,8 +47,9 @@ public class IoCTest {
 	 */
 	public static void main(String[] args) {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-//		User user= ctx.getBean(User.class);
-//		log.info(user.getId().toString());
+/*		User user= ctx.getBean(User.class);
+		log.info("luochengcong"+user.getId().toString());*/
+		
 /*		Person person = ctx.getBean(BussinessPerson.class);
 		person.service();*/
 		
@@ -56,7 +57,7 @@ public class IoCTest {
 //		ScopeBean scopeBean2 = ctx.getBean(ScopeBean.class);
 //		System.out.println(scopeBean1 == scopeBean2);
 		
-		ctx.getBean(Squirrel.class).use();
+//		ctx.getBean(Squirrel.class).use();
 	}
 
 }

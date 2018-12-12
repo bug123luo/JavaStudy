@@ -11,10 +11,6 @@
  */
 package com.lcclovehww.springboot.chapter3.pojo;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
-import javax.print.DocFlavor.STRING;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -41,22 +37,22 @@ public class DataBaseTestProperties {
 	private String password=null;
 	
 	public void setDriverName(String driverName) {
-		System.out.println(driverName);
+		//System.out.println(driverName);
 		this.driverName = driverName;
 	}
 	
 	public void setUrl(String url) {
-		System.out.println(url);
+		//System.out.println(url);
 		this.url=url;
 	}
 	
 	public void setUsername(String username) {
-		System.out.println(username);
+		//System.out.println(username);
 		this.username = username;
 	}
 	
 	public void setPassword(String password) {
-		System.out.println(password);
+		//System.out.println(password);
 		this.password = password;
 	}
 }

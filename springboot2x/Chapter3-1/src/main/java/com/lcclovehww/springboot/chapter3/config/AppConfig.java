@@ -21,10 +21,13 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.stereotype.Service;
 
 import com.lcclovehww.springboot.chapter3.condition.DatabaseConditional;
+import com.lcclovehww.springboot.chapter3.pojo.User;
 
 /**   
  * @ClassName:  AppConfig   
@@ -37,11 +40,16 @@ import com.lcclovehww.springboot.chapter3.condition.DatabaseConditional;
  */
 
 @Configuration
-//@ComponentScan("com.lcclovehww.springboot.chapter2.*")
-//@ComponentScan(basePackages={"com.lcclovehww.springboot.chapter2.pojo"})
+//@ComponentScan("com.lcclovehww.springboot.chapter3.*")
+@ComponentScan(basePackages={"com.lcclovehww.springboot.chapter3.pojo"})
+//@ComponentScan(basePackages="com.lcclovehww.springboot.chapter3.*", excludeFilters = {@Filter(classes = {Service.class})}, lazyInit=true)
+//如果加载类，如果类不在当前的AppConfig同一个路径下，那么需要import进来
 //@ComponentScan(basePackageClasses= {User.class})
-@ImportResource(value= {"classpath:spring-other.xml"})
-@ComponentScan(basePackages="com.lcclovehww.springboot.chapter3.*", excludeFilters = {@Filter(classes = {Service.class})}, lazyInit=true)
+//自定义配置属性必须自己制定配置文件，不然无法获取到值
+//@PropertySource(value= {"classpath:jdbc.properties"},ignoreResourceNotFound=false)
+@PropertySource(value= {"classpath:application.properties"})
+//从XML文件中引入bean
+//@ImportResource(value= {"classpath:spring-other.xml"})
 public class AppConfig {
 
 /*	@Bean(name="user")
@@ -53,8 +61,9 @@ public class AppConfig {
 		return user;
 	}*/
 	
-	@Bean(name ="dataSource")
-	public DataSource getDataSource() {
+	@Bean(name ="dataSource", destroyMethod="close")
+	@Profile("dev")
+	public DataSource getDevDataSource() {
 		Properties prop = new Properties();
 		prop.setProperty("driver", "com.mysql.jdbc.Driver");
 		prop.setProperty("url", "jdbc:mysql://localhost:3306/chapter3");
@@ -70,7 +79,25 @@ public class AppConfig {
 		return dataSource;
 	}
 	
-	@Bean(name="dataSource")
+	@Bean(name ="dataSource", destroyMethod="close")
+	@Profile("test")
+	public DataSource getTestDataSource() {
+		Properties prop = new Properties();
+		prop.setProperty("driver", "com.mysql.jdbc.Driver");
+		prop.setProperty("url", "jdbc:mysql://localhost:3306/chapter3");
+		prop.setProperty("username", "root");
+		prop.setProperty("password", "123456");
+		
+		DataSource dataSource = null;
+		try {
+			dataSource = BasicDataSourceFactory.createDataSource(prop);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return dataSource;
+	}
+	
+	@Bean(name="dataSource", destroyMethod="close")
 	@Conditional(DatabaseConditional.class)
 	public DataSource getDataSource(@Value("${database.driverName}") String driver,
 			@Value("${database.url}") String url,

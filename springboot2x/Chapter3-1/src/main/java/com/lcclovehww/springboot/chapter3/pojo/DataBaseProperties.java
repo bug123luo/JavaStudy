@@ -12,8 +12,14 @@
 package com.lcclovehww.springboot.chapter3.pojo;
 
 
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 /**   
  * @ClassName:  DataBaseProperties   
@@ -26,37 +32,46 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@Slf4j
 public class DataBaseProperties {
 
-	@Value("${database.drivrName}")
+	@Value("${database.driverName}")
+	@Getter
 	private String driverName= null;
 	
+	@Getter
 	@Value("${database.url}")
 	private String url=null;
 	
+	@Getter
 	private String username = null;
 	
+	@Getter
 	private String password = null;
 	
 	public void setDriverName(String driverName) {
-		System.out.println(driverName);
+		//System.out.println(driverName);
 		this.driverName = driverName;
 	}
 	
 	public void setUrl(String url) {
-		System.out.println(url);
+		//System.out.println(url);
+		log.debug(url);
+		log.info(url);
 		this.url =url;
 	}
 	
 	@Value("${database.username}")
 	public void setUsername(String username) {
-		System.out.println(username);
+		log.info(username);
+		//System.out.println(username);
 		this.username = username;
 	}
 	
 	@Value("${database.password}")
 	public void setPassword(String password) {
-		System.out.println(password);
+		log.info(password);
+		//System.out.println(password);
 		this.password = password;
 	}
 }

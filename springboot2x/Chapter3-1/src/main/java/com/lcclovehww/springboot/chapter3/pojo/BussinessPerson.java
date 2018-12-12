@@ -11,8 +11,6 @@
  */
 package com.lcclovehww.springboot.chapter3.pojo;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
