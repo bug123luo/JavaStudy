@@ -15,6 +15,8 @@ import org.apache.ibatis.type.Alias;
 
 import com.lcclovehww.springboot.chapter5.enumeration.SexEnum;
 
+import lombok.Data;
+
 /**   
  * @ClassName:  MybatisUser   
  * @Description:TODO(这里用一句话描述这个类的作用)   
@@ -25,6 +27,7 @@ import com.lcclovehww.springboot.chapter5.enumeration.SexEnum;
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
 
+@Data
 @Alias(value="mybatisUser")
 public class MybatisUser {
 
