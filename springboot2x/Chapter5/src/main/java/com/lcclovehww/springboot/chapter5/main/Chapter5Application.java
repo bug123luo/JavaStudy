@@ -1,6 +1,7 @@
 package com.lcclovehww.springboot.chapter5.main;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,19 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
-
 import com.lcclovehww.springboot.chapter5.dao.MyBatisUserDao;
 
 @SpringBootApplication(scanBasePackages= {"com.lcclovehww.springboot.chapter5"})
 //以下是使用JPA的添加注解，当使用mybatis的时候需要把这个注释掉
 @EnableJpaRepositories(basePackages="com.lcclovehww.springboot.chapter5.dao")
 @EntityScan(basePackages="com.lcclovehww.springboot.chapter5.pojo")
+@MapperScan(
+		//指定扫描包
+		basePackages="com.lcclovehww.springboot.chapter5.*",
+		sqlSessionFactoryRef="sqlSessionFactory",
+		sqlSessionTemplateRef="sqlSessionTemplate",
+		annotationClass=Repository.class
+		)
 public class Chapter5Application {
 
 	@Autowired
