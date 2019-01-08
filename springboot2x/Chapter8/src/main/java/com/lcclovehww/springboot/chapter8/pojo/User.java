@@ -10,14 +10,12 @@
  * 注意：本内容仅限于泰源云景科技内部传阅，禁止外泄以及用于其他的商业目
  */
 package com.lcclovehww.springboot.chapter8.pojo;
-
 import java.io.Serializable;
 import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
+import com.lcclovehww.springboot.chapter8.pojo.Role;
 import lombok.Data;
 
 /**   

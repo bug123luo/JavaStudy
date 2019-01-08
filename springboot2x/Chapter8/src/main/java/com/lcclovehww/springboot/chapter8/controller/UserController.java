@@ -12,12 +12,18 @@
 package com.lcclovehww.springboot.chapter8.controller;
 
 import java.util.List;
+
+import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.lcclovehww.springboot.chapter8.pojo.Role;
 import com.lcclovehww.springboot.chapter8.pojo.User;
+import com.lcclovehww.springboot.chapter8.repository.UserRepository;
 import com.lcclovehww.springboot.chapter8.service.UserService;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
@@ -38,6 +44,38 @@ public class UserController {
 
 	@Autowired
 	private UserService userService = null;
+	
+	@Autowired
+	private UserRepository userRepository = null;
+	
+	@RequestMapping("/byIdOrName")
+	@ResponseBody
+	public User findByIdOrUserName(@RequestParam(required=false) Long id, @RequestParam(required=false)String userName) {
+		return userRepository.findUserByIdOrUserName(id, userName);
+	}
+	
+	@RequestMapping("/byName")
+	@ResponseBody
+	public List<User> findByUserName(String userName){
+		return userRepository.findByUserNameLike(userName);
+	}
+	
+	/**   
+	 * @Title: test   
+	 * @Description: TODO(这里用一句话描述这个方法的作用)   
+	 * @param: @return      
+	 * @return: User      
+	 * @throws   
+	 */
+	@RequestMapping("/HelloWorld")
+	@ResponseBody
+	public Role helloWorld() {
+		Role role = new Role();
+		role.setId(1l);
+		role.setNote("sdsdfs");
+		role.setRoleName("33333333");
+		return role;
+	}
 	
 	@RequestMapping("/page")
 	public String page() {
@@ -60,7 +98,7 @@ public class UserController {
 	
 	@RequestMapping("/find")
 	@ResponseBody
-	public List<User> addUser(String userName, String note, Integer skip, Integer limit){
+	public List<User> findUser(String userName, String note, Integer skip, Integer limit){
 		List<User> userList = userService.findUser(userName, note, skip, limit);
 		return userList;
 	}

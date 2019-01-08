@@ -11,12 +11,15 @@
  */
 package com.lcclovehww.springboot.chapter8.service.impl;
 
+import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.lcclovehww.springboot.chapter8.pojo.User;
@@ -60,8 +63,10 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public DeleteResult deleteUser(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteriaId= Criteria.where("id").is(id);
+		Query queryId = Query.query(criteriaId);
+		DeleteResult result = mongoTmpl.remove(queryId, User.class);
+		return result;
 	}
 
 	/**   
@@ -93,8 +98,16 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public UpdateResult updateUser(Long id, String userName, String note) {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteriaId = Criteria.where("id").is(id);
+		Query query = Query.query(criteriaId);
+		Update update = Update.update("userName", userName);
+		update.set("note", note);
+		
+		UpdateResult result = mongoTmpl.updateFirst(query, update, User.class);
+		
+		
+		//UpdateResult result = mongoTmpl.updateMulti(query, update, User.class);
+		return result;
 	}
 
 	/**   
