@@ -14,7 +14,7 @@ package com.lcclovehww.springboot.chapter13.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
-
+import org.springframework.stereotype.Service;
 import com.lcclovehww.springboot.chapter13.service.ActiveMqService;
 
 /**   
@@ -26,11 +26,13 @@ import com.lcclovehww.springboot.chapter13.service.ActiveMqService;
  * @Copyright: 2019 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
+
+@Service
 public class ActiveMqServiceImpl implements ActiveMqService{
 
 	@Autowired
 	private JmsTemplate jmsTemplate = null;
-	
+
 	@Override
 	public void sendMsg(String message) {
 		System.out.println("发送消息【"+message+"】");

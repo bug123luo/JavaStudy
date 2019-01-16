@@ -14,7 +14,7 @@ package com.lcclovehww.springboot.chapter13.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
-
+import org.springframework.stereotype.Service;
 import com.lcclovehww.springboot.chapter13.pojo.User;
 import com.lcclovehww.springboot.chapter13.service.ActiveMqUserService;
 
@@ -27,6 +27,8 @@ import com.lcclovehww.springboot.chapter13.service.ActiveMqUserService;
  * @Copyright: 2019 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
+
+@Service
 public class ActiveMqUserServiceImpl implements ActiveMqUserService {
 
 	@Autowired

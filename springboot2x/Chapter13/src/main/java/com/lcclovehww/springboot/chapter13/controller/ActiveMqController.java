@@ -11,23 +11,16 @@
  */
 package com.lcclovehww.springboot.chapter13.controller;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
-
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.naming.spi.DirStateFactory.Result;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.lcclovehww.springboot.chapter13.pojo.User;
 import com.lcclovehww.springboot.chapter13.service.ActiveMqService;
 import com.lcclovehww.springboot.chapter13.service.ActiveMqUserService;
-
-import net.bytebuddy.agent.builder.AgentBuilder.RedefinitionStrategy.ResubmissionScheduler;
 
 /**   
  * @ClassName:  ActiveMqController   
@@ -38,6 +31,10 @@ import net.bytebuddy.agent.builder.AgentBuilder.RedefinitionStrategy.Resubmissio
  * @Copyright: 2019 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
+
+
+@Controller
+@RequestMapping("/activemq")
 public class ActiveMqController {
 	
 	@Autowired
