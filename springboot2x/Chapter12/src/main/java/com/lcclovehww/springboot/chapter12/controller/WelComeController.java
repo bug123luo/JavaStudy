@@ -9,7 +9,7 @@
  * @Copyright: 2019 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技内部传阅，禁止外泄以及用于其他的商业目
  */
-package com.lcclovehww.springboot.chapter12.main;
+package com.lcclovehww.springboot.chapter12.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
