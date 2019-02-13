@@ -3,21 +3,23 @@ package com.lcclovehww.springboot.chapter12.main;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 //import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 
 @SpringBootApplication(scanBasePackages="com.lcclovehww.springboot.chapter12")
 /*@MapperScan(basePackages="com.lcclovehww.springboot.chapter12", annotationClass = Mapper.class)
 @EnableCaching*/
 public class Chapter12Application extends WebSecurityConfigurerAdapter{
 	
-/*	@Value("${system.user.password.secret}")
-	private String secret = null;*/
+	@Value("${system.user.password.secret}")
+	private String secret = null;
 	
 /*	@Autowired
 	UserDetailsService userDetailsService= null;*/
@@ -76,7 +78,7 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 	}*/
 	
 	//使用数据库定义的用户认证服务
-	@Override
+/*	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
@@ -86,18 +88,19 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 			.usersByUsernameQuery(pwdQuery)
 			.authoritiesByUsernameQuery(roleQuery);
 		
-	}
+	}*/
 	
-/*	@Override
+	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		PasswordEncoder passwordEncoder = new Pbkdf2PasswordEncoder(this.secret);
 		
+		System.out.println("password="+passwordEncoder.encode("123456"));
 		auth.jdbcAuthentication()
 		.passwordEncoder(passwordEncoder)
 		.dataSource(dataSource)
 		.usersByUsernameQuery(pwdQuery)
 		.authoritiesByUsernameQuery(roleQuery);
-	}*/
+	}
 	
 /*	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
