@@ -3,6 +3,7 @@ package com.lcclovehww.springboot.chapter12.main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,7 +33,7 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		SpringApplication.run(Chapter12Application.class, args);
 	}
 
-	@Override
+/*	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		//密码编码器
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -56,10 +57,10 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 			.withUser("myuser")
 			.password(password2)
 			.roles("USER");
-	}
+	}*/
 	
 	//和上一个函数实现的方法是相同的
-/*	@Override
+	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> userConfig = auth.inMemoryAuthentication().passwordEncoder(passwordEncoder);
@@ -69,7 +70,7 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		userConfig.withUser("myuser")
 				  .password(passwordEncoder.encode("123456"))
 				  .authorities("ROLE_USER");
-	}*/
+	}
 	
 	//使用数据库定义的用户认证服务
 /*	@Override
