@@ -1,8 +1,9 @@
 package com.lcclovehww.springboot.chapter12.main;
 
-import javax.sql.DataSource;
+//import javax.sql.DataSource;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.log4j.Logger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,16 +11,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 //import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
+import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication(scanBasePackages="com.lcclovehww.springboot.chapter12")
 @MapperScan(basePackages="com.lcclovehww.springboot.chapter12", annotationClass = Mapper.class)
 @EnableCaching
+@Slf4j
 public class Chapter12Application extends WebSecurityConfigurerAdapter{
 	
 	@Value("${system.user.password.secret}")
@@ -113,6 +117,21 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
 		
+	}
+	
+	//authorizeRequests 方法限定只对签名成功的用户请求
+	//anyRequest 方法限定所有请求
+	//authenticated 方法对所有签名成功的用户允许方法
+	@Override
+	protected void configure(HttpSecurity httpSecurity) throws Exception{
+		log.debug("Using default configure(HttpSecurity)."
+				+"If subclassed this will potentially "
+				+"override subclass configure(HttpSecurity).");
+		httpSecurity.authorizeRequests().anyRequest().authenticated()
+		//formLogin 代表使用Spring Security默认的登录界面
+		.and().formLogin()
+		//httpBasic 方法说明启用HTTP基础认证
+		.and().httpBasic();
 	}
 	
 /*	@Override
