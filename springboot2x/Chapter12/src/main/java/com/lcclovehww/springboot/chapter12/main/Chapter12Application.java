@@ -195,7 +195,7 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		.and().httpBasic();
 	}*/
 	
-	//强制使用HTTPS请求 
+/*	//强制使用HTTPS请求 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http
@@ -206,6 +206,18 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		//限定允许的访问角色
 		.and().authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
 		.antMatchers("/user/**").hasAnyAuthority("USER","ADMIN");
+	}*/
+	
+	//自定义登录登出页面
+	@Override
+	protected void configure(HttpSecurity http) throws Exception{
+		http
+		.authorizeRequests().antMatchers("/admin/**").access("hasRole('ADMIN')")
+		//.and().rememberMe().tokenValiditySeconds(86400).key("remember-me-key")
+		.and().httpBasic()
+		.and().authorizeRequests().antMatchers("/**").permitAll()
+		.and().formLogin().loginPage("/login/page").defaultSuccessUrl("/admin/welcome1")
+		.and().logout().logoutUrl("/logout/page").logoutSuccessUrl("/logout_welcome");
 	}
 }
 

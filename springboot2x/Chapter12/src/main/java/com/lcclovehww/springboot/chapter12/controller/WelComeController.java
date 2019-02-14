@@ -11,8 +11,18 @@
  */
 package com.lcclovehww.springboot.chapter12.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.lcclovehww.springboot.chapter12.pojo.DatabaseUser;
+import com.lcclovehww.springboot.chapter12.service.UserRoleService;
 
 /**   
  * @ClassName:  UserController   
@@ -26,16 +36,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class WelComeController {
-
-	@RequestMapping("/")
-	public String welcome() {
 	
+	@Autowired
+	private UserRoleService userRoleService = null;
+	
+	@GetMapping("/welcome")
+	public String welcome() {
 		return "welcome";
 	}
 	
-	@RequestMapping("/csrf/form")
-	public String csrfForm() {
+	@GetMapping("/logout_welcome")
+	public String logtoutwelcome() {
+		return "logout_welcome";
+	}
+	
+	@GetMapping("/user/details")
+	@ResponseBody
+	public DatabaseUser getUser(String userName) {
+		return userRoleService.getUserByName(userName);
+	}
+	
+	@GetMapping("/user/welcome")
+	public String userWelcome() {
+		return "welcome";
+	}
+	
+	@GetMapping("/admin/welcome")
+	public String adminWelcome() {
+		return "welcome";
+	}
+	
+	@GetMapping("/admin/welcome1")
+	public String adminWelcome1() {
+		return "welcome";
+	}
+	
+	@GetMapping("/admin/welcome2")
+	public String adminWelcome2() {
+		return "welcome";
+	}
+	
+	@GetMapping("/csrf/form")
+	public String csrfPage() {
 		return "csrf_form";
 	}
 	
+	@PostMapping("/csrf/commit")
+	@ResponseBody
+	public Map<String, String> csrfCommit(String name, String describe) {
+		Map<String, String> map = new HashMap<>();
+		map.put("name", name);
+		map.put("describe", describe);
+		return map;
+	}
 }
