@@ -134,6 +134,8 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		.and().httpBasic();
 	}*/
 	
+	
+/*	//ANT 风格设置路径访问限制
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.
@@ -142,6 +144,26 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		.antMatchers("/user/welcome","/user/details").hasAnyRole("USER","ADMIN")
 		//限定'/admin/'下所有请求权限赋予角色ROLE_ADMIN
 		.antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+		//其他路径允许签名后访问
+		.anyRequest().permitAll()
+		//对于没有配置权限的其他请求允许匿名访问
+		.and().anonymous()
+		//使用Spring Security默认的登录页面
+		.and().formLogin()
+		//启动HTTP基础验证
+		.and().httpBasic();
+	}*/
+	
+	
+	//正则表达式风格设置路径访问限制
+	@Override
+	protected void configure(HttpSecurity http) throws Exception{
+		http.
+		authorizeRequests()
+		//限定'/user/welcome'请求赋予角色ROLE_USER或者ROLE_ADMIN
+		.regexMatchers("/user/welcome","/user/details").hasAnyRole("USER","ADMIN")
+		//限定'/admin/'下所有请求权限赋予角色ROLE_ADMIN
+		.regexMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
 		//其他路径允许签名后访问
 		.anyRequest().permitAll()
 		//对于没有配置权限的其他请求允许匿名访问
