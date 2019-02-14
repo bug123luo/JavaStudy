@@ -155,7 +155,7 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 	}*/
 	
 	
-	//正则表达式风格设置路径访问限制
+/*	//正则表达式风格设置路径访问限制
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.
@@ -168,6 +168,27 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		.anyRequest().permitAll()
 		//对于没有配置权限的其他请求允许匿名访问
 		.and().anonymous()
+		//使用Spring Security默认的登录页面
+		.and().formLogin()
+		//启动HTTP基础验证
+		.and().httpBasic();
+	}*/
+	
+	//Spring 表达式设置权限
+	@Override
+	protected void configure(HttpSecurity http) throws Exception{
+		http.
+		authorizeRequests()
+		//使用Spring表达式限定只有角色ROLE_USER或者ROLE_ADMIN
+		.antMatchers("/user/**").access("hasRole('USER') or hasRole('ADMIN')")
+		//设置访问权限给角色ROLE_ADMIN,要求是完整登录(非记住我登录 )
+		.antMatchers("/admin/welcome1")
+		.access("hasAuthority('ROLE_ADMIN') && ifFullyAuthenticated()")
+		//限定"/admin/welcome2"访问权限给角色ROLE_ADMIN,允许不完整登录
+		.antMatchers("/admin/welcome2")
+		.access("hasAuthority('ROLE_ADMIN')")
+		//使用记住我功能
+		.and().rememberMe()
 		//使用Spring Security默认的登录页面
 		.and().formLogin()
 		//启动HTTP基础验证
