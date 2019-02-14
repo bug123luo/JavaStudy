@@ -33,5 +33,9 @@ public class WelComeController {
 		return "welcome";
 	}
 	
+	@RequestMapping("/csrf/form")
+	public String csrfForm() {
+		return "csrf_form";
+	}
 	
 }
