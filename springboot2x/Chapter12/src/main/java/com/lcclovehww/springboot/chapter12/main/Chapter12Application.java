@@ -174,7 +174,7 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		.and().httpBasic();
 	}*/
 	
-	//Spring 表达式设置权限
+/*	//Spring 表达式设置权限
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.
@@ -193,6 +193,19 @@ public class Chapter12Application extends WebSecurityConfigurerAdapter{
 		.and().formLogin()
 		//启动HTTP基础验证
 		.and().httpBasic();
+	}*/
+	
+	//强制使用HTTPS请求 
+	@Override
+	protected void configure(HttpSecurity http) throws Exception{
+		http
+		//使用安全渠道，限定为https请求
+		.requiresChannel().antMatchers("/admin/**").requiresSecure()
+		//不适用HTTPS请求
+		.and().requiresChannel().antMatchers("/user/**").requiresInsecure()
+		//限定允许的访问角色
+		.and().authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
+		.antMatchers("/user/**").hasAnyAuthority("USER","ADMIN");
 	}
 }
 
