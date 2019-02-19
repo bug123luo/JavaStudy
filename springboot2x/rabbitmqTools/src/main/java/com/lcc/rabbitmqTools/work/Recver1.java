@@ -11,11 +11,7 @@
  */
 package com.lcc.rabbitmqTools.work;
 
-import static org.hamcrest.CoreMatchers.everyItem;
-
 import java.io.IOException;
-import java.nio.channels.NonWritableChannelException;
-
 import com.lcc.rabbitmqTools.util.ConnextionUtil;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Consumer;
