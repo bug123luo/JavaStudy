@@ -33,7 +33,7 @@ import com.rabbitmq.client.Channel;
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
 public class Recver {
-	private static String EXCHANGE_NAME="testpersist";
+	private static String EXCHANGE_NAME="testpersist1";
 	private static String QUEUE_NAME="testpersisitqueue";
 	public static void main(String[] args) throws Exception{
 		Connection connection = ConnextionUtil.getConnection();

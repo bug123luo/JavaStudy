@@ -11,8 +11,6 @@
  */
 package com.lcc.rabbitmqTools.publish;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import com.lcc.rabbitmqTools.util.ConnextionUtil;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;

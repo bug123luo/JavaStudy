@@ -27,7 +27,7 @@ import com.rabbitmq.client.MessageProperties;
  */
 public class Sender {
 
-	private static String EXCHANGE_NAME="testpersist";
+	private static String EXCHANGE_NAME="testpersist1";
 	
 	public static void main(String[] args) throws Exception{
 		Connection connection = ConnextionUtil.getConnection();
