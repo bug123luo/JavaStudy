@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE generatorConfiguration
+         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+ 
+ <generatorConfiguration>
+ 		<!-- jdbc连接的mysql或者oracle的连接包jar，最好是配置为绝对路径 -->
+     <classPathEntry
+             location="E:/repo/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar"/>
+     <context id="my" targetRuntime="MyBatis3">
+         <commentGenerator>
+             <property name="suppressDate" value="false"/>
+             <property name="suppressAllComments" value="true"/>
+         </commentGenerator>
+ 		<!-- 配置数据源信息，多数据源需要配置多份文件，对应需要修改数据源信息，可以使不同主机的数据库，也可以是同一数据库服务器上的不同数据库名 -->
+         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://112.74.51.194:3306/hww?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;nullCatalogMeansCurrent=true" userId="root" password="nihao123">    
+        </jdbcConnection>   
+ 		<!-- 配置生成的model对象也就是javabean，对应数据库表属性的javabean生成到的包路径和绝对代码路径，只需要配置到工程的/src/main/java就可以了，具体的路径由包路径指定。
+ 			由于多数据源，所以我在model后面加了一层以示区分不同数据源的信息 -->
+         <javaModelGenerator targetPackage="com.lcclovehww.springboot.chapter9.pojo"
+                             targetProject=".\src\main\java">
+             <property name="enableSubPackages" value="true"/>
+             <property name="trimStrings" value="true"/>
+         </javaModelGenerator>
+ 		<!-- mapper文件生成路劲和包名 -->
+         <sqlMapGenerator targetPackage="com.lcclovehww.springboot.chapter9.mapper"
+                          targetProject=".\src\main\java">
+             <property name="enableSubPackages" value="true"/>
+         </sqlMapGenerator>
+ 		<!-- dao层接口文件 -->
+         <javaClientGenerator targetPackage="com.lcclovehww.springboot.chapter9.dao"
+                              targetProject=".\src\main\java" type="XMLMAPPER">
+             <property name="enableSubPackages" value="true"/>
+         </javaClientGenerator>
+ 		<!-- 数据库里面的表名信息和配置，多张表需要配置多条信息 -->
+ 		<table tableName="t_user" 
+ 			enableSelectByExample="false" 
+ 			enableCountByExample="false"
+ 			enableDeleteByExample="false"
+ 			enableUpdateByExample="false">
+ 			<!-- 生成的文件去除表前缀，比如t_user 为user searchString里面是正则表达式-->
+ 			<domainObjectRenamingRule searchString="^T" replaceString="" />
+ 			<!-- <columnRenamingRule searchString="^." replaceString=""/> -->
+ 		</table> 
+     </context>
+ </generatorConfiguration>
