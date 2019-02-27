@@ -54,6 +54,7 @@ public class RedisConfig {
 		connectionFactory.setHostName("112.74.51.194");
 		connectionFactory.setPort(6379);
 		connectionFactory.setPassword("123456");
+		connectionFactory.
 		this.connectionFactory = connectionFactory;
 		return connectionFactory;
 	}
