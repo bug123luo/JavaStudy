@@ -16,7 +16,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.lcclovehww.springboot.chapter11.enumeration.SexEnum;
 import com.lcclovehww.springboot.chapter11.pojo.User;
 import com.lcclovehww.springboot.chapter11.service.UserService;
@@ -35,22 +40,37 @@ import lombok.Data;
  */
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
 	private UserService userService = null;
 	
-	@RequestMapping("/user/restful")
+	@GetMapping("/restful")
 	public String index() {
 		return "restful";
 	}
+	
+	@PostMapping("/user")
+	@ResponseBody
+	public User insertUser(@RequestBody UserVo userVo) {
+		User user = changeToPo(userVo);
+		return userService.insertUser(user);
+	}
+	
+/*	@GetMapping(value="/user/id")
+	@ResponseBody
+	public UserVo getUser(@PathVariable("id") Long id) {
+		User user = userService.getUser(id);
+		return changeToVo(user);
+	}*/
 	
 	private User changeToPo(UserVo userVo) {
 		
 		User user = new User();
 		user.setId(userVo.getId());
 		user.setUserName(userVo.getUserName());
-		user.setSex(SexEnum.getEnumById(userVo.getSexCode()));
+		user.setSex(SexEnum.getSexEnum(userVo.getSexCode()));
 		user.setNote(userVo.getNote());
 		
 		return user;

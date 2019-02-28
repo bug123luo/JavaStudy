@@ -34,88 +34,38 @@ import com.lcclovehww.springboot.chapter11.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+	
 	@Autowired
 	private UserDao userDao = null;
 	
-	/**   
-	 * <p>Title: getUser</p>   
-	 * <p>Description: </p>   
-	 * @param id
-	 * @return   
-	 * @see com.lcclovehww.springboot.chapter7.service.UserService#getUser(java.lang.Long)   
-	 */
 	@Override
-	@Transactional
-	@Cacheable(value="redisCache", key="'redis_user_'+#id")
 	public User getUser(Long id) {
 		return userDao.getUser(id);
 	}
 
-	/**   
-	 * <p>Title: insertUser</p>   
-	 * <p>Description: </p>   
-	 * @param user
-	 * @return   
-	 * @see com.lcclovehww.springboot.chapter7.service.UserService#insertUser(com.lcclovehww.springboot.chapter7.pojo.User)   
-	 */
 	@Override
-	@Transactional
-	@CachePut(value="redisCache", key="'redis_user_'+#result.id")
-	public User insertUser(User user) {
-		userDao.insertUser(user);
-		return user;
+	public List<User> findUsers(String userName, String note, int start, int limit) {
+		return userDao.findUsers(userName, note, start, limit);
 	}
 
-	/**   
-	 * <p>Title: updateUserName</p>   
-	 * <p>Description: </p>   
-	 * @param id
-	 * @param userName
-	 * @return   
-	 * @see com.lcclovehww.springboot.chapter7.service.UserService#updateUserName(java.lang.Long, java.lang.String)   
-	 */
 	@Override
-	@Transactional
-	@CachePut(value="redisCache",
-			condition="'#result != 'null'",key="'redis_user_'+#id")
-	public User updateUserName(Long id, String userName) {
-		User user = this.getUser(id);
-		if(user == null ) {
-			return null;
-		}
-		user.setUserName(userName);
-		userDao.updateUser(user);
-		return user;
+	public int updateUser(User user) {
+		return userDao.updateUser(user);
 	}
 
-	/**   
-	 * <p>Title: findUsers</p>   
-	 * <p>Description: </p>   
-	 * @param userName
-	 * @param note
-	 * @return   
-	 * @see com.lcclovehww.springboot.chapter7.service.UserService#findUsers(java.lang.String, java.lang.String)   
-	 */
 	@Override
-	@Transactional
-	public List<User> findUsers(String userName, String note) {
-		return userDao.findUser(userName, note);
+	public int updateUserName(Long id, String userName) {
+		return userDao.updateUserName(id, userName);
 	}
 
-	/**   
-	 * <p>Title: deleteUser</p>   
-	 * <p>Description: </p>   
-	 * @param id
-	 * @return   
-	 * @see com.lcclovehww.springboot.chapter7.service.UserService#deleteUser(java.lang.Long)   
-	 */
 	@Override
-	@Transactional
-	@CacheEvict(value="redisCache", key="'redis_user_'+#id",
-				beforeInvocation = false)
 	public int deleteUser(Long id) {
 		return userDao.deleteUser(id);
+	}
+
+	@Override
+	public User insertUser(User user) {
+		return userDao.insertUser(user) >0 ? user  : null;
 	}
 
 }

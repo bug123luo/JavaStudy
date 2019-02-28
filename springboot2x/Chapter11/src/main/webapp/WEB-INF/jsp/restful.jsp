@@ -10,6 +10,27 @@
 /* 
 	测试javascript 代码
 */
+//post user 测试代码
+	function post(){
+		var params = {
+				'userName':'user_name_new21',
+				'sexCode':2,
+				'note':"note_new2"
+		}
+		$.post({
+			url:"./user",
+			contentType:"application/json",
+			data:JSON.stringify(params),
+			success:function(result){
+				if(result == null || result.id==null){
+					alert("插入失败");
+					return;
+				}
+				alert("插入成功");
+			}
+		});
+	}
+	post();
 </script>
 </head>
 <body>

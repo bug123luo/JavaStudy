@@ -27,8 +27,8 @@ import lombok.Setter;
 
 public enum SexEnum {
 	
-	MALE(1,"男"),
-	FEMALE(2,"女");
+	MALE(0,"男"),
+	FEMALE(1,"女");
 
 	@Getter
 	@Setter
@@ -42,7 +42,7 @@ public enum SexEnum {
 		this.name = name;
 	}
 	
-	public static SexEnum getEnumById(int id) {
+	public static SexEnum getSexEnum(int id) {
 		for(SexEnum sex:SexEnum.values()) {
 			if(sex.getCode() ==id) {
 				return sex;
