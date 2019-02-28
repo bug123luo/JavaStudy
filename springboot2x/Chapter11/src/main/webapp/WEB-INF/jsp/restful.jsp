@@ -43,6 +43,18 @@
 		});
 	}
 	get(); */
+//Get user list 根据用户名和note 模糊查询
+function get(){
+		$.get("./users/userName/note/0/5",function(users,status){
+			if(users==null){
+				alert("结果为空");
+			}else{
+				alert("用户信息为"+JSON.stringify(users));
+			}
+		});
+	}
+	get();
+	
 </script>
 </head>
 <body>

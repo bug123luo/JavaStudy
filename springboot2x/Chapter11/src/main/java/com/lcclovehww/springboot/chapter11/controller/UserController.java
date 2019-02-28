@@ -65,6 +65,18 @@ public class UserController {
 		return changeToVo(user);
 	}
 	
+	@GetMapping(value="/users/{userName}/{note}/{start}/{limit}")
+	@ResponseBody
+	public List<UserVo> findUsers(
+			@PathVariable("userName") String userName,
+			@PathVariable("note") String note,
+			@PathVariable("start") int start,
+			@PathVariable("limit") int limit
+			){
+		List<User> userList = userService.findUsers(userName, note, start, limit);
+		return this.changeToVoes(userList);
+	}
+	
 	private User changeToPo(UserVo userVo) {
 		
 		User user = new User();
