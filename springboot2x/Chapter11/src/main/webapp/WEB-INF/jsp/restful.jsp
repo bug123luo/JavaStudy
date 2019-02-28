@@ -11,7 +11,7 @@
 	测试javascript 代码
 */
 //post user 测试代码
-	function post(){
+/* 	function post(){
 		var params = {
 				'userName':'user_name_new21',
 				'sexCode':2,
@@ -30,7 +30,19 @@
 			}
 		});
 	}
-	post();
+	post(); */
+	
+//Get user 测试代码
+/* function get(){
+		$.get("./1",function(user,status){
+			if(user==null){
+				alert("结果为空");
+			}else{
+				alert("用户信息为"+JSON.stringify(user));
+			}
+		});
+	}
+	get(); */
 </script>
 </head>
 <body>

@@ -58,12 +58,12 @@ public class UserController {
 		return userService.insertUser(user);
 	}
 	
-/*	@GetMapping(value="/user/id")
+	@GetMapping(value="/{id}")
 	@ResponseBody
 	public UserVo getUser(@PathVariable("id") Long id) {
 		User user = userService.getUser(id);
 		return changeToVo(user);
-	}*/
+	}
 	
 	private User changeToPo(UserVo userVo) {
 		
