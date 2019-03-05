@@ -1,34 +1,49 @@
-package com.lcclovehww.springboot.chapter2.main;
+package com.lcc.JsonTest;
 
-import java.util.HashMap;
-import java.util.Map;
+import static org.junit.Assert.assertTrue;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.junit.Test;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-@Controller
-@EnableAutoConfiguration
-public class Chapter1Application {
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
-	@RequestMapping("/test")
-	@ResponseBody
-	public Map<String, String> test(){
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("key", "value");
-		return map;
-	}
+/**
+ * Unit test for simple App.
+ */
+public class AppTest 
+    extends TestCase
+{
+    /**
+     * Create the test case
+     *
+     * @param testName name of the test case
+     */
+    public AppTest( String testName )
+    {
+        super( testName );
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(Chapter1Application.class, args);
-	}
-	
-	public static void strToJson() {
+    /**
+     * @return the suite of tests being tested
+     */
+    public static Test suite()
+    {
+        return (Test) new TestSuite( AppTest.class );
+    }
+
+    /**
+     * Rigourous Test :-)
+     */
+    public void testApp()
+    {
+        assertTrue( true );
+    }
+    
+    @Test
+	public void strToJson() {
 		JSONObject testjson = new JSONObject();
 		JSONObject testjson2 = new JSONObject();
 		JSONObject testjson3 = new JSONObject();
