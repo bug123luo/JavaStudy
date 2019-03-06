@@ -1,6 +1,6 @@
 /**  
  * All rights Reserved, Designed By www.tct.com
- * @Title:  BaseSation.java   
+ * @Title:  BaseStation.java   
  * @Package com.lcclovehww.springboot.chapter13.pojo   
  * @Description:    TODO(用一句话描述该文件做什么)   
  * @author: 泰源云景科技     
@@ -14,7 +14,7 @@ package com.lcclovehww.springboot.chapter13.pojo;
 import lombok.Data;
 
 /**   
- * @ClassName:  BaseSation   
+ * @ClassName:  BaseStation   
  * @Description:基站类   
  * @author: 泰源云景
  * @date:   2019年3月5日 下午4:44:16   
@@ -24,7 +24,7 @@ import lombok.Data;
  */
 
 @Data
-public class BaseSation {
+public class BaseStation {
 	private String serial;//基站编号
 	private Repeater repeater;
 }
