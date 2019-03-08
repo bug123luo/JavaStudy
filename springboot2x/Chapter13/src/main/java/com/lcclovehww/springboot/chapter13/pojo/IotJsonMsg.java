@@ -11,6 +11,7 @@
  */
 package com.lcclovehww.springboot.chapter13.pojo;
 
+import java.io.Serializable;
 import lombok.Data;
 
 /**   
@@ -24,10 +25,16 @@ import lombok.Data;
  */
 
 @Data
-public class IotJsonMsg {
+public class IotJsonMsg implements Serializable{
+
+	/**   
+	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)   
+	 */ 
+	private static final long serialVersionUID = -1980417199797175702L;
 	private String version;//版本号
 	private String msgType;//消息类型
 	private String msgSendTime;//消息发送时间
 	private String msgSerial;//消息序列号
-	private BaseSation msgBody;
+	private MsgBody msgBody;
+	
 }
