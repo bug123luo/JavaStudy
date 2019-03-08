@@ -34,6 +34,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 /*public class Chapter13Application extends WebSecurityConfigurerAdapter{
 */	
 public class Chapter13Application {
+	
+	private String='{"base":11,"repeater":20,"tag":"a6fbd","status":"on"}';
+	
 	@Value("${rabbitmq.queue.msg}")
 	private String msgQueueName=null;
 	
@@ -53,7 +56,7 @@ public class Chapter13Application {
 	private String topic=null;
 	
 	@Value("${spring.mqtt.client.id}")
-	private String clientId=null;
+	private String comsumerClientId=null;
 	
 	@Bean
 	public Queue createQueueMsg() {
@@ -86,13 +89,13 @@ public class Chapter13Application {
 
     private LoggingHandler logger() {
         LoggingHandler loggingHandler = new LoggingHandler("INFO");
-        loggingHandler.setLoggerName("siSample");
+        loggingHandler.setLoggerName("lccRceiver");
         return loggingHandler;
     }
 
     @Bean
     public MessageProducerSupport mqttInbound() {
-        MqttPahoMessageDrivenChannelAdapter adapter = new MqttPahoMessageDrivenChannelAdapter("siSampleConsumer",
+        MqttPahoMessageDrivenChannelAdapter adapter = new MqttPahoMessageDrivenChannelAdapter(comsumerClientId,
                 mqttClientFactory(), topic);
         adapter.setCompletionTimeout(5000);
         adapter.setConverter(new DefaultPahoMessageConverter());
