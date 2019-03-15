@@ -13,7 +13,9 @@ package com.lcclovehww.springboot.chapter13.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.lcclovehww.springboot.chapter13.pojo.IotJsonMsg;
+import com.lcclovehww.springboot.chapter13.pojo.MsgBody;
+
+import lombok.extern.slf4j.Slf4j;
 
 
 /**   
@@ -26,10 +28,32 @@ import com.lcclovehww.springboot.chapter13.pojo.IotJsonMsg;
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
 
+
+@Slf4j
 public class IotStringToClass {
 	
-	public static IotJsonMsg changeToIotMsg(String msg) {
-		JSONObject msgJson = JSON.parseObject(msg);
+/*	public static IotJsonMsg changeToIotMsg(Object object) {
+		JSONObject msgJson = JSON.parseObject((String) object);
 		return JSON.toJavaObject(msgJson, IotJsonMsg.class);
+	}*/
+	
+	public static MsgBody changeToIotMsg(Object object) {
+		
+		JSONObject msgJson =null;
+		
+		String tempStr11 = "{\"base\":21,\"repeater\":20,\"tag\":\"adsfsd\",\"status\":\"on\"}";
+		String tempStr = (String)object;
+		System.out.println(tempStr11);
+		System.out.println(tempStr);
+		
+		try {
+			msgJson = JSON.parseObject(tempStr);
+		} catch (Exception e) {
+			//log.debug("输入数据格式不正确，请确认正确的输入格式 ！ ");
+			System.out.println("输入数据格式不正确，请确认正确的输入格式 ！ ");
+			return null;
+		}
+		
+		return JSON.toJavaObject(msgJson, MsgBody.class);
 	}
 }

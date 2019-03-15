@@ -1,9 +1,7 @@
 package com.lcclovehww.springboot.chapter13.main;
 
-
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -27,16 +25,15 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 //import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
-
+import com.lcclovehww.springboot.chapter13.messagehandler.UserDefinedMessageHandler;
 
 @SpringBootApplication(scanBasePackages= {"com.lcclovehww.springboot.chapter13"})
+@MapperScan("com.lcclovehww.springboot.chapter13.mapper")
 //@EnableScheduling
 /*public class Chapter13Application extends WebSecurityConfigurerAdapter{
 */	
 public class Chapter13Application {
-	
-	private String='{"base":11,"repeater":20,"tag":"a6fbd","status":"on"}';
-	
+		
 	@Value("${rabbitmq.queue.msg}")
 	private String msgQueueName=null;
 	
@@ -79,14 +76,22 @@ public class Chapter13Application {
         factory.setConnectionOptions(options);
         return factory;
     }
+	
 	@Bean
     public IntegrationFlow mqttInFlow() {
         return IntegrationFlows.from(mqttInbound())
-                .transform(p -> p + ", received from MQTT")
-                .handle(logger())
+                //.transform(p -> p + ", received from MQTT")
+        		.transform(p -> p)
+                //.handle(logger())
+                .handle(handler())
                 .get();
     }
 
+	private UserDefinedMessageHandler handler() {
+		UserDefinedMessageHandler userDefinedMessageHandler = new UserDefinedMessageHandler();
+		return userDefinedMessageHandler;
+	}
+	
     private LoggingHandler logger() {
         LoggingHandler loggingHandler = new LoggingHandler("INFO");
         loggingHandler.setLoggerName("lccRceiver");
