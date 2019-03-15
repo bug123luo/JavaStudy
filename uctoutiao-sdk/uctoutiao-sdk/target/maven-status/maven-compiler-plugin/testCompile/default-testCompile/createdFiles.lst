@@ -1,0 +1,7 @@
+com\uctoutiao\openapi\sdk\biz\ArticleRequestTest.class
+com\uctoutiao\openapi\sdk\auth\AuthRequestTest.class
+com\uctoutiao\openapi\sdk\biz\ChannelsRequestTest.class
+com\uctoutiao\openapi\sdk\biz\ClientEventRequestTest.class
+com\uctoutiao\openapi\sdk\AppConfig.class
+com\uctoutiao\openapi\sdk\biz\CitiesRequestTest.class
+com\uctoutiao\openapi\sdk\biz\ChannelRequestTest.class

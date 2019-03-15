@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 1.707 sec <<< FAILURE!
+testGetChannels(com.uctoutiao.openapi.sdk.biz.ChannelsRequestTest)  Time elapsed: 0.015 sec  <<< FAILURE!
+OpenApiException [status=-1, message=access_token invalid]
+	at com.uctoutiao.openapi.sdk.BaseRequest.doGetRequet(BaseRequest.java:92)
+	at com.uctoutiao.openapi.sdk.biz.CitiesRequest.getChannels(CitiesRequest.java:22)
+	at com.uctoutiao.openapi.sdk.biz.ChannelsRequestTest.testGetChannels(ChannelsRequestTest.java:18)
+
+testGetChannels(com.uctoutiao.openapi.sdk.biz.CitiesRequestTest)  Time elapsed: 0.041 sec  <<< FAILURE!
+OpenApiException [status=-1, message=access_token invalid]
+	at com.uctoutiao.openapi.sdk.BaseRequest.doGetRequet(BaseRequest.java:92)
+	at com.uctoutiao.openapi.sdk.biz.ChannelsRequest.getChannels(ChannelsRequest.java:23)
+	at com.uctoutiao.openapi.sdk.biz.CitiesRequestTest.testGetChannels(CitiesRequestTest.java:18)
+
+testClientEvent(com.uctoutiao.openapi.sdk.biz.ClientEventRequestTest)  Time elapsed: 0.091 sec  <<< FAILURE!
+OpenApiException [status=-1, message=access_token invalid]
+	at com.uctoutiao.openapi.sdk.BaseRequest.doPostRequest(BaseRequest.java:110)
+	at com.uctoutiao.openapi.sdk.biz.ClientEventRequest.clientEvent(ClientEventRequest.java:32)
+	at com.uctoutiao.openapi.sdk.biz.ClientEventRequestTest.testClientEvent(ClientEventRequestTest.java:26)
+
