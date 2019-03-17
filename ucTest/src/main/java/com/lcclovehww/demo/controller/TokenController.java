@@ -20,13 +20,13 @@ import lombok.extern.slf4j.Slf4j;
 
 //@Controller
 @RestController
-@RequestMapping("/token")
+@RequestMapping("/consults/uc")
 @Slf4j
 public class TokenController {
 	 
 	private static TokenStorageService storageService = new TokenStorageService();
 	
-	@PostMapping(value="/update", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value="/refreshToken", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 //	@ResponseBody
 	public String updateToken(String access_token,String app_id) {
@@ -50,7 +50,7 @@ public class TokenController {
 		return result.getMsg();
 	}
 	
-	@GetMapping(value="/get", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value="/token/get", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 //	@ResponseBody
 	public TokenRspMsg getToken() {

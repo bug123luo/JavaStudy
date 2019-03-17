@@ -5,12 +5,19 @@ import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 
 @Configuration
 public class SSLConfig {
-
+	
+	@Value("${server.port}")
+	private String serverPost;
+	
+	@Value("${user.port}")
+	private String userPort;
+	
     @Bean
     public TomcatServletWebServerFactory servletContainer() { //springboot2 新变化
 
@@ -22,7 +29,6 @@ public class SSLConfig {
                 SecurityConstraint securityConstraint = new SecurityConstraint();
                 securityConstraint.setUserConstraint("CONFIDENTIAL");
                 SecurityCollection collection = new SecurityCollection();
-//                collection.addMethod("post"); 
                 collection.addPattern("/*");
                 securityConstraint.addCollection(collection);
                 context.addConstraint(securityConstraint);
@@ -35,9 +41,10 @@ public class SSLConfig {
     private Connector initiateHttpConnector() {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
         connector.setScheme("http");
-        connector.setPort(8080);
+        connector.setPort(Integer.parseInt(userPort));
         connector.setSecure(false);
-        connector.setRedirectPort(8443);
+        connector.setRedirectPort(Integer.parseInt(serverPost));
+        
         return connector;
     }
 }
