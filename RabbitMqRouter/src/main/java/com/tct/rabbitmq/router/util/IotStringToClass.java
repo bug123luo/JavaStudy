@@ -9,11 +9,11 @@
  * @Copyright: 2019 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技内部传阅，禁止外泄以及用于其他的商业目
  */
-package com.lcclovehww.springboot.chapter13.util;
+package com.tct.rabbitmq.router.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.lcclovehww.springboot.chapter13.pojo.MsgBody;
+import com.tct.rabbitmq.router.entity.MsgBody;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,7 +39,7 @@ public class IotStringToClass {
 	
 	public static MsgBody changeToIotMsg(Object object) {
 		
-		JSONObject msgJson =new JSONObject();
+		JSONObject msgJson =null;
 		
 		String tempStr11 = "{\"base\":21,\"repeater\":20,\"tag\":\"adsfsd\",\"status\":\"on\"}";
 		String tempStr = (String)object;

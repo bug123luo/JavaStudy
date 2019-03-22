@@ -12,10 +12,18 @@
 package com.lcclovehww.springboot.chapter13.rabbit.receiver;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.lcclovehww.springboot.chapter13.mapper.PersonLocationMapper;
 import com.lcclovehww.springboot.chapter13.pojo.IotJsonMsg;
+import com.lcclovehww.springboot.chapter13.pojo.MsgBody;
+import com.lcclovehww.springboot.chapter13.pojo.PersonLocation;
 import com.lcclovehww.springboot.chapter13.pojo.User;
 import com.lcclovehww.springboot.chapter13.util.IotStringToClass;
+import com.sun.xml.internal.stream.Entity;
+
+import sun.net.www.content.text.plain;
 
 /**   
  * @ClassName:  RabbitMessageReceiver   
@@ -30,11 +38,22 @@ import com.lcclovehww.springboot.chapter13.util.IotStringToClass;
 @Component
 public class RabbitMessageReceiver {
 	
+	@Autowired
+	PersonLocationMapper personLocationMapper;
+	
 	@RabbitListener(queues= {"${rabbitmq.queue.msg}"})
 	public void receiveMsg(String msg) {
 		System.out.println("收到消息: 【"+msg+"】");
 		
-		//IotJsonMsg iotJsonMsg=IotStringToClass.changeToIotMsg(msg);
+		MsgBody msgBody=IotStringToClass.changeToIotMsg(msg);
+		
+		PersonLocation personLocation = new PersonLocation();
+		
+		personLocation.setBaseStationId(msgBody.getBase());
+		personLocation.setDeviceId(msgBody.getRepeater());
+		personLocation.setStatus(msgBody.getStatus());
+		
+		personLocationMapper.insert(personLocation);
 		
 		//System.out.println(iotJsonMsg.toString());
 
