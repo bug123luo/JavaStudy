@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author lcc
- * @since 2019-03-22
+ * @since 2019-03-29
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -26,22 +26,22 @@ public class HgPersonLocation implements Serializable {
     /**
      * 传输基站id
      */
-    private Integer baseStationId;
+    private String baseStationId;
 
     /**
      * 数据采集设备id
      */
-    private Integer deviceId;
+    private String deviceCollectorId;
+
+    /**
+     * 手持卡设备Id
+     */
+    private String deviceCardId;
 
     /**
      * 数据上报时间
      */
     private LocalDateTime reportTime;
-
-    /**
-     * 人员id
-     */
-    private String personId;
 
     /**
      * on打开？ off关闭

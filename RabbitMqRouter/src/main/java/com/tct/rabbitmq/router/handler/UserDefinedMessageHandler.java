@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.handler.AbstractMessageHandler;
 import org.springframework.messaging.Message;
-import org.springframework.stereotype.Service;
+import com.tct.rabbitmq.router.config.RabbitMqConfig.MsgWriter;
 import com.tct.rabbitmq.router.entity.HgPersonLocation;
 import com.tct.rabbitmq.router.entity.MsgBody;
 import com.tct.rabbitmq.router.mapper.HgPersonLocationMapper;
@@ -32,9 +32,11 @@ import com.tct.rabbitmq.router.util.IotStringToClass;
  * @Copyright: 2019 www.tct.com Inc. All rights reserved. 
  * 注意：本内容仅限于泰源云景科技有限公司内部传阅，禁止外泄以及用于其他的商业目 
  */
-
 public class UserDefinedMessageHandler extends AbstractMessageHandler {
 
+	@Autowired
+	MsgWriter mqttGateway;
+	
 	@Resource
 	HgPersonLocationMapper personLocationMapper;
 	
@@ -57,9 +59,11 @@ public class UserDefinedMessageHandler extends AbstractMessageHandler {
 		}
 		
 		HgPersonLocation entity = new HgPersonLocation();
-		entity.setBaseStationId(msgBody.getBase());
-		entity.setDeviceId(msgBody.getRepeater());
-		entity.setPersonId(msgBody.getTag());
+		entity.setBaseStationId(String.valueOf(msgBody.getBase()));
+		entity.setDeviceCollectorId(String.valueOf(msgBody.getRepeater()));
+//		entity.setDeviceId(String.valueOf(msgBody.getRepeater()));
+//		entity.setPersonId(msgBody.getTag());
+		entity.setDeviceCardId(msgBody.getTag());
 		entity.setStatus(msgBody.getStatus());
 		
 		//BeanUtils.copyProperties(msgBody,entity);
