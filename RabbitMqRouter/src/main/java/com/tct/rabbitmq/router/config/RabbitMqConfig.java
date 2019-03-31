@@ -66,7 +66,7 @@ public class RabbitMqConfig {
 	@Value("${spring.mqtt.client.id}")
 	private String comsumerClientId=null;
 	
-	@Value("")
+	@Value("${mqtt.send.topic}")
 	private String sendTopic;
 	
 	public MqttConnectOptions getMqttConnectOptions(){
@@ -141,7 +141,7 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    @ServiceActivator(outputChannel="outChannel")
+    @ServiceActivator(inputChannel="outChannel")
     public MessageHandler mqttOutbound() {
         MqttPahoMessageHandler messageHandler = new MqttPahoMessageHandler(comsumerClientId, mqttClientFactory());
         messageHandler.setAsync(true);

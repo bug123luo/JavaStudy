@@ -12,6 +12,7 @@
 package com.tct.rabbitmq.router.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,9 +35,10 @@ public class TestController {
     @Autowired
     private MsgWriter mqttGateway;
     
-    @RequestMapping("/sendMqtt.do")
-    public String sendMqtt(String  sendData){
-    	mqttGateway.sendToMqtt(sendData,"hello");
+//    @RequestMapping("/sendMqtt")
+    @PostMapping("/sendMqtt")
+    public String sendMqtt(String sendData){
+    	mqttGateway.sendToMqtt(sendData,"spring-boot-queue-msg");
         return "OK";
     }
 }
