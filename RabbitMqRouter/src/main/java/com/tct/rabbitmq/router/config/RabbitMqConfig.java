@@ -66,7 +66,7 @@ public class RabbitMqConfig {
 	@Value("${spring.mqtt.client.id}")
 	private String comsumerClientId=null;
 	
-	@Value("")
+	@Value("${mqtt.send.topic}")
 	private String sendTopic;
 	
 	public MqttConnectOptions getMqttConnectOptions(){

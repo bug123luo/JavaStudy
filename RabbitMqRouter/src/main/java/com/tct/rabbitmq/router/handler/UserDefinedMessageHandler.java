@@ -11,13 +11,19 @@
  */
 package com.tct.rabbitmq.router.handler;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.integration.handler.AbstractMessageHandler;
 import org.springframework.messaging.Message;
+import com.alibaba.fastjson.JSON;
 import com.tct.rabbitmq.router.config.RabbitMqConfig.MsgWriter;
 import com.tct.rabbitmq.router.entity.HgPersonLocation;
 import com.tct.rabbitmq.router.entity.MsgBody;
+import com.tct.rabbitmq.router.entity.third.TctLocationMsg;
+import com.tct.rabbitmq.router.entity.third.TctLocationMsgBody;
 import com.tct.rabbitmq.router.mapper.HgPersonLocationMapper;
 import com.tct.rabbitmq.router.util.IotStringToClass;
 
@@ -34,6 +40,9 @@ import com.tct.rabbitmq.router.util.IotStringToClass;
  */
 public class UserDefinedMessageHandler extends AbstractMessageHandler {
 
+	@Value("${mqtt.send.topic}")
+	private String sendTopic;
+	
 	@Autowired
 	MsgWriter mqttGateway;
 	
@@ -71,6 +80,35 @@ public class UserDefinedMessageHandler extends AbstractMessageHandler {
 		//entity.setId(IdGen.get().nextId());
 		
 		personLocationMapper.insert(entity);
+		
+		sendThirdTopic(msgBody);
 	}
+	
+   boolean sendThirdTopic(Object msgBody) {
+	   if(msgBody instanceof MsgBody) {
+		   MsgBody temp= (MsgBody)msgBody;
+		   DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		   LocalDateTime time = LocalDateTime.now();
+		   String localTime = df.format(time);
+		   
+		   TctLocationMsg tctLocationMsg = new TctLocationMsg();
+		   TctLocationMsgBody tctLocationMsgBody = new TctLocationMsgBody();
+		   tctLocationMsg.setMsgSendTime(localTime);
+		   tctLocationMsg.setMsgSerial(localTime);
+		   tctLocationMsgBody.setBase(String.valueOf(temp.getBase()));
+		   tctLocationMsgBody.setRepeater(String.valueOf(temp.getRepeater()));
+		   tctLocationMsgBody.setStatus(temp.getStatus());
+		   tctLocationMsgBody.setTag(temp.getTag());
+		   tctLocationMsg.setProjectId("1");//表示流花项目
+		   tctLocationMsg.setMsgType("lo");
+		   tctLocationMsg.setVersion("001");
+		   tctLocationMsg.setMsgBody(tctLocationMsgBody);
+		   
+		   String jsonMsg = JSON.toJSONString(tctLocationMsg);
+		   
+		   mqttGateway.sendToMqtt(jsonMsg, sendTopic);
+	   }
+	   return true;
+   }
 
 }
