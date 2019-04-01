@@ -87,7 +87,7 @@ public class UserDefinedMessageHandler extends AbstractMessageHandler {
    boolean sendThirdTopic(Object msgBody) {
 	   if(msgBody instanceof MsgBody) {
 		   MsgBody temp= (MsgBody)msgBody;
-		   DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		   DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 		   LocalDateTime time = LocalDateTime.now();
 		   String localTime = df.format(time);
 		   
