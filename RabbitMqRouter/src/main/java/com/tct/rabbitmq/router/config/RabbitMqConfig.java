@@ -141,7 +141,7 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    @ServiceActivator(outputChannel="outChannel")
+    @ServiceActivator(inputChannel="outChannel")
     public MessageHandler mqttOutbound() {
         MqttPahoMessageHandler messageHandler = new MqttPahoMessageHandler(comsumerClientId, mqttClientFactory());
         messageHandler.setAsync(true);
