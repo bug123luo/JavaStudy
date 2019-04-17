@@ -9,10 +9,12 @@ spring:
     #schema: classpath:db/schema-h2.sql
     #data: classpath:db/data-h2.sql
     #url: jdbc:h2:mem:test
-    url: jdbc:mysql://112.74.51.194:3306/wuye?useUnicode=true&useSSL=false&characterEncoding=utf8
+    #url: jdbc:mysql://112.74.51.194:3306/wuye?useUnicode=true&useSSL=false&characterEncoding=utf8
+    url: jdbc:mysql://39.108.101.235:3306/bladmin_amber?useUnicode=true&useSSL=false&characterEncoding=utf8
     username: root
     #password: test
-    password: nihao123
+    #password: nihao123
+    password: Mysql@tfq2609
     #程序默认启动建表脚本和测试数据输入脚本
     initialization-mode: always
 # Logger Config

@@ -1,14 +1,16 @@
-package com.lcclovehww.wuyedemo.controller;
+package com.open.wy.admin.modules.blwxadvermanage.controller;
 
 
-import com.lcclovehww.wuyedemo.entity.BlAdvertManage;
-import com.lcclovehww.wuyedemo.service.IBlAdvertManageService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.open.wy.admin.modules.blwxadvermanage.entity.BlAdvertManage;
+import com.open.wy.admin.modules.blwxadvermanage.service.IBlAdvertManageService;
+
 
 /**
  * <p>
@@ -16,9 +18,8 @@ import java.util.List;
  * </p>
  *
  * @author lcc
- * @since 2019-03-17
+ * @since 2019-04-17
  */
-
 @RestController
 @RequestMapping("/wxadvertmanage")
 public class BlAdvertManageController {

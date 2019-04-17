@@ -1,10 +1,12 @@
-package com.lcclovehww.wuyedemo.entity;
+package com.open.wy.admin.modules.blwxadvermanage.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -12,7 +14,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author lcc
- * @since 2019-03-17
+ * @since 2019-04-17
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -22,24 +24,40 @@ public class BlAdvertManage implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * uuid主键
+     */
+    @TableId(value = "id", type = IdType.UUID)
+    private String id;
+
+    /**
      * 小区外键
      */
     private String regionId;
 
     /**
-     * 公告内容外键
+     * 栋Id
      */
-    private String advertId;
+    private String houseId;
 
     /**
-     * 内容
+     * 单元Id
      */
-    private String content;
+    private String unitId;
+
+    /**
+     * 文件url
+     */
+    private String fileUrl;
 
     /**
      * 标题
      */
     private String title;
+
+    /**
+     * 内容
+     */
+    private String content;
 
     /**
      * 是否推荐(0为不是,1为是)
@@ -95,6 +113,8 @@ public class BlAdvertManage implements Serializable {
      * 创建时间
      */
     private LocalDateTime createTime;
+
+    private String regionName;
 
 
 }
