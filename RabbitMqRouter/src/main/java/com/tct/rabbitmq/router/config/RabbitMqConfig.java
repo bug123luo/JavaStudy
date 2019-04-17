@@ -12,6 +12,7 @@
 package com.tct.rabbitmq.router.config;
 
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -66,8 +67,11 @@ public class RabbitMqConfig {
 	@Value("${spring.mqtt.client.id}")
 	private String comsumerClientId=null;
 	
-	@Value("")
+	@Value("${mqtt.send.topic}")
 	private String sendTopic;
+
+	@Autowired
+    UserDefinedMessageHandler userDefinedMessageHandler;
 	
 	public MqttConnectOptions getMqttConnectOptions(){
 		MqttConnectOptions mqttConnectOptions=new MqttConnectOptions();
@@ -91,25 +95,39 @@ public class RabbitMqConfig {
         return factory;
     }
 	
-	@Bean
-    public IntegrationFlow mqttInFlow() {
-        return IntegrationFlows.from(mqttInbound())
-                //.transform(p -> p + ", received from MQTT")
-        		.transform(p -> p)
-                //.handle(logger())
-                .handle(handler())
-                .get();
+//	@Bean
+//    public IntegrationFlow mqttInFlow() {
+//        return IntegrationFlows.from(mqttInbound())
+//                //.transform(p -> p + ", received from MQTT")
+//        		.transform(p -> p)
+//                //.handle(logger())
+//                .handle(userDefinedMessageHandler)
+//                .get();
+//    }
+//
+//	private UserDefinedMessageHandler handler() {
+//		UserDefinedMessageHandler userDefinedMessageHandler = new UserDefinedMessageHandler();
+//		return userDefinedMessageHandler;
+//	}
+//
+//    private LoggingHandler logger() {
+//        LoggingHandler loggingHandler = new LoggingHandler("INFO");
+//        loggingHandler.setLoggerName("lccRceiver");
+//        return loggingHandler;
+//    }
+
+
+    //接收通道
+    @Bean
+    public MessageChannel mqttInputChannel() {
+        return new DirectChannel();
     }
 
-	private UserDefinedMessageHandler handler() {
-		UserDefinedMessageHandler userDefinedMessageHandler = new UserDefinedMessageHandler();
-		return userDefinedMessageHandler;
-	}
-	
-    private LoggingHandler logger() {
-        LoggingHandler loggingHandler = new LoggingHandler("INFO");
-        loggingHandler.setLoggerName("lccRceiver");
-        return loggingHandler;
+
+    @Bean
+    @ServiceActivator(inputChannel = "mqttInputChannel")
+    public MessageHandler handler(){
+	    return userDefinedMessageHandler;
     }
 
     @Bean
@@ -119,6 +137,7 @@ public class RabbitMqConfig {
         adapter.setCompletionTimeout(5000);
         adapter.setConverter(new DefaultPahoMessageConverter());
         adapter.setQos(1);
+        adapter.setOutputChannel(mqttInputChannel());
         return adapter;
     }
     
@@ -141,7 +160,7 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    @ServiceActivator(outputChannel="outChannel")
+    @ServiceActivator(inputChannel="outChannel")
     public MessageHandler mqttOutbound() {
         MqttPahoMessageHandler messageHandler = new MqttPahoMessageHandler(comsumerClientId, mqttClientFactory());
         messageHandler.setAsync(true);
