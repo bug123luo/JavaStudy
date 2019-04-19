@@ -1,7 +1,7 @@
-package com.lcclovehww.wuyedemo.mapper;
+package com.open.wy.admin.modules.blwxadvermanage.mapper;
 
+import com.open.wy.admin.modules.blwxadvermanage.entity.BlAdvertManage;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lcclovehww.wuyedemo.entity.BlAdvertManage;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.lcclovehww.wuyedemo.entity.BlAdvertManage;
  * </p>
  *
  * @author lcc
- * @since 2019-03-17
+ * @since 2019-04-17
  */
 public interface BlAdvertManageMapper extends BaseMapper<BlAdvertManage> {
 
